@@ -30,41 +30,6 @@
           </div>
         </div>
       </div>
-      <!--      <CDropdown head-class="cursor-pointer">-->
-      <!--        <template #head="{ show }">-->
-      <!--          <div class="flex-y-center gap-3">-->
-      <!--            <div>-->
-      <!--              <p class="font-semibold text-base text-dark mb-0.5">-->
-      <!--                {{ t("by_week") }}-->
-      <!--              </p>-->
-      <!--            </div>-->
-      <!--            <span-->
-      <!--              :class="{ 'rotate-180': show }"-->
-      <!--              class="icon-chevron font-medium transition-200 text-2xl text-gray-100"-->
-      <!--            ></span>-->
-      <!--          </div>-->
-      <!--        </template>-->
-      <!--        <ul class="p-1 shadow-dropdown">-->
-      <!--          <li-->
-      <!--            v-for="(item, idx) in weeks"-->
-      <!--            :key="idx"-->
-      <!--            :class="item.styles"-->
-      <!--            class="transition-200 flex flex-col gap-1 text-sm w-full text-dark hover:bg-gray/[10%] rounded"-->
-      <!--            @click="item.action"-->
-      <!--          >-->
-      <!--            <div-->
-      <!--              :class="{ '!border-b-0': idx === dropdownItems.length - 1 }"-->
-      <!--              class="flex-y-center px-3 py-2 border-b border-[#F5F6F7] gap-2"-->
-      <!--            >-->
-      <!--              <i :class="item?.icon" class="!text-xs" />-->
-      <!--              {{ item.label }}-->
-      <!--            </div>-->
-      <!--          </li>-->
-      <!--        </ul>-->
-      <!--      </CDropdown>-->
-      <!--      <div-->
-      <!--        class="rounded-xl bg-gray py-1 px-2 text-center flex items-center gap-1.5 cursor-pointer"-->
-      <!--      ></div>-->
     </div>
     <main class="grid grid-cols-1 gap-6">
       <div class="grid grid-cols-4 gap-x-5 gap-y-6">
@@ -79,8 +44,6 @@
         <CGenderChart :data="genderChartData" class="col-span-1" />
         <CAgeChart :data="ageChartData" class="col-span-1" />
       </div>
-      <TActiveUsers :is-search="false" no-footer />
-      <TLastRegisterUsers />
     </main>
   </div>
 </template>

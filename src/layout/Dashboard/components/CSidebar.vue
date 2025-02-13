@@ -24,7 +24,20 @@
           class="relative overflow-hidden transition-300 w-[211px]"
         >
           <RouterLink to="/">
-            <img alt="EBB" class="h-5" src="/images/svg/logo_light.svg" />
+            <div class="flex items-center gap-2.5">
+              <div
+                class="size-7 rounded-md flex items-center justify-center bg-warning"
+              >
+                <img
+                  class="size-5 ronded-xs"
+                  :src="menu.avatar ?? '/images/default-user.svg'"
+                  alt="user photo"
+                />
+              </div>
+              <p class="text-base font-extrabold capitalize text-blue-100">
+                {{ menu.user }} Nodirbek Rajabov
+              </p>
+            </div>
           </RouterLink>
         </div>
         <div
@@ -181,15 +194,6 @@
           src="/images/svg/logo_light.svg"
         />
       </div>
-      <RouterLink
-        class="text-xs underline hover:opacity-80 transition-300 text-gray-200"
-        to="/"
-      >
-        {{ $t("privacy_policy") }}
-      </RouterLink>
-      <p class="text-xs text-gray-200 mt-2.5">
-        {{ $t("version") }} {{ CONFIG.APP_VERSION }}
-      </p>
     </div>
   </div>
 </template>

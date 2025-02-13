@@ -484,5 +484,18 @@
   "filter_by_price": "Filter by price",
   "the_largest": "The largest",
   "the_smallest": "The smallest",
-  "all": "All"
+  "all": "All",
+  "pinfl":"PINFL",
+  "add_pinfl":"PINFL add",
+  "car_number":"Car Number",
+  "enter_car_number":"Enter car number",
+  "mark_of_car":"Mark of car",
+  "enter_mark_car":"Enter mark of car",
+  "model_of_car":"Model of car",
+  "enter_model_car":"Enter model of car",
+  "use_id":"User ID",
+  "enter_user_id":"Enter user ID",
+  "filial_of_bank":"Filial of Bank",
+  "enter_filial_bank":"Enter filial of Bank",
+  "upload_file":"Upload file"
 }

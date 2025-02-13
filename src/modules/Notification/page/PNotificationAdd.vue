@@ -2,95 +2,76 @@
   <Teleport v-if="mounted" to="#header-breadcrumbs">
     <CBreadcrumb v-bind="{ routes }" />
   </Teleport>
+  <pre>{{ form.values.photo }}</pre>
   <div class="p-6 bg-white rounded-xl">
     <h3 class="text-xl font-bold text-dark border-b border-gray-400 pb-5">
       {{ $t("title_add_notification") }}
     </h3>
-    <div class="w-full pt-6 bg-white rounded-xl space-y-4">
-      <CTabLang v-model="nameValue" :list="tabListLanguage" withIcon />
-      <Transition name="fade" mode="out-in">
-        <div :key="nameValue" class="mt-6 gap-6 flex flex-col">
+    <div class="w-full pt-6 bg-white rounded-xl grid grid-cols-2 gap-4">
           <FGroup :label="$t('notification_name')">
             <FInput
               :placeholder="$t('enter_name')"
               :maxlength="256"
-              v-model="form.values[`title_${nameValue}`]"
-              :error="form.$v.value[`title_${nameValue}`]?.$error"
+              v-model="form.values.name"
+              :error="form.$v.value.name?.$error"
             />
           </FGroup>
-          <FGroup :label="$t('notification_heading')">
+          <FGroup :label="$t('pinfl')">
             <FInput
-              :placeholder="$t('enter_title')"
-              :maxlength="512"
-              v-model="form.values[`message_${nameValue}`]"
-              :error="form.$v.value[`message_${nameValue}`]?.$error"
+              :placeholder="$t('add_pinfl')"
+              v-model="form.values.pinfl"
+               v-maska="'##############'"
+              :error="form.$v.value.pinfl?.$error"
             />
           </FGroup>
-          <div class="flex items-stretch gap-6 max-lg:flex-col">
-            <FGroup :label="$t('text')" class="basis-9/12">
-              <CQuilEditor
-                v-if="nameValue === 'ru'"
-                :content="form.values.text_ru"
-                @get-content="(val) => (form.values.text_ru = val)"
-                :error="form.$v.value.text_ru.$error"
-                class="w-full"
-              />
-              <CQuilEditor
-                v-if="nameValue === 'uz'"
-                :content="form.values.text_uz"
-                @get-content="(val) => (form.values.text_uz = val)"
-                :error="form.$v.value.text_uz.$error"
-                class="w-full"
-              />
-              <CQuilEditor
-                v-if="nameValue === 'en'"
-                :content="form.values.text_en"
-                @get-content="(val) => (form.values.text_en = val)"
-                :error="form.$v.value.text_en.$error"
-                class="w-full"
-              />
-            </FGroup>
+          <FGroup :label="$t('car_number')">
+            <FInput
+              :placeholder="$t('enter_car_number')"
+              v-model="form.values.carNumber"
+              :error="form.$v.value.carNumber?.$error"
+            />
+          </FGroup>
+          <FGroup :label="$t('vin_code')">
+            <FInput
+              :placeholder="$t('enter_vin_code')"
+              v-model="form.values.vin"
+              :error="form.$v.value.vin?.$error"
+              v-maska="'XXXXXXXXXXXXXXXXX'"
+            />
+          </FGroup>
+          <FGroup :label="$t('mark_of_car')">
+            <FInput
+              :placeholder="$t('enter_mark_car')"
+              v-model="form.values.mark"
+              :error="form.$v.value.mark?.$error"
+            />
+          </FGroup>
+          <FGroup :label="$t('model_of_car')">
+            <FInput
+              :placeholder="$t('enter_model_car')"
+              v-model="form.values.model"
+              :error="form.$v.value.model?.$error"
+            />
+          </FGroup>
+          <FGroup :label="$t('use_id')">
+            <FInput
+              :placeholder="$t('enter_user_id')"
+              v-model="form.values.id"
+              :error="form.$v.value.id?.$error"
+            />
+          </FGroup>
+          <FGroup :label="$t('filial_of_bank')">
+            <FInput
+              :placeholder="$t('enter_filial_bank')"
+              v-model="form.values.filial"
+              :error="form.$v.value.filial?.$error"
+            />
+          </FGroup>
             <FGroup :label="$t('add_photo')" class="basis-3/12">
               <MultipleFileUploader v-model="form.values.photo" />
-            </FGroup>
-          </div>
-          <FGroup :label="$t('release_time')">
-            <label
-              class="relative my-4 inline-flex items-center cursor-pointer max-w-[166px]"
-            >
-              <input
-                type="checkbox"
-                v-model="isDisabled"
-                class="sr-only peer"
-              />
-              <span
-                class="w-11 block h-6 bg-gray-300 rounded-full peer peer-focus:ring-0 peer-focus:ring-blue-300 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green"
-              />
-              <span class="ms-3 text-sm font-medium text-dark">{{
-                $t("schedule")
-              }}</span>
-            </label>
-            <div class="flex items-center gap-5">
-              <FDatePicker
-                class="min-w-[240px]"
-                v-model="form.values.datePicker"
-                :disabled="!isDisabled"
-              />
-              <FTimePicker
-                :key="nameValue"
-                v-model="form.values.dateTimePicker"
-                class="time-list"
-                :disabled="!isDisabled"
-                @startTime="form.values.dateTimePicker = $event"
-                placeholder="24:00"
-                is-custom="time-list-select"
-              />
-            </div>
-          </FGroup>
-        </div>
-      </Transition>
-      <div
-        v-if="!route?.params?.categoryId"
+            </FGroup> 
+    </div>
+    <div
         class="space-x-4 flex items-center justify-end"
       >
         <CButton
@@ -103,10 +84,9 @@
           :loading="buttonLoading"
           :disabled="buttonLoading"
           :text="$t('publish')"
-          @click="createCategory"
+          @click="createCategotyData"
         />
       </div>
-    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -116,7 +96,7 @@ import { useI18n } from "vue-i18n";
 import CBreadcrumb from "@/components/Common/CBreadcrumb.vue";
 import { useRoute, useRouter } from "vue-router";
 import { useForm } from "@/composables/useForm";
-import { maxLength, required } from "@vuelidate/validators";
+import { maxLength, minLength, required } from "@vuelidate/validators";
 import CButton from "@/components/Common/CButton.vue";
 import FGroup from "@/components/Form/FGroup.vue";
 import FInput from "@/components/Form/Input/FInput.vue";
@@ -128,7 +108,6 @@ import CQuilEditor from "@/components/CQuilEditor.vue";
 import FRadio from "@/components/Form/Radio/FRadio.vue";
 import FDatePicker from "@/components/Form/Date/FDatePicker.vue";
 import FTimePicker from "@/components/Form/Date/FTimePicker.vue";
-import { tabListLanguage } from "@/modules/Notification/data";
 import { convertToISOString } from "@/utils/changeNumberFormat";
 import { INotification } from "@/modules/Notification/types";
 import { useHandleError } from "@/composables/useHandleError";
@@ -153,130 +132,50 @@ const routes = computed(() => [
 const isDisabled = ref(false);
 
 const buttonLoading = ref(false);
-const nameValue = ref<string>("uz");
 
 const form = useForm(
   {
-    message_uz: "",
-    message_ru: "",
-    message_en: "",
-    title_uz: "",
-    title_ru: "",
-    title_en: "",
-    text_en: "",
-    text_ru: "",
-    text_uz: "",
-    datePicker: "",
-    dateTimePicker: "",
+    pinfl:"",
+    name:"",
+    carNumber:"",
+    vin:"",   
+    mark:"",
+    model:"",
+    id:"",
+    filial:"",
     photo: "",
   },
   {
-    message_uz: {
+    pinfl: {
       required,
+      minLength:minLength(14)
     },
-    message_ru: {
+    name: {
       required,
+      maxLength: maxLength(156),
     },
-    message_en: {
-      required,
+    carNumber:{
+      required
     },
-    title_uz: {
-      required,
-      maxLength: maxLength(256),
+    vin:{
+      required
     },
-    title_ru: {
-      required,
-      maxLength: maxLength(256),
+    mark:{
+      required
     },
-    title_en: {
-      required,
-      maxLength: maxLength(256),
+    model:{
+      required
     },
-    text_en: {
-      required,
+    id:{
+      required
     },
-    text_ru: {
-      required,
-    },
-    text_uz: {
-      required,
-    },
+    filial:{
+      required
+    }
   }
 );
 
-function createCategory() {
-  form.$v.value.$touch();
-  if (form.$v.value.$invalid) {
-    showToast(t("fill_all_fields"), "error");
-    console.log(form.$v.value.message_uz);
-    if (
-      nameValue.value === "uz" &&
-      !form.$v.value.title_uz.$invalid &&
-      !form.$v.value.message_uz.$invalid &&
-      !form.$v.value.text_uz.$invalid
-    ) {
-      if (
-        form.$v.value.title_en.$invalid ||
-        form.$v.value.message_en.$invalid ||
-        form.$v.value.text_en.$invalid
-      ) {
-        nameValue.value = "en";
-      } else if (
-        form.$v.value.title_ru.$invalid ||
-        form.$v.value.message_ru.$invalid ||
-        form.$v.value.text_ru.$invalid
-      ) {
-        nameValue.value = "ru";
-      } else {
-        createCategotyData();
-      }
-    } else if (
-      nameValue.value === "en" &&
-      !form.$v.value.title_en.$invalid &&
-      !form.$v.value.message_en.$invalid &&
-      !form.$v.value.text_en.$invalid
-    ) {
-      if (
-        form.$v.value.title_ru.$invalid ||
-        form.$v.value.message_ru.$invalid ||
-        form.$v.value.text_ru.$invalid
-      ) {
-        nameValue.value = "ru";
-      } else if (
-        form.$v.value.title_uz.$invalid ||
-        form.$v.value.message_uz.$invalid ||
-        form.$v.value.text_uz.$invalid
-      ) {
-        nameValue.value = "uz";
-      } else {
-        createCategotyData();
-      }
-    } else if (
-      nameValue.value === "ru" &&
-      !form.$v.value.title_ru.$invalid &&
-      !form.$v.value.message_ru.$invalid &&
-      !form.$v.value.text_ru.$invalid
-    ) {
-      if (
-        form.$v.value.title_uz.$invalid ||
-        form.$v.value.message_uz.$invalid ||
-        form.$v.value.text_uz.$invalid
-      ) {
-        nameValue.value = "uz";
-      } else if (
-        form.$v.value.title_en.$invalid ||
-        form.$v.value.message_en.$invalid ||
-        form.$v.value.text_en.$invalid
-      ) {
-        nameValue.value = "en";
-      } else {
-        createCategotyData();
-      }
-    }
-  } else {
-    createCategotyData();
-  }
-}
+
 
 function createCategotyData() {
   console.log("salomlarnot");
