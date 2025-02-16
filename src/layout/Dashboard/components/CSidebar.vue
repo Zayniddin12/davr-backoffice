@@ -23,22 +23,6 @@
           :class="{ 'opacity-0 invisible !w-0': !isOpen && !hovered }"
           class="relative overflow-hidden transition-300 w-[211px]"
         >
-          <RouterLink to="/">
-            <div class="flex items-center gap-2.5">
-              <div
-                class="size-7 rounded-md flex items-center justify-center bg-warning"
-              >
-                <img
-                  class="size-5 ronded-xs"
-                  :src="menu.avatar ?? '/images/default-user.svg'"
-                  alt="user photo"
-                />
-              </div>
-              <p class="text-base font-extrabold capitalize text-blue-100">
-                {{ menu.user }} Nodirbek Rajabov
-              </p>
-            </div>
-          </RouterLink>
         </div>
         <div
           class="cursor-pointer w-6 h-6 flex items-center justify-center transition-300"
@@ -199,18 +183,24 @@
 </template>
 
 <script lang="ts" setup>
+import CProfileDropdown from "@/layout/Dashboard/components/CProfileDropdown.vue";
 import CollapseTransition from "@ivanv/vue-collapse-transition/src/CollapseTransition.vue";
 import { computed, onMounted, ref } from "vue";
+import { useAuthStore } from "@/modules/Auth/stores";
+
+const store = useAuthStore();
+
+const user = computed(() => store.user);
 
 import { IMenu, menu } from "@/data/menu";
 import { useRoute } from "vue-router";
-import { CONFIG } from "@/config";
+import { useI18n } from "vue-i18n";
 
 const openIndex = ref<number>();
 const isOpen = ref(true);
 const hovered = ref(false);
 const route = useRoute();
-
+const {t} =useI18n()
 const location = computed(() => route.path);
 
 function openMenu(index?: number) {
@@ -232,6 +222,12 @@ function checkIndexActive() {
     }
   });
 }
+const profileItems = [
+  {
+    title: t("help"),
+    event: "on-profile",
+  },
+];
 
 onMounted(() => {
   setTimeout(() => {

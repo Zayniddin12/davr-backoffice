@@ -4,19 +4,11 @@
       <div :key="step">
         <SStepLogin
           v-if="step === 1"
-          @on-block="step = 3"
+          @on-block="step = 2"
           v-bind="{ form }"
-          @submit="step = 2"
-        />
-        <SStepConfirm
-          v-if="step === 2"
-          v-bind="{ phone: form.values.phone }"
-          @back="step = 1"
-          @on-resend="resendCode"
           @submit="finishLogin"
-          @on-block="step = 3"
         />
-        <SStepBlocked v-if="step === 3" />
+        <SStepBlocked v-if="step === 2" />
       </div>
     </Transition>
   </div>
@@ -24,7 +16,7 @@
 
 <script setup lang="ts">
 import { useForm } from "@/composables/useForm";
-import { maxLength, minLength, required } from "@vuelidate/validators";
+import { required } from "@vuelidate/validators";
 import { useRouter } from "vue-router";
 import SStepLogin from "@/modules/Auth/components/SStepLogin.vue";
 import { ref, watch } from "vue";
@@ -40,30 +32,24 @@ const step = ref(1);
 
 const form = useForm(
   {
-    phone: "",
+    username: "",
+    password:""
   },
   {
-    phone: {
+    username: {
+      required,
+    },
+    password: {
       required,
     },
   }
 );
 
-async function resendCode() {
+//eyJhbGciOiJIUzI1NiJ9.eyJpZCI6NDYsImp3dElkIjoiMjE0MTUxNTMzMzcyNTIxMjE3NzIiLCJleHAiOjE3Mzk3MjAwNTl9.fRKkN1XHZeal8GpW67OYrOfZDRX0lzaHxWvMobFgshE
+async function finishLogin(token:any) {
   try {
-    // await store.requestOtp();
-    await store.login(form.values);
-    // showToast("success", "Code resent");
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-async function finishLogin(tokens: any) {
-  try {
-    store.finishLogin(tokens);
     apiService.setHeader();
-    await store.fetchUserData();
+    await store.fetchUserData(token);
     await router.push({ name: "PDashboard" });
   } catch (err) {
     console.log(err);

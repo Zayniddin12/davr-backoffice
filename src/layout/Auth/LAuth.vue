@@ -4,7 +4,7 @@
       class="relative flex col-span-5 items-center flex-col justify-between py-12 overflow-y-scroll max-h-screen gap-4"
     >
       <div>
-        <img alt="logo" src="/images/svg/logo.svg" />
+        DAVR
       </div>
       <slot />
 

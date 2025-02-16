@@ -59,11 +59,17 @@ defineComponent({
 });
 
 interface Props {
-  user?: {
-    fullName: string;
-    avatar: string;
-    subtitle: string;
-  };
+  user?:{
+    id: number,
+    username: string,
+    email: string,
+    fullName: string,
+    photoUrl: string,
+    hashedPassword: string,
+    role: string,
+    createdAt: string,
+    updatedAt:string
+};
   profileItems?: {
     title: string;
     class?: string;

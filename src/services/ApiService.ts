@@ -14,6 +14,7 @@ class ApiService {
     ApiService.vueInstance.axios.defaults.baseURL =
       import.meta.env.VITE_APP_BASE_URL;
     this.handleResponseError(ApiService.vueInstance.axios);
+    this.setHeader();
   }
 
   public static refreshToken(axios: AxiosInstance) {
@@ -21,20 +22,21 @@ class ApiService {
       const refresh = JwtService.getRefresh();
       if (!refresh) {
         JwtService.destroyAccess();
-        // TODO: uncomment below code while connect auth api
         return router.push({ name: "PAuth" });
       }
 
-      const headersWithoutAuth = { ...axios.defaults.headers };
+      const headersWithoutAuth = { ...axios.defaults.headers,};
       delete headersWithoutAuth.common.Authorization;
+
       axios
         .post<{ refresh: string }, { data: any }>(
-          import.meta.env.VITE_APP_BASE_URL + "/account/TokenRefresh/",
+          import.meta.env.VITE_APP_BASE_URL + "/auth/refresh",
+          { refresh: refresh },
           {
-            refresh: refresh,
-          },
-          {
-            headers: { ...headersWithoutAuth.post },
+            headers: {
+              "Content-Type": "application/json",
+              ...headersWithoutAuth.post,
+            },
           }
         )
         .then(({ data }) => {
@@ -48,7 +50,6 @@ class ApiService {
           localStorage.removeItem("id_token");
           JwtService.destroyAccess();
           JwtService.destroyRefresh();
-          // TODO: uncomment below code while connect auth api
           await router.push({ name: "PAuth" });
           reject(error);
         });
@@ -66,12 +67,11 @@ class ApiService {
 
         if (errorResponse?.status === 401) {
           const isRefresh = originalRequest?.url?.includes(
-            "account/TokenRefresh/"
+            "/auth/refresh"
           );
           if (isRefresh) {
             JwtService.destroyAccess();
             JwtService.destroyRefresh();
-            // TODO: uncomment below code while connect auth api
             await router.push({ name: "PAuth" });
             return;
           }
@@ -103,6 +103,8 @@ class ApiService {
       JwtService.getToken() ? `Bearer ${JwtService.getToken()}` : undefined;
     ApiService.vueInstance.axios.defaults.headers.common["Accept-Language"] =
       localStorage.getItem("locale") || "ru";
+    ApiService.vueInstance.axios.defaults.headers.common["Content-Type"] =
+      "application/json";
   }
 
   public static unsetHeader(): void {
@@ -113,14 +115,19 @@ class ApiService {
     resource: string,
     params: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
-    return ApiService.vueInstance.axios.get(resource, params);
+    return ApiService.vueInstance.axios.get(resource, {
+      ...params,
+      headers: { "Content-Type": "application/json", ...params.headers },
+    });
   }
 
   public static get<R = any>(
     resource: string,
     slug = "" as string
   ): Promise<AxiosResponse<R>> {
-    return ApiService.vueInstance.axios.get(`${resource}/${slug}`);
+    return ApiService.vueInstance.axios.get(`${resource}/${slug}`, {
+      headers: { "Content-Type": "application/json",  "ngrok-skip-browser-warning": "true",  },
+    });
   }
 
   public static post<T = any, R = any>(
@@ -128,7 +135,10 @@ class ApiService {
     data?: T,
     params?: AxiosRequestConfig
   ): Promise<AxiosResponse<R>> {
-    return ApiService.vueInstance.axios.post(`${resource}`, data, params);
+    return ApiService.vueInstance.axios.post(`${resource}`, data, {
+      ...params,
+      headers: { "Content-Type": "application/json", ...params?.headers },
+    });
   }
 
   public static update<T = any, R = any>(
@@ -140,7 +150,10 @@ class ApiService {
     return ApiService.vueInstance.axios.put(
       `${resource}/${slug}`,
       data,
-      params
+      {
+        ...params,
+        headers: { "Content-Type": "application/json", ...params?.headers },
+      }
     );
   }
 
@@ -149,7 +162,10 @@ class ApiService {
     data?: T,
     params?: AxiosRequestConfig
   ): Promise<AxiosResponse<R>> {
-    return ApiService.vueInstance.axios.put(`${resource}`, data, params);
+    return ApiService.vueInstance.axios.put(`${resource}`, data, {
+      ...params,
+      headers: { "Content-Type": "application/json", ...params?.headers },
+    });
   }
 
   public static patch<T = any, R = any>(
@@ -157,14 +173,20 @@ class ApiService {
     data?: T,
     params?: AxiosRequestConfig
   ): Promise<AxiosResponse<R>> {
-    return ApiService.vueInstance.axios.patch(`${resource}`, data, params);
+    return ApiService.vueInstance.axios.patch(`${resource}`, data, {
+      ...params,
+      headers: { "Content-Type": "application/json", ...params?.headers },
+    });
   }
 
   public static delete<T = any>(
     resource: string,
     params?: T
   ): Promise<AxiosResponse> {
-    return ApiService.vueInstance.axios.delete(`${resource}`, { params });
+    return ApiService.vueInstance.axios.delete(`${resource}`, {
+      params,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 }
 

@@ -1,6 +1,8 @@
 export interface ILoginPostData {
-  phone: string;
+  username: string;
+  password: string
 }
+
 export interface ILoginResponse {
   phone_number: string;
   session: string;
@@ -33,8 +35,9 @@ export interface IFinishLoginPostData {
   };
 }
 export interface IFinishLoginResponse {
-  access_token: string;
-  refresh_token: string;
+  id:number;
+  access: string;
+  refresh: string;
 }
 export interface IUser {
   id: number;
