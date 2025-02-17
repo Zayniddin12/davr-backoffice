@@ -32,6 +32,6 @@ export const menu: IMenu[] = [
   {
     heading:t("datas") ,
     route: "/users",
-    svgIcon: "icon-notification",
+    svgIcon: "icon-wallet",
   },
 ];

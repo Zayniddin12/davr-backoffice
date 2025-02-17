@@ -6,7 +6,7 @@
           class="mb-1 text-xl leading-[22px] font-bold text-dark"
           :class="titleClass"
         >
-          {{ title }}
+          {{ title }} fvdg
         </h2>
         <p class="text-xs leading-normal font-normal text-gray-100">
           {{ subtitle }}
