@@ -67,7 +67,7 @@
               :error="form.$v.value.filial?.$error"
             />
           </FGroup>
-            <FGroup :label="$t('add_photo')" class="basis-3/12">
+            <FGroup :label="$t('upload_file')" class="basis-3/12">
               <MultipleFileUploader v-model="form.values.photo" />
             </FGroup> 
     </div>
