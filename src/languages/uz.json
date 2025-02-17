@@ -1,6 +1,6 @@
 {
   "supported_by": "{logo} tomonidan qoʻllab-quvvatlanadi",
-  "support": "Bilan qo'llab quvvatlanadi:",
+  "support": "Qo'llab quvvatlash:",
   "privacy_policy": "Maxfiylik siyosati",
   "version": "Versiya",
   "enter_system": "tizimga kirish",
@@ -48,8 +48,8 @@
   "added_at": "Qo'shilgan sana",
   "loading_data": "Maʼlumotlar yuklanmoqda...",
   "notification": "Akkount",
-  "no_notifications_added": "Hech qanday bildirishnoma kiritilmagan",
-  "no_notifications_added_subtitle": "Boshlash uchun bildirishnomalarni qo‘shing va boshqaring",
+  "no_notifications_added": "Hech qanday akkount kiritilmagan",
+  "no_notifications_added_subtitle": "Boshlash uchun akkountlarni qo‘shing va boshqaring",
   "notification_title": "Akkountlar",
   "notifications": "{count} bildirishnoma",
   "add_notification": "Akkount qo'shing",

@@ -167,7 +167,7 @@
       </div>
     </div>
 
-    <div class="p-5 relative z-10">
+    <div class="p-5 relative z-10" v-if="isOpen || hovered">
       <a :href="'https://t.me/nodirbekrajaboff'" target="_blank" class="cursor-pointer transition-all duration-500">
   <div class="bg-white/5 px-3.5 mb-6 py-2 rounded-lg flex items-center justify-between">
     <p class="text-gray text-xs font-normal">{{ $t("support") }}</p>
@@ -237,7 +237,7 @@ const toggleSidebar = () => {
   isOpen.value = !isOpen.value;
 
   if (!isOpen.value) {
-    hovered.value = false;
+    hovered.value = false;  
     isOpen.value = false;
   }
 };

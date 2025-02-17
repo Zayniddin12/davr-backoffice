@@ -43,7 +43,7 @@ export interface IUser {
   id: number;
   username: string;
   avatar_url: string;
-  full_name: string;
+  fullName: string;
   phone: string;
   role: "student" | "teacher" | "manager" | "admin" | "mentor";
   date_joined: string;

@@ -35,29 +35,29 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach(async (to) => {
-//   const authStore = useAuthStore();
-//   const user = computed(() => authStore.user);
-//   if (["404", "403", "500"].includes((to.name || "").toString())) {
-//     return true;
-//   }
+router.beforeEach(async (to) => {
+  const authStore = useAuthStore();
+  const user = computed(() => authStore.user);
+  if (["404", "403", "500"].includes((to.name || "").toString())) {
+    return true;
+  }
 
-//   if (JwtService.getToken() && !Object.keys(user.value)?.length) {
-//     await authStore.fetchUserData();
-//   }
-//   if (Object.keys(user.value)?.length && to.name === "PAuth") {
-//     return { name: "PDashboard" };
-//   }
-//   if (to.name === "PrivacyPolicy") return true;
+  if (JwtService.getToken() && !Object.keys(user.value)?.length) {
+    await authStore.fetchUserData();
+  }
+  if (Object.keys(user.value)?.length && to.name === "PAuth") {
+    return { name: "PDashboard" };
+  }
+  if (to.name === "PrivacyPolicy") return true;
 
-//   if (
-//     to.name !== "PAuth" &&
-//     !JwtService.getToken() &&
-//     !Object.keys(user.value)?.length
-//   ) {
-//     return { name: "PAuth" };
-//   } else {
-//     return true;
-//   }
-// });
+  if (
+    to.name !== "PAuth" &&
+    !JwtService.getToken() &&
+    !Object.keys(user.value)?.length
+  ) {
+    return { name: "PAuth" };
+  } else {
+    return true;
+  }
+});
 export default router;

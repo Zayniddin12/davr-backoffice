@@ -47,7 +47,7 @@
   "added_at": "Дата добавление",
   "loading_data": "Загрузка данных...",
   "notification": "Счета",
-  "no_notifications_added": "Уведомления не добавлены",
+  "no_notifications_added": "Аккаунты не добавлены",
   "no_notifications_added_subtitle": "Добавьте уведомления и управляйте ими, чтобы начать",
   "notification_title": "Счета",
   "notifications": "{count} уведомлений",

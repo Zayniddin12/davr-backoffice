@@ -3,10 +3,10 @@
     <slot name="header_title">
       <div>
         <h2
-          class="mb-1 text-xl leading-[22px] font-bold text-dark"
+          class="mb-1 text-xl leading-[22px] font-bold text-dark whitespace-nowrapNo notifications added"
           :class="titleClass"
         >
-          {{ title }} fvdg
+          {{ title }} 
         </h2>
         <p class="text-xs leading-normal font-normal text-gray-100">
           {{ subtitle }}

@@ -3,7 +3,7 @@
     <Teleport v-if="mounted" to="#header-breadcrumbs">
       <SBreadcrumb v-bind="{ routes }" />
     </Teleport>
-    <div class="py-4 px-5 w-full bg-white rounded-xl mb-6 flex gap-4">
+    <!-- <div class="py-4 px-5 w-full bg-white rounded-xl mb-6 flex gap-4">
       <div class="flex gap-1 items-center p-1 rounded-xl bg-gray">
         <div
           v-for="(item, key) in dateTable"
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <main class="grid grid-cols-1 gap-6">
       <div class="grid grid-cols-4 gap-x-5 gap-y-6">
         <CInfoCard
@@ -54,7 +54,7 @@ import SBreadcrumb from "@/components/Common/CBreadcrumb.vue";
 import { useI18n } from "vue-i18n";
 import { computed, reactive, ref, onMounted, watch } from "vue";
 import CAgeChart from "@/components/Charts/CAgeChart.vue";
-import CGenderChart from "@/components/Charts/CGenderChart.vue";
+import CGenderChart from "@/compconents/Charts/CGenderChart.vue";
 import CLineChart from "@/components/Charts/CLineChart.vue";
 import CInfoCard from "@/modules/Dashboard/components/CInfoCard.vue";
 import FInputRangePick from "@/components/Form/Input/FInputRangePick.vue";

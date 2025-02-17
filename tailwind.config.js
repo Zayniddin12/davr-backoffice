@@ -1,3 +1,5 @@
+const colors=require('tailwindcss/colors')
+
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
@@ -8,7 +10,7 @@ module.exports = {
       },
       colors: {
         primary: {
-          DEFAULT: "#02BFDF",
+          DEFAULT: colors.indigo[500],
           100: "#F6FEFF",
         },
         white: {

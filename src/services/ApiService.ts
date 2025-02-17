@@ -25,17 +25,14 @@ class ApiService {
         return router.push({ name: "PAuth" });
       }
 
-      const headersWithoutAuth = { ...axios.defaults.headers,};
-      delete headersWithoutAuth.common.Authorization;
-
       axios
-        .post<{ refresh: string }, { data: any }>(
-          import.meta.env.VITE_APP_BASE_URL + "/auth/refresh",
-          { refresh: refresh },
+        .post<{ access: string }, { data: any }>(
+          import.meta.env.VITE_APP_BASE_URL + "auth/refresh",
+          {}, // Body bo'sh bo'ladi
           {
             headers: {
               "Content-Type": "application/json",
-              ...headersWithoutAuth.post,
+              "Authorization": `Refresh ${refresh}`, // Refresh token headerda yuboriladi
             },
           }
         )
@@ -67,7 +64,7 @@ class ApiService {
 
         if (errorResponse?.status === 401) {
           const isRefresh = originalRequest?.url?.includes(
-            "/auth/refresh"
+            "auth/refresh"
           );
           if (isRefresh) {
             JwtService.destroyAccess();
@@ -111,20 +108,14 @@ class ApiService {
     ApiService.vueInstance.axios.defaults.headers.common["Authorization"] = ``;
   }
 
-  public static query<T>(
-    resource: string,
-    params: AxiosRequestConfig
-  ): Promise<AxiosResponse<T>> {
+  public static query<T>(resource: string, params: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return ApiService.vueInstance.axios.get(resource, {
       ...params,
       headers: { "Content-Type": "application/json", ...params.headers },
     });
   }
 
-  public static get<R = any>(
-    resource: string,
-    slug = "" as string
-  ): Promise<AxiosResponse<R>> {
+  public static get<R = any>(resource: string, slug = "" as string): Promise<AxiosResponse<R>> {
     return ApiService.vueInstance.axios.get(`${resource}/${slug}`, {
       headers: { "Content-Type": "application/json",  "ngrok-skip-browser-warning": "true",  },
     });
@@ -179,10 +170,7 @@ class ApiService {
     });
   }
 
-  public static delete<T = any>(
-    resource: string,
-    params?: T
-  ): Promise<AxiosResponse> {
+  public static delete<T = any>(resource: string, params?: T): Promise<AxiosResponse> {
     return ApiService.vueInstance.axios.delete(`${resource}`, {
       params,
       headers: { "Content-Type": "application/json" },

@@ -15,7 +15,6 @@
 
 <script lang="ts" setup>
 import SUicLogo from "@/components/Logo/CUicLogo.vue";
-import { CONFIG } from "@/config";
 </script>
 
 <style scoped>

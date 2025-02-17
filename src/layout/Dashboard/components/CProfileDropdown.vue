@@ -4,13 +4,13 @@
       <div class="flex-y-center gap-3">
         <div>
           <p
-            v-if="user.full_name"
+            v-if="user.fullName"
             class="font-semibold text-base text-dark mb-0.5"
           >
-            {{ user?.full_name }}
+            {{ user?.fullName }}
           </p>
           <p class="text-sm text-gray-200 text-right">
-            {{ user?.role }}
+            {{ user?.username }} 
           </p>
         </div>
 
