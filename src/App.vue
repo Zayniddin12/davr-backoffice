@@ -7,11 +7,6 @@
         </component>
       </div>
     </RouterView>
-    <CDialog :show="show" no-header title="">
-      <div class="text-dark text-xl font-medium text-center py-14">
-        {{ $t("using_chrome") }}
-      </div>
-    </CDialog>
   </div>
 </template>
 <script lang="ts" setup>
@@ -22,7 +17,6 @@ import LError from "@/layout/Error/LError.vue";
 import LAuth from "@/layout/Auth/LAuth.vue";
 import { useClientSecret } from "@/composables/useClientSecretToken";
 import LEmpty from "@/layout/Empty/LEmpty.vue";
-import CDialog from "@/components/Common/Dialog/CDialog.vue";
 import LStatic from "@/layout/Static/LStatic.vue";
 // Setup
 const clientSecret = useClientSecret();
@@ -34,7 +28,6 @@ const layouts: { [key: string]: any } = {
   empty: LEmpty,
   static: LStatic,
 };
-const show = ref(false);
 
 const detectLayout = computed(() => {
   return layouts[route.meta.layout as string];
@@ -45,8 +38,5 @@ clientSecret.init();
 const isChrome =
   /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
-if (!isChrome) {
-  show.value = true;
-  // Your code for Chrome users here
-}
+
 </script>

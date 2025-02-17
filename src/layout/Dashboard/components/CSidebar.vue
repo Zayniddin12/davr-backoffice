@@ -167,30 +167,24 @@
       </div>
     </div>
 
-    <div v-if="isOpen || hovered" class="p-5">
-      <div
-        class="bg-white/5 px-3.5 mb-6 py-2 rounded-lg flex items-center justify-between"
-      >
-        <p class="text-gray text-xs font-normal">{{ $t("support") }}</p>
-        <img
-          alt="logo light"
-          class="h-[14px]"
-          src="/images/svg/logo_light.svg"
-        />
-      </div>
+    <div class="p-5 relative z-10">
+      <a :href="'https://t.me/nodirbekrajaboff'" target="_blank" class="cursor-pointer transition-all duration-500">
+  <div class="bg-white/5 px-3.5 mb-6 py-2 rounded-lg flex items-center justify-between">
+    <p class="text-gray text-xs font-normal">{{ $t("support") }}</p>
+    <span class="icon-support text-gray"></span>
+  </div>
+</a>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import CProfileDropdown from "@/layout/Dashboard/components/CProfileDropdown.vue";
 import CollapseTransition from "@ivanv/vue-collapse-transition/src/CollapseTransition.vue";
 import { computed, onMounted, ref } from "vue";
 import { useAuthStore } from "@/modules/Auth/stores";
 
 const store = useAuthStore();
 
-const user = computed(() => store.user);
 
 import { IMenu, menu } from "@/data/menu";
 import { useRoute } from "vue-router";

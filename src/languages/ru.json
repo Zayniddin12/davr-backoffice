@@ -1,6 +1,6 @@
 {
   "supported_by": "Supported by {logo}",
-  "support": "Разработано с помощью:",
+  "support": "Поддерживать:",
   "privacy_policy": "Политика конфиденциальности",
   "version": "Версия",
   "enter_system": "Войти в систему",
@@ -527,5 +527,16 @@
   "expense": "Расход",
   "income": "Поступление",
   "uzs": "UZS",
-  "format_text_image": "мак: 30 MB, формат: png, jpg"
+  "format_text_image": "мак: 30 MB, формат: png, jpg",
+  "username":"Имя пользователя",
+  "password":"Пароль",
+  "enter_username":"Введите имя пользователя",
+  "enter_password":"Введите пароль",
+   "datas":"Данные",
+  "accounts":"Счета",
+  "customers":"Клиенты",
+  "leaders":"Лидеры",
+  "lawyers":"Юристы",
+  "approvers":"Утверждающие",
+  "gps_engineers":"GPS Engineers"
 }

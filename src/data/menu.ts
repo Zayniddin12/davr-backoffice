@@ -17,21 +17,21 @@ export interface IMenu {
 
 export const menu: IMenu[] = [
   {
-    heading: t("main_page"),
+    heading:t("main_page") ,
     route: "/",
     svgIcon: "icon-main",
   },
   {
-    heading: t("side_menu.users"),
-    route: "/users",
+    heading: t("accounts"),
+    route:"/accounts" ,
     svgIcon: "icon-user",
     meta: {
       role: ["super_admin"],
     },
   },
   {
-    heading: t("notification"),
-    route: "/notification",
+    heading:t("datas") ,
+    route: "/users",
     svgIcon: "icon-notification",
   },
 ];

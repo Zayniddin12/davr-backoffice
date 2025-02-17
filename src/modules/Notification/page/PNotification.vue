@@ -10,7 +10,6 @@ import CTableWrapper from "@/components/Common/Table/CTableWrapper.vue";
 import CActionsDropdown from "@/components/Common/Dropdown/CActionsDropdown.vue";
 import { exchangeActions, notificationHead } from "@/modules/Notification/data";
 import { useTableFetch } from "@/composables/useTableFetch";
-import FDatePicker from "@/components/Form/Date/FDatePicker.vue";
 import { useRoute, useRouter } from "vue-router";
 import { useCustomToast } from "@/composables/useCustomToast";
 import ApiService from "@/services/ApiService";
@@ -96,8 +95,8 @@ watch(
           @search="onSearch"
           :limit="paginationData?.defaultLimit"
           :loading="loading"
-          :title="$t('notification_title')"
-          :subtitle="t('notifications', { count: paginationData?.total })"
+          :title="$t('accounts')"
+          :subtitle="t('accounts', { count: paginationData?.total })"
           :head="notificationHead"
           th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px]"
         >
@@ -127,17 +126,6 @@ watch(
             <p class="text-xs font-normal text-gray-300">
               {{ dayjs(data?.add_time)?.format("HH:mm") }}
             </p>
-          </template>
-
-          <template #beforeSearch>
-            <div class="min-w-[248px] w-full">
-              <FDatePicker
-                v-model="date"
-                range
-                class="border border-gray rounded-md min-w-[240px] w-full"
-                custom-class="bg-transparent rounded-md"
-              />
-            </div>
           </template>
           <template #afterSearch>
             <CButton

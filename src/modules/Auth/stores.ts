@@ -60,7 +60,7 @@ export const useAuthStore = defineStore("authStore", {
       JwtService.saveToken(tokens.access);
       JwtService.saveRefreshToken(tokens.refresh);
     },
-    fetchUserData(token:IFinishLoginResponse) {
+    fetchUserData() {
       const id=JwtService.getId()
       apiService.setHeader();
       this.profileLoading = true;

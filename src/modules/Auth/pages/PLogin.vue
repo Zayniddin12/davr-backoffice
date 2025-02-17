@@ -20,7 +20,6 @@ import { required } from "@vuelidate/validators";
 import { useRouter } from "vue-router";
 import SStepLogin from "@/modules/Auth/components/SStepLogin.vue";
 import { ref, watch } from "vue";
-import SStepConfirm from "@/modules/Auth/components/SStepConfirm.vue";
 import SStepBlocked from "@/modules/Auth/components/SStepBlocked.vue";
 import { useAuthStore } from "@/modules/Auth/stores";
 import apiService from "@/services/ApiService";
@@ -45,11 +44,10 @@ const form = useForm(
   }
 );
 
-//eyJhbGciOiJIUzI1NiJ9.eyJpZCI6NDYsImp3dElkIjoiMjE0MTUxNTMzMzcyNTIxMjE3NzIiLCJleHAiOjE3Mzk3MjAwNTl9.fRKkN1XHZeal8GpW67OYrOfZDRX0lzaHxWvMobFgshE
-async function finishLogin(token:any) {
+async function finishLogin() {
   try {
     apiService.setHeader();
-    await store.fetchUserData(token);
+    await store.fetchUserData();
     await router.push({ name: "PDashboard" });
   } catch (err) {
     console.log(err);

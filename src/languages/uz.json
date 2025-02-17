@@ -1,6 +1,6 @@
 {
   "supported_by": "{logo} tomonidan qoʻllab-quvvatlanadi",
-  "support": "Quyidagilar bilan ishlab chiqilgan:",
+  "support": "Bilan qo'llab quvvatlanadi:",
   "privacy_policy": "Maxfiylik siyosati",
   "version": "Versiya",
   "enter_system": "tizimga kirish",
@@ -484,5 +484,16 @@
   "filter_by_price": "Narxi bo'yicha tartiblash",
   "the_largest": "Eng ko'p",
   "the_smallest": "Eng kichik",
-  "all": "Barchasi"
+  "all": "Barchasi",
+  "username":"Foydalanuvchi nomi",
+  "password":"Parol",
+  "enter_username":"Foydalanuvchi nomini kiriting",
+  "enter_password":"Parolni kiriting",
+  "datas":"Ma’lumotlar",
+  "accounts":"Akkauntlar",
+  "customers":"Mijozlar",
+  "leaders":"Rahbarlar",
+  "lawyers":"Yuristlar",
+  "approvers":"Tasdiqlovchilar",
+  "gps_engineers":"GPS Muxandislari"
 }

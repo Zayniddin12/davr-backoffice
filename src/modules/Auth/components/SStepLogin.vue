@@ -7,6 +7,7 @@
       <SFormGroup class="mb-4" :label="$t('username')">
         <SInput
           :error="form.$v.value.username?.$error || isError"
+          :placeholder="$t('enter_username')"
           v-model="form.values.username"
           :prefix-class="'text-sm pr-1'"
         >
@@ -15,6 +16,7 @@
       <SFormGroup class="mb-4" :label="$t('password')">
         <SInput
           :error="form.$v.value.password?.$error || isError"
+          :placeholder="$t('enter_password')"
           v-model="form.values.password"
           :prefix-class="'text-sm pr-1'"
         >

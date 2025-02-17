@@ -20,29 +20,10 @@ const { mounted } = useMounted();
 const route = useRoute();
 const router = useRouter();
 
-const userTypes = ref([
-  {
-    title: t("users_module.user_type.all"),
-    value: ""
-  },
-  {
-    title: t("users_module.user_type.in_station"),
-    value: 1
-  },
-  {
-    title: t("users_module.user_type.out_station"),
-    value: 2
-  },
-  {
-    title: t("users_module.user_type.admin"),
-    value: 3
-  }
-]);
+
 
 const filter = reactive({
-  is_birth_date: route.query.is_birth_date === "true",
   active_status: route.query.active_status ? +route.query.active_status : "",
-  user_type: +route.query.user_type || ""
 });
 
 const statusOptions = ref([
@@ -91,22 +72,12 @@ watch(
   (newFilter) => {
     const query = { ...route.query };
 
-    if (newFilter.is_birth_date !== undefined) {
-      query.is_birth_date = newFilter.is_birth_date.toString();
-    } else {
-      delete query.is_birth_date;
-    }
+ 
 
     if (newFilter.active_status !== "") {
       query.active_status = newFilter.active_status.toString();
     } else {
       delete query.active_status;
-    }
-
-    if (newFilter.user_type !== "") {
-      query.user_type = newFilter.user_type.toString();
-    } else {
-      delete query.user_type;
     }
 
     router.replace({ query });
@@ -142,26 +113,11 @@ watch(
       <!--      head   -->
       <template #beforeSearch>
         <div class="flex items-center justify-end gap-5">
-          <FCheckbox
-            v-model="filter.is_birth_date"
-            :checked="filter.is_birth_date"
-            :label="t('users_module.is_birthday_today')"
-            @change="filter.is_birth_date = $event"
-          />
           <FSelect
             v-model="filter.active_status"
             :options="statusOptions"
             :placeholder="t('users_module.status.placeholder')"
             label-key="label"
-            value-key="value"
-          />
-          <FSelect
-            v-model="filter.user_type"
-            :options="userTypes"
-            :placeholder="t('all_users')"
-            is-checked
-            label-key="title"
-            selected-option-styles="h-10 max-w-[250px]"
             value-key="value"
           />
         </div>
@@ -180,7 +136,6 @@ watch(
             userLink: `/users/${data?.id}`,
           }"
           :is-admin="data?.role === 'Admin'"
-          :is-birthday="data?.is_birth_date"
         />
       </template>
       <template #col_vo_car="{ row: data }">

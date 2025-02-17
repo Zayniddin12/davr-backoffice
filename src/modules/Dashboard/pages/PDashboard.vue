@@ -57,18 +57,13 @@ import CAgeChart from "@/components/Charts/CAgeChart.vue";
 import CGenderChart from "@/components/Charts/CGenderChart.vue";
 import CLineChart from "@/components/Charts/CLineChart.vue";
 import CInfoCard from "@/modules/Dashboard/components/CInfoCard.vue";
-import TActiveUsers from "@/modules/Dashboard/components/Tables/TActiveUsers.vue";
-import TLastRegisterUsers from "@/modules/Dashboard/components/Tables/TLastRegisterUsers.vue";
 import FInputRangePick from "@/components/Form/Input/FInputRangePick.vue";
 import ApiService from "@/services/ApiService";
 import { ChargingStationStats } from "@/modules/Dashboard/types";
 import { useDashboardStore } from "@/modules/Dashboard/store";
-import FInputRange from "@/components/Form/Input/FInputRangePick.vue";
 import { useRoute } from "vue-router";
 import router from "@/router";
 import dayjs from "dayjs";
-import CAvatar from "@/components/CAvatar.vue";
-import CDropdown from "@/components/Common/CDropdown.vue";
 
 const { mounted } = useMounted();
 const { t } = useI18n();
@@ -94,53 +89,53 @@ oneMonthAgo.setDate(1);
 oneMonthAgo.setHours(0, 0, 0, 0);
 const staticsCards = reactive([
   {
-    icon: "icon-plugin",
+    icon: "icon-users",
     count: "",
-    title: t("eez"),
+    title: t("customers"),
     class: "plugin",
   },
   {
     icon: "icon-users",
     count: "",
-    title: t("static_cards.users"),
+    title: t("leaders"),
     class: "users",
   },
   {
-    icon: "icon-car",
+    icon: "icon-users",
     count: "",
-    title: t("static_cards.cars"),
+    title: t("lawyers"),
     class: "cars",
   },
   {
-    icon: "icon-underline-cash",
+    icon: "icon-users",
     count: "",
-    title: t("static_cards.transactions"),
+    title: t("approvers"),
     class: "transaction",
   },
   {
-    icon: "icon-cash",
+    icon: "icon-users",
     count: "",
-    title: t("static_cards.paid_cost"),
+    title: t("gps_engineers"),
     class: "paid_cost",
   },
-  {
-    icon: "icon-light",
-    count: "",
-    title: t("static_cards.used_kv"),
-    class: "used_kv",
-  },
-  {
-    icon: "icon-user",
-    count: "",
-    title: t("static_cards.station_owners"),
-    class: "user",
-  },
-  {
-    icon: "icon-eye",
-    count: "",
-    title: t("static_cards.visit_per_month"),
-    class: "station_owners",
-  },
+  // {
+  //   icon: "icon-users",
+  //   count: "",
+  //   title: t("static_cards.used_kv"),
+  //   class: "used_kv",
+  // },
+  // {
+  //   icon: "icon-users",
+  //   count: "",
+  //   title: t("static_cards.station_owners"),
+  //   class: "user",
+  // },
+  // {
+  //   icon: "icon-users",
+  //   count: "",
+  //   title: t("static_cards.visit_per_month"),
+  //   class: "station_owners",
+  // },
 ]);
 const dateTable = [
   {

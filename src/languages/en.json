@@ -1,6 +1,6 @@
 {
   "supported_by": "Supported by {logo}",
-  "support": "Developed with:",
+  "support": "Support:",
   "privacy_policy": "Privacy Policy",
   "version": "Version",
   "enter_system": "Sign in",
@@ -497,5 +497,16 @@
   "enter_user_id":"Enter user ID",
   "filial_of_bank":"Filial of Bank",
   "enter_filial_bank":"Enter filial of Bank",
-  "upload_file":"Upload file"
+  "upload_file":"Upload file",
+  "username":"Username",
+  "password":"Password",
+  "enter_username":"Enter username",
+  "enter_password":"Enter password",
+   "datas":"Datas",
+  "accounts":"Accounts",
+  "customers":"Customers",
+  "leaders":"Leaders",
+  "lawyers":"Lawyers",
+  "approvers":"Approvers",
+  "gps_engineers":"GPS Engineers"
 }
