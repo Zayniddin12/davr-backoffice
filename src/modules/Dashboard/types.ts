@@ -18,14 +18,11 @@ interface IPopularCourse {
 }
 
 export interface ChargingStationStats {
-  charge_point_count: number;
-  user_count: number;
-  car_count: number;
-  payment_transaction_count: number;
-  total_cost_used: number;
-  total_meter_used: number;
-  owners_count: number;
-  visits_count: number;
+  lawyer: number,
+  boss: number,
+  verifier: number,
+  gps_engineer: number,
+  credit_manager: number,
 }
 
 export interface ICard {
