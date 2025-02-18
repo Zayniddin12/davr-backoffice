@@ -207,41 +207,22 @@ function selectDateType(item: number) {
     }
   });
 }
-const getDashboardCount = async (from: string, to: string) => {
-  if (from && to) {
+const getDashboardCount = async () => {
     try {
       const res = await ApiService.get<ChargingStationStats>(
-        `/dashboard-counts/?timestamp_gte=${from}&timestamp_lte=${to}`
+        `/statistics/users`
       );
-      staticsCards[0].count = res.data.charge_point_count;
-      staticsCards[1].count = res.data.user_count;
-      staticsCards[2].count = res.data.car_count;
-      staticsCards[3].count = res.data.payment_transaction_count;
-      staticsCards[4].count = res.data.total_cost_used;
-      staticsCards[5].count = res.data.total_meter_used;
-      staticsCards[6].count = res.data.owners_count;
-      staticsCards[7].count = res.data.visits_count;
+      console.log(res?.data);
+      
+      staticsCards[0].count = res.data.verifier;
+      staticsCards[1].count = res.data.boss;
+      staticsCards[2].count = res.data.lawyer;
+      staticsCards[3].count = res.data.credit_manager;
+      staticsCards[4].count = res.data.gps_engineer;
     } catch (error) {
       console.log(error);
     }
-  } else {
-    try {
-      const res = await ApiService.get<ChargingStationStats>(
-        `/dashboard-counts`
-      );
-      staticsCards[0].count = res.data.charge_point_count;
-      staticsCards[1].count = res.data.user_count;
-      staticsCards[2].count = res.data.car_count;
-      staticsCards[3].count = res.data.payment_transaction_count;
-      staticsCards[4].count = res.data.total_cost_used;
-      staticsCards[5].count = res.data.total_meter_used;
-      staticsCards[6].count = res.data.owners_count;
-      staticsCards[7].count = res.data.visits_count;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-};
+  } ;
 
 watch(
   route,
@@ -271,10 +252,10 @@ watch(
     } else {
       activeDate.value = 0;
     }
-    mainStore.fetchAgeStats();
-    mainStore.fetchGenderStats();
-    mainStore.fetchAppUsageStats();
-    getDashboardCount(route?.query?.from, route.query.to);
+    // mainStore.fetchAgeStats();
+    // mainStore.fetchGenderStats();
+    // mainStore.fetchAppUsageStats();
+    getDashboardCount();
   },
   { deep: true, immediate: true }
 );
