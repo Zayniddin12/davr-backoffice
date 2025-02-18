@@ -178,7 +178,7 @@ const form = useForm(
 
 
 function createCategotyData() {
-  console.log("salomlarnot");
+  form.$v.value.$touch();
   let data: INotification = form.values;
   data.scheduled_time = convertToISOString(
     data.datePicker,
