@@ -3,6 +3,7 @@ import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import eslintPlugin from "vite-plugin-eslint";
 import { createRequire } from "node:module";
+
 const require = createRequire(import.meta.url);
 
 export default defineConfig({
