@@ -143,7 +143,7 @@ const form = useForm(
     model:"",
     id:"",
     filial:"",
-    photo: "",
+    photo:[] as any,
   },
   {
     pinfl: {
@@ -212,21 +212,20 @@ function createCategoryData() {
       model: form.values.model ?? "",
     })
   );
-
   // Fayllarni qo‘shish (agar `photo` mavjud bo‘lsa)
-  if (form.values.photo) {
-    if (Array.isArray(form.values.photo)) {
-      form.values.photo.forEach((file, index) => {
-        if (file instanceof File) {
-          formData.append("files[]", file);
-        }
-      });
-    } else if (form.values.photo instanceof File) {
-      formData.append("files[]", form.values.photo);
+  if (Array.isArray(form.values.photo)) {
+    
+  form.values.photo.forEach((file, index) => {    
+    console.log(form.values.photo);    
+    if (file instanceof File) {
+      formData.append("files", file);
+    } else if (file?.file instanceof File) { // Agar fayl obyekt ichida bo‘lsa
+      formData.append("files", file.file);
     }
-  }
+  });
+}
 
-  console.log("FormData contents:");
+
   for (let pair of formData.entries()) {
     console.log(pair[0], pair[1]);
   }
