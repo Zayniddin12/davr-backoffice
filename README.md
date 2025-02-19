@@ -1,9 +1,9 @@
-# I-Watt back-office
+# davr-info back-office
 
 
 
 ## Getting started
-This project serves as a back-office for HBS Academy. 
+This project serves as a back-office for davr info. 
 
 
 

@@ -61,6 +61,7 @@ async function submit() {
   form.$v.value.$touch();
   
     if (!form.$v.value.$invalid) {
+      console.log('login');
       
       isError.value = false;
       try {

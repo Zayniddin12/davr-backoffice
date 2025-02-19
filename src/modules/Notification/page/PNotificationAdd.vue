@@ -84,14 +84,14 @@
           :loading="buttonLoading"
           :disabled="buttonLoading"
           :text="$t('publish')"
-          @click="createCategotyData"
+          @click="createCategoryData"
         />
       </div>
   </div>
 </template>
 <script setup lang="ts">
 import { useMounted } from "@/composables/useMounted";
-import { computed, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import CBreadcrumb from "@/components/Common/CBreadcrumb.vue";
 import { useRoute, useRouter } from "vue-router";
@@ -135,7 +135,7 @@ const buttonLoading = ref(false);
 
 const form = useForm(
   {
-    pinfl:"",
+    pinfl:NaN,
     name:"",
     carNumber:"",
     vin:"",   
@@ -176,28 +176,85 @@ const form = useForm(
 );
 
 
-
-function createCategotyData() {
+function createCategoryData() {
   form.$v.value.$touch();
-  let data: INotification = form.values;
-  data.scheduled_time = convertToISOString(
-    data.datePicker,
-    data.dateTimePicker
+
+  if (!form.values) {
+    console.error("form.values is undefined or null");
+    return;
+  }
+
+  const formData = new FormData();
+
+  // JSON objectlarni string ko‘rinishida qo‘shish
+  formData.append(
+    "user",
+    JSON.stringify({
+      fullName: form.values.name ?? "",
+      pinfl: form.values.pinfl ?? 0,
+      clientId: form.values.id ?? "",
+    })
   );
-  if (data.scheduled_time) data.is_scheduled = true;
+
+  formData.append(
+    "bank",
+    JSON.stringify({
+      branch: form.values.filial ?? "",
+    })
+  );
+
+  formData.append(
+    "car",
+    JSON.stringify({
+      number: form.values.carNumber ?? "",
+      vinCode: form.values.vin ?? "",
+      brand: form.values.mark ?? "",
+      model: form.values.model ?? "",
+    })
+  );
+
+  // Fayllarni qo‘shish (agar `photo` mavjud bo‘lsa)
+  if (form.values.photo) {
+    if (Array.isArray(form.values.photo)) {
+      form.values.photo.forEach((file, index) => {
+        if (file instanceof File) {
+          formData.append("files[]", file);
+        }
+      });
+    } else if (form.values.photo instanceof File) {
+      formData.append("files[]", form.values.photo);
+    }
+  }
+
+  console.log("FormData contents:");
+  for (let pair of formData.entries()) {
+    console.log(pair[0], pair[1]);
+  }
 
   buttonLoading.value = true;
-  ApiService.post("notifications/NotificationCreate/", data)
+
+  ApiService.post("client-information", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    }
+  })
     .then(() => {
       buttonLoading.value = false;
       showToast(t("success_messages.successfully_added"), "success");
       router.push({ name: "PNotification" });
     })
     .catch((err) => {
+      console.error("API error:", err);
       handleError(err);
     })
-    .finally(() => (buttonLoading.value = false));
+    .finally(() => {
+      buttonLoading.value = false;
+    });
 }
+
+
+
+
 </script>
 
 <style lang="scss">

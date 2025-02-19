@@ -50,11 +50,11 @@ const {
   loading,
   fetchTableData,
   filterTableData,
-} = useTableFetch("/notifications/NotificationList/");
+} = useTableFetch("client-information");
 
 function deleteNotification(id: any) {
   isLoading.value = true;
-  ApiService.delete(`/notification/${id}/`)
+  ApiService.delete(`client-information/${id}`)
     .then(() => {
       showToast(t("success_messages.successfully_deleted"), "success");
       fetchTableData();

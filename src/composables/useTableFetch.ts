@@ -60,7 +60,7 @@ export function useTableFetch<TD = any>(
       .then((res: any) => {
         paginationData.total = res?.data?.count;
         totals.value = res?.data?.totals;
-        tableData.value = itself ? res?.data : res?.data?.results;
+        tableData.value = itself ? res : res?.data?.results;
       })
       .catch((err) => {
         handleError(err);

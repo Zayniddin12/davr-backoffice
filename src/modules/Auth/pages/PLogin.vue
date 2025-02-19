@@ -45,6 +45,8 @@ const form = useForm(
 );
 
 async function finishLogin() {
+  console.log('finish');
+  
   try {
     apiService.setHeader();
     await store.fetchUserData();
