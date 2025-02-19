@@ -1,51 +1,45 @@
-<script lang="ts" setup>
-import CCard from "@/components/Card/CCard.vue";
-import CUserCard from "@/components/Card/CUserCard.vue";
-import CBreadcrumb from "@/components/Common/CBreadcrumb.vue";
-import NoData from "@/components/Common/NoData/NoData.vue";
-import CTableWrapper from "@/components/Common/Table/CTableWrapper.vue";
-import FCheckbox from "@/components/Form/Checkbox/FCheckbox.vue";
-import FSelect from "@/components/Form/Select/FSelect.vue";
-import { useTableFetch } from "@/composables/useTableFetch";
-import { userTableHeadData } from "@/modules/Users/data";
-import { formatMoneyDecimal, formatPhoneNumber } from "@/utils";
-import dayjs from "dayjs";
-import { computed, reactive, ref, watch } from "vue";
+<script setup lang="ts">
+import SBreadcrumb from "@/components/Common/CBreadcrumb.vue";
+import { computed, ref, watch } from "vue";
+import { useMounted } from "@/composables/useMounted";
 import { useI18n } from "vue-i18n";
+import CNodata from "@/components/Common/NoData/NoData.vue";
+import CButton from "@/components/Common/CButton.vue";
+import CCard from "@/components/Card/CCard.vue";
+import CTableWrapper from "@/components/Common/Table/CTableWrapper.vue";
+import CActionsDropdown from "@/components/Common/Dropdown/CActionsDropdown.vue";
+import { exchangeActions, notificationHead } from "@/modules/Notification/data";
+import { useTableFetch } from "@/composables/useTableFetch";
 import { useRoute, useRouter } from "vue-router";
-import { useMounted } from "@vueuse/core";
+import { useCustomToast } from "@/composables/useCustomToast";
+import ApiService from "@/services/ApiService";
+import dayjs from "dayjs";
+import {
+  convertDateToString,
+  convertStringToDate,
+} from "@/utils/changeNumberFormat";
+import { useHandleError } from "@/composables/useHandleError";
 
-const { t } = useI18n();
 const { mounted } = useMounted();
-const route = useRoute();
-const router = useRouter();
-
-
-
-const filter = reactive({
-  active_status: route.query.active_status ? +route.query.active_status : "",
-});
-
-const statusOptions = ref([
-  { label: t("users_module.status.all"), value: 0 },
-  { label: t("users_module.status.active"), value: 1 },
-  { label: t("users_module.status.inactive"), value: 2 }
+const { t } = useI18n();
+const { handleError } = useHandleError();
+const routes = computed(() => [
+  {
+    name: t("accounts"),
+    route: "/",
+  },
 ]);
+const route = useRoute();
+const { showToast } = useCustomToast();
+const router = useRouter();
+const isLoading = ref(false);
 
-const breadcrumbRoutes = computed(() => {
-  return [
-    {
-      name: t("side_menu.users"),
-      route: "/users",
-      link: true
-    },
-    {
-      name: t("side_menu.all_users"),
-      route: "/users",
-      disabled: true
-    }
-  ];
-});
+const date = ref(
+  convertDateToString(
+    String(route.query?.created_at__gte),
+    String(route.query?.created_at__lte)
+  )
+);
 
 const {
   tableData,
@@ -54,176 +48,123 @@ const {
   onPageChange,
   onChangeLimit,
   loading,
-  filterTableData
-} = useTableFetch("/users/", {}, false, true);
+  fetchTableData,
+  filterTableData,
+} = useTableFetch("client-information");
 
-const mappedFilter = computed(() => ({
-  ...filter,
-  active_status:
-    filter.active_status === 0
-      ? "all"
-      : filter.active_status === 1
-        ? "true"
-        : "false"
-}));
+function deleteNotification(id: any) {
+  isLoading.value = true;
+  ApiService.delete(`client-information/${id}`)
+    .then(() => {
+      showToast(t("success_messages.successfully_deleted"), "success");
+      fetchTableData();
+    })
+    .catch((err) => {
+      handleError(err);
+    })
+    .finally(() => {
+      isLoading.value = false;
+    });
+}
 
 watch(
-  () => filter,
-  (newFilter) => {
-    const query = { ...route.query };
-
- 
-
-    if (newFilter.active_status !== "") {
-      query.active_status = newFilter.active_status.toString();
-    } else {
-      delete query.active_status;
-    }
-
-    router.replace({ query });
-
-    filterTableData(mappedFilter.value);
-  },
-  { deep: true }
+  () => date.value,
+  (val) => {
+    filterTableData({
+      created_at__gte: String(convertStringToDate(String(val))[0]) ?? "",
+      created_at__lte: String(convertStringToDate(String(val))[1]) ?? "",
+    });
+  }
 );
 </script>
 
 <template>
   <Teleport v-if="mounted" to="#header-breadcrumbs">
-    <CBreadcrumb :routes="breadcrumbRoutes" />
+    <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
-
-  <CCard class="p-6">
-    <CTableWrapper
-      :current-page="paginationData?.currentPage"
-      :data="tableData"
-      :head="userTableHeadData()"
-      :items-per-page="+route.query?.limit || 10"
-      :limit="paginationData?.defaultLimit"
-      :loading="loading"
-      :subtitle="t('users', { count: paginationData?.total })"
-      :title="t('side_menu.all_users')"
-      :total="paginationData?.total"
-      head-classes="!max-w-[870px]"
-      th-class="users-module__row last:!text-right"
-      @itemsPerPage="onChangeLimit"
-      @pageChange="onPageChange"
-      @search="onSearch"
-    >
-      <!--      head   -->
-      <template #beforeSearch>
-        <div class="flex items-center justify-end gap-5">
-          <FSelect
-            v-model="filter.active_status"
-            :options="statusOptions"
-            :placeholder="t('users_module.status.placeholder')"
-            label-key="label"
-            value-key="value"
-          />
-        </div>
-      </template>
-
-      <!--      body  -->
-      <template #index="{ row }">
-        <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
-      </template>
-      <template #user="{ row: data }">
-        <CUserCard
-          :card="{
-            avatar: data?.avatar_url,
-            full_name: data?.full_name,
-            phone_number: formatPhoneNumber(data?.phone),
-            userLink: `/users/${data?.id}`,
-          }"
-          :is-admin="data?.role === 'Admin'"
-        />
-      </template>
-      <template #col_vo_car="{ row: data }">
-        <p class="text-dark text-xs font-normal w-full">
-          {{ data?.car_count }}
-        </p>
-      </template>
-      <template #col_vo_station="{ row: data }">
-        <p class="text-dark text-xs font-normal">
-          {{ data?.charge_point_count > 0 ? data?.charge_point_count : "-" }}
-        </p>
-      </template>
-      <template #balance="{ row: data }">
-        <span>{{ formatMoneyDecimal(data?.balance) }} UZS</span>
-      </template>
-      <template #registration_date="{ row: data }">
-        <div class="flex flex-col gap-1">
-          <p class="text-xs font-normal">
-            {{ dayjs(data?.date_joined)?.format("DD.MM.YYYY") }}
-          </p>
-          <p class="text-xs font-normal text-gray-300">
-            {{ dayjs(data?.date_joined)?.format("HH:mm") }}
-          </p>
-        </div>
-      </template>
-      <template #last_login="{ row: data }">
-        <div class="flex flex-col gap-1">
-          <p v-if="data?.last_login" class="text-xs font-normal">
-            {{ dayjs(data?.last_login)?.format("DD.MM.YYYY") }}
-          </p>
-          <p v-if="data?.last_login" class="text-xs font-normal text-gray-300">
-            {{ dayjs(data?.last_login)?.format("HH:mm") }}
-          </p>
-          <p
-            v-if="!data?.last_login"
-            class="text-xs font-normal mb-1 w-full mx-auto ml-7"
-          >
-            -
-          </p>
-        </div>
-      </template>
-      <template #status="{ row: data }">
-        <p :class="[{ 'text-red': !data?.active_status }, '']">
-          {{ data?.active_status ? t("active") : t("inactive") }}
-        </p>
-      </template>
-
-      <!--      no data  -->
-      <template #no-data>
-        <NoData
-          :subtitle="t('users_module.all_users.no_data_subtitle')"
-          :title="t('users_module.all_users.no_data_title')"
-          class="p-0 pb-[76px]"
-          image="/images/svg/no-data/default_no_data.svg"
-        />
-      </template>
-    </CTableWrapper>
-  </CCard>
-  <!--  <div v-else-if="!loading" class="bg-white rounded-xl p-6">-->
-  <!--    <div class="flex flex-col">-->
-  <!--      <div>-->
-  <!--        <h2 class="mb-1 text-xl leading-[22px] font-bold text-dark">-->
-  <!--          {{ t("side_menu.all_users") }}-->
-  <!--        </h2>-->
-  <!--        <p class="text-xs leading-normal font-normal text-gray-100">-->
-  <!--          {{ t("users", { count: 0 }) }}-->
-  <!--        </p>-->
-  <!--      </div>-->
-
-  <!--      <div class="mt-4">-->
-  <!--        <NoData-->
-  <!--          :subtitle="t('users_module.all_users.no_data_subtitle')"-->
-  <!--          :title="t('users_module.all_users.no_data_title')"-->
-  <!--          class="p-0 pb-[76px]"-->
-  <!--          image="/images/svg/no-data/default_no_data.svg"-->
-  <!--        />-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
+  <div class="p-6 bg-white rounded-xl">
+    <div>
+      <CCard>
+        <CTableWrapper
+          :data="tableData"
+          :current-page="paginationData?.currentPage"
+          @itemsPerPage="onChangeLimit"
+          :items-per-page="+route.query?.limit || 10"
+          :total="paginationData?.total"
+          @pageChange="onPageChange"
+          @search="onSearch"
+          :limit="paginationData?.defaultLimit"
+          :loading="loading"
+          :title="$t('accounts')"
+          :subtitle="t('accounts', { count: paginationData?.total })"
+          :head="notificationHead"
+          th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px]"
+        >
+          <template #id="{ row }">
+            <span class="font-semibold text-sm text-dark"
+              >{{ row?._index }}.</span
+            >
+          </template>
+          <template #name="{ row: data }">
+            <span
+              class="text-dark font-semibold text-xs line-clamp-2 !max-w-[382px]"
+              >{{ data?.title }}</span
+            >
+          </template>
+          <template #date_create="{ row: data }">
+            <p class="text-xs font-normal mb-1">
+              {{ dayjs(data?.created_at)?.format("DD.MM.YYYY") }}
+            </p>
+            <p class="text-xs font-normal text-gray-300">
+              {{ dayjs(data?.created_at)?.format("HH:mm") }}
+            </p>
+          </template>
+          <template #date_departure="{ row: data }">
+            <p class="text-xs font-normal mb-1">
+              {{ dayjs(data?.add_time)?.format("DD.MM.YYYY") }}
+            </p>
+            <p class="text-xs font-normal text-gray-300">
+              {{ dayjs(data?.add_time)?.format("HH:mm") }}
+            </p>
+          </template>
+          <template #afterSearch>
+            <CButton
+              :text="$t('add')"
+              icon="icon-plus"
+              class="flex items-center py-2 px-4 gap-2"
+              size="md"
+              @click="router.push({ name: 'PUserAdd' })"
+            />
+          </template>
+          <template #no-data>
+            <CNodata
+              :title="$t('no_notifications_added')"
+              :subtitle="$t('no_notifications_added_subtitle')"
+              class="mt-8 px-6 pb-20 pt-0"
+              :button-text="$t('add_notification')"
+              image="/images/svg/no-data/no-notification.svg"
+              button-custom-class="!mt-0"
+              @submit="router.push({ name: 'PUserAdd' })"
+            />
+          </template>
+          <template #action="{ row: data }">
+            <CActionsDropdown
+              class="mr-4"
+              :list="exchangeActions"
+              :selected-item="data"
+              @edit="
+                router.push({
+                  name: 'PNotificationEdit',
+                  params: { id: data?.id },
+                })
+              "
+              @delete="deleteNotification(data?.id)"
+            />
+          </template>
+        </CTableWrapper>
+      </CCard>
+    </div>
+  </div>
 </template>
 
-<style>
-span {
-  @apply text-dark text-xs font-normal;
-}
-
-.users-module__row:nth-child(3),
-.users-module__row:nth-child(4) {
-  text-align: center !important;
-}
-</style>
+<style scoped></style>

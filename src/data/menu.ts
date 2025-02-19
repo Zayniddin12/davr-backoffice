@@ -22,16 +22,16 @@ export const menu: IMenu[] = [
     svgIcon: "icon-main",
   },
   {
-    heading: t("accounts"),
-    route:"/accounts" ,
-    svgIcon: "icon-user",
+    heading: t("datas"),
+    route:"/informations" ,
+    svgIcon: "icon-wallet",
     meta: {
       role: ["super_admin"],
     },
   },
   {
-    heading:t("datas") ,
-    route: "/users",
-    svgIcon: "icon-wallet",
+    heading:t("accounts") ,
+    route: "/accounts",
+    svgIcon: "icon-user",
   },
 ];

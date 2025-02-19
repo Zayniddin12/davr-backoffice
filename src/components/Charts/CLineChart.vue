@@ -40,7 +40,7 @@
       "
     >
       <NoData
-        :title="$t('empty_data')"
+        :title="$t('empty_data')"nv
         class="mt-8"
         image="/svg/empty-state.svg"
       />

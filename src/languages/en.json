@@ -510,5 +510,7 @@
   "leaders":"Leaders",
   "lawyers":"Lawyers",
   "approvers":"Approvers",
-  "gps_engineers":"GPS Engineers"
+  "gps_engineers":"GPS Engineers",
+  "fullName":"Full Name",
+  "enter_full_name":"Enter full name"
 }

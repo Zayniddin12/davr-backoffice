@@ -2,7 +2,7 @@ import { RouteRecordRaw } from "vue-router";
 
 const routes: Readonly<RouteRecordRaw[]> = [
   {
-    path: "/accounts",
+    path: "/informations",
     name: "PNotification",
     meta: {
       layout: "default",
@@ -10,7 +10,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
     component: () => import("@/modules/Notification/page/PNotification.vue"),
   },
   {
-    path: "/accounts/add",
+    path: "/informations/add",
     name: "PNotificationAdd",
     meta: {
       layout: "default",
@@ -18,7 +18,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
     component: () => import("@/modules/Notification/page/PNotificationAdd.vue"),
   },
   {
-    path: "/accounts/:id/edit",
+    path: "/informations/:id/edit",
     name: "PNotificationEdit",
     meta: {
       layout: "default",

@@ -7,20 +7,20 @@
         { '!border-red': error },
         { 'border !border-primary !bg-transparent': showOptions },
       ]"
-      class="bg-white rounded-lg pl-4 pr-3 py-2.5 cursor-pointer border border-dark/[4%] flex items-center justify-between transition-300"
+      class="transition-200 h-10 inline-flex items-center justify-between relative bg-gray rounded-lg border border-transparent overflow-hidden w-full p-2.5 px-3 "
       @click="toggleSelect(!showOptions)"
     >
       <slot :value="value" name="selectedOption">
         <div
           v-if="isSearchable"
           :class="parentInputClasses"
-          class="flex items-center"
+          class="flex items-center !w-full"
         >
           <input
             v-model="searchValue"
             :class="inputClasses"
             :placeholder="placeholder"
-            class="border-0 outline-none text-dark font-medium text-sm !leading-130 placeholder:text-dark !placeholder:font-normal placeholder:leading-130 placeholder:text-sm"
+            class="font-normal text-sm leading-130 text-dark placeholder:text-gray-200 bg-transparent flex-grow outline-none !pr-3 !w-full"
             type="text"
           />
         </div>
