@@ -55,7 +55,7 @@
   "add_notification": "Akkaunt qo'shing",
   "title_add_notification": "Akkaunt qo'shish",
   "title_edit_notification": "Bildirishnomani tahrirlash",
-  "connection_name": "Ism",
+  "connection_name": "Foydalanuvchi ismi",
   "date_create": "yaratilgan sana",
   "date_departure": "ketish sanasi",
   "notification_add_image": "Reklama tasviri",
@@ -486,9 +486,9 @@
   "the_smallest": "Eng kichik",
   "all": "Barchasi",
   "username":"Foydalanuvchi nomi",
-  "password":"Parol",
+  "password":"Foydalanuvchi paroli",
   "enter_username":"Foydalanuvchi nomini kiriting",
-  "enter_password":"Parolni kiriting",
+  "enter_password":"Foydalanuvchi Parolini kiriting",
   "datas":"Ma’lumotlar",
   "accounts":"Akkauntlar",
   "customers":"Mijozlar",
@@ -510,5 +510,8 @@
   "enter_filial_bank":"Bank filialini kiriting",
   "upload_file":"File yuklang",
   "vin_code":"VIN kod",
-  "enter_vin_code":"VIN kod kiriting"
+  "enter_vin_code":"VIN kod kiriting",
+  "warnong_deleate":"Ushbu akkauntning paroli faqat bir marotaba ko'rinadi. Iltimos uni saqlab oling",
+  "username_created":"Akkaunt ma'lumotlari",
+  "role":"Foydalanuvchi roli"
 }

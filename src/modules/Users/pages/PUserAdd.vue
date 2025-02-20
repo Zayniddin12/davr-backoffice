@@ -25,7 +25,7 @@
             </FGroup>
             <FGroup :label="$t('role')">
                 <FSelect
-              :options="[{ full_name: t('all_users'), id: '' }, ...roleList]"
+              :options="roleList"
               v-model="form.values.role"
               :placeholder="$t('all_users')"
               value-key="id"
@@ -42,7 +42,7 @@
           <CButton
             variant="info"
             :text="$t('cancel')"
-            @click="router.push({ name: 'PNotification' })"
+            @click="router.push({ name: 'PUsers' })"
           />
           <CButton
             variant="primary"
@@ -52,39 +52,41 @@
             @click="createCategoryData"
           />
         </div>
+        <CarModal
+      :show="carModal"
+      @close="carModal = false"
+      :response="response"
+      @submit="closeModal"
+    />
     </div>
   </template>
   <script setup lang="ts">
   import { useMounted } from "@/composables/useMounted";
-  import { computed, reactive, ref } from "vue";
+  import { computed, ref } from "vue";
   import { useI18n } from "vue-i18n";
   import CBreadcrumb from "@/components/Common/CBreadcrumb.vue";
   import { useRoute, useRouter } from "vue-router";
   import { useForm } from "@/composables/useForm";
-  import { maxLength, minLength, required } from "@vuelidate/validators";
+  import { required } from "@vuelidate/validators";
+  import CarModal from "@/modules/Users/components/Modals/CarModal.vue";
   import CButton from "@/components/Common/CButton.vue";
   import FGroup from "@/components/Form/FGroup.vue";
   import FInput from "@/components/Form/Input/FInput.vue";
-  import CTabLang from "@/components/Tab/CTabLang.vue";
   import ApiService from "@/services/ApiService";
   import { useCustomToast } from "@/composables/useCustomToast";
-  import MultipleFileUploader from "@/components/Form/Uploader/MultipleFileUploader.vue";
-  import CQuilEditor from "@/components/CQuilEditor.vue";
-  import FRadio from "@/components/Form/Radio/FRadio.vue";
-  import FDatePicker from "@/components/Form/Date/FDatePicker.vue";
-  import FTimePicker from "@/components/Form/Date/FTimePicker.vue";
-  import { convertToISOString } from "@/utils/changeNumberFormat";
-  import { INotification } from "@/modules/Notification/types";
   import { useHandleError } from "@/composables/useHandleError";
   import FSelect from "@/components/Form/Select/FSelect.vue";
 
   const { showToast } = useCustomToast();
-  
+
+  const carModal = ref(false);
+  const response=ref<{  
+  fullName: string,
+  password: string,
+  role: string
+  username: string
+  }>()
   const roleList = ref([
-    {
-        role:"super_admin",
-        id:"super_admin"
-    },
     {
         role:"boss",
         id:"boss"
@@ -161,20 +163,24 @@
         "Content-Type": "application/json",
       }
     })
-      .then(() => {
+      .then((res) => {
         buttonLoading.value = false;
         showToast(t("success_messages.successfully_added"), "success");
-        router.push({ name: "PAll" });
+        response.value=res?.data
+        carModal.value=true
+        
       })
       .catch((err) => {
-        console.error("API error:", err);
+        showToast(t("success_messages.successfully_added"), "error");
         handleError(err);
       })
       .finally(() => {
         buttonLoading.value = false;
       });
   }
-  
+  function closeModal() {
+    router.push({ name: "PUsers" });
+  }
   
   
   

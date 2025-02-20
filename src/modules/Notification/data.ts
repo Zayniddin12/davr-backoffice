@@ -22,7 +22,32 @@ export const notificationHead = [
     key: "action",
   },
 ];
-
+export const usersHead = [
+  {
+    title: "№",
+    key: "id",
+  },
+  {
+    title: "connection_name",
+    key: "name",
+  },
+  {
+    title: "username",
+    key: "username",
+  },
+  {
+    title: "role",
+    key: "role",
+  },
+  {
+    title: "date_departure",
+    key: "date_departure",
+  },
+  {
+    title: "actions",
+    key: "action",
+  },
+];
 export const mainModelHead = [
   {
     title: "№",
@@ -93,12 +118,6 @@ export const chargerHead = [
 ];
 
 export const exchangeActions: IActionType[] = [
-  {
-    label: "edit",
-    value: "edit",
-    icon: "icon-edit text-gray-200",
-    class: "!text-dark hover:bg-gray/90",
-  },
   {
     label: "delete",
     value: "deleteExchange",

@@ -8,7 +8,7 @@ import CButton from "@/components/Common/CButton.vue";
 import CCard from "@/components/Card/CCard.vue";
 import CTableWrapper from "@/components/Common/Table/CTableWrapper.vue";
 import CActionsDropdown from "@/components/Common/Dropdown/CActionsDropdown.vue";
-import { exchangeActions, notificationHead } from "@/modules/Notification/data";
+import { exchangeActions, usersHead } from "@/modules/Notification/data";
 import { useTableFetch } from "@/composables/useTableFetch";
 import { useRoute, useRouter } from "vue-router";
 import { useCustomToast } from "@/composables/useCustomToast";
@@ -50,11 +50,11 @@ const {
   loading,
   fetchTableData,
   filterTableData,
-} = useTableFetch("client-information");
+} = useTableFetch("users", {}, true);
 
 function deleteNotification(id: any) {
   isLoading.value = true;
-  ApiService.delete(`client-information/${id}`)
+  ApiService.delete(`users/${id}`)
     .then(() => {
       showToast(t("success_messages.successfully_deleted"), "success");
       fetchTableData();
@@ -97,8 +97,8 @@ watch(
           :loading="loading"
           :title="$t('accounts')"
           :subtitle="t('accounts', { count: paginationData?.total })"
-          :head="notificationHead"
-          th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px]"
+          :head="usersHead"
+          th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px] last:!max-w-[100px]"
         >
           <template #id="{ row }">
             <span class="font-semibold text-sm text-dark"
@@ -108,23 +108,25 @@ watch(
           <template #name="{ row: data }">
             <span
               class="text-dark font-semibold text-xs line-clamp-2 !max-w-[382px]"
-              >{{ data?.title }}</span
+              >{{ data?.fullName }}</span
             >
           </template>
-          <template #date_create="{ row: data }">
-            <p class="text-xs font-normal mb-1">
-              {{ dayjs(data?.created_at)?.format("DD.MM.YYYY") }}
+          <template #username="{ row: data }">
+            <p class="text-dark font-semibold text-xs">
+              {{ data?.username }}
             </p>
-            <p class="text-xs font-normal text-gray-300">
-              {{ dayjs(data?.created_at)?.format("HH:mm") }}
+          </template>
+          <template #role="{ row: data }">
+            <p class="text-dark font-semibold text-xs">
+              {{ data?.role }}
             </p>
           </template>
           <template #date_departure="{ row: data }">
             <p class="text-xs font-normal mb-1">
-              {{ dayjs(data?.add_time)?.format("DD.MM.YYYY") }}
+              {{ dayjs(data?.createdAt)?.format("DD.MM.YYYY") }}
             </p>
             <p class="text-xs font-normal text-gray-300">
-              {{ dayjs(data?.add_time)?.format("HH:mm") }}
+              {{ dayjs(data?.createdAt)?.format("HH:mm") }}
             </p>
           </template>
           <template #afterSearch>
@@ -152,12 +154,6 @@ watch(
               class="mr-4"
               :list="exchangeActions"
               :selected-item="data"
-              @edit="
-                router.push({
-                  name: 'PNotificationEdit',
-                  params: { id: data?.id },
-                })
-              "
               @delete="deleteNotification(data?.id)"
             />
           </template>
