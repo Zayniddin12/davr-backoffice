@@ -63,7 +63,7 @@
         v-if="showOptions && !noOptions"
         :key="showOptions"
         :class="fromTop ? 'bottom-[55px]' : 'top-full'"
-        class="absolute min-w-full w-[max-content] p-[8px] bg-white border border-gray rounded-md z-40 translate-y-3 overflow-hidden max-h-[250px] overflow-y-scroll shadow-custom_select"
+        class="absolute min-w-full w-[max-content] p-[8px] bg-white border border-gray rounded-md z-[999] translate-y-3 overflow-hidden max-h-[250px] overflow-y-scroll shadow-custom_select"
       >
         <slot name="options">
           <template v-if="options?.length">

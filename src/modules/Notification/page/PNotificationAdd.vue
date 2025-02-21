@@ -2,6 +2,7 @@
   <Teleport v-if="mounted" to="#header-breadcrumbs">
     <CBreadcrumb v-bind="{ routes }" />
   </Teleport>
+ <div class="min-h-screen">
   <div class="p-6 bg-white rounded-xl">
     <h3 class="text-xl font-bold text-dark border-b border-gray-400 pb-5">
       {{ $t("title_add_notification") }}
@@ -87,6 +88,7 @@
         />
       </div>
   </div>
+ </div>
 </template>
 <script setup lang="ts">
 import { useMounted } from "@/composables/useMounted";

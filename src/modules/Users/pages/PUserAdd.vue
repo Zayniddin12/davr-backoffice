@@ -2,8 +2,8 @@
     <Teleport v-if="mounted" to="#header-breadcrumbs">
       <CBreadcrumb v-bind="{ routes }" />
     </Teleport>
-    <pre>{{ form.values.photo }}</pre>
-    <div class="p-6 bg-white rounded-xl">
+ <div class="min-h-screen">
+  <div class="p-6 bg-white rounded-xl">
       <h3 class="text-xl font-bold text-dark border-b border-gray-400 pb-5">
         {{ $t("title_add_notification") }}
       </h3>
@@ -59,6 +59,7 @@
       @submit="closeModal"
     />
     </div>
+ </div>
   </template>
   <script setup lang="ts">
   import { useMounted } from "@/composables/useMounted";

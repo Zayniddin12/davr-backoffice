@@ -50,7 +50,7 @@
                 { 'bg-white-500': index % 2 !== 0 },
                 { 'even:bg-white-50': type === 'filled' },
               ]"
-              class="border-b border-gray-400 hover:bg-gray/40 relative last:border-none"
+              class="border-b border-gray-400 hover:bg-gray/40 relative last:border-none shrink-0"
               @click="emit('onRowClick', d)"
             >
               <td

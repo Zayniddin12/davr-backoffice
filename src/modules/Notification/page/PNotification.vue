@@ -81,6 +81,7 @@ console.log('fwefwe');
   <Teleport v-if="mounted" to="#header-breadcrumbs">
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
+ <div class="min-h-full">
   <div class="p-6 bg-white rounded-xl min-w-fit w-full">
     <div>
       <CCard>
@@ -194,6 +195,7 @@ console.log('fwefwe');
       </CCard>
     </div>
   </div>
+ </div>
 </template>
 
 <style scoped></style>
