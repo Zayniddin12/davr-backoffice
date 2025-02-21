@@ -368,7 +368,7 @@
   },
   "total_amount_spent": "Total amount spent",
   "all_cars": "All cars",
-  "check_login_password": "Check your phone number",
+  "check_login_password": "Check your phone username or password",
   "payment_types": {
     "title": "All payment methods",
     "payme": "Payme",

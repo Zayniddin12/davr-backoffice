@@ -374,7 +374,7 @@
   },
   "total_amount_spent": "Общая потраченная сумма",
   "all_cars": "Все машины",
-  "check_login_password": "Проверьте свой номер телефона",
+  "check_login_password": "Проверьте свое имя пользователя или пароль",
   "payment_types": {
     "title": "Все способы оплаты",
     "payme": "Payme",

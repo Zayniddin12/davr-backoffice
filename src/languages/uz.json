@@ -368,7 +368,7 @@
   },
   "total_amount_spent": "Umumiy sarflangan miqdor",
   "all_cars": "Barcha mashinalar",
-  "check_login_password": "Telefon raqamingizni tekshiring",
+  "check_login_password": "Username yoki parolingizni tekshiring",
   "payment_types": {
     "title": "Barcha to'lov usullari",
     "payme": "Menga to'lang",
