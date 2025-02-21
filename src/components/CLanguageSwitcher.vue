@@ -67,7 +67,7 @@ const languages: ILanguage[] = [
 
 const currentLanguage = computed(() => {
   const currentLocale =
-    (window.localStorage.getItem("locale") as unknown as ELanguage) || "ru";
+    (window.localStorage.getItem("locale") as unknown as ELanguage) || "uz";
 
   return languages.find((lang) => lang.value === currentLocale);
 });
