@@ -53,7 +53,7 @@
         </div>
       </div>
       <div class="flex flex-col py-5 gap-1">
-        <div v-for="(menuItem, index) in menu" :key="index">
+        <div v-for="(menuItem, index) in newMenus" :key="index">
           <RouterLink
             v-if="!menuItem?.sub?.length"
             :class="{ '!bg-primary/[0.08]': location === menuItem?.route }"
@@ -180,15 +180,17 @@
 
 <script lang="ts" setup>
 import CollapseTransition from "@ivanv/vue-collapse-transition/src/CollapseTransition.vue";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { useAuthStore } from "@/modules/Auth/stores";
 
 const store = useAuthStore();
+const user = computed(() => store.user);
 
 
 import { IMenu, menu } from "@/data/menu";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
+const router = useRouter();
 
 const openIndex = ref<number>();
 const isOpen = ref(true);
@@ -204,9 +206,19 @@ function openMenu(index?: number) {
     openIndex.value = index;
   }
 }
+const newMenus=ref<IMenu[]>()
+
+watch(user, ()=>{
+newMenus.value=menu
+
+if (user.value.role!="super_admin" && user.value.role!="boss") {
+  newMenus.value=newMenus.value.filter((item, index)=>index!==0 && index!==2)
+}
+checkIndexActive();
+},{deep:true, immediate:true})
 
 function checkIndexActive() {
-  menu.forEach((el, index) => {
+  newMenus.value?.forEach((el, index) => {
     if (el?.sub?.length) {
       el?.sub?.forEach((elSub) => {
         if (elSub?.route === location.value) {
@@ -223,11 +235,6 @@ const profileItems = [
   },
 ];
 
-onMounted(() => {
-  setTimeout(() => {
-    checkIndexActive();
-  }, 100);
-});
 
 function isActiveSub(arr?: IMenu[]) {
   return arr?.find((el) => el?.route === location.value);

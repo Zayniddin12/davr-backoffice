@@ -19,12 +19,13 @@ import { useForm } from "@/composables/useForm";
 import { required } from "@vuelidate/validators";
 import { useRouter } from "vue-router";
 import SStepLogin from "@/modules/Auth/components/SStepLogin.vue";
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import SStepBlocked from "@/modules/Auth/components/SStepBlocked.vue";
 import { useAuthStore } from "@/modules/Auth/stores";
 import apiService from "@/services/ApiService";
 
 const store = useAuthStore();
+
 const router = useRouter();
 
 const step = ref(1);
@@ -44,13 +45,17 @@ const form = useForm(
   }
 );
 
-async function finishLogin() {
-  console.log('finish');
-  
+async function finishLogin() {  
   try {
     apiService.setHeader();
     await store.fetchUserData();
-    await router.push({ name: "PDashboard" });
+    const user = computed(() => store.user);
+    if (user.value.role!="super_admin" && user.value.role!="boss") {
+      await router.push({ name: "PNotification" })
+     }else{
+      await router.push({ name: "PDashboard" });
+     }
+   
   } catch (err) {
     console.log(err);
   }

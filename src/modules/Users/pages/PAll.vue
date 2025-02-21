@@ -23,6 +23,12 @@ import { useHandleError } from "@/composables/useHandleError";
 const { mounted } = useMounted();
 const { t } = useI18n();
 const { handleError } = useHandleError();
+import { useAuthStore } from "@/modules/Auth/stores";
+
+
+const store = useAuthStore();
+
+const user = computed(() => store.user);  
 const routes = computed(() => [
   {
     name: t("accounts"),
@@ -34,12 +40,7 @@ const { showToast } = useCustomToast();
 const router = useRouter();
 const isLoading = ref(false);
 
-const date = ref(
-  convertDateToString(
-    String(route.query?.created_at__gte),
-    String(route.query?.created_at__lte)
-  )
-);
+
 
 const {
   tableData,
@@ -66,16 +67,14 @@ function deleteNotification(id: any) {
       isLoading.value = false;
     });
 }
+const newUserHead=ref<{title:string, key:string}[]>()
+watch(user, ()=>{
+  newUserHead.value=usersHead
+if (user.value.role!=="super_admin") {
+  newUserHead.value=usersHead.filter((item, index)=>index!==5)
+}
+},{deep:true, immediate:true})
 
-watch(
-  () => date.value,
-  (val) => {
-    filterTableData({
-      created_at__gte: String(convertStringToDate(String(val))[0]) ?? "",
-      created_at__lte: String(convertStringToDate(String(val))[1]) ?? "",
-    });
-  }
-);
 </script>
 
 <template>
@@ -98,7 +97,7 @@ watch(
           :loading="loading"
           :title="$t('accounts')"
           :subtitle="t('accounts', { count: paginationData?.total })"
-          :head="usersHead"
+          :head="newUserHead"
           th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px] last:!max-w-[100px]"
         >
           <template #id="{ row }">
@@ -132,6 +131,7 @@ watch(
           </template>
           <template #afterSearch>
             <CButton
+            v-if="user.role==='super_admin'"
               :text="$t('add')"
               icon="icon-plus"
               class="flex items-center py-2 px-4 gap-2"
@@ -150,7 +150,7 @@ watch(
               @submit="router.push({ name: 'PUserAdd' })"
             />
           </template>
-          <template #action="{ row: data }">
+          <template #action="{ row: data }" >
             <CActionsDropdown
               class="mr-4"
               :list="exchangeActions"

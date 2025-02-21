@@ -177,7 +177,7 @@ console.log('fwefwe');
               @submit="router.push({ name: 'PNotificationAdd' })"
             />
           </template>
-          <template #action="{ row: data }">
+          <template #action="{ row: data }" >
             <CActionsDropdown
               class="mr-4"
               :list="exchangeActions"
