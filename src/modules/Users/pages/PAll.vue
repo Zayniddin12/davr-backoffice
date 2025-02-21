@@ -82,7 +82,7 @@ watch(
   <Teleport v-if="mounted" to="#header-breadcrumbs">
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
-  <div class="p-6 bg-white rounded-xl">
+  <div class="p-6 bg-white rounded-xl min-w-fit w-full">
     <div>
       <CCard>
         <CTableWrapper

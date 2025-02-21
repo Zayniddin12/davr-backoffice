@@ -513,5 +513,6 @@
   "enter_vin_code":"VIN kod kiriting",
   "warnong_deleate":"Ushbu akkauntning paroli faqat bir marotaba ko'rinadi. Iltimos uni saqlab oling",
   "username_created":"Akkaunt ma'lumotlari",
-  "role":"Foydalanuvchi roli"
+  "role":"Foydalanuvchi roli",
+  "failed_with_some_errors":"Malumotni qo'shishda xatolik chiqdi"
 }

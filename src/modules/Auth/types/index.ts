@@ -45,7 +45,7 @@ export interface IUser {
   avatar_url: string;
   fullName: string;
   phone: string;
-  role: "student" | "teacher" | "manager" | "admin" | "mentor";
+  role: "credit_manager" | "boss" | "lawyer" | "gps_engineer" | "verifier" | "super_admin";
   date_joined: string;
   is_active: boolean;
   is_birth_date: boolean;

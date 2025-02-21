@@ -2,7 +2,6 @@
   <Teleport v-if="mounted" to="#header-breadcrumbs">
     <CBreadcrumb v-bind="{ routes }" />
   </Teleport>
-  <pre>{{ form.values.photo }}</pre>
   <div class="p-6 bg-white rounded-xl">
     <h3 class="text-xl font-bold text-dark border-b border-gray-400 pb-5">
       {{ $t("title_add_notification") }}
@@ -232,6 +231,7 @@ function createCategoryData() {
 
   buttonLoading.value = true;
 
+if(!form.$v.value.$invalid){
   ApiService.post("client-information", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
@@ -244,11 +244,12 @@ function createCategoryData() {
     })
     .catch((err) => {
       console.error("API error:", err);
-      handleError(err);
+      showToast(t("failed_with_some_errors"), "error");
     })
     .finally(() => {
       buttonLoading.value = false;
     });
+}
 }
 
 

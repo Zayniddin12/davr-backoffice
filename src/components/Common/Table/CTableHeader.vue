@@ -1,9 +1,9 @@
 <template>
-  <header class="flex justify-between mb-6">
+  <header class="flex justify-between mb-6 w-full">
     <slot name="header_title">
       <div>
         <h2
-          class="mb-1 text-xl leading-[22px] font-bold text-dark whitespace-nowrapNo notifications added"
+          class="mb-1 text-xl leading-[22px] font-bold text-dark whitespace-nowrap notifications added"
           :class="titleClass"
         >
           {{ title }} 
@@ -14,13 +14,13 @@
       </div>
     </slot>
     <div
-      class="flex-y-center w-full flex-wrap gap-x-5 gap-y-3 focus-within:border-green justify-end"
+      class="flex-y-center w-fit flex-nowrap shrink-0 gap-x-5 gap-y-3 focus-within:border-green justify-end"
       :class="headClasses"
     >
-      <div class="shrink-0 ml-auto flex justify-end">
+      <div class="ml-auto flex justify-end shrink-0">
         <slot name="beforeSearch" />
       </div>
-      <div v-if="isSearch && !noSearch" class="w-full max-w-[250px]">
+      <div v-if="isSearch && !noSearch" class="w-full max-w-[250px] shrink-0">
         <Input
           v-model="search"
           :input-class="inputClasses"

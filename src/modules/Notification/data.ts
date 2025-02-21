@@ -1,27 +1,56 @@
 import { IActionType } from "@/components/Common/Dropdown/CActionsDropdown.types";
 
-export const notificationHead = [
+export const notificationHead =[
   {
     title: "№",
     key: "id",
   },
   {
-    title: "connection_name",
+    title: "name",
     key: "name",
   },
   {
-    title: "date_create",
-    key: "date_create",
+    title: "pinfl",
+    key: "pinfl",
   },
   {
-    title: "date_departure",
-    key: "date_departure",
+    title: "number_of_car",
+    key: "number_of_car",
   },
   {
-    title: "actions",
-    key: "action",
+    title: "vin_code",
+    key: "vin_code",
   },
+  {
+    title: "mark_of_car",
+    key: "mark_of_car",
+  },
+  {
+    title: "model_of_car",
+    key: "model_of_car",
+  },
+  {
+    title: "user_id",
+    key: "user_id",
+  },
+  {
+    title: "filial_of_bank",
+    key: "filial_of_bank",
+  },
+  {
+    title: "case_of_gps",
+    key: "case_of_gps",
+  },
+  {
+    title: "case_of_verifier",
+    key: "case_of_verifier",
+  },
+  {
+    title: "case_of_lawyer",
+    key: "case_of_lawyer",
+  }
 ];
+
 export const usersHead = [
   {
     title: "№",

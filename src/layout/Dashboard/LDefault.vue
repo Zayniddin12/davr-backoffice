@@ -2,11 +2,11 @@
   <div class="bg-[#F5F6F7] min-h-screen flex">
     <CSidebar />
 
-    <div class="w-full h-full">
+    <div class="w-full h-full overflow-hidden">
       <CHeader v-bind="{ activeRoute }" />
 
-      <div class="h-full w-full p-6">
-        <div class="w-full h-full">
+      <div class="h-full w-full p-6 overfolw-x-scroll">
+        <div class="w-full h-fit overflow-x-scroll">
           <slot />
         </div>
       </div>

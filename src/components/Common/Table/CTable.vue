@@ -11,7 +11,7 @@
                 :class="[{ 'w-[5%]': h.key === '_index' }, thClass]"
                 class="p-3 !bg-gray first:rounded-tl-md last:rounded-tr-md text-xs text-left first:pl-4 last:pr-4 last:text-left text-gray-100 font-medium"
               >
-                <span class="flex items-center gap-2">
+                <span class="flex flex-nowrap shrink-0 whitespace-nowrap items-center gap-2 w-full">
                   {{ $t(h.title) }}
                   <span
                     v-if="h?.sortable"
@@ -57,7 +57,7 @@
                 v-for="(h, idx) in head"
                 :key="idx"
                 :class="[tdClass]"
-                class="py-3 px-4 text-xs text-dark-100"
+                class="py-3 px-4 text-xs text-dark-100 whitespace-nowrap"
               >
                 <div
                   v-if="statusColors"

@@ -13,12 +13,16 @@ import { useTableFetch } from "@/composables/useTableFetch";
 import { useRoute, useRouter } from "vue-router";
 import { useCustomToast } from "@/composables/useCustomToast";
 import ApiService from "@/services/ApiService";
-import dayjs from "dayjs";
 import {
-  convertDateToString,
   convertStringToDate,
 } from "@/utils/changeNumberFormat";
 import { useHandleError } from "@/composables/useHandleError";
+import { useAuthStore } from "@/modules/Auth/stores";
+
+
+const store = useAuthStore();
+
+const user = computed(() => store.user);
 
 const { mounted } = useMounted();
 const { t } = useI18n();
@@ -34,12 +38,6 @@ const { showToast } = useCustomToast();
 const router = useRouter();
 const isLoading = ref(false);
 
-const date = ref(
-  convertDateToString(
-    String(route.query?.created_at__gte),
-    String(route.query?.created_at__lte)
-  )
-);
 
 const {
   tableData,
@@ -50,7 +48,7 @@ const {
   loading,
   fetchTableData,
   filterTableData,
-} = useTableFetch("client-information");
+} = useTableFetch("client-information", {}, true);
 
 function deleteNotification(id: any) {
   isLoading.value = true;
@@ -66,15 +64,16 @@ function deleteNotification(id: any) {
       isLoading.value = false;
     });
 }
-
+const newDataHead=ref<{
+    title: string,
+    key: string,
+  }>()
 watch(
-  () => date.value,
-  (val) => {
-    filterTableData({
-      created_at__gte: String(convertStringToDate(String(val))[0]) ?? "",
-      created_at__lte: String(convertStringToDate(String(val))[1]) ?? "",
-    });
-  }
+  tableData,
+  () => {
+console.log('fwefwe');
+
+  },{deep:true}
 );
 </script>
 
@@ -82,7 +81,7 @@ watch(
   <Teleport v-if="mounted" to="#header-breadcrumbs">
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
-  <div class="p-6 bg-white rounded-xl">
+  <div class="p-6 bg-white rounded-xl min-w-fit w-full">
     <div>
       <CCard>
         <CTableWrapper
@@ -98,7 +97,7 @@ watch(
           :title="$t('accounts')"
           :subtitle="t('accounts', { count: paginationData?.total })"
           :head="notificationHead"
-          th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px]"
+          th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px] !shrink-0"
         >
           <template #id="{ row }">
             <span class="font-semibold text-sm text-dark"
@@ -108,27 +107,57 @@ watch(
           <template #name="{ row: data }">
             <span
               class="text-dark font-semibold text-xs line-clamp-2 !max-w-[382px]"
-              >{{ data?.title }}</span
+              >{{ data?.user?.fullName }}</span
             >
           </template>
-          <template #date_create="{ row: data }">
-            <p class="text-xs font-normal mb-1">
-              {{ dayjs(data?.created_at)?.format("DD.MM.YYYY") }}
-            </p>
-            <p class="text-xs font-normal text-gray-300">
-              {{ dayjs(data?.created_at)?.format("HH:mm") }}
+          <template #pinfl="{ row: data }">
+            <p class="text-xs text-dark font-normal mb-1">
+              {{ data?.user?.pinfl }}
             </p>
           </template>
-          <template #date_departure="{ row: data }">
-            <p class="text-xs font-normal mb-1">
-              {{ dayjs(data?.add_time)?.format("DD.MM.YYYY") }}
-            </p>
-            <p class="text-xs font-normal text-gray-300">
-              {{ dayjs(data?.add_time)?.format("HH:mm") }}
+          <template #number_of_car="{ row: data }">
+            <p class="text-xs text-dark font-normal mb-1">
+              {{ data?.car?.number }}
             </p>
           </template>
-          <template #afterSearch>
+          <template #vin_code="{ row: data }">
+            <p class="text-xs text-dark font-normal mb-1">
+              {{ data?.car?.vinCode }}
+            </p>
+          </template>
+          <template #mark_of_car="{ row: data }">
+            <p class="text-xs text-dark font-normal mb-1">
+              {{ data?.car?.brand }}
+            </p>
+          </template>
+          <template #model_of_car="{ row: data }">
+            <p class="text-xs text-dark font-normal mb-1">
+              {{ data?.car?.model }}
+            </p>
+          </template>
+          <template #user_id="{ row: data }">
+            <p class="text-xs text-dark font-normal mb-1">
+              {{ data?.user?.clientId }}
+            </p>
+          </template>
+          <template #filial_of_bank="{ row: data }" v-if="tableData?.user?.clientIdc">
+            <p class="text-xs text-dark font-normal mb-1">
+              {{ data?.bank?.branch }}
+            </p>
+          </template>
+          <template #case_of_gps="{ row: data }" v-if="tableData?.user?.clientIdc">
+            <p class="text-xs text-dark font-normal mb-1">
+              {{ data?.user?.clientIdc }}
+            </p>
+          </template>
+          <template #case_of_verifier="{ row: data }" v-if="tableData?.user?.clientIdc">
+            <p class="text-xs text-dark font-normal mb-1">
+              {{ data?.user?.clientIdc }}
+            </p>
+          </template>
+          <template #afterSearch >
             <CButton
+            v-if="user.role==='credit_manager'"
               :text="$t('add')"
               icon="icon-plus"
               class="flex items-center py-2 px-4 gap-2"
@@ -143,7 +172,7 @@ watch(
               class="mt-8 px-6 pb-20 pt-0"
               :button-text="$t('add_notification')"
               image="/images/svg/no-data/no-notification.svg"
-              button-custom-class="!mt-0"
+              :button-custom-class="user.role!=='credit_manager'?'!hidden':'!mt-0'"
               @submit="router.push({ name: 'PNotificationAdd' })"
             />
           </template>
