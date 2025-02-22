@@ -2,7 +2,10 @@
     "build": {
       "env": {
         "NPM_FLAGS": "--legacy-peer-deps",
-        "VERCEL_YARN_VERSION": "1.22.22"
+        "VERCEL_YARN_VERSION": "1.22.22",
+        "routes": [
+          { "src": "/(.*)", "dest": "/index.html" }
+        ]
       }
     }
   }
