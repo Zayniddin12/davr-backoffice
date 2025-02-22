@@ -3,7 +3,7 @@
     class="section relative flex-center flex-col align-center max-h-screen h-screen overflow-hidden"
   >
     <div
-      class="absolute flex-center flex-col align-center bg-[url('/images/svg/Thumbnail.svg')] bg-cover max-h-screen h-screen overflow-hidden top-0 left-0 right-0 bottom-0 z-10"
+      class="absolute flex-center flex-col align-center bg-primary bg-cover max-h-screen h-screen overflow-hidden top-0 left-0 right-0 bottom-0 z-10"
     >
       <img src="/images/svg/404.svg" alt="404 image" />
       <h2

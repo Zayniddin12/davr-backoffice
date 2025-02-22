@@ -38,6 +38,7 @@ const router = createRouter({
 router.beforeEach(async (to) => {
   const authStore = useAuthStore();
   const user = computed(() => authStore.user);
+  
   if (["404", "403", "500"].includes((to.name || "").toString())) {
     return true;
   }
@@ -45,9 +46,18 @@ router.beforeEach(async (to) => {
   if (JwtService.getToken() && !Object.keys(user.value)?.length) {
     await authStore.fetchUserData();
   }
+
+  // Faqat super_admin yoki boss PDashboard'ga kira oladi
+  if (to.name === "PDashboard") {
+    if (!["super_admin", "boss"].includes(user.value?.role)) {
+      return { path: "/404" }; // Not Found sahifasiga yo'naltirish
+    }
+  }
+
   if (Object.keys(user.value)?.length && to.name === "PAuth") {
     return { name: "PDashboard" };
   }
+
   if (to.name === "PrivacyPolicy") return true;
 
   if (
@@ -60,4 +70,5 @@ router.beforeEach(async (to) => {
     return true;
   }
 });
+
 export default router;
