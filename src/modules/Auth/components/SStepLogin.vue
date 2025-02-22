@@ -9,14 +9,12 @@
           :error="form.$v.value.username?.$error || isError"
           :placeholder="$t('enter_username')"
           v-model="form.values.username"
-          :autocomplete="false"
           :prefix-class="'text-sm pr-1'"
         >
         </SInput>
       </SFormGroup>
       <SFormGroup class="mb-4" :label="$t('password')">
         <SInput
-        :autocomplete="false"
         :type="isPassword ? 'password':'text'"
           :error="form.$v.value.password?.$error || isError"
           :placeholder="$t('enter_password')"

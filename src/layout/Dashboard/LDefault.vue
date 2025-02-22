@@ -3,23 +3,24 @@
     <CSidebar />
 
     <!-- Asosiy kontentni o'z ichiga oluvchi div -->
-    <div class="flex flex-col w-full h-screen overflow-hidden">
+    <div class="flex flex-col w-full h-screen overflow-hidden relative">
       <CHeader v-bind="{ activeRoute }" class="flex-shrink-0 w-full" />
 
       <!-- Faqatgina slot skroll bo'lishi uchun -->
-      <div class="flex-1 overflow-auto p-6">
+      <div class="overflow-auto p-6">
         <slot />
       </div>
 
       <!-- Footer -->
-      <a
-        href="https://digitalaggregator.team/website"
-        target="_blank"
-        class="w-full p-2 bg-white opacity-50 hover:opacity-100 cursor-pointer transition-300 flex justify-center items-center gap-2 text-dark text-sm leading-130 font-normal"
+      <div
+        class="w-full p-2 bg-white flex justify-center items-center gap-2 text-dark text-sm leading-130 font-normal group"
       >
         made by:
-        <div class="text-primary">digitalaggregator.team</div>
-      </a>
+        <a
+        href="https://digitalaggregator.team/website"
+        target="_blank"
+         class="text-primary opacity-50 group-hover:opacity-100 transition-300">digitalaggregator.team</a>
+    </div>
     </div>
   </div>
 </template>
