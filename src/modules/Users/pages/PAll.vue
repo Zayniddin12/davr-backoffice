@@ -96,7 +96,6 @@ if (user.value.role!=="super_admin") {
           :limit="paginationData?.defaultLimit"
           :loading="loading"
           :title="$t('accounts')"
-          :subtitle="t('accounts', { count: paginationData?.total })"
           :head="newUserHead"
           th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px] last:!max-w-[100px]"
         >

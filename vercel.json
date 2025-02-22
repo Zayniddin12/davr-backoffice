@@ -3,7 +3,7 @@
       "env": {
         "NPM_FLAGS": "--legacy-peer-deps",
         "VERCEL_YARN_VERSION": "1.22.22",
-        "routes": [
+        "rewrites": [
           { "src": "/(.*)", "dest": "/index.html" }
         ]
       }

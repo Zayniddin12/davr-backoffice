@@ -69,11 +69,11 @@ export const usersHead = [
     key: "role",
   },
   {
-    title: "date_departure",
-    key: "date_departure",
+    title: "date_create",
+    key: "date_create",
   },
   {
-    title: "actions",
+    title: "",
     key: "action",
   },
 ];

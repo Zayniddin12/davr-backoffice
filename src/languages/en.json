@@ -512,5 +512,7 @@
   "approvers":"Approvers",
   "gps_engineers":"GPS Engineers",
   "fullName":"Full Name",
-  "enter_full_name":"Enter full name"
+  "add_username":"Add Username",
+  "enter_full_name":"Enter full name",
+  "role":"User Role"
 }
