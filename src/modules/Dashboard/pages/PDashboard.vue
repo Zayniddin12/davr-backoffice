@@ -39,11 +39,11 @@
           :card="card"
         />
       </div>
-      <!-- <div class="w-full grid grid-cols-4 gap-5">
+      <div class="w-full grid grid-cols-4 gap-5">
         <CLineChart :data="mainStore.appUsageStats" class="col-span-2" />
-        <CGenderChart :data="genderChartData" class="col-span-1" />
+        <!-- <CGenderChart :data="genderChartData" class="col-span-1" /> -->
         <CAgeChart :data="ageChartData" class="col-span-1" />
-      </div> -->
+      </div>
     </main>
   </div>
 </template>
@@ -254,7 +254,7 @@ watch(
     }
     // mainStore.fetchAgeStats();
     // mainStore.fetchGenderStats();
-    // mainStore.fetchAppUsageStats();
+    mainStore.fetchAppUsageStats();
     getDashboardCount();
   },
   { deep: true, immediate: true }
@@ -287,11 +287,11 @@ const ageChartData = computed(() => [
   },
 ]);
 const genderChartData = computed(() => [
-  // {
-  //   gender: "others",
-  //   count: mainStore.genderStats.others?.count,
-  //   percentage: mainStore.genderStats.others?.percentage,
-  // },
+  {
+    gender: "others",
+    count: mainStore.genderStats.others?.count,
+    percentage: mainStore.genderStats.others?.percentage,
+  },
   {
     gender: "female",
     count: mainStore.genderStats.female?.count,

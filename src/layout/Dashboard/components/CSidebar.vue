@@ -68,7 +68,7 @@
                   '!text-primary': location === menuItem?.route,
                 },
               ]"
-              class="text-xl text-gray-100 group-hover:!text-primary transition-300"
+              class="text-xl text-gray-100 group-hover:!text-primary transition-300 w-6"
             />
             <CollapseTransition :duration="300" dimension="width">
               <p

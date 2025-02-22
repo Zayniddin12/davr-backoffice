@@ -54,26 +54,33 @@ export const useDashboardStore = defineStore("dashboardStore", {
     },
     async fetchAppUsageStats() {
       const { data } = await apiService.get<IResponseUsageStats>(
-        `/dashboard-chart${
+        `/statistics/client-information/status${
           this.dateFrom ? `/?timestamp_gte=${this.dateFrom}` : ""
         }${this.dateTo ? `&timestamp_lte=${this.dateTo}` : ""}`
       );
-      const dailyStatistics = Object.entries(data.daily_statistics).map(
+      const gps = Object.entries(data.daily_statistics).map(
         ([hour, count]) => ({
           hour: parseInt(hour),
           count,
         })
       );
 
-      const monthlyStatistics = Object.entries(data.yearly_statistics).map(
+      const lawyer = Object.entries(data.yearly_statistics).map(
+        ([month, count]) => ({
+          month: parseInt(month),
+          count,
+        })
+      );
+      const verifier = Object.entries(data.yearly_statistics).map(
         ([month, count]) => ({
           month: parseInt(month),
           count,
         })
       );
 
-      this.appUsageStats.daily_statistics = dailyStatistics;
-      this.appUsageStats.yearly_statistics = monthlyStatistics;
+      this.appUsageStats.gps = gps;
+      this.appUsageStats.lawyer = lawyer;
+      this.appUsageStats.verifier = verifier;
     },
   },
 });

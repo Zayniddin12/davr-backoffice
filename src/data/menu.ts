@@ -24,7 +24,7 @@ export const menu: IMenu[] = [
   {
     heading: t("datas"),
     route:"/informations" ,
-    svgIcon: "icon-wallet",
+    svgIcon: "icon-burger",
     meta: {
       role: ["super_admin"],
     },

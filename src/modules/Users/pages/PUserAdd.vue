@@ -54,9 +54,8 @@
         </div>
         <CarModal
       :show="carModal"
-      @close="carModal = false"
+      @close="closeModal"
       :response="response"
-      @submit="closeModal"
     />
     </div>
  </div>
@@ -180,6 +179,7 @@
       });
   }
   function closeModal() {
+    carModal.value = false
     router.push({ name: "PUsers" });
   }
   

@@ -90,6 +90,7 @@ export interface IResponseUsageStats {
 }
 
 export interface IAppUsageStats {
-  daily_statistics: HourlyStatistic[];
-  yearly_statistics: MonthlyStatistic[];
+  gps: HourlyStatistic[];
+  lawyer: HourlyStatistic[];
+  verifier: HourlyStatistic[];
 }

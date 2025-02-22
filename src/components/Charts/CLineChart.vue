@@ -40,7 +40,7 @@
       "
     >
       <NoData
-        :title="$t('empty_data')"nv
+        :title="$t('empty_data')"
         class="mt-8"
         image="/svg/empty-state.svg"
       />
@@ -257,6 +257,7 @@ function changeKeysInArray(arr: object[], keyMap: object) {
   });
 }
 
+// mji
 const hourKeyMap = {
   hour: "x",
   count: "y",
