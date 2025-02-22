@@ -13,6 +13,7 @@ import { useTableFetch } from "@/composables/useTableFetch";
 import { useRoute, useRouter } from "vue-router";
 import { useCustomToast } from "@/composables/useCustomToast";
 import ApiService from "@/services/ApiService";
+import { IActionType } from "@/components/Common/Dropdown/CActionsDropdown.types";
 import {
   convertStringToDate,
 } from "@/utils/changeNumberFormat";
@@ -68,13 +69,8 @@ const newDataHead=ref<{
     title: string,
     key: string,
   }>()
-watch(
-  tableData,
-  () => {
-console.log('fwefwe');
+  const newDropdownList=ref<IActionType[]>()
 
-  },{deep:true}
-);
 </script>
 
 <template>
@@ -95,14 +91,13 @@ console.log('fwefwe');
           @search="onSearch"
           :limit="paginationData?.defaultLimit"
           :loading="loading"
-          :title="$t('accounts')"
-          :subtitle="t('accounts', { count: paginationData?.total })"
+          :title="$t('general_information')"
           :head="notificationHead"
           th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px] !shrink-0"
         >
           <template #id="{ row }">
             <span class="font-semibold text-sm text-dark"
-              >{{ row?._index }}.</span
+              >{{ row?._index }}</span
             >
           </template>
           <template #name="{ row: data }">
@@ -131,30 +126,27 @@ console.log('fwefwe');
               {{ data?.car?.brand }}
             </p>
           </template>
-          <template #model_of_car="{ row: data }">
-            <p class="text-xs text-dark font-normal mb-1">
-              {{ data?.car?.model }}
-            </p>
-          </template>
           <template #user_id="{ row: data }">
             <p class="text-xs text-dark font-normal mb-1">
               {{ data?.user?.clientId }}
             </p>
           </template>
-          <template #filial_of_bank="{ row: data }" v-if="tableData?.user?.clientIdc">
+          <template #model_of_car="{ row: data }">
+            <p class="text-xs text-dark font-normal mb-1">
+              {{ data?.car?.model }}
+            </p>
+          </template>
+          <template #filial_of_bank="{ row: data }">
             <p class="text-xs text-dark font-normal mb-1">
               {{ data?.bank?.branch }}
             </p>
           </template>
-          <template #case_of_gps="{ row: data }" v-if="tableData?.user?.clientIdc">
-            <p class="text-xs text-dark font-normal mb-1">
-              {{ data?.user?.clientIdc }}
+          <template #situation="{ row: data }" >
+            <div :class="{'bg-primary':data?.statuses?.[0]?.status=='initiated'}" class="px-2 py-1 rounded-md">
+              <p class="text-xs text-dark font-normal">
+              {{ data?.statuses?.[0]?.status }}
             </p>
-          </template>
-          <template #case_of_verifier="{ row: data }" v-if="tableData?.user?.clientIdc">
-            <p class="text-xs text-dark font-normal mb-1">
-              {{ data?.user?.clientIdc }}
-            </p>
+            </div>
           </template>
           <template #afterSearch >
             <CButton
@@ -180,7 +172,7 @@ console.log('fwefwe');
           <template #action="{ row: data }" >
             <CActionsDropdown
               class="mr-4"
-              :list="exchangeActions"
+              :list="exchangeActions(user?.role, data)"
               :selected-item="data"
               @edit="
                 router.push({

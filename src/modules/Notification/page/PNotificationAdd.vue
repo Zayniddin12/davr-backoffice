@@ -5,7 +5,7 @@
  <div class="min-h-screen">
   <div class="p-6 bg-white rounded-xl">
     <h3 class="text-xl font-bold text-dark border-b border-gray-400 pb-5">
-      {{ $t("title_add_notification") }}
+      {{ $t("title_add_information") }}
     </h3>
     <div class="w-full pt-6 bg-white rounded-xl grid grid-cols-2 gap-4">
           <FGroup :label="$t('notification_name')">
@@ -121,12 +121,12 @@ const router = useRouter();
 const route = useRoute();
 const routes = computed(() => [
   {
-    name: t("notification"),
-    route: "/notification",
+    name: t("informations"),
+    route: "/informations",
   },
   {
     name: t("add"),
-    route: "/notification/add",
+    route: "/informations/add",
   },
 ]);
 

@@ -26,7 +26,7 @@
       :readonly="!autocomplete"
       :class="[
         inputClass,
-        'font-normal text-sm leading-130 text-dark placeholder:text-gray-200 bg-transparent flex-grow outline-none !pr-3',
+        'font-normal text-sm leading-130 placeholder:capitalize text-dark placeholder:text-gray-200 bg-transparent flex-grow outline-none !pr-3',
       ]"
       class="w-full !pr-3"
       ref="kInput"

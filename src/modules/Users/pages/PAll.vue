@@ -101,7 +101,7 @@ if (user.value.role!=="super_admin") {
         >
           <template #id="{ row }">
             <span class="font-semibold text-sm text-dark"
-              >{{ row?._index }}.</span
+              >{{ row?._index }}</span
             >
           </template>
           <template #name="{ row: data }">

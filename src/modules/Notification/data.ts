@@ -38,16 +38,12 @@ export const notificationHead =[
     key: "filial_of_bank",
   },
   {
-    title: "case_of_gps",
-    key: "case_of_gps",
+    title: "situation",
+    key: "situation",
   },
   {
-    title: "case_of_verifier",
-    key: "case_of_verifier",
-  },
-  {
-    title: "case_of_lawyer",
-    key: "case_of_lawyer",
+    title: "",
+    key: "action",
   }
 ];
 
@@ -146,14 +142,31 @@ export const chargerHead = [
   },
 ];
 
-export const exchangeActions: IActionType[] = [
-  {
-    label: "delete",
-    value: "deleteExchange",
-    icon: "icon-trash !text-red",
-    class: "hover:!bg-red/20 !text-red",
-  },
-];
+export const exchangeActions = (userRole: string, row: any): IActionType[] => {
+  const actions: IActionType[] = [
+    {
+      label: "delete",
+      value: "deleteExchange",
+      icon: "icon-trash !text-red",
+      class: "hover:!bg-red/20 !text-red",
+    },
+  ];
+
+  if (
+    ["gps_engineer", "verifier", "lawyer"].includes(userRole) &&
+    row?.statuses?.[0]?.status === "initiated"
+  ) {
+    actions.push({
+      label: "get",
+      value: "getExchange",
+      icon: "icon-get !text-red",
+      class: "hover:!bg-primary/20 !text-primary",
+    });
+  }
+
+  return actions;
+};
+
 
 export const tabListLanguage = [
   {

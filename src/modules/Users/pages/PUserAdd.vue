@@ -171,7 +171,7 @@
         
       })
       .catch((err) => {
-        showToast(t("success_messages.successfully_added"), "error");
+        showToast(t("error"), "error");
         handleError(err);
       })
       .finally(() => {

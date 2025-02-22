@@ -29,7 +29,7 @@
           <div
             v-if="!value"
             :class="labelClass"
-            class="text-dark font-normal text-sm !leading-130"
+            class="text-gray-200 font-normal text-sm !leading-130"
           >
             {{ placeholder }}
           </div>
@@ -45,7 +45,7 @@
               class="w-5 object-cover"
             />
             <span>
-              {{ value[labelKey] || value }}
+              {{ $t(String(value[labelKey])) || $t(value) }}
             </span>
           </div>
         </div>
@@ -86,7 +86,7 @@
                       class="w-5 object-cover"
                     />
                     <p class="text-dark text-2xs !leading-130 mr-3">
-                      {{ option[labelKey] }}
+                      {{ $t(option[labelKey]) }}
                     </p>
                   </div>
                   <i
@@ -112,7 +112,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onClickOutside, useIntersectionObserver } from "@vueuse/core";
+import { onClickOutside, useIntersectionObserver, useToString } from "@vueuse/core";
 import { onMounted, ref, watch } from "vue";
 
 export type TOption = string | number | { [key: string]: string | number };
