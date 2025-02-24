@@ -65,6 +65,22 @@ function deleteNotification(id: any) {
       isLoading.value = false;
     });
 }
+function postStatus(status:string, id:number) {  
+  isLoading.value = true;
+  ApiService.put(`client-information/${id}`,{
+  "status":status 
+  })
+    .then(() => {
+      showToast(t("success_messages.successfully_send"), "success");
+      fetchTableData();
+    })
+    .catch((err) => {
+      handleError(err);
+    })
+    .finally(() => {
+      isLoading.value = false;
+    });
+}
 const newDataHead=ref<{
     title: string,
     key: string,
@@ -77,8 +93,7 @@ const newDataHead=ref<{
   <Teleport v-if="mounted" to="#header-breadcrumbs">
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
- <div class="min-h-screen">
-  <div class="p-6 bg-white rounded-xl min-w-fit w-full">
+  <div class="p-6 bg-white rounded-xl w-full">
     <div>
       <CCard>
         <CTableWrapper
@@ -92,7 +107,7 @@ const newDataHead=ref<{
           :limit="paginationData?.defaultLimit"
           :loading="loading"
           :title="$t('general_information')"
-          :head="notificationHead"
+          :head="notificationHead(user?.role)"
           th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px] !shrink-0"
         >
           <template #id="{ row }">
@@ -141,10 +156,24 @@ const newDataHead=ref<{
               {{ data?.bank?.branch }}
             </p>
           </template>
-          <template #situation="{ row: data }" >
+          <template #gps_situation="{ row: data }" >
+            <div :class="{'bg-primary':data?.statuses?.[0]?.status=='in_progress', 'bg-green':data?.statuses?.[0]?.status=='gps_installed', 'bg-gray':!data?.statuses?.[0]?.status}" class="px-2 py-1 rounded-md">
+              <p class="text-xs text-dark font-normal">
+              {{ data?.statuses?.[0]?.status ? $t(data?.statuses?.[0]?.status) : $t('waiting') }} 
+            </p>
+            </div>
+          </template>
+          <template #verifier_situation="{ row: data }" >
             <div :class="{'bg-primary':data?.statuses?.[0]?.status=='initiated'}" class="px-2 py-1 rounded-md">
               <p class="text-xs text-dark font-normal">
-              {{ data?.statuses?.[0]?.status }}
+              {{ data?.statuses?.[0]?.status ? $t(data?.statuses?.[0]?.status) : $t('waiting') }}
+            </p>
+            </div>
+          </template>
+          <template #lawyer_situation="{ row: data }" >
+            <div :class="{'bg-primary':data?.statuses?.[0]?.status=='initiated'}" class="px-2 py-1 rounded-md">
+              <p class="text-xs text-dark font-normal">
+              {{ data?.statuses?.[0]?.status ? $t(data?.statuses?.[0]?.status) : $t('waiting') }}
             </p>
             </div>
           </template>
@@ -171,15 +200,13 @@ const newDataHead=ref<{
           </template>
           <template #action="{ row: data }" >
             <CActionsDropdown
+              :role="user?.role"
+              :status="data?.statuses"
+              :id="data?.id"
               class="mr-4"
-              :list="exchangeActions(user?.role, data)"
+              :list="exchangeActions(user?.role, data, data?.statuses)"
               :selected-item="data"
-              @edit="
-                router.push({
-                  name: 'PNotificationEdit',
-                  params: { id: data?.id },
-                })
-              "
+              @edit="postStatus"
               @delete="deleteNotification(data?.id)"
             />
           </template>
@@ -187,7 +214,6 @@ const newDataHead=ref<{
       </CCard>
     </div>
   </div>
- </div>
 </template>
 
 <style scoped></style>

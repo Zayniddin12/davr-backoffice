@@ -1,5 +1,5 @@
 <template>
-  <header class="flex justify-between mb-6 w-full">
+  <header class="flex justify-between mb-6 w-full overflow-hidden">
     <slot name="header_title">
       <div>
         <h2

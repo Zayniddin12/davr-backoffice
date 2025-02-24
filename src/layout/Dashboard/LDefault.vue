@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-[#F5F6F7]  w-full min-h-screen flex">
+  <div class="bg-[#F5F6F7]  w-full flex">
     <CSidebar />
 
     <!-- Asosiy kontentni o'z ichiga oluvchi div -->
-    <div class="flex flex-col w-full h-screen overflow-hidden relative">
+    <div class="flex flex-col w-full overflow-hidden relative">
       <CHeader v-bind="{ activeRoute }" class="flex-shrink-0 w-full" />
 
       <!-- Faqatgina slot skroll bo'lishi uchun -->

@@ -567,5 +567,10 @@
   "filial_of_bank": "Филиал банка",
   "situation": "Ситуация", 
   "title_add_information":"Добавить информацию",
-  "informations":"Информация"
+  "informations":"Информация",
+  "gps_engineer":"GPS Engineer",
+  "gps_situation": "Состояние GPS",
+"lawyer_situation": "Состояние юриста",
+"verifier_situation": "Состояние проверяющего",
+"waiting":"ожидание"
 }

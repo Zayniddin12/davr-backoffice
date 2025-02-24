@@ -524,5 +524,10 @@
     "filial_of_bank": "Bank Branch",
     "situation": "Status",
     "title_add_information":"Add Information",
-    "informations":"Informations"
-}
+    "informations":"Informations",
+    "gps_engineer":"GPS Engineer",
+    "gps_situation": "GPS Status",
+    "lawyer_situation": "Lawyer Status",
+    "verifier_situation": "Verifier Status",
+    "waiting":"waiting"
+} 

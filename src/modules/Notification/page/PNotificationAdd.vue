@@ -231,9 +231,10 @@ function createCategoryData() {
     console.log(pair[0], pair[1]);
   }
 
-  buttonLoading.value = true;
+ 
 
 if(!form.$v.value.$invalid){
+  buttonLoading.value = true;
   ApiService.post("client-information", formData, {
     headers: {
       "Content-Type": "multipart/form-data",

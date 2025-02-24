@@ -1,5 +1,5 @@
 <template>
-  <div :class="wrapperClass" class="relative w-full max-w-full">
+  <div :class="wrapperClass" class="relative w-full max-w-full overflow-x-scroll">
     <Transition mode="out-in" name="dropdown">
       <div>
         <table v-if="!loading" class="w-full c-table">

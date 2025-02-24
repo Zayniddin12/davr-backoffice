@@ -26,6 +26,7 @@
     </CTableHeader>
     <slot name="filter" />
     <slot name="main">
+    <div class="overflow-hidden w-full">
       <Transition mode="out-in" name="fade">
         <CTable
           :key="loading"
@@ -56,6 +57,7 @@
           </template>
         </CTable>
       </Transition>
+    </div>
     </slot>
     <slot v-if="total > 10 || noFooter" name="footer">
       <Transition mode="out-in" name="dropdown">
