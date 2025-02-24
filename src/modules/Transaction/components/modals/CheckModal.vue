@@ -2,84 +2,58 @@
 import CDialog from "@/components/Common/Dialog/CDialog.vue";
 import CButton from "@/components/Common/CButton.vue";
 import CCard from "@/components/Card/CCard.vue";
-import CCheckWrapper from "@/components/CCheckWrapper.vue";
 import { useI18n } from "vue-i18n";
-import { computed } from "vue";
+import { useForm } from "@/composables/useForm";
+import {  required } from "@vuelidate/validators";
+import FInput from "@/components/Form/Input/FInput.vue";
 
 const { t } = useI18n();
 
 const props = defineProps<{
   show: boolean;
-  upper: Record<string, any>;
-  lower: Record<string, any>;
-  total: string;
 }>();
-
+const form = useForm(
+  {
+    name:"",
+  },
+  {
+    name: {
+      required,
+    }
+  }
+);
 const emit = defineEmits<{
   (event: "close"): void;
+  (event: "send", value:string): void;
 }>();
-
-const cleanedUpper = computed(() => {
-  return Object.fromEntries(
-    Object.entries(props.upper).map(([key, value]) => [
-      key,
-      value === "payment_types.Charging" ? "Charging" : value,
-    ])
-  );
-});
+function send(){
+  form.$v.value.$touch();
+  if(!form.$v.value.$invalid){
+    emit('send', form.values.name)
+  }
+}
 </script>
 
 <template>
   <CDialog
     :show="props.show"
-    :title="t('check.title')"
+    :title="t('cause_title')"
     body-class="!max-w-[421px]"
     headerStyle="!border-none"
     @close="emit('close')"
   >
     <CCard class="p-5 pt-1.5">
-      <CCheckWrapper>
-        <template #info>
-          <ul class="flex flex-col gap-2.5">
-            <li
-              v-for="(item, key, i) in cleanedUpper"
-              :key="i"
-              class="flex justify-between"
-            >
-              <p class="text-gray-300">{{ t(`check.${key}`) }}:</p>
-              <p class="max-w-[232px] font-semibold text-end">{{ item }}</p>
-            </li>
-          </ul>
-          <span
-            v-if="Object.keys(props.lower).length"
-            class="my-4 h-[1px] bg-gray w-full block"
-          />
-          <ul class="flex flex-col gap-2.5">
-            <li
-              v-for="(item, key, i) in props.lower"
-              :key="i"
-              class="flex justify-between"
-            >
-              <p class="text-gray-300">{{ t(`check.${key}`) }}:</p>
-              <p class="max-w-[232px] font-semibold text-end">{{ item }}</p>
-            </li>
-          </ul>
-        </template>
-        <template #paid>
-          <div class="flex justify-between">
-            <span class="font-semibold text-gray-200">
-              {{ t("charging_transactions.table.paid_amount") }}:
-            </span>
-            <span class="text-2xl font-semibold">{{ props.total }}</span>
-          </div>
-        </template>
-      </CCheckWrapper>
+      <FInput
+              :placeholder="$t('couse_placeholder')"
+              v-model="form.values.name"
+              :error="form.$v.value.name?.$error"
+            />
       <CButton
         :text="t('close')"
-        class="w-full"
+        class="w-full mt-6"
         type="button"
         variant="primary"
-        @click="() => emit('close')"
+        @click="send"
       />
     </CCard>
   </CDialog>

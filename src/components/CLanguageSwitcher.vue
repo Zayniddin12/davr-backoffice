@@ -5,7 +5,7 @@
         class="transition-300 flex items-center justify-between gap-1 bg-white group pl-4 p-1 rounded-md"
       >
         <div
-          class="flex-y-center space-x-1 text-gray-100 hover:text-gray-700 transition-300"
+          class="flex-y-center space-x-1 text-gray-100 hover:text-primary transition-300"
         >
           <i class="icon-language flex-center text-base h-4" />
           <span class="text-2xs leading-[123%]">

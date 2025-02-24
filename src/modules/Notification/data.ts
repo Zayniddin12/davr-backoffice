@@ -109,11 +109,7 @@ export const usersHead = [
   {
     title: "date_create",
     key: "date_create",
-  },
-  {
-    title: "",
-    key: "action",
-  },
+  }
 ];
 export const mainModelHead = [
   {
@@ -219,6 +215,55 @@ export const exchangeActions = (userRole: string, row: any, status?: {
         label: "uninstall",
         value: "edit",
         icon: "icon-fold-download !text-yellow",
+        class: "hover:!bg-yellow/20 !text-yellow",
+      });
+    }
+  }
+  if (userRole === "verifier") {
+    if (!status?.[1]?.status && status?.[0]?.status=="gps_installed") {
+      actions.push({
+        label: "recieve",
+        value: "edit",
+        icon: "icon-checked !text-primary",
+        class: "hover:!bg-primary/20 !text-primary",
+      });
+    } else if (status?.[1]?.status === "in_progress") {
+      actions.push({
+        label: "confirm",
+        value: "edit",
+        icon: "icon-checked !text-green text-lg",
+        class: "hover:!bg-green/20 !text-green",
+      });
+    } else if (status?.[1]?.status === "confirmed") {
+      actions.push({
+        label: "unconfirm",
+        value: "edit",
+        icon: "icon-close !text-yellow !text-base",
+        class: "hover:!bg-yellow/20 !text-yellow",
+      });
+    }
+  }
+
+  if (userRole === "lawyer") {
+    if (!status?.[2]?.status && status?.[1]?.status=="confirmed") {
+      actions.push({
+        label: "recieve",
+        value: "edit",
+        icon: "icon-checked !text-primary",
+        class: "hover:!bg-primary/20 !text-primary",
+      });
+    } else if (status?.[2]?.status === "in_progress") {
+      actions.push({
+        label: "confirm",
+        value: "edit",
+        icon: "icon-checked !text-green text-lg",
+        class: "hover:!bg-green/20 !text-green",
+      });
+    } else if (status?.[2]?.status === "confirmed") {
+      actions.push({
+        label: "unconfirm",
+        value: "edit",
+        icon: "icon-close !text-yellow !text-base",
         class: "hover:!bg-yellow/20 !text-yellow",
       });
     }

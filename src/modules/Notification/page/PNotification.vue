@@ -14,12 +14,9 @@ import { useRoute, useRouter } from "vue-router";
 import { useCustomToast } from "@/composables/useCustomToast";
 import ApiService from "@/services/ApiService";
 import { IActionType } from "@/components/Common/Dropdown/CActionsDropdown.types";
-import {
-  convertStringToDate,
-} from "@/utils/changeNumberFormat";
 import { useHandleError } from "@/composables/useHandleError";
 import { useAuthStore } from "@/modules/Auth/stores";
-
+import CheckModal from "@/modules/Transaction/components/modals/CheckModal.vue";
 
 const store = useAuthStore();
 
@@ -48,7 +45,6 @@ const {
   onChangeLimit,
   loading,
   fetchTableData,
-  filterTableData,
 } = useTableFetch("client-information", {}, true);
 
 function deleteNotification(id: any) {
@@ -65,10 +61,23 @@ function deleteNotification(id: any) {
       isLoading.value = false;
     });
 }
-function postStatus(status:string, id:number) {  
+const openMessageModal=ref(false)
+const statusData=ref('')
+const idData=ref(NaN)
+function sendStatus(status:string, id:number) {
+  if (status=="canceled") {
+    openMessageModal.value=true
+    statusData.value=status
+    idData.value=id
+  }else{
+    postStatus(status, id)
+  }
+}
+function postStatus(status:string, id:number, message?:string) {    
   isLoading.value = true;
   ApiService.put(`client-information/${id}`,{
-  "status":status 
+  "status":status,
+  "message":message
   })
     .then(() => {
       showToast(t("success_messages.successfully_send"), "success");
@@ -81,11 +90,11 @@ function postStatus(status:string, id:number) {
       isLoading.value = false;
     });
 }
-const newDataHead=ref<{
-    title: string,
-    key: string,
-  }>()
-  const newDropdownList=ref<IActionType[]>()
+
+function getMessage(message:string){
+  postStatus(statusData.value, idData.value, message)
+  openMessageModal.value=false
+}
 
 </script>
 
@@ -105,7 +114,7 @@ const newDataHead=ref<{
           @pageChange="onPageChange"
           @search="onSearch"
           :limit="paginationData?.defaultLimit"
-          :loading="loading"
+          :loading="loading" 
           :title="$t('general_information')"
           :head="notificationHead(user?.role)"
           th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px] !shrink-0"
@@ -157,23 +166,33 @@ const newDataHead=ref<{
             </p>
           </template>
           <template #gps_situation="{ row: data }" >
-            <div :class="{'bg-primary':data?.statuses?.[0]?.status=='in_progress', 'bg-green':data?.statuses?.[0]?.status=='gps_installed', 'bg-gray':!data?.statuses?.[0]?.status}" class="px-2 py-1 rounded-md">
+            <div 
+            :class="{'bg-primary':data?.statuses?.[0]?.status=='in_progress',
+             'bg-green':data?.statuses?.[0]?.status=='gps_installed', 
+             'bg-red':data?.statuses?.[0]?.status=='gps_not_installed',
+             'bg-gray':!data?.statuses?.[0]?.status}" class="px-2 py-1 rounded-md">
               <p class="text-xs text-dark font-normal">
               {{ data?.statuses?.[0]?.status ? $t(data?.statuses?.[0]?.status) : $t('waiting') }} 
             </p>
             </div>
           </template>
           <template #verifier_situation="{ row: data }" >
-            <div :class="{'bg-primary':data?.statuses?.[0]?.status=='initiated'}" class="px-2 py-1 rounded-md">
+            <div :class="{'bg-primary':data?.statuses?.[1]?.status=='in_progress',
+             'bg-green':data?.statuses?.[1]?.status=='confirmed',
+             'bg-red':data?.statuses?.[1]?.status=='canceled', 
+             'bg-gray':!data?.statuses?.[1]?.status}" class="px-2 py-1 rounded-md">
               <p class="text-xs text-dark font-normal">
-              {{ data?.statuses?.[0]?.status ? $t(data?.statuses?.[0]?.status) : $t('waiting') }}
+              {{ data?.statuses?.[1]?.status ? $t(data?.statuses?.[1]?.status) : $t('waiting') }}
             </p>
             </div>
           </template>
           <template #lawyer_situation="{ row: data }" >
-            <div :class="{'bg-primary':data?.statuses?.[0]?.status=='initiated'}" class="px-2 py-1 rounded-md">
+            <div :class="{'bg-primary':data?.statuses?.[2]?.status=='in_progress',
+             'bg-green':data?.statuses?.[2]?.status=='confirmed',
+             'bg-red':data?.statuses?.[2]?.status=='canceled', 
+             'bg-gray':!data?.statuses?.[2]?.status}" class="px-2 py-1 rounded-md">
               <p class="text-xs text-dark font-normal">
-              {{ data?.statuses?.[0]?.status ? $t(data?.statuses?.[0]?.status) : $t('waiting') }}
+              {{ data?.statuses?.[2]?.status ? $t(data?.statuses?.[2]?.status) : $t('waiting') }}
             </p>
             </div>
           </template>
@@ -206,13 +225,18 @@ const newDataHead=ref<{
               class="mr-4"
               :list="exchangeActions(user?.role, data, data?.statuses)"
               :selected-item="data"
-              @edit="postStatus"
+              @edit="sendStatus"
               @delete="deleteNotification(data?.id)"
             />
           </template>
         </CTableWrapper>
       </CCard>
     </div>
+    <CheckModal
+    :show="openMessageModal"
+    @close="openMessageModal=false"
+    @send="getMessage"
+    />
   </div>
 </template>
 

@@ -67,12 +67,12 @@
               :error="form.$v.value.filial?.$error"
             />
           </FGroup>
-            <FGroup :label="$t('upload_file')" class="basis-3/12">
+            <FGroup :label="$t('upload_file')" class="max-[1000px]:col-span-2">
               <MultipleFileUploader v-model="form.values.photo" />
             </FGroup> 
     </div>
     <div
-        class="space-x-4 flex items-center justify-end"
+        class="space-x-4 flex items-center justify-end mt-4"
       >
         <CButton
           variant="info"
@@ -95,22 +95,15 @@ import { useMounted } from "@/composables/useMounted";
 import { computed, reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import CBreadcrumb from "@/components/Common/CBreadcrumb.vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { useForm } from "@/composables/useForm";
 import { maxLength, minLength, required } from "@vuelidate/validators";
 import CButton from "@/components/Common/CButton.vue";
 import FGroup from "@/components/Form/FGroup.vue";
 import FInput from "@/components/Form/Input/FInput.vue";
-import CTabLang from "@/components/Tab/CTabLang.vue";
 import ApiService from "@/services/ApiService";
 import { useCustomToast } from "@/composables/useCustomToast";
 import MultipleFileUploader from "@/components/Form/Uploader/MultipleFileUploader.vue";
-import CQuilEditor from "@/components/CQuilEditor.vue";
-import FRadio from "@/components/Form/Radio/FRadio.vue";
-import FDatePicker from "@/components/Form/Date/FDatePicker.vue";
-import FTimePicker from "@/components/Form/Date/FTimePicker.vue";
-import { convertToISOString } from "@/utils/changeNumberFormat";
-import { INotification } from "@/modules/Notification/types";
 import { useHandleError } from "@/composables/useHandleError";
 const { showToast } = useCustomToast();
 
@@ -118,7 +111,6 @@ const { t } = useI18n();
 const { mounted } = useMounted();
 const { handleError } = useHandleError();
 const router = useRouter();
-const route = useRoute();
 const routes = computed(() => [
   {
     name: t("informations"),

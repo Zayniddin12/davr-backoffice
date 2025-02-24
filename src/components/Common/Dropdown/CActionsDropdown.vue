@@ -31,15 +31,17 @@ const emitEditStatus = () => {
 
   switch (props.role) {
     case "gps_engineer":
-      if (props.status[0]?.status === "in_progress") {
+      if (!props.status[0] || props.status[0].status === "in_progress") {
         emit("edit", "gps_installed", props.id);
-      } else if (props.status[0]?.status === "gps_installed") {
+      } else if (props.status[0].status === "gps_installed") {
         emit("edit", "gps_not_installed", props.id);
       }
       break;
 
     case "verifier":
-      if (!props.status[1] || props.status[1].status === "in_progress" || props.status[1].status === "gps_installed") {
+      if (!props.status?.[1]?.status) {
+        emit("edit", "in_progress", props.id);
+      } else if (props.status[1].status === "in_progress") {
         emit("edit", "confirmed", props.id);
       } else if (props.status[1].status === "confirmed") {
         emit("edit", "canceled", props.id);
@@ -47,7 +49,9 @@ const emitEditStatus = () => {
       break;
 
     case "lawyer":
-      if (!props.status[2] || props.status[2].status === "in_progress" || props.status[1].status === "gps_installed") {
+      if (!props.status?.[2]?.status) {
+        emit("edit", "in_progress", props.id);
+      } else if (props.status[2].status === "in_progress") {
         emit("edit", "confirmed", props.id);
       } else if (props.status[2].status === "confirmed") {
         emit("edit", "canceled", props.id);
@@ -59,6 +63,7 @@ const emitEditStatus = () => {
       break;
   }
 };
+
 
 </script>
 

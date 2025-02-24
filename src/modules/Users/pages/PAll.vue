@@ -81,8 +81,7 @@ if (user.value.role!=="super_admin") {
   <Teleport v-if="mounted" to="#header-breadcrumbs">
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
-  <div class="min-h-screen">
-    <div class="p-6 bg-white rounded-xl min-w-fit w-full h-full">
+    <div class="p-6 bg-white rounded-xl w-full h-full">
     <div>
       <CCard>
         <CTableWrapper
@@ -120,7 +119,7 @@ if (user.value.role!=="super_admin") {
               {{ data?.role }}
             </p>
           </template>
-          <template #date_departure="{ row: data }">
+          <template #date_create="{ row: data }">
             <p class="text-xs font-normal mb-1">
               {{ dayjs(data?.createdAt)?.format("DD.MM.YYYY") }}
             </p>
@@ -149,20 +148,18 @@ if (user.value.role!=="super_admin") {
               @submit="router.push({ name: 'PUserAdd' })"
             />
           </template>
-          <template #action="{ row: data }" >
+          <!-- <template #action="{ row: data }" >
             <CActionsDropdown
               class="mr-4"
               :list="exchangeActions"
               :selected-item="data"
               @delete="deleteNotification(data?.id)"
             />
-          </template>
+          </template> -->
         </CTableWrapper>
       </CCard>
     </div>
   </div>
-  </div>
-
 </template>
 
 <style scoped></style>

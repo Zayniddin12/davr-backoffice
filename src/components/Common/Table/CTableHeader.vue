@@ -1,14 +1,14 @@
 <template>
-  <header class="flex justify-between mb-6 w-full overflow-hidden">
+  <header class="flex justify-between flex-wrap mb-6 w-full overflow-hidden">
     <slot name="header_title">
       <div>
         <h2
-          class="mb-1 text-xl leading-[22px] font-bold text-dark whitespace-nowrap notifications added"
+          class="mb-1 text-xl leading-[22px] font-bold text-dark whitespace-nowrap notifications added capitalize"
           :class="titleClass"
         >
           {{ title }} 
         </h2>
-        <p class="text-xs leading-normal font-normal text-gray-100">
+        <p class="text-xs leading-normal font-normal text-gray-100 capitalizde">
           {{ subtitle }}
         </p>
       </div>
