@@ -26,7 +26,7 @@
     </CTableHeader>
     <slot name="filter" />
     <slot name="main">
-    <div class="overflow-hidden w-full">
+    <div class="w-full">
       <Transition mode="out-in" name="fade">
         <CTable
           :key="loading"

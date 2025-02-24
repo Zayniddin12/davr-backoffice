@@ -54,7 +54,6 @@ import SBreadcrumb from "@/components/Common/CBreadcrumb.vue";
 import { useI18n } from "vue-i18n";
 import { computed, reactive, ref, onMounted, watch } from "vue";
 import CAgeChart from "@/components/Charts/CAgeChart.vue";
-import CGenderChart from "@/compconents/Charts/CGenderChart.vue";
 import CLineChart from "@/components/Charts/CLineChart.vue";
 import CInfoCard from "@/modules/Dashboard/components/CInfoCard.vue";
 import FInputRangePick from "@/components/Form/Input/FInputRangePick.vue";

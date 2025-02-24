@@ -13,7 +13,6 @@ import { useTableFetch } from "@/composables/useTableFetch";
 import { useRoute, useRouter } from "vue-router";
 import { useCustomToast } from "@/composables/useCustomToast";
 import ApiService from "@/services/ApiService";
-import { IActionType } from "@/components/Common/Dropdown/CActionsDropdown.types";
 import { useHandleError } from "@/composables/useHandleError";
 import { useAuthStore } from "@/modules/Auth/stores";
 import CheckModal from "@/modules/Transaction/components/modals/CheckModal.vue";

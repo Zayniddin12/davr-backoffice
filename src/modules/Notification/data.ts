@@ -38,6 +38,10 @@ export const notificationHead = (userRole: string) => {
     {
       title: "filial_of_bank",
       key: "filial_of_bank",
+    },
+    {
+      title: "files",
+      key: "files",
     }
   ];
 
@@ -210,7 +214,7 @@ export const exchangeActions = (userRole: string, row: any, status?: {
         icon: "icon-download !text-green",
         class: "hover:!bg-green/20 !text-green",
       });
-    } else if (status?.[0]?.status === "canceled") {
+    } else if (status?.[0]?.status === "canceled" && status?.[1]?.status!=="confirmed") {
       actions.push({
         label: "uninstall",
         value: "edit",
