@@ -16,7 +16,7 @@ import ApiService from "@/services/ApiService";
 import { useHandleError } from "@/composables/useHandleError";
 import { useAuthStore } from "@/modules/Auth/stores";
 import CheckModal from "@/modules/Transaction/components/modals/CheckModal.vue";
-import EditCar from "@/modules/Users/components/Modals/EditCar.vue";
+import MoreInfo from "@/modules/Users/components/Modals/MoreInfo.vue";
 
 const store = useAuthStore();
 
@@ -61,6 +61,7 @@ function deleteNotification(id: any) {
     });
 }
 const openMessageModal = ref(false);
+const moreInfoModal=ref(false)
 const statusData = ref("");
 const idData = ref(NaN);
 function sendStatus(status: string, id: number) {
@@ -93,6 +94,33 @@ function postStatus(status: string, id: number, message?: string) {
 function getMessage(message: string) {
   postStatus(statusData.value, idData.value, message);
   openMessageModal.value = false;
+}
+const statusesdata=ref<{
+    statusId: number;
+    status: string;
+    message?:string;
+    createdAt: string;
+    updateAt: null;
+    user: {
+      id: number;
+      fullName: string;
+      role: string;
+    };
+  }[]>()
+function geteDatas(data:{
+    statusId: number;
+    status: string;
+    message?:string;
+    createdAt: string;
+    updateAt: null;
+    user: {
+      id: number;
+      fullName: string;
+      role: string;
+    };
+  }[]) {
+    moreInfoModal.value=true
+    statusesdata.value=data
 }
 </script>
 
@@ -189,12 +217,12 @@ function getMessage(message: string) {
             <div
               :class="{
                 'bg-indigo-500/10 text-indigo-500':
-                  data?.statuses?.[0]?.status == 'in_progress',
+                  data?.statuses?.[1]?.status == 'in_progress',
                 'bg-green-500/10 text-green-500':
-                  data?.statuses?.[0]?.status == 'gps_installed',
+                  data?.statuses?.[1]?.status == 'confirmed',
                 'bg-red-500/10 text-red-500':
-                  data?.statuses?.[0]?.status == 'gps_not_installed',
-                'bg-gray-500/10 text-gray-500': !data?.statuses?.[0]?.status,
+                  data?.statuses?.[1]?.status == 'canceled',
+                'bg-gray-500/10 text-gray-500': !data?.statuses?.[1]?.status,
               }"
               class="px-2 py-1 rounded-md text-center"
             >
@@ -211,12 +239,12 @@ function getMessage(message: string) {
             <div
               :class="{
                 'bg-indigo-500/10 text-indigo-500':
-                  data?.statuses?.[0]?.status == 'in_progress',
+                  data?.statuses?.[2]?.status == 'in_progress',
                 'bg-green-500/10 text-green-500':
-                  data?.statuses?.[0]?.status == 'gps_installed',
+                  data?.statuses?.[2]?.status == 'confirmed',
                 'bg-red-500/10 text-red-500':
-                  data?.statuses?.[0]?.status == 'gps_not_installed',
-                'bg-gray-500/10 text-gray-500': !data?.statuses?.[0]?.status,
+                  data?.statuses?.[2]?.status == 'canceled',
+                'bg-gray-500/10 text-gray-500': !data?.statuses?.[2]?.status,
               }"
               class="px-2 py-1 rounded-md text-center"
             >
@@ -262,6 +290,7 @@ function getMessage(message: string) {
               :selected-item="data"
               @edit="sendStatus"
               @delete="deleteNotification(data?.id)"
+              @more="geteDatas"
             />
           </template>
         </CTableWrapper>
@@ -272,6 +301,7 @@ function getMessage(message: string) {
       @close="openMessageModal = false"
       @send="getMessage"
     />
+    <MoreInfo :show="moreInfoModal" :data="statusesdata" @close="moreInfoModal=false"/>
   </div>
 </template>
 

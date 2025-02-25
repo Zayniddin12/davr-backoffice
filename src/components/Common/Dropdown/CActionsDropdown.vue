@@ -85,7 +85,7 @@ const emitEditStatus = () => {
           <div
             @click="
               item.value === 'edit'
-                ? emitEditStatus() :item.value === 'more'? emit('more', props.status)
+                ? emitEditStatus() :item.value === 'more'? emit('more', status)
                 : emit('delete', props.status)
             "
             class="min-w-[158px] h-11 cursor-pointer flex items-center p-3 gap-2 hover:bg-gray/40 transition-300 group"

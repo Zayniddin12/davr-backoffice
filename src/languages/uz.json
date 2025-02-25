@@ -544,5 +544,6 @@
   "couse_placeholder":"Sabab yozing",
   "unconfirm":"Bekor qilish",
   "confirmed":"tasdiqlandi",
-  "canceled":"bekor qilindi"
+  "canceled":"bekor qilindi",
+  "status":"Holat"
 }

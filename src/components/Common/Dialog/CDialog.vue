@@ -22,7 +22,7 @@
           >
             <slot name="header">
               <h3
-                class="w-full text-xl text-dark leading-130 font-semibold"
+                class="w-full text-xl text-dark leading-130 font-semibold capitalize"
                 :class="titleStyle"
               >
                 {{ title }}
