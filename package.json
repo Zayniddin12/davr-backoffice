@@ -2,6 +2,7 @@
   "name": "@repo/client",
   "version": "1.0.0",
   "license": "MI`T",
+  "type": "module",
   "scripts": {
     "dev": "vite --port 3000",
     "build": "vite build",

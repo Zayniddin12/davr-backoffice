@@ -1,10 +1,10 @@
-const js = require("@eslint/js");
-const vue = require("eslint-plugin-vue");
-const tsParser = require("@typescript-eslint/parser");
-const tsPlugin = require("@typescript-eslint/eslint-plugin");
-const vueParser = require("vue-eslint-parser");
+import js from "@eslint/js";
+import vue from "eslint-plugin-vue";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import vueParser from "vue-eslint-parser";
 
-module.exports = [
+export default [
   js.configs.recommended,
 
   ...vue.configs["flat/recommended"],
