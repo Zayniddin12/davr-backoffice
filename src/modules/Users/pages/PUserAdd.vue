@@ -10,7 +10,7 @@
       <div class="w-full pt-6 bg-white rounded-xl grid grid-cols-2 gap-4">
             <FGroup :label="$t('fullName')">
               <FInput
-                :placeholder="$t('enter_full_name')"
+                :placeholder="$t('enter_full_name_of_user')"
                 :maxlength="256"
                 v-model="form.values.fullName"
                 :error="form.$v.value.fullName?.$error"
@@ -18,7 +18,7 @@
             </FGroup>
             <FGroup :label="$t('username')">
               <FInput
-                :placeholder="$t('add_username')"
+                :placeholder="$t('add_username_of_user')"
                 v-model="form.values.userName"
                 :error="form.$v.value.userName?.$error"
               />
