@@ -1,9 +1,9 @@
 <template>
   <Teleport to="body">
     <div
-      :class="[wrapperClass, { '!opacity-100 !visible': show }]"
+      :class="[wrapperClass, { 'opacity-100! visible!': show }]"
       data-modal="wrapper"
-      class="items-center p-3 fixed w-full h-full bg-black/50 flex justify-center z-[100] top-0 left-0 invisible opacity-0 transition-all duration-300"
+      class="items-center p-3 fixed w-full h-full bg-black/50 flex justify-center z-100 top-0 left-0 invisible opacity-0 transition-all duration-300"
     >
       <Transition name="modal" mode="out-in">
         <div

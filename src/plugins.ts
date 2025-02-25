@@ -30,7 +30,7 @@ export default function definePlugins(app: App): App {
     component: CommonToast,
   };
   app.use(pinia);
-  app.use(Maska);
+  // app.use(Maska);
   app.use(Toast, options);
   return app;
 }

@@ -38,8 +38,8 @@ function send(){
   <CDialog
     :show="props.show"
     :title="t('cause_title')"
-    body-class="!max-w-[421px]"
-    headerStyle="!border-none"
+    body-class="max-w-[421px]!"
+    headerStyle="border-none!"
     @close="emit('close')"
   >
     <CCard class="p-5 pt-1.5">

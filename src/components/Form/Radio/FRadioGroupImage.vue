@@ -16,15 +16,15 @@
         :class="[
           itemClass,
           {
-            '!bg-white !border-green':
+            'bg-white! border-green!':
               activeRadio === item[valueKey] && !answered,
           },
           {
-            '!bg-white !border-green':
+            'bg-white! border-green!':
               answered && activeRadio === item[valueKey] && item?.is_correct,
           },
           {
-            '!bg-white !border-red':
+            'bg-white! border-red!':
               answered && activeRadio === item[valueKey] && !item?.is_correct,
           },
           {
@@ -33,23 +33,23 @@
         ]"
         class="relative aspect-video overflow-hidden"
         @click="activeRadio = !disabled ? item[valueKey] : modelValue"
-        radio-class="!absolute top-3 right-3 mr-0"
+        radio-class="absolute! top-3 right-3 mr-0"
       >
         <template #label>
           <div
             class="w-8 h-8 rounded-br-lg bg-dark/50 border border-white/[36%] flex-center transition-300 absolute -top-px -left-px z-10"
             :class="[
               {
-                '!bg-green': activeRadio === item[valueKey] && !answered,
+                'bg-green!': activeRadio === item[valueKey] && !answered,
               },
               {
-                '!bg-green':
+                'bg-green!':
                   activeRadio === item[valueKey] &&
                   answered &&
                   item?.is_correct,
               },
               {
-                '!bg-red':
+                'bg-red!':
                   activeRadio === item[valueKey] &&
                   answered &&
                   !item?.is_correct,
@@ -60,16 +60,16 @@
               class="text-base leading-130 font-semibold text-white uppercase transition-300"
               :class="[
                 {
-                  '!text-white': activeRadio === item[valueKey] && !answered,
+                  'text-white!': activeRadio === item[valueKey] && !answered,
                 },
                 {
-                  '!text-white':
+                  'text-white!':
                     activeRadio === item[valueKey] &&
                     answered &&
                     item?.is_correct,
                 },
                 {
-                  '!text-white':
+                  'text-white!':
                     activeRadio === item[valueKey] &&
                     answered &&
                     !item?.is_correct,
@@ -89,7 +89,7 @@
         <template v-if="answered" #value>
           <svg
             v-if="!item?.is_correct"
-            class="!absolute top-2 right-2 mr-0"
+            class="absolute! top-2 right-2 mr-0"
             width="32"
             height="32"
             viewBox="0 0 32 32"
@@ -107,7 +107,7 @@
           </svg>
           <svg
             v-if="item?.is_correct"
-            class="!absolute top-2 right-2 mr-0"
+            class="absolute! top-2 right-2 mr-0"
             width="32"
             height="32"
             viewBox="0 0 32 32"

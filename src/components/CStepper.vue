@@ -5,14 +5,14 @@
     <div
       v-for="(item, index) in steps"
       :key="index"
-      class="w-[38.333%] md:w-auto flex-shrink-0 flex md:flex-col items-center justify-center md:items-start list-step select-none"
+      class="w-[38.333%] md:w-auto shrink-0 flex md:flex-col items-center justify-center md:items-start list-step select-none"
     >
       <div class="flex items-center flex-col md:flex-row">
         <div
           :class="checkActive(index + 1)"
-          class="flex items-center justify-center flex-shrink-0 w-10 h-10 bg-grey rounded-lg flex-center transition duration-300"
+          class="flex items-center justify-center shrink-0 w-10 h-10 bg-grey rounded-lg flex-center transition duration-300"
         >
-          <span class="text-base font-medium leading-20 flex-shrink-0">
+          <span class="text-base font-medium leading-20 shrink-0">
             {{ index + 1 }}
           </span>
         </div>
@@ -77,9 +77,9 @@ const props = withDefaults(defineProps<Props>(), {
 
 function checkActive(target: number) {
   if (target === props.modelValue) {
-    return "!bg-blue text-white";
+    return "bg-blue! text-white";
   } else if (props.modelValue > target) {
-    return "!bg-blue-50 text-blue";
+    return "bg-blue-50! text-blue";
   } else {
     return "bg-gray-300 text-gray-700";
   }

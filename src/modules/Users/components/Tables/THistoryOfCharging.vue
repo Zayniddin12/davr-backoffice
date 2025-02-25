@@ -120,7 +120,7 @@ const openChargingHistory = (data: any) => {
         :limit="paginationData?.defaultLimit"
         :loading="loading"
         :head="historyChargingTableHeadData()"
-        th-class="!bg-gray !text-gray-100 last:!text-left"
+        th-class="bg-gray! text-gray-100! last:text-left!"
         @onRowClick="openChargingHistory"
         tr-class="hover:cursor-pointer"
       >
@@ -143,7 +143,7 @@ const openChargingHistory = (data: any) => {
         <template #beforeSearch>
           <div class="flex items-center gap-5 w-full justify-end">
             <CProfileDashDetail
-              class="!max-h-10"
+              class="max-h-10!"
               v-if="totals?.sum_cost"
               active
               :description="$t('total_amount_spent')"
@@ -164,7 +164,7 @@ const openChargingHistory = (data: any) => {
         <template #no-data>
           <NoData
             :title="$t('history.charging_no_data')"
-            title-class="!min-w-[440px]"
+            title-class="min-w-[440px]!"
             :subtitle="$t('history.charging_no_data_subtitle')"
             class="mt-8 px-6 pb-[88px] pt-0"
             image="/images/svg/no-data/no-notification.svg"

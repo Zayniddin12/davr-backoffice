@@ -24,22 +24,22 @@
     <li
       v-for="page in items"
       :key="page.label"
-      class="hover:!bg-blue duration-200 group"
-      :class="`${itemClass} ${page.active ? activeClass : '!text-white'} ${
+      class="hover:bg-blue! duration-200 group"
+      :class="`${itemClass} ${page.active ? activeClass : 'text-white!'} ${
         page.disable ? disableClass : ''
       }`"
     >
       <span
         v-if="page.disable"
-        class="w-full h-full flex-center text-gray-300 duration-200 group-hover:!text-white text-sm font-medium"
+        class="w-full h-full flex-center text-gray-300 duration-200 group-hover:text-white! text-sm font-medium"
       >
         ...
       </span>
       <button
         v-else
-        class="w-full h-full text-gray-300 duration-200 group-hover:!text-white text-sm font-medium"
+        class="w-full h-full text-gray-300 duration-200 group-hover:text-white! text-sm font-medium"
         @click="goto(page.label)"
-        :class="{ '!text-white': page.active }"
+        :class="{ 'text-white!': page.active }"
       >
         {{ page.label }}
       </button>
@@ -84,7 +84,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   itemClass:
     "rounded-md w-7 h-7 flex-center transition-300 text-sm leading-4 text-gray cursor-pointer",
-  activeClass: "!bg-primary !text-white",
+  activeClass: "bg-primary! text-white!",
 });
 
 const emit = defineEmits(["change", "input"]);

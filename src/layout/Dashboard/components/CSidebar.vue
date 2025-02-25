@@ -13,14 +13,14 @@
       class="absolute w-full h-[136px] bg-primary/60 -top-[56px] blur-[99px] z-10"
     ></div>
     <div
-      class="absolute top-[77px] left-0 w-full h-[620px] before:absolute before:left-0 before:top-[-50px] before:h-[620px] before:w-full z-[1] before:z-0 before:bg-no-repeat before:bg-cover"
+      class="absolute top-[77px] left-0 w-full h-[620px] before:absolute before:left-0 before:top-[-50px] before:h-[620px] before:w-full z-1 before:z-0 before:bg-no-repeat before:bg-cover"
     ></div>
     <div class="z-20">
       <div
         class="w-full px-4 py-5 flex items-center justify-center border-b border-solid border-white/30 bg-transparent"
       >
         <div
-          :class="{ 'opacity-0 invisible !w-0': !isOpen && !hovered }"
+          :class="{ 'opacity-0 invisible w-0!': !isOpen && !hovered }"
           class="relative overflow-hidden transition-300 w-[211px]"
         >
         </div>
@@ -29,7 +29,7 @@
           @click="toggleSidebar"
         >
           <span
-            :class="{ '!rotate-180': !isOpen }"
+            :class="{ 'rotate-180!': !isOpen }"
             class="flex items-center transition-300"
           >
             <svg
@@ -56,7 +56,7 @@
         <div v-for="(menuItem, index) in newMenus" :key="index">
           <RouterLink
             v-if="!menuItem?.sub?.length"
-            :class="{ '!bg-primary/[0.08]': location === menuItem?.route }"
+            :class="{ 'bg-primary/[0.08]!': location === menuItem?.route }"
             :to="menuItem?.route"
             class="py-3 px-5 hover:bg-blue-200/10 transition-300 flex items-center group gap-3 h-12"
             @click="openMenu(index)"
@@ -65,10 +65,10 @@
               :class="[
                 menuItem?.svgIcon,
                 {
-                  '!text-primary': location === menuItem?.route,
+                  'text-primary!': location === menuItem?.route,
                 },
               ]"
-              class="text-xl text-gray-100 group-hover:!text-primary transition-300 w-6"
+              class="text-xl text-gray-100 group-hover:text-primary! transition-300 w-6"
             />
             <CollapseTransition :duration="300" dimension="width">
               <p
@@ -101,12 +101,12 @@
                   :class="[
                     menuItem?.svgIcon,
                     {
-                      '!text-primary':
+                      'text-primary!':
                         location === menuItem?.route ||
                         isActiveSub(menuItem?.sub),
                     },
                   ]"
-                  class="text-xl text-gray-100 group-hover:!text-primary transition-300"
+                  class="text-xl text-gray-100 group-hover:text-primary! transition-300"
                 />
                 <CollapseTransition :duration="300" dimension="width">
                   <p
@@ -122,7 +122,7 @@
                 v-if="isOpen || hovered"
                 :class="[
                   {
-                    '!-rotate-90 ': index !== openIndex,
+                    '-rotate-90! ': index !== openIndex,
                   },
                 ]"
                 class="icon-chevron text-xl leading-5 transition-300 text-blue/20"
@@ -143,7 +143,7 @@
                 >
                   <span
                     :class="{
-                      '!text-white': location === subMenuItem?.route,
+                      'text-white!': location === subMenuItem?.route,
                     }"
                     class="group-hover:bg-white transition-300 w-3 h-[2px] bg-gray-200"
                   />
@@ -151,7 +151,7 @@
                     <p
                       v-if="isOpen || hovered"
                       :class="{
-                        '!text-white font-semibold':
+                        'text-white! font-semibold':
                           location === subMenuItem?.route,
                       }"
                       class="text-sm font-normal group-hover:text-white transition-300 whitespace-nowrap"

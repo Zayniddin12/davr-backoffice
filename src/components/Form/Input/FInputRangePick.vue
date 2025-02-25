@@ -6,8 +6,8 @@
           v-model="computedDateRange"
           :inputClassName="
             activePick
-              ? 'placeholder:!text-dark !w-[260px] !overflow-visible !border-white !text-dark !font-medium !text-xs !bg-white'
-              : 'placeholder:!text-dark !w-[260px] !overflow-visible !border-gray !text-dark !font-medium !text-xs !bg-gray'
+              ? 'placeholder:text-dark! w-[260px]! overflow-visible! border-white! text-dark! font-medium! text-xs! bg-white!'
+              : 'placeholder:text-dark! w-[260px]! overflow-visible! border-gray! text-dark! font-medium! text-xs! bg-gray!'
           "
           class="w-full"
           range
@@ -36,9 +36,7 @@
 import "@vuepic/vue-datepicker/dist/main.css";
 import { ref, watch, computed } from "vue";
 import VueDatePicker from "@vuepic/vue-datepicker";
-import enUS from "date-fns/locale/en-US/index.js";
-import ru from "date-fns/locale/ru/index.js";
-import uz from "date-fns/locale/uz/index.js";
+import { enUS, ru, uz } from "date-fns/locale";
 import { useI18n } from "vue-i18n";
 
 interface Props {

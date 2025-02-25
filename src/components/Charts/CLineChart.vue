@@ -1,5 +1,5 @@
 <template>
-  <CCard class="flex-shrink-0 p-6">
+  <CCard class="shrink-0 p-6">
     <div class="flex justify-between mb-5">
       <div>
         <h4 class="text-xl text-dark font-semibold mb-1">
@@ -14,7 +14,7 @@
         :list="tabList"
         :model-value="tabValue"
         class="space-x-3 border-none"
-        item-class="!pt-0 whitespace-nowrap"
+        item-class="pt-0! whitespace-nowrap"
         @update:model-value="handleUpdateTab"
       />
     </div>

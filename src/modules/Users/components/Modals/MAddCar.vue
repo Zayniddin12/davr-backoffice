@@ -73,7 +73,7 @@ watch(
     :show="show"
     @close="$emit('close')"
     @outer-click="$emit('close')"
-    body-class="!w-[421px] !overflow-y-visible"
+    body-class="w-[421px]! overflow-y-visible!"
     :title="$t('add_car')"
   >
     <template #default>
@@ -93,9 +93,9 @@ watch(
               :error="form.$v.value.manufacturer.$error"
               v-model="form.values.manufacturer"
               filter-key="name"
-              selected-option-styles="!bg-gray"
+              selected-option-styles="bg-gray!"
               :placeholder="$t('add_car_form.mark_placeholder')"
-              placeholder-classes="!text-dark !font-normal"
+              placeholder-classes="text-dark! font-normal!"
               is-search-icon
             >
               <template #option="{ option: option, selected: selected }">
@@ -121,7 +121,7 @@ watch(
               v-model="form.values.model"
               :error="form.$v.value.model.$error"
               :placeholder="$t('add_car_form.model_placeholder')"
-              selected-option-styles="!h-10 !bg-gray border-transparent !focus:!border-primary"
+              selected-option-styles="h-10! bg-gray! border-transparent !focus:!border-primary"
               is-checked
             />
           </FGroup>
@@ -132,7 +132,7 @@ watch(
               :error="form.$v.value.charging_type.$error"
               @on-toggle="onToggle = $event"
               :placeholder="$t('add_car_form.connector_placeholder')"
-              selected-option-styles="!bg-gray !h-auto"
+              selected-option-styles="bg-gray! h-auto!"
               label-key="name"
               filter-key="name"
             >
@@ -165,7 +165,7 @@ watch(
               >
                 <i
                   class="icon-chevron absolute right-2.5 flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
-                  :class="{ '!rotate-180': onToggle }"
+                  :class="{ 'rotate-180!': onToggle }"
                 ></i>
                 <p v-if="!selectedValues.length" class="text-sm">
                   {{ $t("add_car_form.connector_placeholder") }}
@@ -177,7 +177,7 @@ watch(
                     v-for="(so, idx) in selectedValues"
                     :key="idx"
                     class="flex items-center rounded-[4px] bg-gray px-2 py-1.5 gap-1"
-                    :class="{ '!bg-white': !onToggle }"
+                    :class="{ 'bg-white!': !onToggle }"
                   >
                     <img
                       v-if="so?.icon"

@@ -8,7 +8,7 @@
       :read-only="readOnly"
       :class="[
         'min-h-[180px] bg-gray rounded-b-lg',
-        error ? 'border !border-red bg-red-100' : '!border-none',
+        error ? 'border border-red! bg-red-100' : 'border-none!',
       ]"
     />
   </div>

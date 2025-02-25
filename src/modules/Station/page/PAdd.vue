@@ -36,10 +36,10 @@
         </CCard>
         <CCard class="p-5 w-1/2">
           <div class="flex gap-5">
-            <FGroup class="!w-1/2" label="Отображаемое имя">
+            <FGroup class="w-1/2!" label="Отображаемое имя">
               <FInput placeholder="Введите название колонки" />
             </FGroup>
-            <FGroup class="!w-1/2" label="Connection ID ">
+            <FGroup class="w-1/2!" label="Connection ID ">
               <FInput placeholder="Введите Connection ID" />
             </FGroup>
           </div>
@@ -74,7 +74,7 @@
           >
             <input type="checkbox" class="sr-only peer" />
             <span
-              class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-0 peer-focus:ring-blue-300 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green"
+              class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-0 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:rtl:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green"
             ></span>
             <span class="ms-3 text-sm font-medium text-dark">Бронирование</span>
           </label>
@@ -83,7 +83,7 @@
           >
             <input type="checkbox" class="sr-only peer" />
             <span
-              class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-0 peer-focus:ring-blue-300 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green"
+              class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-0 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:rtl:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green"
             ></span>
             <span class="ms-3 text-sm font-medium text-dark text-nowrap">{{
               $t("charging_history_modal.parking.title")
@@ -92,10 +92,10 @@
         </div>
         <div class="flex gap-5 justify-between">
           <div class="flex w-1/2 gap-5">
-            <FGroup class="!w-1/2" label="Цена за бронь (мин)">
+            <FGroup class="w-1/2!" label="Цена за бронь (мин)">
               <FInput placeholder="" />
             </FGroup>
-            <FGroup class="!w-1/2" label="Бесплатная минута">
+            <FGroup class="w-1/2!" label="Бесплатная минута">
               <FInput placeholder="Введите Connection ID" />
             </FGroup>
           </div>
@@ -141,7 +141,7 @@
 
     <CDialog
       :title="$t('delete')"
-      body-class="!max-w-sm"
+      body-class="max-w-sm!"
       v-bind="{ show: deleteModal }"
       @close="deleteModal = false"
     >
@@ -169,7 +169,7 @@
 
     <CDialog
       :title="$t(isEdit ? 'edit_column' : 'add_columns')"
-      body-class="!max-w-xl"
+      body-class="max-w-xl!"
       v-bind="{ show: showAddModal }"
       @close="closeModal"
     >
@@ -183,7 +183,7 @@
     </CDialog>
     <CDialog
       :title="$t('edit_station')"
-      body-class="!max-w-4xl"
+      body-class="max-w-4xl!"
       v-bind="{ show: editStationModal }"
       @close="editStationModal = false"
     >

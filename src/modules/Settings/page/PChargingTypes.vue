@@ -17,7 +17,7 @@
         @itemsPerPage="onChangeLimit"
         :loading="loading"
         @pageChange="onPageChange"
-        th-class="!bg-gray !text-gray-100 last:!text-right"
+        th-class="bg-gray! text-gray-100! last:text-right!"
       >
         <template #id="{ row }">
           <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
@@ -63,7 +63,7 @@
             :title="$t('no_charge_title')"
             :subtitle="$t('no_charge_subtitle')"
             :button-text="t('add_charger')"
-            button-custom-class="!mt-0"
+            button-custom-class="mt-0!"
             class="mt-8 px-6 pb-20 pt-0"
             image="/images/svg/no-data/no-notification.svg"
             @submit="openAddModal"
@@ -85,7 +85,7 @@
       v-bind="{ show }"
       :title="$t(isEdit ? 'edit_user_modal.title' : 'history.charging_add')"
       @close="show = false"
-      body-class="!max-w-[421px] !overflow-y-visible"
+      body-class="max-w-[421px]! overflow-y-visible!"
     >
       <div class="p-5 pt-4">
         <FGroup :label="$t('logo')">
@@ -111,7 +111,7 @@
             v-model="form.values.category"
             :error="form.$v.value.category?.$error || isError"
             @change="isError = false"
-            selectedOptionStyles="!bg-gray"
+            selectedOptionStyles="bg-gray!"
             :placeholder="$t('enter_charger_category')"
             is-checked
           />

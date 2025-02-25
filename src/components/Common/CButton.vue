@@ -2,10 +2,10 @@
   <button
     :class="[
       sizes[size],
-      { '!pointer-events-none': loading },
+      { 'pointer-events-none!': loading },
       variants[variant],
       {
-        'disabled:!pointer-events-none disabled:!bg-gray disabled:!text-gray-300':
+        'disabled:pointer-events-none! disabled:bg-gray! disabled:text-gray-300!':
           disabled,
       },
     ]"
@@ -15,7 +15,7 @@
     <span
       :class="[
         {
-          '!opacity-0': loading,
+          'opacity-0!': loading,
           'flex-center justify-center gap-2': text?.length,
           'flex-row-reverse': iconPosition === 'left',
         },
@@ -26,7 +26,7 @@
       <slot name="icon" />
       <span
         v-if="text?.length"
-        :class="[variantTexts[variant], { '!text-gray-300': disabled }]"
+        :class="[variantTexts[variant], { 'text-gray-300!': disabled }]"
         class="whitespace-nowrap"
       >
         {{ text }}
@@ -39,7 +39,7 @@
     <transition mode="out-in" name="fade">
       <span
         v-if="loading"
-        class="absolute-center z-10 !inline-block w-max h-max loading transition-300"
+        class="absolute-center z-10 inline-block! w-max h-max loading transition-300"
       >
         <svg
           class="animate-spin"
@@ -83,14 +83,14 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const variants: Record<TButtonVariants, string> = {
-  primary: "bg-primary !text-white hover:bg-primary/90 hover:!text-white",
-  secondary: "bg-gray-800 !text-gray hover:bg-gray-900",
-  info: "bg-gray !text-dark hover:bg-gray-100/20 hover:!text-dark",
-  error: "bg-red-500/10 !text-red-500 hover:bg-red-500/20",
-  success: "bg-[#0DB23B] !text-white hover:bg-primary/90 hover:!text-white",
-  warning: "bg-red !text-white hover:bg-red/90",
-  missing: "!bg-primary-100 !text-white hover:bg-primary/90 hover:!text-white",
-  yellow: "bg-yellow-100 !text-yellow hover:bg-yellow/20",
+  primary: "bg-primary text-white! hover:bg-primary/90 hover:text-white!",
+  secondary: "bg-gray-800 text-gray! hover:bg-gray-900",
+  info: "bg-gray text-dark! hover:bg-gray-100/20 hover:text-dark!",
+  error: "bg-red-500/10 text-red-500! hover:bg-red-500/20",
+  success: "bg-[#0DB23B] text-white! hover:bg-primary/90 hover:text-white!",
+  warning: "bg-red text-white! hover:bg-red/90",
+  missing: "bg-primary-100! text-white! hover:bg-primary/90 hover:text-white!",
+  yellow: "bg-yellow-100 text-yellow! hover:bg-yellow/20",
 };
 
 const variantTexts: Record<TButtonVariants, string> = {

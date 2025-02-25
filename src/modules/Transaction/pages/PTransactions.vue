@@ -149,7 +149,7 @@ onMounted(() => {
             count: paginationData.total ?? 0,
           })
         "
-        th-class="last:!text-left"
+        th-class="last:text-left!"
       >
         <template #beforeSearch>
           <div class="flex items-center gap-5">

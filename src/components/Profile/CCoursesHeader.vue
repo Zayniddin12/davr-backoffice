@@ -1,5 +1,5 @@
 <template>
-  <CCard class="!p-0">
+  <CCard class="p-0!">
     <div class="p-6 flex gap-5" :class="{ 'pb-0': !noTabs }">
       <div
         class="w-[122px] h-[122px] rounded-lg border border-white-100 overflow-hidden shrink-0"
@@ -18,7 +18,7 @@
         />
       </div>
       <div class="flex flex-col w-full">
-        <div class="flex-grow flex justify-between items-start">
+        <div class="grow flex justify-between items-start">
           <div class="h-full flex flex-col">
             <slot name="title">
               <CPreloader v-bind="{ loading }" width="184px" height="32px">
@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="flex gap-4 p-6 !pb-0">
+    <div class="flex gap-4 p-6 pb-0!">
       <slot name="details">
         <CProfileDashDetail title="16.09.2022 / 09:41" />
 

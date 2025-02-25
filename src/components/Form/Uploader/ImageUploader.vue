@@ -32,7 +32,7 @@
         v-else
         :class="[
           {
-            '!border-red': error,
+            'border-red!': error,
           },
         ]"
         class="min-w-15 min-h-15 w-min flex items-center justify-center flex-col p-[14px] rounded-lg transition-300 hover:border-primary cursor-pointer border-2 border-dashed border-primary/60"
@@ -71,7 +71,7 @@
       <div
         class="w-full h-full border-dashed border-2 rounded-md border-white border-opacity-60 flex items-center justify-center"
       >
-        <p class="text-white text-base font-bold !leading-[130%]">
+        <p class="text-white text-base font-bold leading-[130%]!">
           {{ $t("drop_file_here") }}
         </p>
       </div>

@@ -207,7 +207,7 @@ function changeStatus(type: string) {
           <div class="flex flex-row items-center gap-4">
             <CButton
               :text="$t('edit')"
-              icon="icon-edit !text-gray-300 pr-1"
+              icon="icon-edit text-gray-300! pr-1"
               class="flex items-center py-2 px-4 gap-1"
               size="md"
               icon-position="left"

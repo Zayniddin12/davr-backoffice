@@ -26,7 +26,7 @@ const checkStatus = () => {
 </script>
 
 <template>
-  <CDialog :show="show" no-header body-class="!max-w-[421px]">
+  <CDialog :show="show" no-header body-class="max-w-[421px]!">
     <template #default>
       <section class="flex items-center justify-center flex-col p-5 gap-5">
         <div

@@ -52,8 +52,8 @@ const { tableData, paginationData, onChangeLimit, loading } = useTableFetch(
       :total="paginationData?.total"
       no-footer
       no-search
-      th-class="!bg-gray !text-gray-100"
-      title-class="!truncate"
+      th-class="bg-gray! text-gray-100!"
+      title-class="truncate!"
       @itemsPerPage="onChangeLimit"
     >
       <!--      body-->

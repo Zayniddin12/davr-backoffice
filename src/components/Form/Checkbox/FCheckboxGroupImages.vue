@@ -18,17 +18,17 @@
         :class="[
           { 'pointer-events-none': answered },
           {
-            '!bg-white !border-green border':
+            'bg-white! border-green! border':
               modelValue?.answers?.includes(item[valueKey]) && !answered,
           },
           {
-            '!bg-white !border-green border':
+            'bg-white! border-green! border':
               answered &&
               modelValue?.answers?.includes(item[valueKey]) &&
               item?.is_correct,
           },
           {
-            '!bg-white !border-red border':
+            'bg-white! border-red! border':
               answered &&
               modelValue?.answers?.includes(item[valueKey]) &&
               !item?.is_correct,
@@ -43,17 +43,17 @@
             class="w-8 h-8 rounded-br-lg bg-dark/50 border border-white/[36%] flex-center transition-300 absolute -top-px -left-px z-10"
             :class="[
               {
-                '!bg-green':
+                'bg-green!':
                   modelValue?.answers?.includes(item[valueKey]) && !answered,
               },
               {
-                '!bg-green':
+                'bg-green!':
                   modelValue?.answers?.includes(item[valueKey]) &&
                   answered &&
                   item?.is_correct,
               },
               {
-                '!bg-red':
+                'bg-red!':
                   modelValue?.answers?.includes(item[valueKey]) &&
                   answered &&
                   !item?.is_correct,
@@ -64,17 +64,17 @@
               class="text-base leading-130 font-semibold text-white uppercase transition-300"
               :class="[
                 {
-                  '!text-white':
+                  'text-white!':
                     modelValue?.answers?.includes(item[valueKey]) && !answered,
                 },
                 {
-                  '!text-white':
+                  'text-white!':
                     modelValue?.answers?.includes(item[valueKey]) &&
                     answered &&
                     item?.is_correct,
                 },
                 {
-                  '!text-white':
+                  'text-white!':
                     modelValue?.answers?.includes(item[valueKey]) &&
                     answered &&
                     !item?.is_correct,
@@ -94,7 +94,7 @@
         <template v-if="answered" #value>
           <svg
             v-if="!item?.is_correct"
-            class="!absolute top-2 right-2 mr-0 z-10"
+            class="absolute! top-2 right-2 mr-0 z-10"
             width="32"
             height="32"
             viewBox="0 0 32 32"
@@ -112,7 +112,7 @@
           </svg>
           <svg
             v-if="item?.is_correct"
-            class="!absolute top-2 right-2 mr-0 z-10"
+            class="absolute! top-2 right-2 mr-0 z-10"
             width="32"
             height="32"
             viewBox="0 0 32 32"

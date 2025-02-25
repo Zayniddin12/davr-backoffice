@@ -2,14 +2,14 @@
   <div class="relative p-1 bg-[#F5F6F7] rounded-lg flex overflow-hidden w-max">
     <div
       :class="activeClass"
-      class="absolute h-[calc(100%_-_8px)] rounded bg-white tab-shadow -translate-y-1/2 top-1/2 transition-all duration-300"
+      class="absolute h-[calc(100%_-_8px)] rounded-sm bg-white tab-shadow -translate-y-1/2 top-1/2 transition-all duration-300"
       :style="{ width: `${active.width}px`, left: `${active.left}px` }"
     ></div>
     <button
       v-for="(tab, idx) in list"
       :id="`item_${tab.value}`"
       :key="idx"
-      class="p-2 rounded-sm transition-300 text-sm z-10 text-dark-100 px-9 flex-center gap-2"
+      class="p-2 rounded-xs transition-300 text-sm z-10 text-dark-100 px-9 flex-center gap-2"
       :class="[itemClass, modelValue === tab.value ? activeItemsClass : '']"
       @click="pick(tab.value, $event)"
     >

@@ -18,7 +18,7 @@
           'duration-200 ease-in-out inline-block bg-white h-6 w-6 rounded-md border-2 peer-checked:-rotate-90 peer-checked:after:opacity-100 peer-checked:after:rotate-[138deg] after:transition-all after:duration-200 after:absolute after:left-2 after:top-1 after:w-[7px] after:h-3 after:border-r-[2.2px] after:border-b-[2.2px] after:rotate-[0deg] after:opacity-0 peer-checked:bg-green',
           'border-[#C8CFD6] peer-checked:border-white after:border-white peer-disabled:border-grey-100 peer-disabled:after:border-grey-100',
           {
-            '!border-red': error,
+            'border-red!': error,
             'group-hover:border-primary': !disabled,
           },
         ]"

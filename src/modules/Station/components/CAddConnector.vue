@@ -11,7 +11,7 @@
           :placeholder="$t('select_connector')"
           is-checked
           label-key="name"
-          selectedOptionStyles="!bg-gray"
+          selectedOptionStyles="bg-gray!"
           value-key="id"
         />
       </FGroup>
@@ -29,7 +29,7 @@
             :options="powerUnits"
             is-checked
             label-key="name"
-            selectedOptionStyles="!w-[max-content] !bg-gray"
+            selectedOptionStyles="w-[max-content]! bg-gray!"
             value-key="id"
           />
         </div>

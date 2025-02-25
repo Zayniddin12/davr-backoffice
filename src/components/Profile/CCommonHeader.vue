@@ -1,5 +1,5 @@
 <template>
-  <CCard class="!p-0 relative">
+  <CCard class="p-0! relative">
     <div
       v-show="checkRouteFromUser"
       class="back absolute -left-[14px] top-6 h-7 w-7 flex align-center items-center justify-center bg-white rounded-full cursor-pointer"
@@ -10,7 +10,7 @@
     <div v-if="!checkRouteFromUser" class="p-6 pb-0 flex gap-5">
       <CPreloader :loading="loading" height="135px" width="135px">
         <div
-          class="!w-[132px] !h-[132px] flex-none flex items-center justify-center rounded-lg overflow-hidden bg-gray"
+          class="w-[132px]! h-[132px]! flex-none flex items-center justify-center rounded-lg overflow-hidden bg-gray"
         >
           <img
             v-if="image"
@@ -25,7 +25,7 @@
         </div>
       </CPreloader>
       <div class="flex flex-col w-full">
-        <div class="flex-grow flex justify-between">
+        <div class="grow flex justify-between">
           <div>
             <CPreloader :loading="loading" height="31px" width="235px">
               <slot name="title">
@@ -126,7 +126,7 @@
     </div>
     <div v-else class="p-6 pb-0 flex gap-5">
       <div class="flex flex-col w-full">
-        <div class="flex-grow flex justify-between">
+        <div class="grow flex justify-between">
           <div>
             <CPreloader :loading="loading" height="31px" width="235px">
               <slot name="title">
@@ -200,8 +200,8 @@
     <CTab
       v-model="activeTab"
       :list="tabList"
-      active-items-class="!font-medium text-primary"
-      item-class="!text-base font-normal"
+      active-items-class="font-medium! text-primary"
+      item-class="text-base! font-normal"
     />
   </CCard>
 </template>

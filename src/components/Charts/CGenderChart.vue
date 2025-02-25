@@ -1,18 +1,18 @@
 <template>
-  <CCard class="py-6 px-0 flex-shrink-0">
+  <CCard class="py-6 px-0 shrink-0">
     <h4 class="text-xl text-dark font-semibold mb-5 px-6">
       {{ $t("by_gender") }}
     </h4>
     <div
       v-if="checkChartData"
-      class="flex justify-center overflow-hidden w-full !max-h-[140px] pb-4"
+      class="flex justify-center overflow-hidden w-full max-h-[140px]! pb-4"
     >
       <div class="relative">
         <div class="relative gender-chart mb-5">
           <Doughnut
             :data="data"
             :options="chart_options"
-            class="!h-[130px] !rounded-full"
+            class="h-[130px]! rounded-full!"
           />
         </div>
         <div
@@ -41,7 +41,7 @@
         :key="i"
         class="custom-border flex items-center space-x-3 py-3"
       >
-        <div :class="el?.color" class="w-3 h-3 rounded" />
+        <div :class="el?.color" class="w-3 h-3 rounded-sm" />
         <div>
           <p class="text-[#667779] text-sm font-normal leading-normal">
             {{ $t(el?.gender) }}

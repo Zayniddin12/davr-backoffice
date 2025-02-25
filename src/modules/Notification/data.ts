@@ -204,22 +204,22 @@ export const exchangeActions = (userRole: string, row: any, status?: {
       actions.push({
         label: "recieve",
         value: "edit",
-        icon: "icon-checked !text-primary",
-        class: "hover:!bg-primary/20 !text-primary",
+        icon: "icon-checked text-primary!",
+        class: "hover:bg-primary/20! text-primary!",
       });
     } else if (status?.[0]?.status === "in_progress") {
       actions.push({
         label: "install",
         value: "edit",
-        icon: "icon-download !text-green",
-        class: "hover:!bg-green/20 !text-green",
+        icon: "icon-download text-green!",
+        class: "hover:bg-green/20! text-green!",
       });
     } else if (status?.[0]?.status === "canceled" && status?.[1]?.status!=="confirmed") {
       actions.push({
         label: "uninstall",
         value: "edit",
-        icon: "icon-fold-download !text-yellow",
-        class: "hover:!bg-yellow/20 !text-yellow",
+        icon: "icon-fold-download text-yellow!",
+        class: "hover:bg-yellow/20! text-yellow!",
       });
     }
   }
@@ -228,22 +228,22 @@ export const exchangeActions = (userRole: string, row: any, status?: {
       actions.push({
         label: "recieve",
         value: "edit",
-        icon: "icon-checked !text-primary",
-        class: "hover:!bg-primary/20 !text-primary",
+        icon: "icon-checked text-primary!",
+        class: "hover:bg-primary/20! text-primary!",
       });
     } else if (status?.[1]?.status === "in_progress") {
       actions.push({
         label: "confirm",
         value: "edit",
-        icon: "icon-checked !text-green text-lg",
-        class: "hover:!bg-green/20 !text-green",
+        icon: "icon-checked text-green! text-lg",
+        class: "hover:bg-green/20! text-green!",
       });
     } else if (status?.[1]?.status === "confirmed") {
       actions.push({
         label: "unconfirm",
         value: "edit",
-        icon: "icon-close !text-yellow !text-base",
-        class: "hover:!bg-yellow/20 !text-yellow",
+        icon: "icon-close text-yellow! text-base!",
+        class: "hover:bg-yellow/20! text-yellow!",
       });
     }
   }
@@ -253,22 +253,22 @@ export const exchangeActions = (userRole: string, row: any, status?: {
       actions.push({
         label: "recieve",
         value: "edit",
-        icon: "icon-checked !text-primary",
-        class: "hover:!bg-primary/20 !text-primary",
+        icon: "icon-checked text-primary!",
+        class: "hover:bg-primary/20! text-primary!",
       });
     } else if (status?.[2]?.status === "in_progress") {
       actions.push({
         label: "confirm",
         value: "edit",
-        icon: "icon-checked !text-green text-lg",
-        class: "hover:!bg-green/20 !text-green",
+        icon: "icon-checked text-green! text-lg",
+        class: "hover:bg-green/20! text-green!",
       });
     } else if (status?.[2]?.status === "confirmed") {
       actions.push({
         label: "unconfirm",
         value: "edit",
-        icon: "icon-close !text-yellow !text-base",
-        class: "hover:!bg-yellow/20 !text-yellow",
+        icon: "icon-close text-yellow! text-base!",
+        class: "hover:bg-yellow/20! text-yellow!",
       });
     }
   }
@@ -280,8 +280,8 @@ export const exchangeActions = (userRole: string, row: any, status?: {
     actions.push({
       label: "get",
       value: "edit",
-      icon: "icon-get !text-red",
-      class: "hover:!bg-primary/20 !text-primary",
+      icon: "icon-get text-red!",
+      class: "hover:bg-primary/20! text-primary!",
     });
   }
 

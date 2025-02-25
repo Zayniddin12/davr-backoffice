@@ -3,7 +3,7 @@
     no-header
     has-close-icon
     :show="show"
-    body-class="!max-w-[1000px]"
+    body-class="max-w-[1000px]!"
     @close="$emit('close')"
   >
     <div class="aspect-video">

@@ -4,8 +4,8 @@
       inputClass,
       'transition-200 h-10 inline-flex items-center justify-start relative bg-gray rounded-lg border border-transparent overflow-hidden w-full p-2.5 px-3 ',
       error
-        ? '!border-red bg-red-100'
-        : 'focus-within:bg-white focus-within:!border-primary',
+        ? 'border-red! bg-red-100'
+        : 'focus-within:bg-white focus-within:border-primary!',
     ]"
   >
     <span :class="[prefixClass]">
@@ -26,13 +26,13 @@
       :readonly="!autocomplete"
       :class="[
         inputClass,
-        'font-normal text-sm leading-130 placeholder:capitalize text-dark placeholder:text-gray-200 bg-transparent flex-grow outline-none !pr-3',
+        'font-normal text-sm leading-130 placeholder:capitalize text-dark placeholder:text-gray-200 bg-transparent grow outline-hidden pr-3!',
       ]"
-      class="w-full !pr-3"
+      class="w-full pr-3!"
       ref="kInput"
       @input="handleInput"
       @change="$emit('change')"
-      @blur="emit('blur')"
+      @blur="emit('blur-sm')"
       @focus="emit('focus')"
       @keyup.enter="$emit('enter')"
     />
@@ -68,7 +68,7 @@ export interface Props {
 
 interface Emits {
   (e: "focus"): void;
-  (e: "blur"): void;
+  (e: "blur-sm"): void;
   (e: "update:modelValue", value: Props["modelValue"]): void;
   (e: "change"): void;
   (e: "enter"): void;

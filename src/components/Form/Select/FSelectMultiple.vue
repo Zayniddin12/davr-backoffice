@@ -4,9 +4,9 @@
     <div
       :class="[
         selectedOptionStyles,
-        error ? '!border-red bg-red-100' : '',
+        error ? 'border-red! bg-red-100' : '',
         { 'focus-within:border-gray-100': disabled },
-        { '!border-primary !bg-transparent': showOptions },
+        { 'border-primary! bg-transparent!': showOptions },
         headStyles,
       ]"
       class="transition-200 px-3 h-10 py-[9px] bg-gray-50 transition-all duration-300 border border-transparent cursor-pointer flex items-center justify-between rounded-lg w-full"
@@ -20,7 +20,7 @@
       >
         <p
           v-if="!value"
-          :class="{ '!text-gray': disabled }"
+          :class="{ 'text-gray!': disabled }"
           class="text-gray select-none text-sm leading-140 mr-4"
           tabindex="1"
         >
@@ -33,14 +33,14 @@
           >
             <p
               v-if="value"
-              :class="[{ '!text-dark': disabled }, selectedStyles]"
+              :class="[{ 'text-dark!': disabled }, selectedStyles]"
               class="font-normal select-none text-sm text-dark leading-140"
               tabindex="1"
             >
               {{ value[labelKey] || value }}
             </p>
             <span
-              :class="{ '!rotate-180': showOptions }"
+              :class="{ 'rotate-180!': showOptions }"
               class="icon-chevron flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
             >
             </span>

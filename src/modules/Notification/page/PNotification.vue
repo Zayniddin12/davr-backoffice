@@ -116,7 +116,7 @@ function getMessage(message:string){
           :loading="loading" 
           :title="$t('general_information')"
           :head="notificationHead(user?.role)"
-          th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px] !shrink-0"
+          th-class="bg-gray! text-gray-100! last:text-right! max-w-[342px]! shrink-0!"
         >
           <template #id="{ row }">
             <span class="font-semibold text-sm text-dark"
@@ -125,7 +125,7 @@ function getMessage(message:string){
           </template>
           <template #name="{ row: data }">
             <span
-              class="text-dark font-semibold text-xs line-clamp-2 !max-w-[382px]"
+              class="text-dark font-semibold text-xs line-clamp-2 max-w-[382px]!"
               >{{ data?.user?.fullName }}</span
             >
           </template>
@@ -212,7 +212,7 @@ function getMessage(message:string){
               class="mt-8 px-6 pb-20 pt-0"
               :button-text="$t('add_notification')"
               image="/images/svg/no-data/no-notification.svg"
-              :button-custom-class="user.role!=='credit_manager'?'!hidden':'!mt-0'"
+              :button-custom-class="user.role!=='credit_manager'?'hidden!':'mt-0!'"
               @submit="router.push({ name: 'PNotificationAdd' })"
             />
           </template>

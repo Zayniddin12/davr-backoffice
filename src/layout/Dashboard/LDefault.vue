@@ -4,7 +4,7 @@
 
     <!-- Asosiy kontentni o'z ichiga oluvchi div -->
     <div class="flex flex-col w-full min-h-[calc(100vh-558px)] overflow-hidden relative">
-      <CHeader v-bind="{ activeRoute }" class="flex-shrink-0 w-full" />
+      <CHeader v-bind="{ activeRoute }" class="shrink-0 w-full" />
 
       <!-- Faqatgina slot skroll bo'lishi uchun -->
       <div class="overflow-auto p-6">

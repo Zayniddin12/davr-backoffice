@@ -9,7 +9,7 @@
           isIcon
           :placeholder="$t('select_connector')"
           is-checked
-          selectedOptionStyles="!bg-gray"
+          selectedOptionStyles="bg-gray!"
           value-key="id"
         />
       </FGroup>

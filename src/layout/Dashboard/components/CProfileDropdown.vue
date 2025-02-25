@@ -4,18 +4,18 @@
       <div class="flex-y-center gap-3">
         <div>
           <p
-            v-if="user.fullName"
+            v-if="user?.fullName"
             class="font-semibold text-base text-dark mb-0.5"
           >
-            {{ user?.fullName }}
+            {{ currentUser?.fullName }}
           </p>
           <p class="text-sm text-gray-200 text-right">
-            {{ user?.username }} 
+            {{ currentUser?.username }}
           </p>
         </div>
 
         <CAvatar
-          :image="user?.avatar_url"
+          :image="currentUser?.avatar_url"
           avatar-class="border-2 border-gray/[60]"
           size="sm"
         />
@@ -31,14 +31,14 @@
         v-for="(item, idx) in dropdownItems"
         :key="idx"
         :class="item.styles"
-        class="transition-200 flex flex-col gap-1 text-sm w-full text-dark hover:bg-gray/[10%] rounded"
+        class="transition-200 flex flex-col gap-1 text-sm w-full text-dark hover:bg-gray/[10%] rounded-sm"
         @click="item.action"
       >
         <div
-          :class="{ '!border-b-0': idx === dropdownItems.length - 1 }"
+          :class="{ 'border-b-0!': idx === dropdownItems.length - 1 }"
           class="flex-y-center px-3 py-2 border-b border-[#F5F6F7] gap-2"
         >
-          <i :class="item?.icon" class="!text-xs" />
+          <i :class="item?.icon" class="text-xs!" />
           {{ item.label }}
         </div>
       </li>
@@ -59,17 +59,17 @@ defineComponent({
 });
 
 interface Props {
-  user?:{
-    id: number,
-    username: string,
-    email: string,
-    fullName: string,
-    photoUrl: string,
-    hashedPassword: string,
-    role: string,
-    createdAt: string,
-    updatedAt:string
-};
+  user?: {
+    id: number;
+    username: string;
+    email: string;
+    fullName: string;
+    photoUrl: string;
+    hashedPassword: string;
+    role: string;
+    createdAt: string;
+    updatedAt: string;
+  };
   profileItems?: {
     title: string;
     class?: string;
@@ -84,7 +84,7 @@ const router = useRouter();
 const { t } = useI18n();
 const store = useAuthStore();
 
-const user = computed(() => store.user);
+const currentUser = computed(() => store.user);
 
 interface IDropdownItem {
   label: string;
@@ -96,7 +96,7 @@ interface IDropdownItem {
 const dropdownItems: IDropdownItem[] = [
   {
     label: t("log_out"),
-    styles: "text-red-500 hover:!bg-red-50",
+    styles: "text-red-500 hover:bg-red-50!",
     action: () => logout(),
     icon: "icon-chevron-left",
   },

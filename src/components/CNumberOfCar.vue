@@ -167,7 +167,7 @@ const getNumberStyle = computed(() => {
       <input
         v-maska="carNumberObj.mask"
         :value="modelValue"
-        class="w-[90%] h-full text-2xl font-bold outline-none uppercase bg-transparent"
+        class="w-[90%] h-full text-2xl font-bold outline-hidden uppercase bg-transparent"
         type="text"
         @input="handleInput"
       />
@@ -193,7 +193,7 @@ const getNumberStyle = computed(() => {
   height: 48px;
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  shrink: 0;
   border-radius: 8px;
   border: 2px solid #74807b;
   background: #fff;
@@ -249,7 +249,7 @@ input {
 
 .car-number--t,
 .car-number--m {
-  flex-shrink: 0;
+  shrink: 0;
   background: #54b057;
   border: none;
   padding: 3px;

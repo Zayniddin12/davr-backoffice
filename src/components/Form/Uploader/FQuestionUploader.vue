@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex-center-between w-full gap-4 relative p-2 rounded-lg bg-gray-100 !h-10"
+    class="flex-center-between w-full gap-4 relative p-2 rounded-lg bg-gray-100 h-10!"
     @dragover.prevent="handleDragOver"
     @drop.prevent="handleDrop"
     @dragenter.prevent="handleDragEnter"
@@ -20,7 +20,7 @@
     <div class="w-full max-w-[90%]">
       <div v-if="image?.url" class="flex-y-center gap-2">
         <div
-          class="w-6 h-6 rounded relative overflow-hidden border border-gray-800"
+          class="w-6 h-6 rounded-sm relative overflow-hidden border border-gray-800"
         >
           <img
             :src="image?.url"

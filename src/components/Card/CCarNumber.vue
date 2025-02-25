@@ -37,7 +37,7 @@ const { t } = useI18n();
         {{ t("not_entered") }}
       </p>
 
-      <div class="!ml-auto mr-[5px]">
+      <div class="ml-auto! mr-[5px]">
         <img src="/images/uz-flag.svg" alt="image of uzbek flag" />
         <img src="/images/uz-word.svg" alt="word of uz" class="mt-[2px]" />
       </div>
@@ -65,7 +65,7 @@ const { t } = useI18n();
         {{ t("not_entered") }}
       </p>
 
-      <div class="!ml-auto mr-[5px]">
+      <div class="ml-auto! mr-[5px]">
         <img src="/images/uz-flag.svg" alt="image of uzbek flag" />
         <img src="/images/uz-word.svg" alt="word of uz" class="mt-[2px]" />
       </div>
@@ -148,7 +148,7 @@ const { t } = useI18n();
   width: max-content;
   height: 24px;
   align-items: center;
-  flex-shrink: 0;
+  shrink: 0;
   border-radius: 4px;
   border: 1px solid #0f221b;
   background: #f5f7f7;
@@ -179,7 +179,7 @@ const { t } = useI18n();
 .car-number__three {
   width: 106px;
   height: 24px;
-  flex-shrink: 0;
+  shrink: 0;
   border-radius: 4px;
   background: #54b057;
   border: none;
