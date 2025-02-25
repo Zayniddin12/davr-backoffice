@@ -4,7 +4,7 @@ import { App } from "vue";
 import Toast from "vue-toastification";
 import CommonToast from "@/components/CToast.vue";
 import apiService from "@/services/ApiService";
-import Maska from "maska";
+// import Maska from "maska";
 import { createPinia } from "pinia";
 export default function definePlugins(app: App): App {
   apiService.init(app);

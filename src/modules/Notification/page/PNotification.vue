@@ -269,7 +269,7 @@ function geteDatas(data:{
           </template>
           <template #no-data>
             <CNodata
-              :title="$t('no_notifications_added')"
+              :title="$t('no_information_added')"
               :subtitle="$t('no_notifications_added_subtitle')"
               class="mt-8 px-6 pb-20 pt-0"
               :button-text="$t('add_notification')"
