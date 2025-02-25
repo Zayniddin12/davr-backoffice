@@ -12,7 +12,7 @@
       ]"
       @click="toggleSelect(!showOptions)"
     >
-<!--      <span class="text-gray-900 font-medium">Активность</span>-->
+      <!--      <span class="text-gray-900 font-medium">Активность</span>-->
       <slot name="selectedOption" :value="value">
         <div class="flex items-center justify-between">
           <div
@@ -24,7 +24,7 @@
             {{ placeholder ?? $t("select") }}
           </div>
         </div>
-    
+
         <slot name="chevron">
           <div
             class="flex-y-center gap-1.5"
@@ -47,7 +47,7 @@
         </slot>
       </slot>
     </div>
-    
+
     <!-- OPTIONS -->
     <Transition name="fade">
       <ul
@@ -193,7 +193,7 @@ function isActive(option: TOption) {
     option[props.valueKey as keyof typeof option] === value.value ||
     (typeof value.value === "object" &&
       option[props.valueKey as keyof typeof option] ===
-      value.value[props.valueKey])
+        value.value[props.valueKey])
   );
 }
 
@@ -216,4 +216,3 @@ onMounted(() => {
   });
 });
 </script>
-

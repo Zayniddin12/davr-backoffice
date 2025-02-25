@@ -1,12 +1,13 @@
 <template>
-  <CCard class="shrink-0 p-6" v-if="dataGps?.tabs?.length">
+  <CCard class="shrink-0 p-6" v-if="dataLawyer?.tabs?.length">
+    <pre>lawyer{{ dataLawyer }}</pre>
     <div class="flex justify-between mb-5">
       <div>
         <h4 class="text-xl text-dark font-semibold mb-1">
-          {{ $t("gps_activity") }}
+          {{ $t("lawyer_activity") }}
         </h4>
         <p class="text-gray-300 text-xs font-normal leading-130">
-          {{ $t("gps_activity_description") }}
+          {{ $t("lawyer_activity_description") }}
         </p>
       </div>
       <Tab
@@ -50,11 +51,11 @@ const { t } = useI18n();
 const dashboardStore = useDashboardStore();
 
 const loading = ref(true);
-const tabValue = ref("gps_installed");
-
+const tabValue = ref("confirmed");
+const dataLawyer = computed(() => dashboardStore.lawyer);
 // Tab ro'yxatini hisoblash
 const tabList = computed(() => {
-  return dashboardStore.gps.tabs.map((tab) => ({
+  return dashboardStore.lawyer.tabs.map((tab) => ({
     label: t(tab),
     value: tab,
   }));
@@ -225,7 +226,7 @@ watch(tabValue, (newTab) => {
 });
 
 const data = computed(() => {
-  return dashboardStore.gps.stats;
+  return dashboardStore.lawyer.stats;
 });
 
 watch(
@@ -245,14 +246,13 @@ onMounted(() => {
 
   loading.value = false;
 });
-const dataGps = computed(() => dashboardStore.gps);
 
 // chartSeries ni yangilash funksiyasi
 function updateChartSeries(activeTab: string) {
   // Bu yerda activeTab ga asoslangan holda chartSeries ni yangilash lozim
   // Masalan:
 
-  chartSeries.value = dashboardStore.gps.stats?.[activeTab];
+  chartSeries.value = dashboardStore.lawyer.stats?.[activeTab];
 }
 const formattedSeries = computed(() => {
   return [

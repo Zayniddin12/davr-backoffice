@@ -115,7 +115,7 @@ watch(
             />
           </nav>
         </template>
-        
+
         <template #no-data>
           <NoData
             :subtitle="$t('dashboard.active_user_not_found_subtitle')"
@@ -123,7 +123,7 @@ watch(
             image="/images/svg/no-data/no-notification.svg"
           />
         </template>
-        
+
         <!--      body  -->
         <template #index="{ row }">
           <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
@@ -144,13 +144,13 @@ watch(
               model: data?.car?.model_name,
               image: data?.car?.manufacturer_icon,
               name: data?.car?.manufacturer_name,
-              status: data?.car?.status
+              status: data?.car?.status,
             }"
           />
         </template>
         <template #now="{ row: data }">
           <span class="text-dark text-xs font-normal">
-            {{ data?.now ?? '-' }}
+            {{ data?.now ?? "-" }}
           </span>
         </template>
         <template #col_vo_station="{ row: data }">
@@ -179,8 +179,8 @@ watch(
               {{ dayjs(data?.start_date).format("DD.MM.YYYY") }}
             </span>
             <span class="text-gray-300 text-xs font-normal">{{
-                dayjs(data?.start_date).format("HH:mm")
-              }}</span>
+              dayjs(data?.start_date).format("HH:mm")
+            }}</span>
           </div>
         </template>
       </CTableWrapper>

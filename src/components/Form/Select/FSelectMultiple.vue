@@ -145,7 +145,7 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   labelKey: "name",
   valueKey: "id",
-  loading: true
+  loading: true,
 });
 
 const emit = defineEmits<{

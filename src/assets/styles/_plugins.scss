@@ -1,11 +1,11 @@
 .vue-tel-input {
   border-radius: 8px !important;
   border: 1px solid transparent !important;
-  background: var(--greys-grey-4-bg, #F7F9FA);
+  background: var(--greys-grey-4-bg, #f7f9fa);
   &:focus-within {
     box-shadow: none !important;
-    border-color: #16CC53 !important;
-    border: 1px solid var(--main-blue, #16CC53);
+    border-color: #16cc53 !important;
+    border: 1px solid var(--main-blue, #16cc53);
   }
   .vti__dropdown-arrow {
     display: none !important;
@@ -19,7 +19,7 @@
     border: none;
     background: transparent;
     margin: 0;
-    color: var(--main-dark, #080A15);
+    color: var(--main-dark, #080a15);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;

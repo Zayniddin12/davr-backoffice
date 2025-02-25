@@ -5,7 +5,5 @@
       "VERCEL_YARN_VERSION": "1.22.22"
     }
   },
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

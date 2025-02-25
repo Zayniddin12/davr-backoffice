@@ -1,6 +1,6 @@
 export interface ILoginPostData {
   username: string;
-  password: string
+  password: string;
 }
 
 export interface ILoginResponse {
@@ -35,7 +35,7 @@ export interface IFinishLoginPostData {
   };
 }
 export interface IFinishLoginResponse {
-  id:number;
+  id: number;
   access: string;
   refresh: string;
 }
@@ -45,7 +45,13 @@ export interface IUser {
   avatar_url: string;
   fullName: string;
   phone: string;
-  role: "credit_manager" | "boss" | "lawyer" | "gps_engineer" | "verifier" | "super_admin";
+  role:
+    | "credit_manager"
+    | "boss"
+    | "lawyer"
+    | "gps_engineer"
+    | "verifier"
+    | "super_admin";
   date_joined: string;
   is_active: boolean;
   is_birth_date: boolean;

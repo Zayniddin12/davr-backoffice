@@ -7,8 +7,11 @@
     <Transition name="dropdown">
       <div
         v-if="show"
-        class="absolute right-0 w-max min-w-full bg-white rounded-md overflow-hidden z-10 shadow-select top-[calc(100%+12px)] cursor-pointer"
-        :class="bodyClass"
+        class="absolute right-0 w-max min-w-full bg-white rounded-md overflow-hidden z-10 shadow-select cursor-pointer"
+        :class="[
+          bodyClass,
+          above ? 'bottom-[calc(100%+12px)]' : 'top-[calc(100%+12px)]',
+        ]"
         @click.stop="toggleShow"
       >
         <slot :data="{ show }" />
@@ -27,7 +30,7 @@ interface Props {
   headClass?: TClassName;
   headActiveClass?: TClassName;
   bodyClass?: TClassName;
-  above?: boolean;
+  above?: boolean; // Yangi props (pastda yoki tepada chiqishini belgilaydi)
 }
 defineProps<Props>();
 

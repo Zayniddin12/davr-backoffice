@@ -10,7 +10,7 @@
             {{ user?.fullName }}
           </p>
           <p class="text-sm text-gray-200 text-right">
-            {{ user?.username }} 
+            {{ user?.username }}
           </p>
         </div>
 
@@ -59,17 +59,17 @@ defineComponent({
 });
 
 interface Props {
-  user?:{
-    id: number,
-    username: string,
-    email: string,
-    fullName: string,
-    photoUrl: string,
-    hashedPassword: string,
-    role: string,
-    createdAt: string,
-    updatedAt:string
-};
+  user?: {
+    id: number;
+    username: string;
+    email: string;
+    fullName: string;
+    photoUrl: string;
+    hashedPassword: string;
+    role: string;
+    createdAt: string;
+    updatedAt: string;
+  };
   profileItems?: {
     title: string;
     class?: string;

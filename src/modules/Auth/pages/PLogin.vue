@@ -33,7 +33,7 @@ const step = ref(1);
 const form = useForm(
   {
     username: "",
-    password:""
+    password: "",
   },
   {
     username: {
@@ -45,17 +45,16 @@ const form = useForm(
   }
 );
 
-async function finishLogin() {  
+async function finishLogin() {
   try {
     apiService.setHeader();
     await store.fetchUserData();
     const user = computed(() => store.user);
-    if (user.value.role!="super_admin" && user.value.role!="boss") {
-      await router.push({ name: "PNotification" })
-     }else{
+    if (user.value.role != "super_admin" && user.value.role != "boss") {
+      await router.push({ name: "PNotification" });
+    } else {
       await router.push({ name: "PDashboard" });
-     }
-   
+    }
   } catch (err) {
     console.log(err);
   }

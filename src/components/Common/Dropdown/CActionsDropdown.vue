@@ -16,11 +16,12 @@ interface Props {
     };
   }[];
   role?: string;
+  isTop?: boolean;
   id: number;
 }
 const props = defineProps<Props>();
 
-const emit = defineEmits(["edit", "delete"]);
+const emit = defineEmits(["edit", "delete", "more"]);
 
 // User role propsga teng bo'lgan statuslarni emit qilish
 const emitEditStatus = () => {
@@ -39,11 +40,11 @@ const emitEditStatus = () => {
       break;
 
     case "verifier":
-      if (!props.status?.[1]?.status) {
+      if (!props.status?.[0]?.status) {
         emit("edit", "in_progress", props.id);
-      } else if (props.status[1].status === "in_progress") {
+      } else if (props.status[0].status === "in_progress") {
         emit("edit", "confirmed", props.id);
-      } else if (props.status[1].status === "confirmed") {
+      } else if (props.status[0].status === "confirmed") {
         emit("edit", "canceled", props.id);
       }
       break;
@@ -63,12 +64,10 @@ const emitEditStatus = () => {
       break;
   }
 };
-
-
 </script>
 
 <template>
-  <CDropdown class="w-7 mr-auto">
+  <CDropdown class="w-7 mr-auto" :above="isTop">
     <template #head>
       <div
         class="h-6 w-6 ml-auto nr-5 flex items-center justify-center gap-2.5 rounded-md bg-transparent group hover:bg-gray focus:bg-gray cursor-pointer transition-300"
@@ -86,13 +85,17 @@ const emitEditStatus = () => {
             @click="
               item.value === 'edit'
                 ? emitEditStatus()
-                : emit('delete', selectedItem)
+                : item.value === 'more'
+                ? emit('more', status)
+                : emit('delete', props.status)
             "
             class="min-w-[158px] h-11 cursor-pointer flex items-center p-3 gap-2 hover:bg-gray/40 transition-300 group"
             :class="item.class"
           >
             <i :class="item.icon" class="text-xl transition-300" />
-            <span class="text-sm font-medium text-dark-100 leading-normal capitalize">
+            <span
+              class="text-sm font-medium text-dark-100 leading-normal capitalize"
+            >
               {{ $t(item.label) }}
             </span>
           </div>

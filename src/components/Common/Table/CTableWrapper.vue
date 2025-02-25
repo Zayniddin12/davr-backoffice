@@ -26,38 +26,38 @@
     </CTableHeader>
     <slot name="filter" />
     <slot name="main">
-    <div class="w-full">
-      <Transition mode="out-in" name="fade">
-        <CTable
-          :key="loading"
-          :body-tr-class="trClass"
-          :current-page="currentPage"
-          :data="data"
-          :head="data?.length ? head : []"
-          :limit="limit"
-          :order-value="orderValue"
-          :loading="loading"
-          :td-class="tdClass"
-          :th-class="['bg-gray-800', thClass]"
-          :total="data?.length"
-          :type="type"
-          :statusColors="statusColors"
-          @sort="emit('sort', $event)"
-          @onRowClick="emit('onRowClick', $event)"
-        >
-          <template
-            v-for="(row, j) in head"
-            :key="j"
-            v-slot:[row?.key]="{ data }"
+      <div class="w-full">
+        <Transition mode="out-in" name="fade">
+          <CTable
+            :key="loading"
+            :body-tr-class="trClass"
+            :current-page="currentPage"
+            :data="data"
+            :head="data?.length ? head : []"
+            :limit="limit"
+            :order-value="orderValue"
+            :loading="loading"
+            :td-class="tdClass"
+            :th-class="['bg-gray-800', thClass]"
+            :total="data?.length"
+            :type="type"
+            :statusColors="statusColors"
+            @sort="emit('sort', $event)"
+            @onRowClick="emit('onRowClick', $event)"
           >
-            <slot v-if="row?.key" :name="`${row?.key}`" :row="data" />
-          </template>
-          <template #no-data>
-            <slot name="no-data" />
-          </template>
-        </CTable>
-      </Transition>
-    </div>
+            <template
+              v-for="(row, j) in head"
+              :key="j"
+              v-slot:[row?.key]="{ data }"
+            >
+              <slot v-if="row?.key" :name="`${row?.key}`" :row="data" />
+            </template>
+            <template #no-data>
+              <slot name="no-data" />
+            </template>
+          </CTable>
+        </Transition>
+      </div>
     </slot>
     <slot v-if="total > 10 || noFooter" name="footer">
       <Transition mode="out-in" name="dropdown">

@@ -32,7 +32,7 @@ class ApiService {
           {
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Refresh ${refresh}`, // Refresh token headerda yuboriladi
+              Authorization: `Refresh ${refresh}`, // Refresh token headerda yuboriladi
             },
           }
         )
@@ -63,9 +63,7 @@ class ApiService {
         originalRequest = error?.config;
 
         if (errorResponse?.status === 401) {
-          const isRefresh = originalRequest?.url?.includes(
-            "auth/refresh"
-          );
+          const isRefresh = originalRequest?.url?.includes("auth/refresh");
           if (isRefresh) {
             JwtService.destroyAccess();
             JwtService.destroyRefresh();
@@ -108,16 +106,25 @@ class ApiService {
     ApiService.vueInstance.axios.defaults.headers.common["Authorization"] = ``;
   }
 
-  public static query<T>(resource: string, params: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+  public static query<T>(
+    resource: string,
+    params: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
     return ApiService.vueInstance.axios.get(resource, {
       ...params,
-      headers: { "Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
     });
   }
 
-  public static get<R = any>(resource: string, slug = "" as string): Promise<AxiosResponse<R>> {
+  public static get<R = any>(
+    resource: string,
+    slug = "" as string
+  ): Promise<AxiosResponse<R>> {
     return ApiService.vueInstance.axios.get(`${resource}/${slug}`, {
-      headers: { "Content-Type": "application/json",  "ngrok-skip-browser-warning": "true",  },
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "true",
+      },
     });
   }
 
@@ -138,14 +145,10 @@ class ApiService {
     data?: T,
     params?: AxiosRequestConfig
   ): Promise<AxiosResponse<R>> {
-    return ApiService.vueInstance.axios.put(
-      `${resource}/${slug}`,
-      data,
-      {
-        ...params,
-        headers: { "Content-Type": "application/json", ...params?.headers },
-      }
-    );
+    return ApiService.vueInstance.axios.put(`${resource}/${slug}`, data, {
+      ...params,
+      headers: { "Content-Type": "application/json", ...params?.headers },
+    });
   }
 
   public static put<T = any, R = any>(
@@ -170,7 +173,10 @@ class ApiService {
     });
   }
 
-  public static delete<T = any>(resource: string, params?: T): Promise<AxiosResponse> {
+  public static delete<T = any>(
+    resource: string,
+    params?: T
+  ): Promise<AxiosResponse> {
     return ApiService.vueInstance.axios.delete(`${resource}`, {
       params,
       headers: { "Content-Type": "application/json" },

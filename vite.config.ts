@@ -8,10 +8,7 @@ const require = createRequire(import.meta.url);
 
 export default defineConfig({
   base: "/",
-  plugins: [
-    vue(),
-    eslintPlugin(),
-  ],
+  plugins: [vue(), eslintPlugin()],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),

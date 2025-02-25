@@ -38,7 +38,7 @@ const router = createRouter({
 router.beforeEach(async (to) => {
   const authStore = useAuthStore();
   const user = computed(() => authStore.user);
-  
+
   if (["404", "403", "500"].includes((to.name || "").toString())) {
     return true;
   }

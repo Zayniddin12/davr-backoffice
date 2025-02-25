@@ -1,6 +1,8 @@
 <template>
   <div class="w-[335px]">
-    <p class="text-3xl leading-130 font-semibold text-dark text-center capitalize">
+    <p
+      class="text-3xl leading-130 font-semibold text-dark text-center capitalize"
+    >
       {{ $t("enter_system") }}
     </p>
     <div class="mt-8">
@@ -15,15 +17,19 @@
       </SFormGroup>
       <SFormGroup class="mb-4" :label="$t('password')">
         <SInput
-        :type="isPassword ? 'password':'text'"
+          :type="isPassword ? 'password' : 'text'"
           :error="form.$v.value.password?.$error || isError"
           :placeholder="$t('enter_password')"
           v-model="form.values.password"
           :prefix-class="'text-sm pr-1'"
         >
-        <template #suffix>
-          <span @click="isPassword=!isPassword" :class="isPassword ? 'icon-close-eye':'icon-eye'" class="cursor-pointer transition-300"></span>
-        </template>
+          <template #suffix>
+            <span
+              @click="isPassword = !isPassword"
+              :class="isPassword ? 'icon-close-eye' : 'icon-eye'"
+              class="cursor-pointer transition-300"
+            ></span>
+          </template>
         </SInput>
       </SFormGroup>
       <SButton
@@ -50,7 +56,7 @@ import { useAuthStore } from "@/modules/Auth/stores";
 interface Props {
   form: TForm<any>;
 }
-const isPassword=ref(true)
+const isPassword = ref(true);
 const props = defineProps<Props>();
 const emit = defineEmits(["submit", "on-block"]);
 const store = useAuthStore();
@@ -64,32 +70,31 @@ const loading = ref(false);
 
 async function submit() {
   form.$v.value.$touch();
-  
-    if (!form.$v.value.$invalid) {
-      console.log('login');
-      
-      isError.value = false;
-      try {
-        loading.value = true;
-        await store.login(form.values);
-        emit("submit");
-      } catch (err) {
-        if (err?.response?.status === 429) {
-          emit("on-block");
-          store.blockedTime = +err?.response?.headers["retry-after"];
-        }
-        isError.value = true;
-        showToast(
-          err?.response?.data?.[0]?.error?.message ||
-            err?.response?.data?.errors[0]?.message ||
-            t("check_login_password"),
-          "error"
-        );
-      } finally {
-        loading.value = false;
+
+  if (!form.$v.value.$invalid) {
+    console.log("login");
+
+    isError.value = false;
+    try {
+      loading.value = true;
+      await store.login(form.values);
+      emit("submit");
+    } catch (err) {
+      if (err?.response?.status === 429) {
+        emit("on-block");
+        store.blockedTime = +err?.response?.headers["retry-after"];
       }
+      isError.value = true;
+      showToast(
+        err?.response?.data?.[0]?.error?.message ||
+          err?.response?.data?.errors[0]?.message ||
+          t("check_login_password"),
+        "error"
+      );
+    } finally {
+      loading.value = false;
     }
-  
+  }
 }
 
 watch(

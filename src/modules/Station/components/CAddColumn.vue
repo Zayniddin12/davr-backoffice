@@ -247,7 +247,7 @@ import { useCustomToast } from "@/composables/useCustomToast";
 import { useRoute } from "vue-router";
 import { useHandleError } from "@/composables/useHandleError";
 import FSelect from "@/components/Form/Select/FSelect.vue";
-import CSelectLoading from "@/components/CSelectLoading.vue"
+import CSelectLoading from "@/components/CSelectLoading.vue";
 
 const emit = defineEmits(["close", "fetch"]);
 const props = defineProps<{

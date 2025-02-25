@@ -25,10 +25,9 @@ const { t } = useI18n();
 const { handleError } = useHandleError();
 import { useAuthStore } from "@/modules/Auth/stores";
 
-
 const store = useAuthStore();
 
-const user = computed(() => store.user);  
+const user = computed(() => store.user);
 const routes = computed(() => [
   {
     name: t("accounts"),
@@ -39,8 +38,6 @@ const route = useRoute();
 const { showToast } = useCustomToast();
 const router = useRouter();
 const isLoading = ref(false);
-
-
 
 const {
   tableData,
@@ -67,21 +64,24 @@ function deleteNotification(id: any) {
       isLoading.value = false;
     });
 }
-const newUserHead=ref<{title:string, key:string}[]>()
-watch(user, ()=>{
-  newUserHead.value=usersHead
-if (user.value.role!=="super_admin") {
-  newUserHead.value=usersHead.filter((item, index)=>index!==5)
-}
-},{deep:true, immediate:true})
-
+const newUserHead = ref<{ title: string; key: string }[]>();
+watch(
+  user,
+  () => {
+    newUserHead.value = usersHead;
+    if (user.value.role !== "super_admin") {
+      newUserHead.value = usersHead.filter((item, index) => index !== 5);
+    }
+  },
+  { deep: true, immediate: true }
+);
 </script>
 
 <template>
   <Teleport v-if="mounted" to="#header-breadcrumbs">
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
-    <div class="p-6 bg-white rounded-xl w-full h-full">
+  <div class="p-6 bg-white rounded-xl w-full h-full">
     <div>
       <CCard>
         <CTableWrapper
@@ -99,9 +99,9 @@ if (user.value.role!=="super_admin") {
           th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px] last:!max-w-[100px]"
         >
           <template #id="{ row }">
-            <span class="font-semibold text-sm text-dark"
-              >{{ row?._index }}</span
-            >
+            <span class="font-semibold text-sm text-dark">{{
+              row?._index
+            }}</span>
           </template>
           <template #name="{ row: data }">
             <span
@@ -129,7 +129,7 @@ if (user.value.role!=="super_admin") {
           </template>
           <template #afterSearch>
             <CButton
-            v-if="user.role==='super_admin'"
+              v-if="user.role === 'super_admin'"
               :text="$t('add')"
               icon="icon-plus"
               class="flex items-center py-2 px-4 gap-2"

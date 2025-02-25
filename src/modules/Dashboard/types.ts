@@ -18,11 +18,11 @@ interface IPopularCourse {
 }
 
 export interface ChargingStationStats {
-  lawyer: number,
-  boss: number,
-  verifier: number,
-  gps_engineer: number,
-  credit_manager: number,
+  lawyer: number;
+  boss: number;
+  verifier: number;
+  gps_engineer: number;
+  credit_manager: number;
 }
 
 export interface ICard {

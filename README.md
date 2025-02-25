@@ -1,11 +1,8 @@
 # davr-info back-office
 
-
-
 ## Getting started
-This project serves as a back-office for davr info. 
 
-
+This project serves as a back-office for davr info.
 
 ```
 cd existing_repo
@@ -15,6 +12,7 @@ git push -uf origin master
 ```
 
 ### 1. Building guide
+
 - Use NodeJS version 18.0.0
 - Clone the project
 - Install dependencies: `npm install or yarn`
@@ -23,6 +21,7 @@ git push -uf origin master
 - Run the project: `npm run serve or yarn serve`
 
 ### 2. Project structure
+
 - `src` - project root folder
 - `src/assets` - project assets: images, fonts, etc.
 - `src/components` - project components
@@ -36,24 +35,28 @@ git push -uf origin master
 - `src/utils` - project utils
 
 ### 3. Project configuration
+
 - `src/configs` - project configuration files
 - `src/configs/axios.config.js` - axios configuration
 
 ### 4. Project environment variables
+
 - `VITE_PUBLIC_API_URL` - API URL
 - `VITE_PUBLIC_API_KEY` - API key
 
 ### 5. Project dependencies
+
 - `axios` - Promise based HTTP client for the browser and node.js
 
-
 ### 6. Project dev dependencies
+
 - `eslint` - ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code
 - `eslint-config-prettier` - Turns off all rules that are unnecessary or might conflict with Prettier
 - `eslint-plugin-import` - ESLint plugin with rules that help validate proper imports
 - `eslint-plugin-prettier` - Runs prettier as an eslint rule
 
 ### 7. Project scripts
+
 - `dev` - run the project in development mode
 - `build` - build the project
 - `serve` - serve the project

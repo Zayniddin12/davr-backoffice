@@ -1,9 +1,11 @@
 <template>
-  <div class="bg-[#F5F6F7]  w-full flex">
+  <div class="bg-[#F5F6F7] w-full flex">
     <CSidebar />
 
     <!-- Asosiy kontentni o'z ichiga oluvchi div -->
-    <div class="flex flex-col w-full min-h-[calc(100vh-558px)] overflow-hidden relative">
+    <div
+      class="flex flex-col w-full min-h-[calc(100vh-558px)] overflow-hidden relative"
+    >
       <CHeader v-bind="{ activeRoute }" class="flex-shrink-0 w-full" />
 
       <!-- Faqatgina slot skroll bo'lishi uchun -->
@@ -17,10 +19,12 @@
       >
         made by:
         <a
-        href="https://digitalaggregator.team/website"
-        target="_blank"
-         class="text-primary opacity-50 group-hover:opacity-100 transition-300">digitalaggregator.team</a>
-    </div>
+          href="https://digitalaggregator.team/website"
+          target="_blank"
+          class="text-primary opacity-50 group-hover:opacity-100 transition-300"
+          >digitalaggregator.team</a
+        >
+      </div>
     </div>
   </div>
 </template>

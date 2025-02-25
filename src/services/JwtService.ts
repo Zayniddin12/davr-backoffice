@@ -1,6 +1,6 @@
 const ID_TOKEN_KEY = "id_token" as string;
 const REFRESH_KEY = "refresh" as string;
-const ID_TOKEN="id" as string
+const ID_TOKEN = "id" as string;
 export class JwtService {
   static getId = (): string | null => {
     return window.localStorage.getItem(ID_TOKEN);

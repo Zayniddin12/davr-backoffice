@@ -7,7 +7,7 @@
         { '!border-red': error },
         { 'border !border-primary !bg-transparent': showOptions },
       ]"
-      class="transition-200 h-10 inline-flex items-center justify-between relative bg-gray rounded-lg border border-transparent overflow-hidden w-full p-2.5 px-3 "
+      class="transition-200 h-10 inline-flex items-center justify-between relative bg-gray rounded-lg border border-transparent overflow-hidden w-full p-2.5 px-3"
       @click="toggleSelect(!showOptions)"
     >
       <slot :value="value" name="selectedOption">
@@ -112,7 +112,11 @@
 </template>
 
 <script lang="ts" setup>
-import { onClickOutside, useIntersectionObserver, useToString } from "@vueuse/core";
+import {
+  onClickOutside,
+  useIntersectionObserver,
+  useToString,
+} from "@vueuse/core";
 import { onMounted, ref, watch } from "vue";
 
 export type TOption = string | number | { [key: string]: string | number };

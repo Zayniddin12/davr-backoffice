@@ -6,7 +6,7 @@
           class="mb-1 text-xl leading-[22px] font-bold text-dark whitespace-nowrap notifications added capitalize"
           :class="titleClass"
         >
-          {{ title }} 
+          {{ title }}
         </h2>
         <p class="text-xs leading-normal font-normal text-gray-100 capitalizde">
           {{ subtitle }}

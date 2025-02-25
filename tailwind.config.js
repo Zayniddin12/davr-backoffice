@@ -1,4 +1,4 @@
-const colors=require('tailwindcss/colors')
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
@@ -24,13 +24,13 @@ module.exports = {
           400: "#F5F6F7",
           600: "#74807B",
           700: "#F2F2F7",
-          800:"#D4D4D8",
+          800: "#D4D4D8",
         },
         green: {
           DEFAULT: "#20CC65",
           100: "#1CB57A",
           200: "#1BAD55",
-          300:"#00BC7D"
+          300: "#00BC7D",
         },
         blue: {
           DEFAULT: "#0EDCFE",
@@ -47,7 +47,7 @@ module.exports = {
           100: "#FEF5F5",
           200: "#E93B50",
           300: "#AD2324",
-          400:"#FB2C36"
+          400: "#FB2C36",
         },
         yellow: {
           DEFAULT: "#F2B33A",

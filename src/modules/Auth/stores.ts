@@ -17,18 +17,17 @@ export const useAuthStore = defineStore("authStore", {
     requestOtpResponse: {} as IRequestOtpResponse,
     profileLoading: true,
     blockedTime: 0,
-    id:NaN as number
+    id: NaN as number,
   }),
   actions: {
     login(params: ILoginPostData) {
       return new Promise((resolve, reject) => {
         apiService
           .post<ILoginPostData, ILoginResponse>("/auth/sign-in", {
-          "username": params.username,
-            "password": params.password
-          }
-          )
-          .then((res) => {            
+            username: params.username,
+            password: params.password,
+          })
+          .then((res) => {
             JwtService.saveId(res?.data?.id);
             JwtService.saveToken(res?.data?.tokens?.access);
             JwtService.saveRefreshToken(res?.data?.tokens?.refresh);
@@ -48,7 +47,7 @@ export const useAuthStore = defineStore("authStore", {
             type_: "backoffice_login_sms_verification",
             session: this.loginResponse?.session,
           })
-          .then((res) => {            
+          .then((res) => {
             resolve(res);
           })
           .catch((err) => {
@@ -61,12 +60,12 @@ export const useAuthStore = defineStore("authStore", {
       JwtService.saveRefreshToken(tokens.refresh);
     },
     fetchUserData() {
-      const id=JwtService.getId()
+      const id = JwtService.getId();
       apiService.setHeader();
       this.profileLoading = true;
       return new Promise((resolve, reject) => {
         apiService
-        .get<IUser>(`/users/${id}`)
+          .get<IUser>(`/users/${id}`)
           .then((res) => {
             this.user = res.data;
             resolve(res);

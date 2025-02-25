@@ -1,18 +1,18 @@
 <template>
   <div class="flex items-center space-x-[6px]">
     <Select
-        selected-option-styles="!py-2 !bg-gray flex gap-20"
-        inputClasses="!text-dark text-sm font-normal leading-130"
-        :options="startOptions"
-        value-key="id"
-        :disabled="disabled"
-        label-key="title"
-        :model-value="startTime"
-        @update:model-value="handleUpdateStart"
-        :placeholder="placeholder"
-        :is-custom="isCustom"
-    ><template #chevron
-    ><span class="icon-icon-clock text-gray-100" /></template
+      selected-option-styles="!py-2 !bg-gray flex gap-20"
+      inputClasses="!text-dark text-sm font-normal leading-130"
+      :options="startOptions"
+      value-key="id"
+      :disabled="disabled"
+      label-key="title"
+      :model-value="startTime"
+      @update:model-value="handleUpdateStart"
+      :placeholder="placeholder"
+      :is-custom="isCustom"
+      ><template #chevron
+        ><span class="icon-icon-clock text-gray-100" /></template
     ></Select>
   </div>
 </template>
@@ -38,14 +38,14 @@ const startOptions = ref(generateTime());
 const startTime = ref(startOptions.value[0]);
 
 watch(
-    () => props.modelValue,
-    () => {
-      if (!props.modelValue) return;
-      startTime.value = startOptions.value.find(
-          (item) => item.id === props.modelValue
-      );
-    },
-    { deep: true, immediate: true }
+  () => props.modelValue,
+  () => {
+    if (!props.modelValue) return;
+    startTime.value = startOptions.value.find(
+      (item) => item.id === props.modelValue
+    );
+  },
+  { deep: true, immediate: true }
 );
 
 function generateTime() {
@@ -62,11 +62,11 @@ const handleUpdateStart = (value: string | number) => {
   emit("startTime", value);
 };
 watch(
-    () => startTime.value,
-    (value) => {
-      emit("startTime", value?.id);
-    },
-    { deep: true }
+  () => startTime.value,
+  (value) => {
+    emit("startTime", value?.id);
+  },
+  { deep: true }
 );
 </script>
 

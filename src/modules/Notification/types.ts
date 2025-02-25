@@ -1,17 +1,17 @@
 export interface INotification {
   user: {
-    fullName: string,
-    pinfl: number,
-    clientId:string
-  },
+    fullName: string;
+    pinfl: number;
+    clientId: string;
+  };
   bank: {
-    branch: string
-  },
+    branch: string;
+  };
   car: {
-    number: string,
-    vinCode: string,
-    brand: string,
-    model: string
-  },
-  files: string
+    number: string;
+    vinCode: string;
+    brand: string;
+    model: string;
+  };
+  files: string;
 }

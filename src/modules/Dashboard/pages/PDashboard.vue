@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pb-20">
     <Teleport v-if="mounted" to="#header-breadcrumbs">
       <SBreadcrumb v-bind="{ routes }" />
     </Teleport>
@@ -39,10 +39,12 @@
           :card="card"
         />
       </div>
-      <div class="w-full grid grid-cols-4 gap-5">
-        <CLineChart :data="mainStore.appUsageStats" class="col-span-2" />
+      <div class="w-full grid grid-cols-1  gap-5">
+        <CLineChart />
+        <CLineVerifierChart />
+        <CLineLawyerChart />
         <!-- <CGenderChart :data="genderChartData" class="col-span-1" /> -->
-        <CAgeChart :data="ageChartData" class="col-span-1" />
+        <!-- <CAgeChart :data="ageChartData" class="col-span-1" /> -->
       </div>
     </main>
   </div>
@@ -53,10 +55,10 @@ import { useMounted } from "@/composables/useMounted";
 import SBreadcrumb from "@/components/Common/CBreadcrumb.vue";
 import { useI18n } from "vue-i18n";
 import { computed, reactive, ref, onMounted, watch } from "vue";
-import CAgeChart from "@/components/Charts/CAgeChart.vue";
 import CLineChart from "@/components/Charts/CLineChart.vue";
+import CLineVerifierChart from "@/components/Charts/CLineVerifierChart.vue";
+import CLineLawyerChart from "@/components/Charts/CLineLawyerChart.vue";
 import CInfoCard from "@/modules/Dashboard/components/CInfoCard.vue";
-import FInputRangePick from "@/components/Form/Input/FInputRangePick.vue";
 import ApiService from "@/services/ApiService";
 import { ChargingStationStats } from "@/modules/Dashboard/types";
 import { useDashboardStore } from "@/modules/Dashboard/store";
@@ -207,21 +209,19 @@ function selectDateType(item: number) {
   });
 }
 const getDashboardCount = async () => {
-    try {
-      const res = await ApiService.get<ChargingStationStats>(
-        `/statistics/users`
-      );
-      console.log(res?.data);
-      
-      staticsCards[0].count = res.data.verifier;
-      staticsCards[1].count = res.data.boss;
-      staticsCards[2].count = res.data.lawyer;
-      staticsCards[3].count = res.data.credit_manager;
-      staticsCards[4].count = res.data.gps_engineer;
-    } catch (error) {
-      console.log(error);
-    }
-  } ;
+  try {
+    const res = await ApiService.get<ChargingStationStats>(`/statistics/users`);
+    console.log(res?.data);
+
+    staticsCards[0].count = res.data.verifier;
+    staticsCards[1].count = res.data.boss;
+    staticsCards[2].count = res.data.lawyer;
+    staticsCards[3].count = res.data.credit_manager;
+    staticsCards[4].count = res.data.gps_engineer;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 watch(
   route,

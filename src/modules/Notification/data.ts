@@ -1,6 +1,5 @@
 import { IActionType } from "@/components/Common/Dropdown/CActionsDropdown.types";
 
-
 export const notificationHead = (userRole: string) => {
   const actions = [
     {
@@ -31,67 +30,65 @@ export const notificationHead = (userRole: string) => {
       title: "model_of_car",
       key: "model_of_car",
     },
-    {
-      title: "user_id",
-      key: "user_id",
-    },
-    {
-      title: "filial_of_bank",
-      key: "filial_of_bank",
-    },
-    {
-      title: "files",
-      key: "files",
-    }
   ];
 
-  if (
-    "gps_engineer"==userRole
-  ) {
+  if ("gps_engineer" == userRole) {
     actions.push({
       title: "gps_situation",
       key: "gps_situation",
-    },);
-  } 
-  if (
-    "lawyer"==userRole
-  ) {
+    });
+  }
+  if (["super_admin", "boss", "credit_manager"].includes(userRole)) {
+    actions.push(
+      {
+        title: "user_id",
+        key: "user_id",
+      },
+      {
+        title: "filial_of_bank",
+        key: "filial_of_bank",
+      },
+      {
+        title: "files",
+        key: "files",
+      }
+    );
+  }
+  if ("lawyer" == userRole) {
     actions.push({
       title: "lawyer_situation",
       key: "lawyer_situation",
     });
   }
-  if (
-    "verifier"==userRole
-  ) {
+  if ("verifier" == userRole) {
     actions.push({
       title: "verifier_situation",
       key: "verifier_situation",
     });
   }
-  if (
-    ["super_admin", "boss"].includes(userRole)
-  ) {
-    actions.push({
-      title: "gps_situation",
-      key: "gps_situation",
-    },{
-      title: "verifier_situation",
-      key: "verifier_situation",
-    },{
-      title: "lawyer_situation",
-      key: "lawyer_situation",
-    });
+  if (["super_admin", "boss"].includes(userRole)) {
+    actions.push(
+      {
+        title: "gps_situation",
+        key: "gps_situation",
+      },
+      {
+        title: "verifier_situation",
+        key: "verifier_situation",
+      },
+      {
+        title: "lawyer_situation",
+        key: "lawyer_situation",
+      }
+    );
   }
-  actions.push(
-    {
-      title:"action",
-      key:"action"
-    })
+  actions.push({
+    title: "action",
+    key: "action",
+  });
 
   return actions;
 };
-
 
 export const usersHead = [
   {
@@ -113,7 +110,7 @@ export const usersHead = [
   {
     title: "date_create",
     key: "date_create",
-  }
+  },
 ];
 export const mainModelHead = [
   {
@@ -184,20 +181,23 @@ export const chargerHead = [
   },
 ];
 
-export const exchangeActions = (userRole: string, row: any, status?: {
-  statusId: number;
-  status: string;
-  createdAt: string;
-  updateAt: null;
-  user: {
-    id: number;
-    fullName: string;
-    role: string;
-  };
-}[]): IActionType[] => {
-  const actions: IActionType[] = [
-
-  ];
+export const exchangeActions = (
+  userRole: string,
+  row: any,
+  status?: {
+    statusId: number;
+    status: string;
+    createdAt: string;
+    updateAt: null;
+    user: {
+      id: number;
+      fullName: string;
+      role: string;
+    };
+  }[]
+): IActionType[] => {
+  const actions: IActionType[] = [];
+  console.log(console.log("userRole:", userRole));
 
   if (userRole === "gps_engineer") {
     if (!status?.length) {
@@ -214,31 +214,34 @@ export const exchangeActions = (userRole: string, row: any, status?: {
         icon: "icon-download !text-green",
         class: "hover:!bg-green/20 !text-green",
       });
-    } else if (status?.[0]?.status === "canceled" && status?.[1]?.status!=="confirmed") {
+    } else if (
+      status?.[0]?.status === "canceled" &&
+      status?.[1]?.status !== "confirmed"
+    ) {
       actions.push({
         label: "uninstall",
         value: "edit",
         icon: "icon-fold-download !text-yellow",
-        class: "hover:!bg-yellow/20 !text-yellow",
+        class: "hover:bg-yellow/20! !text-yellow",
       });
     }
   }
   if (userRole === "verifier") {
-    if (!status?.[1]?.status && status?.[0]?.status=="gps_installed") {
+    if (!status?.[0]?.status) {
       actions.push({
         label: "recieve",
         value: "edit",
         icon: "icon-checked !text-primary",
         class: "hover:!bg-primary/20 !text-primary",
       });
-    } else if (status?.[1]?.status === "in_progress") {
+    } else if (status?.[0]?.status === "in_progress") {
       actions.push({
         label: "confirm",
         value: "edit",
         icon: "icon-checked !text-green text-lg",
-        class: "hover:!bg-green/20 !text-green",
+        class: "!hover:bg-green/20 !text-green",
       });
-    } else if (status?.[1]?.status === "confirmed") {
+    } else if (status?.[0]?.status === "confirmed") {
       actions.push({
         label: "unconfirm",
         value: "edit",
@@ -249,21 +252,21 @@ export const exchangeActions = (userRole: string, row: any, status?: {
   }
 
   if (userRole === "lawyer") {
-    if (!status?.[2]?.status && status?.[1]?.status=="confirmed") {
+    if (!status?.[0]?.status) {
       actions.push({
         label: "recieve",
         value: "edit",
         icon: "icon-checked !text-primary",
         class: "hover:!bg-primary/20 !text-primary",
       });
-    } else if (status?.[2]?.status === "in_progress") {
+    } else if (status?.[0]?.status === "in_progress") {
       actions.push({
         label: "confirm",
         value: "edit",
         icon: "icon-checked !text-green text-lg",
         class: "hover:!bg-green/20 !text-green",
       });
-    } else if (status?.[2]?.status === "confirmed") {
+    } else if (status?.[0]?.status === "confirmed") {
       actions.push({
         label: "unconfirm",
         value: "edit",
@@ -272,23 +275,17 @@ export const exchangeActions = (userRole: string, row: any, status?: {
       });
     }
   }
-
-  if (
-    ["gps_engineer", "verifier", "lawyer"].includes(userRole) &&
-    row?.statuses?.[0]?.status === "initiated"
-  ) {
+  if (["boss", "super_admin"].includes(userRole) && status?.length) {
     actions.push({
-      label: "get",
-      value: "edit",
-      icon: "icon-get !text-red",
-      class: "hover:!bg-primary/20 !text-primary",
+      label: "more_info",
+      value: "more",
+      icon: "icon-info-circle !text-dark",
+      class: "hover:!bg-yellow/20 !text-dark",
     });
   }
 
   return actions;
 };
-
-
 
 export const tabListLanguage = [
   {

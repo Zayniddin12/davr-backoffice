@@ -22,8 +22,7 @@
         <div
           :class="{ 'opacity-0 invisible !w-0': !isOpen && !hovered }"
           class="relative overflow-hidden transition-300 w-[211px]"
-        >
-        </div>
+        ></div>
         <div
           class="cursor-pointer w-6 h-6 flex items-center justify-center transition-300"
           @click="toggleSidebar"
@@ -168,12 +167,18 @@
     </div>
 
     <div class="p-5 relative z-10" v-if="isOpen || hovered">
-      <a :href="'https://t.me/nodirbekrajaboff'" target="_blank" class="cursor-pointer transition-all duration-500">
-  <div class="bg-white/5 px-3.5 mb-6 py-2 rounded-lg flex items-center justify-between">
-    <p class="text-gray text-xs font-normal">{{ $t("support") }}</p>
-    <span class="icon-support text-gray"></span>
-  </div>
-</a>
+      <a
+        :href="'https://t.me/nodirbekrajaboff'"
+        target="_blank"
+        class="cursor-pointer transition-all duration-500"
+      >
+        <div
+          class="bg-white/5 px-3.5 mb-6 py-2 rounded-lg flex items-center justify-between"
+        >
+          <p class="text-gray text-xs font-normal">{{ $t("support") }}</p>
+          <span class="icon-support text-gray"></span>
+        </div>
+      </a>
     </div>
   </div>
 </template>
@@ -186,7 +191,6 @@ import { useAuthStore } from "@/modules/Auth/stores";
 const store = useAuthStore();
 const user = computed(() => store.user);
 
-
 import { IMenu, menu } from "@/data/menu";
 import { useRoute, useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
@@ -196,7 +200,7 @@ const openIndex = ref<number>();
 const isOpen = ref(true);
 const hovered = ref(false);
 const route = useRoute();
-const {t} =useI18n()
+const { t } = useI18n();
 const location = computed(() => route.path);
 
 function openMenu(index?: number) {
@@ -206,16 +210,22 @@ function openMenu(index?: number) {
     openIndex.value = index;
   }
 }
-const newMenus=ref<IMenu[]>()
+const newMenus = ref<IMenu[]>();
 
-watch(user, ()=>{
-newMenus.value=menu
+watch(
+  user,
+  () => {
+    newMenus.value = menu;
 
-if (user.value.role!="super_admin" && user.value.role!="boss") {
-  newMenus.value=newMenus.value.filter((item, index)=>index!==0 && index!==2)
-}
-checkIndexActive();
-},{deep:true, immediate:true})
+    if (user.value.role != "super_admin" && user.value.role != "boss") {
+      newMenus.value = newMenus.value.filter(
+        (item, index) => index !== 0 && index !== 2
+      );
+    }
+    checkIndexActive();
+  },
+  { deep: true, immediate: true }
+);
 
 function checkIndexActive() {
   newMenus.value?.forEach((el, index) => {
@@ -235,7 +245,6 @@ const profileItems = [
   },
 ];
 
-
 function isActiveSub(arr?: IMenu[]) {
   return arr?.find((el) => el?.route === location.value);
 }
@@ -244,7 +253,7 @@ const toggleSidebar = () => {
   isOpen.value = !isOpen.value;
 
   if (!isOpen.value) {
-    hovered.value = false;  
+    hovered.value = false;
     isOpen.value = false;
   }
 };
