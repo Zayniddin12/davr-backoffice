@@ -111,7 +111,7 @@ class ApiService {
   public static query<T>(resource: string, params: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return ApiService.vueInstance.axios.get(resource, {
       ...params,
-      headers: { "Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json", "ngrok-skip-browser-warning": "true"},
     });
   }
 

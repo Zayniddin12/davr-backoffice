@@ -198,6 +198,7 @@ export const exchangeActions = (userRole: string, row: any, status?: {
   const actions: IActionType[] = [
 
   ];
+  console.log(console.log("userRole:", userRole));
 
   if (userRole === "gps_engineer") {
     if (!status?.length) {
@@ -221,14 +222,7 @@ export const exchangeActions = (userRole: string, row: any, status?: {
         icon: "icon-fold-download text-yellow!",
         class: "hover:bg-yellow/20! text-yellow!",
       });
-    } else if(["boss", "super_admin"].includes(userRole)){
-      actions.push({
-        label: "more_info",
-        value: "more",
-        icon: "icon-info-circle !text-dark",
-        class: "hover:!bg-yellow/20 !text-dark",
-      });
-    }
+    } 
   }
   if (userRole === "verifier") {
     if (!status?.[1]?.status && status?.[0]?.status=="gps_installed") {
@@ -279,18 +273,17 @@ export const exchangeActions = (userRole: string, row: any, status?: {
       });
     }
   }
-
-  if (
-    ["gps_engineer", "verifier", "lawyer"].includes(userRole) &&
-    row?.statuses?.[0]?.status === "initiated"
-  ) {
+  if(["boss", "super_admin"].includes(userRole)){
+    console.log('ferfe');
+    
     actions.push({
-      label: "get",
-      value: "edit",
-      icon: "icon-get text-red!",
-      class: "hover:bg-primary/20! text-primary!",
+      label: "more_info",
+      value: "more",
+      icon: "icon-info-circle !text-dark",
+      class: "hover:!bg-yellow/20 !text-dark",
     });
   }
+
 
   return actions;
 };

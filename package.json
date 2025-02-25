@@ -57,6 +57,7 @@
     "@vue/eslint-config-typescript": "^14.4.0",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
+    "autoprefixer": "^10.4.20",
     "babel-loader": "^9.2.1",
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.0.1",
