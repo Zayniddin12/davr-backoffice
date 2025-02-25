@@ -25,7 +25,7 @@ const emit = defineEmits(["openCheck"]);
     <CDialog
       :show="show"
       :title="$t('charging_history_modal.title')"
-      body-class="w-[540px]!"
+      body-class="!w-[540px]"
       @close="() => $emit('close')"
     >
       <template #default>
@@ -281,7 +281,7 @@ const emit = defineEmits(["openCheck"]);
             :text="$t('charging_history_modal.show_check')"
             @click="[emit('openCheck'), emit('close')]"
           >
-            <span class="text-primary!">{{
+            <span class="text-primary">{{!
               $t("charging_history_modal.show_check")
             }}</span>
           </CButton>

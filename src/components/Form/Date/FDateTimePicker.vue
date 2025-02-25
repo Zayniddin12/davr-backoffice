@@ -1,6 +1,6 @@
 <template>
   <div class="c-date-time-picker relative">
-    <!-- Date and Time Picker -->
+    <--! Date and Time Picker -->
     <VueDatePicker
       v-bind="{ range, yearRange, formatLocale }"
       ref="dateTimePicker"
@@ -31,7 +31,7 @@
       @update:model-value="onChangeValue"
     >
       <template #dp-input>
-        <!-- Custom Input Field -->
+        <--! Custom Input Field -->
         <FInput
           v-bind="{ error }"
           :mask="inputMask"
@@ -45,7 +45,7 @@
       </template>
     </VueDatePicker>
 
-    <!-- Clear and Toggle Buttons -->
+    <--! Clear and Toggle Buttons -->
     <div class="flex-center absolute-y right-0">
       <button
         v-if="pickerValue"
@@ -133,7 +133,7 @@ const toggleMenu = () => {
   showMenu.value
     ? dateTimePicker.value?.closeMenu()
     : dateTimePicker.value?.openMenu();
-  showMenu.value = !showMenu.value;
+  showMenu.value = showMenu.value;!
 };
 
 // Adjusted input mask and placeholder to include time
@@ -158,7 +158,7 @@ const onChangeValue = (val: string) => {
 
 // Adjusted pickerValue to handle date and time
 const pickerValue = computed(() => {
-  if (!props.modelValue) return undefined;
+  if (props.modelValue)! return undefined;
 
   if (props.range) {
     const [start, end] = props.modelValue.split(" - ");
@@ -180,14 +180,14 @@ const pickerValue = computed(() => {
 
 <style>
 .c-date-time-picker .dp__overlay_container {
-  height: 288px !important;
+  height: 288px important;!
 }
 
 .c-date-time-picker .dp__input {
-  padding: 8px 12px !important;
+  padding: 8px 12px important;!
 }
 
 .c-date-time-picker .dp__input_wrap svg {
-  display: none !important;
+  display: none important;!
 }
 </style>

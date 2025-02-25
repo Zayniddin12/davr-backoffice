@@ -48,7 +48,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   size: 24,
   btnStyles:
-    "group-hover:border-green peer-checked:border-green peer-checked:before:bg-white!",
+    "group-hover:border-green peer-checked:border-green peer-checked:before:bg-white",!
 });
 
 const emit = defineEmits<{
@@ -65,6 +65,6 @@ const computedSize = computed(() => props.size + "px");
 const computedBtnSize = computed(() => +props.size * 0.5 + "px");
 
 const computedBtnStyles = computed(() =>
-  !props.disabled ? props.btnStyles : "peer-checked:before:bg-gray-100!"
+  props.disabled! ? props.btnStyles : "peer-checked:before:bg-gray-100"!
 );
 </script>

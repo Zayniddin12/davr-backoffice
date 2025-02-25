@@ -149,7 +149,7 @@ onMounted(() => {
             count: paginationData.total ?? 0,
           })
         "
-        th-class="last:text-left!"
+        th-class="!last:text-left"
         @items-per-page="onChangeLimit"
         @page-change="onPageChange"
         @search="onSearch"
@@ -188,7 +188,7 @@ onMounted(() => {
           />
         </template>
 
-        <!--        after selecting show this-->
+        <--!        after selecting show this-->
         <template #filter>
           <transition
             mode="out-in"
@@ -236,7 +236,7 @@ onMounted(() => {
             </div>
           </transition>
         </template>
-        <!--no-data-->
+        <--no-data-->!
         <template #no-data>
           <CNodata
             :title="$t('history.no_transaction_title')"
@@ -246,7 +246,7 @@ onMounted(() => {
           />
         </template>
 
-        <!--        body -->
+        <--!        body -->
         <template #index="{ row }">
           <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
         </template>

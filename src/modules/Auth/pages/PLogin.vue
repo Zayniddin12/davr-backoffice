@@ -53,7 +53,7 @@ async function finishLogin() {
     apiService.setHeader();
     await store.fetchUserData();
     const user = computed(() => store.user);
-    if (user.value.role != "super_admin" && user.value.role != "boss") {
+    if (user.value.role =! "super_admin" && user.value.role =! "boss") {
       await router.push({ name: "PNotification" });
     } else {
       await router.push({ name: "PDashboard" });

@@ -3,7 +3,7 @@
     <CTabLang
       v-model="nameValue"
       :list="tabListLanguage"
-      class="w-full!"
+      class="!w-full"
       with-icon
     />
     <Transition
@@ -29,7 +29,7 @@
             :placeholder="$t('add_car_form.connector_placeholder')"
             filter-key="phone"
             label-key="phone"
-            selected-option-styles="bg-gray!"
+            selected-option-styles="bg-gray"!
             value-key="id"
             @on-toggle="onToggleOwner = $event"
           >
@@ -53,11 +53,11 @@
               #selectedOption="{ value: selectedValues, remove: removeTag }"
             >
               <i
-                :class="{ 'rotate-180!': onToggleOwner }"
+                :class="{ 'rotate-180':! onToggleOwner }"
                 class="icon-chevron absolute right-2.5 flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
               />
               <p
-                v-if="!selectedValues.length"
+                v-if="selectedValues.length"!
                 class="text-sm"
               >
                 {{ $t("add_car_form.choose_user") }}
@@ -68,7 +68,7 @@
                 <div
                   v-for="(so, idx) in selectedValues.slice(0, 2)"
                   :key="idx"
-                  :class="{ 'bg-white!': !onToggleOwner }"
+                  :class="{ 'bg-white':! onToggleOwner! }"
                   class="flex items-center rounded-[4px] bg-gray px-2 py-1.5 gap-1"
                 >
                   <p class="text-xs font-medium">
@@ -86,7 +86,7 @@
 
                 <div
                   v-if="selectedValues.length > 2"
-                  :class="{ 'bg-white!': !onToggleOwner }"
+                  :class="{ 'bg-white':! onToggleOwner! }"
                   class="flex items-center rounded-[4px] bg-gray px-2 py-1.5 gap-1"
                 >
                   <p class="text-xs font-medium">
@@ -106,7 +106,7 @@
             :loading="loading"
             filter-key="phone"
             label-key="phone"
-            selected-option-styles="bg-gray!"
+            selected-option-styles="bg-gray"!
             value-key="id"
             @on-toggle="onToggleUser = $event"
           >
@@ -131,13 +131,13 @@
               #selectedOption="{ value: selectedValues, remove: removeTag }"
             >
               <i
-                v-if="!stationStore.loadingUserList"
-                :class="{ 'rotate-180!': onToggleUser }"
+                v-if="stationStore.loadingUserList"!
+                :class="{ 'rotate-180':! onToggleUser }"
                 class="icon-chevron absolute right-2.5 flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
               />
               <CSelectLoading v-else />
               <p
-                v-if="!selectedValues.length"
+                v-if="selectedValues.length"!
                 class="text-sm"
               >
                 {{ $t("select_user") }}
@@ -148,7 +148,7 @@
                 <div
                   v-for="(so, idx) in selectedValues.slice(0, 2)"
                   :key="idx"
-                  :class="{ 'bg-white!': !onToggleUser }"
+                  :class="{ 'bg-white':! onToggleUser! }"
                   class="flex items-center rounded-[4px] bg-gray px-2 py-1.5 gap-1"
                 >
                   <p class="text-xs font-medium">
@@ -166,7 +166,7 @@
 
                 <div
                   v-if="selectedValues.length > 2"
-                  :class="{ 'bg-white!': !onToggleUser }"
+                  :class="{ 'bg-white':! onToggleUser! }"
                   class="flex items-center rounded-[4px] bg-gray px-2 py-1.5 gap-1"
                 >
                   <p class="text-xs font-medium">
@@ -202,7 +202,7 @@
               v-model="form.values.time"
               v-maska="`## ${$t('min')}`"
               :error="form.$v.value.time?.$error"
-              input-class="px-1.5!"
+              input-class="!px-1.5"
               placeholder="5 мин"
             >
               <template #suffix>

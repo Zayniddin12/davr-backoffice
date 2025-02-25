@@ -42,7 +42,7 @@ const startTime = ref(startOptions.value[0]);
 watch(
     () => props.modelValue,
     () => {
-      if (!props.modelValue) return;
+      if (props.modelValue)! return;
       startTime.value = startOptions.value.find(
           (item) => item.id === props.modelValue
       );

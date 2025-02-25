@@ -122,7 +122,7 @@ function deactivateConnector() {
 function getAction(action: string, data: object) {
   loading.value = true;
   ApiService.patch(`/connectors/${data?.id}/`, {
-    available: !data?.available,
+    available: data?.available,!
   })
     .then(() => {
       getConnectors();
@@ -154,7 +154,7 @@ onMounted(() => getConnectors());
 watch(
   () => props.isFetching,
   (val) => {
-    if (!val) return;
+    if (val)! return;
     getConnectors();
   }
 );
@@ -162,7 +162,7 @@ watch(
 watch(
   () => connectorModal.value,
   () => {
-    if (!connectorModal.value) {
+    if (connectorModal.value)! {
       for (let key in connectorForm.values) {
         connectorForm.values[key] = "";
       }
@@ -343,7 +343,7 @@ const times = ref([
               :text="$t('edit')"
               class="flex items-center py-2 px-4 gap-2"
               icon="icon-edit
-                    !text-gray-300 pr-2"
+                    text-gray-300! pr-2"
               icon-position="left"
               size="md"
               variant="info"
@@ -371,7 +371,7 @@ const times = ref([
           />
         </template>
 
-        <!--        body-->
+        <--!        body-->
         <template #_index="{ row }">
           <span class="font-semibold text-sm">{{ row?._index }}.</span>
         </template>
@@ -405,7 +405,7 @@ const times = ref([
         <template #status="{ row: data }">
           <span
             :class="{
-              'text-red': !data?.available,
+              'text-red': data?.available,!
             }"
             class="text-xs"
           >{{ data?.available ? $t("active") : $t("inactive") }}</span>
@@ -413,7 +413,7 @@ const times = ref([
 
         <template #action="{ row: data }">
           <CDropdown
-            v-if="!data?.stop_data"
+            v-if="data?.stop_data"!
             class="w-7 ml-auto"
           >
             <template #head>
@@ -444,7 +444,7 @@ const times = ref([
                   :key="idx"
                 >
                   <div
-                    v-if="item?.active === !data?.available"
+                    v-if="item?.active === data?.available"!
                     class="min-w-[158px] h-11 cursor-pointer flex items-center p-3 gap-2 hover:bg-gray/40 transition-300 group"
                     @click="getAction(item.value, data)"
                   >
@@ -485,7 +485,7 @@ const times = ref([
           <CDialog
             v-bind="{ show: openHours }"
             :title="$t('edit_price')"
-            body-class="max-w-[540px]!"
+            body-class="!max-w-[540px]"
             @close="closeModalEdit"
           >
             <div class="p-5 pt-4">
@@ -572,7 +572,7 @@ const times = ref([
                         filter-key="value"
                         from-top
                         label-key="value"
-                        selected-option-styles="bg-gray!"
+                        selected-option-styles="bg-gray"!
                         value-key="value"
                       />
                     </FGroup>
@@ -585,7 +585,7 @@ const times = ref([
                         filter-key="value"
                         from-top
                         label-key="value"
-                        selected-option-styles="bg-gray!"
+                        selected-option-styles="bg-gray"!
                         value-key="value"
                       />
                     </FGroup>
@@ -612,7 +612,7 @@ const times = ref([
 
       <CDialog
         :title="$t(isEditConnector ? 'edit_connector' : 'add_connector')"
-        body-class="max-w-[421px]!"
+        body-class="!max-w-[421px]"
         v-bind="{ show: connectorModal }"
         @close="connectorModal = false"
       >
@@ -625,7 +625,7 @@ const times = ref([
 
       <CDialog
         :title="$t('deactivate_connector')"
-        body-class="max-w-[421px]!"
+        body-class="!max-w-[421px]"
         v-bind="{ show: actionModal }"
         @close="actionModal = false"
       >

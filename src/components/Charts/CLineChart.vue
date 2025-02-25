@@ -16,10 +16,10 @@
         v-model="tabValue"
         :list="tabList"
         class="space-x-3 border-none"
-        item-class="!pt-0 whitespace-nowrap"
+        item-class="pt-0! whitespace-nowrap"
       />
     </div>
-    <div v-if="!loading">
+    <div v-if="loading">!
       <Transition
         mode="out-in"
         name="fade"

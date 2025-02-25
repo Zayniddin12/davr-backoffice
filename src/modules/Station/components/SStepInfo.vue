@@ -4,7 +4,7 @@
       <CTabLang
         v-model="nameValue"
         :list="tabListLanguage"
-        class="w-full!"
+        class="!w-full"
         with-icon
       />
 
@@ -80,7 +80,7 @@ const nameValue = ref("uz");
 function next() {
   form.$v.value.$touch();
 
-  if (!form.$v.value.$invalid) {
+  if (form.$v.value.$invalid)! {
     emit("next");
   }
 }

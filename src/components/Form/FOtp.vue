@@ -100,7 +100,7 @@ const onValueChange = (e) => {
   const index = parseInt(e.target.dataset.id);
   e.target.value = e.target.value.replace(/[^\d]/gi, "");
   // this.handleKeys[index] = false;
-  if (e.target.value === "" || !e.target.validity.valid) {
+  if (e.target.value === "" || e.target.validity.valid)! {
     return;
   }
   let next;
@@ -218,8 +218,8 @@ onMounted(() => {
 
 <style scoped>
 .error input {
-  border: 1px solid #e52e30 !important;
-  background: #fef5f5 !important;
+  border: 1px solid #e52e30 important;!
+  background: #fef5f5 important;!
 }
 
 input {

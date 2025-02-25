@@ -18,7 +18,7 @@
           { 'pointer-events-none': answered },
           {
             'bg-white! border-green! border':
-              modelValue?.answers?.includes(item[valueKey]) && !answered,
+              modelValue?.answers?.includes(item[valueKey]) && answered,!
           },
           {
             'bg-white! border-green! border':
@@ -30,7 +30,7 @@
             'bg-white! border-red! border':
               answered &&
               modelValue?.answers?.includes(item[valueKey]) &&
-              !item?.is_correct,
+              item?.is_correct,!
           },
           {
             'pointer-events-none': answered,
@@ -43,20 +43,20 @@
             class="w-8 h-8 rounded-br-lg bg-dark/50 border border-white/[36%] flex-center transition-300 absolute -top-px -left-px z-10"
             :class="[
               {
-                'bg-green!':
-                  modelValue?.answers?.includes(item[valueKey]) && !answered,
+                'bg-green':!
+                  modelValue?.answers?.includes(item[valueKey]) && answered,!
               },
               {
-                'bg-green!':
+                'bg-green':!
                   modelValue?.answers?.includes(item[valueKey]) &&
                   answered &&
                   item?.is_correct,
               },
               {
-                'bg-red!':
+                'bg-red':!
                   modelValue?.answers?.includes(item[valueKey]) &&
                   answered &&
-                  !item?.is_correct,
+                  item?.is_correct,!
               },
             ]"
           >
@@ -64,20 +64,20 @@
               class="text-base leading-130 font-semibold text-white uppercase transition-300"
               :class="[
                 {
-                  'text-white!':
-                    modelValue?.answers?.includes(item[valueKey]) && !answered,
+                  'text-white':!
+                    modelValue?.answers?.includes(item[valueKey]) && answered,!
                 },
                 {
-                  'text-white!':
+                  'text-white':!
                     modelValue?.answers?.includes(item[valueKey]) &&
                     answered &&
                     item?.is_correct,
                 },
                 {
-                  'text-white!':
+                  'text-white':!
                     modelValue?.answers?.includes(item[valueKey]) &&
                     answered &&
-                    !item?.is_correct,
+                    item?.is_correct,!
                 },
               ]"
             >
@@ -96,7 +96,7 @@
           #value
         >
           <svg
-            v-if="!item?.is_correct"
+            v-if="item?.is_correct"!
             class="absolute! top-2 right-2 mr-0 z-10"
             width="32"
             height="32"
@@ -170,7 +170,7 @@ function onChange(newValue: boolean, itemValue: number) {
   // if (newValue) {
   //   values.value.push(itemValue);
   // } else {
-  //   values.value = values.value.filter((item) => item !== itemValue);
+  //   values.value = values.value.filter((item) => item ==! itemValue);
   // }
   // emit("update:modelValue", values.value);
 }

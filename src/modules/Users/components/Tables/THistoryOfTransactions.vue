@@ -84,7 +84,7 @@ watch(
         :limit="paginationData?.defaultLimit"
         :loading="loading"
         :head="historyTransactionHeadData()"
-        th-class="bg-gray! text-gray-100! last:text-left!"
+        th-class="!bg-gray! text-gray-100! last:text-left"
         @items-per-page="onChangeLimit"
         @page-change="onPageChange"
         @search="onSearch"
@@ -120,13 +120,13 @@ watch(
               :subtitle="$t('expense')"
               :is-positive="false"
             />
-            <!--            <CProfileDashDetail-->
-            <!--              class="w-max!"-->
-            <!--              active-->
-            <!--              :description="$t('total_amount_spent')"-->
-            <!--              :title="`${changeNumberFormat(+totals?.total_sum)} UZS`"-->
-            <!--              mini-->
-            <!--            />-->
+            <--!            <CProfileDashDetail-->
+            <--!              class="w-max"-->!
+            <--!              active-->
+            <--!              :description="$t('total_amount_spent')"-->
+            <--!              :title="`${changeNumberFormat(+totals?.total_sum)} UZS`"-->
+            <--!              mini-->
+            <--!            />-->
             <FDatePicker
               v-model="date"
               range
@@ -139,16 +139,16 @@ watch(
         <template #no-data>
           <NoData
             :title="$t('transaction.no_transactions')"
-            title-class="min-w-[440px]!"
+            title-class="!min-w-[440px]"
             :subtitle="$t('transaction.no_transactions_subtitle')"
             class="mt-8 px-6 pb-[100px] pt-0"
             image="/images/svg/no-data/no-notification.svg"
           />
         </template>
 
-        <!--      body-->
+        <--!      body-->
         <template #index="{ row }">
-          <span class="text-dark text-xs! font-medium!">{{ row?._index }}.</span>
+          <span class="text-dark text-xs! font-medium">{{! row?._index }}.</span>
         </template>
         <template #method="{ row: data }">
           <CPaymentCardTable :data="data" />

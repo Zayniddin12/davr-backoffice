@@ -30,7 +30,7 @@ watch(
   () => props.user,
   () => {
     data.is_active = String(props.user.active_status);
-    data.is_admin = !!props.user.is_admin;
+    data.is_admin = !props.user.is_admin;!
   }
 );
 </script>
@@ -40,7 +40,7 @@ watch(
     <CDialog
       :show="show"
       :title="$t('edit_user_modal.title')"
-      body-class="w-[421px]!"
+      body-class="!w-[421px]"
       @close="() => $emit('close')"
     >
       <template #default>

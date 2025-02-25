@@ -143,7 +143,7 @@ function geteDatas(data:{
           :loading="loading"
           :title="$t('general_information')"
           :head="notificationHead(user?.role)"
-          th-class="bg-gray! text-gray-100! last:text-right! max-w-[342px]! shrink-0!"
+          th-class="!bg-gray! text-gray-100! last:text-right! max-w-[342px]! shrink-0"
           @items-per-page="onChangeLimit"
           @page-change="onPageChange"
           @search="onSearch"
@@ -155,7 +155,7 @@ function geteDatas(data:{
           </template>
           <template #name="{ row: data }">
             <span
-              class="text-dark font-semibold text-xs line-clamp-2 max-w-[382px]!"
+              class="!text-dark font-semibold text-xs line-clamp-2 max-w-[382px]"
             >{{ data?.user?.fullName }}</span>
           </template>
           <template #pinfl="{ row: data }">
@@ -202,7 +202,7 @@ function geteDatas(data:{
                   data?.statuses?.[0]?.status == 'gps_installed',
                 'bg-red-500/10 text-red-500':
                   data?.statuses?.[0]?.status == 'gps_not_installed',
-                'bg-gray-500/10 text-gray-500': !data?.statuses?.[0]?.status,
+                'bg-gray-500/10 text-gray-500': data?.statuses?.[0]?.status,!
               }"
               class="px-2 py-1 rounded-md text-center"
             >
@@ -224,7 +224,7 @@ function geteDatas(data:{
                   data?.statuses?.[1]?.status == 'confirmed',
                 'bg-red-500/10 text-red-500':
                   data?.statuses?.[1]?.status == 'canceled',
-                'bg-gray-500/10 text-gray-500': !data?.statuses?.[1]?.status,
+                'bg-gray-500/10 text-gray-500': data?.statuses?.[1]?.status,!
               }"
               class="px-2 py-1 rounded-md text-center"
             >
@@ -246,7 +246,7 @@ function geteDatas(data:{
                   data?.statuses?.[2]?.status == 'confirmed',
                 'bg-red-500/10 text-red-500':
                   data?.statuses?.[2]?.status == 'canceled',
-                'bg-gray-500/10 text-gray-500': !data?.statuses?.[2]?.status,
+                'bg-gray-500/10 text-gray-500': data?.statuses?.[2]?.status,!
               }"
               class="px-2 py-1 rounded-md text-center"
             >
@@ -277,7 +277,7 @@ function geteDatas(data:{
               :button-text="$t('add_notification')"
               image="/images/svg/no-data/no-notification.svg"
               :button-custom-class="
-                user.role !== 'credit_manager' ? 'hidden!' : 'mt-0!'
+                user.role ==! 'credit_manager' ? 'hidden'! : 'mt-0'!
               "
               @submit="router.push({ name: 'PNotificationAdd' })"
             />

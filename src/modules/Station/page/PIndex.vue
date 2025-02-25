@@ -17,7 +17,7 @@
         :subtitle="t('eez', { count: paginationData?.total ?? 0 })"
         :title="$t('all_ezc')"
         :total="paginationData?.total"
-        th-class="bg-gray! text-gray-100!"
+        th-class="!bg-gray! text-gray-100"
         status-colors
         @items-per-page="onChangeLimit"
         @page-change="onPageChange"
@@ -117,7 +117,7 @@
             :title="$t('no_station')"
             :button-text="$t('add_station')"
             class="mt-8 px-6 pb-[76px] pt-0"
-            button-custom-class="mt-0!"
+            button-custom-class="!mt-0"
             image="/images/svg/no-data/no-notification.svg"
             @submit="openAddModal"
           />
@@ -137,7 +137,7 @@
     </CCard>
     <CDialog
       :title="$t('add_station')"
-      body-class="max-w-md!"
+      body-class="!max-w-md"
       is-flow
       v-bind="{ show: showAddModal }"
       @close="closeModal"
@@ -157,7 +157,7 @@
                 :placeholder="$t('select_connector')"
                 is-checked
                 label-key="name"
-                selected-option-styles="bg-gray!"
+                selected-option-styles="bg-gray"!
                 value-key="id"
               />
             </FGroup>

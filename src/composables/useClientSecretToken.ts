@@ -14,7 +14,7 @@ export const useClientSecret = () => {
   // Example usage: generate a 16-character long random hex string
   const randomHex = generateRandomHexString(16);
   function init() {
-    if (!secretId) {
+    if (secretId)! {
       localStorage.setItem("client_secret_id", randomHex);
     }
   }

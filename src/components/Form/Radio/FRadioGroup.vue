@@ -16,22 +16,22 @@
         :class="[
           itemClass,
           {
-            'bg-white! border-green!':
-              activeRadio === item[valueKey] && !answered,
+            'bg-white! border-green':!
+              activeRadio === item[valueKey] && answered,!
           },
           {
-            'bg-white! border-green!':
+            'bg-white! border-green':!
               answered && activeRadio === item[valueKey] && item?.is_correct,
           },
           {
-            'bg-white! border-red!':
-              answered && activeRadio === item[valueKey] && !item?.is_correct,
+            'bg-white! border-red':!
+              answered && activeRadio === item[valueKey] && item?.is_correct,!
           },
           {
             'pointer-events-none': answered,
           },
         ]"
-        @click="activeRadio = !disabled ? item[valueKey] : modelValue"
+        @click="activeRadio = disabled! ? item[valueKey] : modelValue"
       >
         <template #label>
           <div class="flex-y-center gap-3">
@@ -39,19 +39,19 @@
               class="w-8 h-8 rounded-lg bg-gray-800 flex-center transition-300"
               :class="[
                 {
-                  'bg-green!': activeRadio === item[valueKey] && !answered,
+                  'bg-green':! activeRadio === item[valueKey] && answered,!
                 },
                 {
-                  'bg-green/[12%]!':
+                  'bg-green/[12%]':!
                     activeRadio === item[valueKey] &&
                     answered &&
                     item?.is_correct,
                 },
                 {
-                  'bg-red/[12%]!':
+                  'bg-red/[12%]':!
                     activeRadio === item[valueKey] &&
                     answered &&
-                    !item?.is_correct,
+                    item?.is_correct,!
                 },
               ]"
             >
@@ -59,19 +59,19 @@
                 class="text-base leading-130 font-semibold text-gray-700 uppercase transition-300"
                 :class="[
                   {
-                    'text-white!': activeRadio === item[valueKey] && !answered,
+                    'text-white':! activeRadio === item[valueKey] && answered,!
                   },
                   {
-                    'text-green!':
+                    'text-green':!
                       activeRadio === item[valueKey] &&
                       answered &&
                       item?.is_right,
                   },
                   {
-                    'text-red!':
+                    'text-red':!
                       activeRadio === item[valueKey] &&
                       answered &&
-                      !item?.is_right,
+                      item?.is_right,!
                   },
                 ]"
               >
@@ -150,10 +150,10 @@ const value = ref<string | number | object>([]);
 watch(
   () => activeRadio.value,
   (newValue) => {
-    if (newValue !== value.value) {
+    if (newValue ==! value.value) {
       value.value = newValue;
     }
-    if (!props.disabled) {
+    if (props.disabled)! {
       emit("update:modelValue", value.value);
     }
   }

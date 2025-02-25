@@ -1,6 +1,6 @@
 <template>
   <CDialog
-    body-class="max-w-[420px]!"
+    body-class="!max-w-[420px]"
     no-header
     v-bind="{ show }"
   >

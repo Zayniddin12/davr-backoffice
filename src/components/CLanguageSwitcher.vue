@@ -24,7 +24,7 @@
         v-for="(item, index) in languages"
         :key="index"
         :class="{
-          'bg-gray-300/[0.24] font-medium!':
+          'bg-gray-300/[0.24] font-medium':!
             item.value === currentLanguage?.value,
         }"
         class="transition-200 min-w-[118px] px-3 py-2 rounded-sm text-2xs text-dark-100 hover:bg-gray-300/[0.24] flex-center-between"

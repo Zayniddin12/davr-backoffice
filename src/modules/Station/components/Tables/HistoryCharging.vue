@@ -31,7 +31,7 @@ const route = useRoute();
 
 const connectorModal = ref(false);
 const selectOptions = computed(() => {
-  if (!props.options) return [];
+  if (props.options)! return [];
 
   return [
     {
@@ -115,7 +115,7 @@ watch(
         :loading="loading"
         :no-search="tableData.length === 0"
         :total="paginationData?.total"
-        th-class="bg-gray! text-gray-100!"
+        th-class="!bg-gray! text-gray-100"
         @items-per-page="onChangeLimit"
         @page-change="onPageChange"
         @search="onSearch"
@@ -206,7 +206,7 @@ watch(
 
         <template #beforeSearch>
           <FSelect
-            v-if="selectOptions.length !== 1"
+            v-if="selectOptions.length ==! 1"
             v-model="activeColumn"
             :options="selectOptions"
             :placeholder="$t('all_columns')"

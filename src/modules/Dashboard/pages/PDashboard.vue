@@ -6,7 +6,7 @@
     >
       <SBreadcrumb v-bind="{ routes }" />
     </Teleport>
-    <!-- <div class="py-4 px-5 w-full bg-white rounded-xl mb-6 flex gap-4">
+    <--! <div class="py-4 px-5 w-full bg-white rounded-xl mb-6 flex gap-4">
       <div class="flex gap-1 items-center p-1 rounded-xl bg-gray">
         <div
           v-for="(item, key) in dateTable"
@@ -14,7 +14,7 @@
           class="cursor-pointer transition-300"
         >
           <div
-            v-if="item?.name != 'date_create'"
+            v-if="item?.name =! 'date_create'"
             class="p-2 text-xs font-medium leading-130 text-dark text-center rounded-lg"
             :class="{ 'bg-white': activeDate == key }"
             @click="selectDateType(key)"
@@ -47,8 +47,8 @@
           :data="mainStore.appUsageStats"
           class="col-span-2"
         />
-        <!-- <CGenderChart :data="genderChartData" class="col-span-1" /> -->
-        <!-- <CAgeChart :data="ageChartData" class="col-span-1" /> -->
+        <--! <CGenderChart :data="genderChartData" class="col-span-1" /> -->
+        <--! <CAgeChart :data="ageChartData" class="col-span-1" /> -->
       </div>
     </main>
   </div>

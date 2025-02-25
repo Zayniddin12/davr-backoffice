@@ -3,7 +3,7 @@
     ref="select"
     class="relative"
   >
-    <!--  SELECTED OPTION  -->
+    <--!  SELECTED OPTION  -->
     <div
       class="transition-200 px-3 h-10 py-[9px] bg-gray-50 transition-all duration-300 border border-transparent cursor-pointer flex items-center justify-between rounded-lg w-full"
       tabindex="1"
@@ -12,9 +12,9 @@
         error ? 'border-red! bg-red-100' : '',
         { 'focus-within:border-gray-100': disabled },
         headStyles,
-        { 'border border-primary! bg-transparent!': showOptions },
+        { 'border border-primary! bg-transparent':! showOptions },
       ]"
-      @click="toggleSelect(!showOptions)"
+      @click="toggleSelect(showOptions)"!
     >
       <slot
         name="selectedOption"
@@ -22,10 +22,10 @@
       >
         <div class="flex items-center justify-between">
           <div
-            v-if="!value"
+            v-if="value"!
             tabindex="1"
             class="flex items-center text-gray-200 font-medium select-none text-sm leading-140 mr-4"
-            :class="[{ 'text-gray!': disabled }, placeholderClasses]"
+            :class="[{ 'text-gray':! disabled }, placeholderClasses]"
           >
             {{ placeholder ?? $t("select") }}
           </div>
@@ -40,22 +40,22 @@
               v-if="value"
               class="font-normal select-none text-sm text-dark leading-140"
               tabindex="1"
-              :class="[{ 'text-dark!': disabled }, selectedStyles]"
+              :class="[{ 'text-dark':! disabled }, selectedStyles]"
             >
               {{ value[labelKey] || value }}
             </p>
             <span
               class="icon-chevron flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
-              :class="{ 'rotate-180!': showOptions }"
+              :class="{ 'rotate-180':! showOptions }"
             />
           </div>
         </slot>
       </slot>
     </div>
-    <!--  OPTIONS  -->
+    <--!  OPTIONS  -->
     <Transition name="fade">
       <ul
-        v-if="showOptions && !disabled"
+        v-if="showOptions && disabled"!
         :key="showOptions"
         :class="fromTop ? 'bottom-[65px]' : 'top-full'"
         class="absolute w-full bg-white pb-1 px-3 divide-gray/40 divide-y z-10 translate-y-3 overflow-hidden max-h-[334px] overflow-y-scroll text-white rounded-xl shadow-custom_select"
@@ -78,7 +78,7 @@
             </template>
           </FInput>
         </li>
-        <li v-if="!filteredOptions?.length && search">
+        <li v-if="filteredOptions?.length! && search">
           <NoData
             :subtitle="$t('no_data_gender_subtitle')"
             :title="$t('no_data_gender_title')"
@@ -103,7 +103,7 @@
                 class="flex-y-center space-x-1.5 p-3"
                 :class="{
                   'first:border-none border-b border-gray':
-                    idx !== filteredOptions.length - 1,
+                    idx ==! filteredOptions.length - 1,
                 }"
               >
                 <span

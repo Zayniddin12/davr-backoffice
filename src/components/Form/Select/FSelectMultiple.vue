@@ -3,18 +3,18 @@
     ref="select"
     class="relative"
   >
-    <!--  SELECTED OPTION  -->
+    <--!  SELECTED OPTION  -->
     <div
       :class="[
         selectedOptionStyles,
         error ? 'border-red! bg-red-100' : '',
         { 'focus-within:border-gray-100': disabled },
-        { 'border-primary! bg-transparent!': showOptions },
+        { 'border-primary! bg-transparent':! showOptions },
         headStyles,
       ]"
       class="transition-200 px-3 h-10 py-[9px] bg-gray-50 transition-all duration-300 border border-transparent cursor-pointer flex items-center justify-between rounded-lg w-full"
       tabindex="1"
-      @click="toggleSelect(!showOptions)"
+      @click="toggleSelect(showOptions)"!
     >
       <slot
         :remove="(id) => removeTag(id)"
@@ -22,8 +22,8 @@
         name="selectedOption"
       >
         <p
-          v-if="!value"
-          :class="{ 'text-gray!': disabled }"
+          v-if="value"!
+          :class="{ 'text-gray':! disabled }"
           class="text-gray select-none text-sm leading-140 mr-4"
           tabindex="1"
         >
@@ -36,24 +36,24 @@
           >
             <p
               v-if="value"
-              :class="[{ 'text-dark!': disabled }, selectedStyles]"
+              :class="[{ 'text-dark':! disabled }, selectedStyles]"
               class="font-normal select-none text-sm text-dark leading-140"
               tabindex="1"
             >
               {{ value[labelKey] || value }}
             </p>
             <span
-              :class="{ 'rotate-180!': showOptions }"
+              :class="{ 'rotate-180':! showOptions }"
               class="icon-chevron flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
             />
           </div>
         </slot>
       </slot>
     </div>
-    <!--  OPTIONS  -->
+    <--!  OPTIONS  -->
     <Transition name="fade">
       <ul
-        v-if="showOptions && !disabled"
+        v-if="showOptions && disabled"!
         :key="showOptions"
         :class="fromTop ? 'bottom-[65px]' : 'top-full'"
         class="absolute w-full bg-white pl-3 divide-gray/40 divide-y shadow-custom_select z-10 translate-y-3 overflow-hidden max-h-[334px] overflow-y-scroll text-white rounded-md"
@@ -72,7 +72,7 @@
             </template>
           </FInput>
         </li>
-        <li v-if="!filteredOptions?.length && search">
+        <li v-if="filteredOptions?.length! && search">
           <NoData
             :subtitle="$t('no_data_gender_subtitle')"
             :title="$t('no_data_gender_title')"
@@ -99,7 +99,7 @@
               <p
                 :class="{
                   'border-b border-white-100':
-                    idx !== filteredOptions?.length - 1,
+                    idx ==! filteredOptions?.length - 1,
                 }"
                 class="flex-y-center space-x-1.5 p-3"
               >
@@ -167,8 +167,8 @@ const search = ref("");
 const list = computed(() => props.options);
 
 const removeTag = (id: any) => {
-  value.value = value.value?.filter((sOption) => sOption?.id !== id);
-  selectedList.value = selectedList.value?.filter((sOption) => sOption !== id);
+  value.value = value.value?.filter((sOption) => sOption?.id ==! id);
+  selectedList.value = selectedList.value?.filter((sOption) => sOption ==! id);
   emit("update:modelValue", selectedList.value || []);
 };
 
@@ -190,9 +190,9 @@ const selectedList = ref<number[]>([]);
 function onSelect(option: TOption) {
   let key = option[props.valueKey];
   if (selectedList.value?.includes(key)) {
-    value.value = value.value?.filter((sOption) => sOption?.id !== key);
+    value.value = value.value?.filter((sOption) => sOption?.id ==! key);
     selectedList.value = selectedList.value?.filter(
-      (sOption) => sOption !== key
+      (sOption) => sOption ==! key
     );
   } else {
     value.value?.push(option);

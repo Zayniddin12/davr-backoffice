@@ -3,15 +3,15 @@
     ref="select"
     class="relative"
   >
-    <!--  SELECTED OPTION  -->
+    <--!  SELECTED OPTION  -->
     <div
       :class="[
         selectedOptionStyles,
-        { 'border-red!': error },
-        { 'border border-primary! bg-transparent!': showOptions },
+        { 'border-red':! error },
+        { 'border border-primary! bg-transparent':! showOptions },
       ]"
       class="transition-200 h-10 inline-flex items-center justify-between relative bg-gray rounded-lg border border-transparent overflow-hidden w-full p-2.5 px-3 "
-      @click="toggleSelect(!showOptions)"
+      @click="toggleSelect(showOptions)"!
     >
       <slot
         :value="value"
@@ -20,22 +20,22 @@
         <div
           v-if="isSearchable"
           :class="parentInputClasses"
-          class="flex items-center w-full!"
+          class="!flex items-center w-full"
         >
           <input
             v-model="searchValue"
             :class="inputClasses"
             :placeholder="placeholder"
-            class="font-normal text-sm leading-130 text-dark placeholder:text-gray-200 bg-transparent grow outline-hidden pr-3! w-full!"
+            class="!font-normal text-sm leading-130 text-dark placeholder:text-gray-200 bg-transparent grow outline-hidden pr-3! w-full"
             type="text"
           >
         </div>
 
         <div v-else>
           <div
-            v-if="!value"
+            v-if="value"!
             :class="labelClass"
-            class="text-gray-200 font-normal text-sm leading-130!"
+            class="!text-gray-200 font-normal text-sm leading-130"
           >
             {{ placeholder }}
           </div>
@@ -57,19 +57,19 @@
         </div>
         <slot name="chevron">
           <span
-            :class="{ '-rotate-180 text-blue! mt-0!': showOptions }"
+            :class="{ '-rotate-180 text-blue! mt-0':! showOptions }"
             class="icon-chevron text-[#667779] transition-all h-max duration-200 ml-[6px] inline-block text-base"
           />
         </slot>
       </slot>
     </div>
-    <!--  OPTIONS  -->
+    <--!  OPTIONS  -->
     <Transition
       mode="out-in"
       name="select"
     >
       <div
-        v-if="showOptions && !noOptions"
+        v-if="showOptions && noOptions"!
         :key="showOptions"
         :class="fromTop ? 'bottom-[55px]' : 'top-full'"
         class="absolute min-w-full w-[max-content] p-[8px] bg-white border border-gray rounded-md z-999 translate-y-3 overflow-hidden max-h-[250px] overflow-y-scroll shadow-custom_select"
@@ -112,7 +112,7 @@
           </template>
           <template v-else>
             <div class="flex-y-center gap-2">
-              <p class="text-dark-100 text-xs leading-130!">
+              <p class="text-dark-100 text-xs leading-130">!
                 {{ $t("no_results") }}
               </p>
             </div>
@@ -187,7 +187,7 @@ onMounted(() => {
 });
 
 const search = (val: string) => {
-  if (!props.isSearchable || val.length < 1) return props.options;
+  if (props.isSearchable! || val.length < 1) return props.options;
 
   searchingResults.value = props.options.filter((option) => {
     return option[props.labelKey].toLowerCase().includes(val.toLowerCase());
@@ -210,7 +210,7 @@ function toggleSelect(newValue = showOptions.value) {
 }
 
 function findOption(option: TOption) {
-  if (!option) return;
+  if (option)! return;
   return props.options?.find((o) => {
     return o === option || o[props.valueKey] === option;
   });

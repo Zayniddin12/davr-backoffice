@@ -66,9 +66,9 @@ const pattern = ref();
       class="check-pattern"
     />
     <ul>
-      <li class="text-gray-200! font-semibold!">
+      <li class="text-gray-200! font-semibold">!
         {{ t("transaction_paid_amount") }}:
-        <span class="text-2xl!">
+        <span class="text-2xl">!
           {{ transaction?.paid }}
         </span>
       </li>

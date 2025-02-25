@@ -49,7 +49,7 @@ const emit = defineEmits<Emits>();
 const show = ref(false);
 
 function toggleShow() {
-  show.value = !show.value;
+  show.value = show.value;!
   emit("toggle", show.value);
 }
 

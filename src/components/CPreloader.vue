@@ -107,7 +107,7 @@ export default {
     #25323d 10%,
     #2e3c48 35.78%,
     #25323d 73.28%
-  ) !important;
+  ) important;!
 }
 
 @keyframes placeholderShimmer {

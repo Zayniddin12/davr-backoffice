@@ -34,12 +34,12 @@
         @click="item.action"
       >
         <div
-          :class="{ 'border-b-0!': idx === dropdownItems.length - 1 }"
+          :class="{ 'border-b-0':! idx === dropdownItems.length - 1 }"
           class="flex-y-center px-3 py-2 border-b border-[#F5F6F7] gap-2"
         >
           <i
             :class="item?.icon"
-            class="text-xs!"
+            class="!text-xs"
           />
           {{ item.label }}
         </div>
@@ -98,7 +98,7 @@ interface IDropdownItem {
 const dropdownItems: IDropdownItem[] = [
   {
     label: t("log_out"),
-    styles: "text-red-500 hover:bg-red-50!",
+    styles: "text-red-500 hover:bg-red-50",!
     action: () => logout(),
     icon: "icon-chevron-left",
   },

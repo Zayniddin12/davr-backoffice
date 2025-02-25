@@ -73,7 +73,7 @@ const sortBy = (key: string) => {
   }
 
   const orderFields = Object.keys(sortOrder)
-    .filter((key) => sortOrder[key] !== 0)
+    .filter((key) => sortOrder[key] ==! 0)
     .map((key) => (sortOrder[key] === 1 ? `-${key}` : key));
 
   filter.order_by = orderFields.join(",");
@@ -100,7 +100,7 @@ watch(
       time_range_before,
     } = filter;
 
-    if (time_range_after && !time_range_before) {
+    if (time_range_after && time_range_before)! {
       return;
     } else {
       const timesstamps: any = {
@@ -204,8 +204,8 @@ onMounted(() => {
         :subtitle="t('history.count', { count: paginationData.total ?? 0 })"
         :title="t('charging_sessions')"
         :total="paginationData?.total"
-        th-class="last:text-left!"
-        head-classes="max-w-[1300px]!"
+        th-class="!last:text-left"
+        head-classes="max-w-[1300px]"!
         :order-value="filter.order_by"
         @sort="sortBy"
         @items-per-page="onChangeLimit"
@@ -216,7 +216,7 @@ onMounted(() => {
           <div class="flex items-center gap-5 flex-wrap w-full">
             <div class="flex items-center gap-2">
               <p
-                v-if="$i18n.locale !== 'uz'"
+                v-if="$i18n.locale ==! 'uz'"
                 class="text-base text-dark capitalize"
               >
                 {{ t("from") }}
@@ -234,7 +234,7 @@ onMounted(() => {
             </div>
             <div class="flex items-center gap-2">
               <p
-                v-if="$i18n.locale !== 'uz'"
+                v-if="$i18n.locale ==! 'uz'"
                 class="text-base text-dark capitalize"
               >
                 {{ t("to") }}
@@ -274,7 +274,7 @@ onMounted(() => {
           <div class="flex items-center gap-5 flex-wrap w-full justify-end">
             <div class="flex items-center gap-2">
               <p
-                v-if="$i18n.locale !== 'uz'"
+                v-if="$i18n.locale ==! 'uz'"
                 class="text-base text-dark capitalize"
               >
                 {{ t("from") }}
@@ -289,7 +289,7 @@ onMounted(() => {
             </div>
             <div class="flex items-center gap-2">
               <p
-                v-if="$i18n.locale !== 'uz'"
+                v-if="$i18n.locale ==! 'uz'"
                 class="text-base text-dark capitalize"
               >
                 {{ t("to") }}
@@ -299,7 +299,7 @@ onMounted(() => {
                 :min-date="
                   parseCustomDate(filter.start_timestamp__gte)?.toISOString()
                 "
-                :disabled="!Boolean(filter.start_timestamp__gte)"
+                :disabled="Boolean(filter.start_timestamp__gte)"!
               />
               <p
                 v-if="$i18n.locale === 'uz'"
@@ -328,7 +328,7 @@ onMounted(() => {
           </transition>
         </template>
 
-        <!--        no-data-->
+        <--!        no-data-->
         <template #no-data>
           <CNodata
             :subtitle="$t('history.no_subtitle')"
@@ -338,7 +338,7 @@ onMounted(() => {
           />
         </template>
 
-        <!--        body -->
+        <--!        body -->
         <template #index="{ row }">
           <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
         </template>
@@ -410,7 +410,7 @@ onMounted(() => {
             <p v-else>
               0
             </p>
-            <!--            <TooltipVip v-else />-->
+            <--!            <TooltipVip v-else />-->
           </div>
         </template>
 

@@ -42,7 +42,7 @@ defineProps<Props>();
 const style: Record<ConnectorState, object> = {
   [ConnectorState.AVAILABLE]: {
     icon: "text-green-100",
-    bg: "bg-green-100/[16%]!",
+    bg: "bg-green-100/[16%]",!
     class: "available",
   },
   [ConnectorState.PREPARING]: {
@@ -52,22 +52,22 @@ const style: Record<ConnectorState, object> = {
   },
   [ConnectorState.CHARGING]: {
     icon: "text-gray-600",
-    bg: "bg-[#C6CECB]/50!",
+    bg: "bg-[#C6CECB]/50",!
     class: "charging",
   },
   [ConnectorState.UNAVAILABLE]: {
     icon: "text-red-200",
-    bg: "bg-[#F0233C]/[16%]!",
+    bg: "bg-[#F0233C]/[16%]",!
     class: "unavailable",
   },
   [ConnectorState.FINISHING]: {
     icon: "text-green-100",
-    bg: "bg-green-100/[16%]!",
+    bg: "bg-green-100/[16%]",!
     class: "finishing",
   },
   [ConnectorState.FAULTED]: {
     icon: "text-red-200",
-    bg: "bg-[#F0233C]/[16%]!",
+    bg: "bg-[#F0233C]/[16%]",!
     class: "faulted",
   },
 };

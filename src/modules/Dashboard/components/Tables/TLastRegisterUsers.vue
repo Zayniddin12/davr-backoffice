@@ -52,11 +52,11 @@ const { tableData, paginationData, onChangeLimit, loading } = useTableFetch(
       :total="paginationData?.total"
       no-footer
       no-search
-      th-class="bg-gray! text-gray-100!"
-      title-class="truncate!"
+      th-class="!bg-gray! text-gray-100"
+      title-class="!truncate"
       @items-per-page="onChangeLimit"
     >
-      <!--      body-->
+      <--!      body-->
       <template #index="{ row }">
         <span class="text-dark text-xs font-medium">{{ row._index }}.</span>
       </template>
@@ -94,7 +94,7 @@ const { tableData, paginationData, onChangeLimit, loading } = useTableFetch(
         <CTableDate :date="data?.last_login || data?.date_joined" />
       </template>
       <template #status="{ row: data }">
-        <span :class="[{ 'text-red': !data?.active_status }, 'text-right']">
+        <span :class="[{ 'text-red': data?.active_status! }, 'text-right']">
           {{ data?.active_status ? $t("active") : $t("inactive") }}
         </span>
       </template>

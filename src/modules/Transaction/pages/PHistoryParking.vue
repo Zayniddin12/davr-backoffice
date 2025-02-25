@@ -77,13 +77,13 @@ watch(
       "
       :title="t('transaction_for_parking')"
       :total="paginationData?.total"
-      head-classes="max-w-[870px]!"
-      th-class="users-module__row last:text-right!"
+      head-classes="max-w-[870px]"!
+      th-class="!users-module__row last:text-right"
       no-search
       @items-per-page="onChangeLimit"
       @page-change="onPageChange"
     >
-      <!--      head   -->
+      <--!      head   -->
       <template #beforeSearch>
         <div class="flex items-center justify-end gap-5">
           <FSelect
@@ -98,7 +98,7 @@ watch(
         </div>
       </template>
 
-      <!--      body  -->
+      <--!      body  -->
       <template #index="{ row }">
         <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
       </template>
@@ -151,7 +151,7 @@ watch(
             {{ dayjs(data?.end_timestamp)?.format("HH:mm") }}
           </p>
           <p
-            v-if="!data?.end_timestamp"
+            v-if="data?.end_timestamp"!
             class="text-xs font-normal mb-1 w-full mx-auto ml-7"
           >
             -
@@ -159,7 +159,7 @@ watch(
         </div>
       </template>
 
-      <!--      no data  -->
+      <--!      no data  -->
       <template #no-data>
         <NoData
           :subtitle="t('users_module.all_users.no_data_subtitle')"
@@ -179,6 +179,6 @@ span {
 
 .users-module__row:nth-child(3),
 .users-module__row:nth-child(4) {
-  text-align: center !important;
+  text-align: center important;!
 }
 </style>

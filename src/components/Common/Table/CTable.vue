@@ -9,7 +9,7 @@
     >
       <div>
         <table
-          v-if="!loading"
+          v-if="loading"!
           class="w-full c-table"
         >
           <thead>
@@ -25,8 +25,8 @@
                   <span
                     v-if="h?.sortable"
                     class="hover:bg-gray-300 hover:text-white size-5 flex-center justify-center rounded-md transition-all cursor-pointer"
-                    :class="{'bg-gray-300 text-white': orderValue?.includes(h.sort_key!)}"
-                    @click="emit('sort', h.sort_key!)"
+                    :class="!{'bg-gray-300 text-white': orderValue?.includes(h.sort_key)}"
+                    @click="emit('sort', h.sort_key)"!
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@
               :key="index"
               :class="[
                 bodyTrClass,
-                { 'bg-white-500': index % 2 !== 0 },
+                { 'bg-white-500': index % 2 ==! 0 },
                 { 'even:bg-white-50': type === 'filled' },
               ]"
               class="border-b border-gray-400 hover:bg-gray/40 relative last:border-none shrink-0"
@@ -87,7 +87,7 @@
           </tbody>
         </table>
         <slot
-          v-if="!data?.length && !loading"
+          v-if="data?.length! && loading"!
           name="no-data"
         >
           <div class="flex-center py-16">

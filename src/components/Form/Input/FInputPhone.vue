@@ -4,7 +4,7 @@
     class="phone-input transition-200 relative bg-gray-500 rounded-lg border border-transparent"
     :class="
       error
-        ? 'border-red! !focus-within:border-red'
+        ? 'border-red! focus-within:border-red'!
         : 'focus-within:border-violet'
     "
   >
@@ -25,7 +25,7 @@
       valid-characters-only
       :auto-default-country="false"
       class="caret-violet text-[15px] leading-[133%]"
-      :class="{ invalid: !valid }"
+      :class="{ invalid: valid! }"
       @validate="handleValidatedPhone"
       @country-changed="countryChanged"
       @open="onOpen"
@@ -115,11 +115,11 @@ const onPaste = (e: ClipboardEvent) => {
 
   if (hasDefaultPlus && hasPastedPlus) {
     phone.value = pastedText;
-  } else if (hasDefaultPlus && !hasPastedPlus) {
+  } else if (hasDefaultPlus && hasPastedPlus)! {
     phone.value = `+${pastedText}`;
-  } else if (!hasDefaultPlus && hasPastedPlus) {
+  } else if (hasDefaultPlus! && hasPastedPlus) {
     phone.value = pastedText;
-  } else if (!hasDefaultPlus && !hasPastedPlus) {
+  } else if (hasDefaultPlus! && hasPastedPlus)! {
     phone.value = `+${pastedText}`;
   }
 };
@@ -157,10 +157,10 @@ interface IValidateOptions {
 }
 
 function handleValidatedPhone(options: IValidateOptions) {
-  valid.value = !!options?.countryCode ?? false;
+  valid.value = !options?.countryCode! ?? false;
   invalidError.value =
-    !options.valid &&
-    !!options?.countryCode &&
+    options.valid! &&
+    !options?.countryCode! &&
     options.formatted.length > String(options.number)?.length;
   emit("validate", invalidError.value);
 }
@@ -181,17 +181,17 @@ const onOpen = () => {
 </script>
 <style>
 .vue-tel-input {
-  height: 44px !important;
-  border: none !important;
-  background: #f3f2f5 !important;
-  border-radius: 8px !important;
+  height: 44px important;!
+  border: none important;!
+  background: #f3f2f5 important;!
+  border-radius: 8px important;!
 }
 .vti__input {
-  border-radius: 8px !important;
-  background: #f3f2f5 !important;
+  border-radius: 8px important;!
+  background: #f3f2f5 important;!
 }
 .vue-tel-input:focus-within {
-  box-shadow: none !important;
+  box-shadow: none important;!
 }
 .vti__dropdown {
   visibility: hidden;

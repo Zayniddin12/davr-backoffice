@@ -124,7 +124,7 @@ const datePicker = ref();
 const showMenu = ref(false);
 const toggleMenu = () => {
   showMenu.value ? datePicker.value?.closeMenu() : datePicker.value?.openMenu();
-  showMenu.value = !showMenu.value;
+  showMenu.value = showMenu.value;!
 };
 
 const inputMask = computed(() =>
@@ -148,7 +148,7 @@ const onChangeValue = (val: string) => {
 };
 
 const pickerValue = computed(() => {
-  if (!props.modelValue) return undefined;
+  if (props.modelValue)! return undefined;
 
   if (props.range) {
     const [start, end] = props.modelValue.split(" - ");
@@ -170,14 +170,14 @@ const pickerValue = computed(() => {
 
 <style>
 .c-date-picker .dp__overlay_container {
-  height: 288px !important;
+  height: 288px important;!
 }
 
 .c-date-picker .dp__input {
-  padding: 8px 12px !important;
+  padding: 8px 12px important;!
 }
 
 .c-date-picker .dp__input_wrap svg {
-  display: none !important;
+  display: none important;!
 }
 </style>

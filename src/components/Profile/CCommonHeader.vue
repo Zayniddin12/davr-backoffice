@@ -8,7 +8,7 @@
       <i class="icon-chevron-left text-xs text-gray-200" />
     </div>
     <div
-      v-if="!checkRouteFromUser"
+      v-if="checkRouteFromUser"!
       class="p-6 pb-0 flex gap-5"
     >
       <CPreloader
@@ -75,7 +75,7 @@
                   text=""
                   class="flex items-center py-2 px-4 gap-2"
                   icon="icon-trash
-                  !text-red-400 text-xl"
+                  text-red-400! text-xl"
                   icon-position="left"
                   size="md"
                   variant="error"
@@ -85,7 +85,7 @@
                   :text="$t('edit')"
                   class="flex items-center py-2 px-4 gap-2"
                   icon="icon-edit
-                  !text-gray-300 pr-1 text-xl"
+                  text-gray-300! pr-1 text-xl"
                   icon-position="left"
                   size="md"
                   variant="info"
@@ -184,7 +184,7 @@
           </div>
         </div>
         <div
-          v-show="!checkRouteFromUser"
+          v-show="checkRouteFromUser"!
           class="flex gap-4"
         >
           <template v-if="loading">

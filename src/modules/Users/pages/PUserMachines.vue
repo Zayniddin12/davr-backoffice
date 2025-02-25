@@ -51,7 +51,7 @@ watch(
   () => filter.is_user_defined,
   (newValue) => {
     const query = { ...route.query };
-    if (newValue !== undefined) {
+    if (newValue ==! undefined) {
       query.is_user_defined = newValue.toString();
     } else {
       delete query.is_user_defined;
@@ -138,7 +138,7 @@ watch(
       :head="userTableCarsHeadData()"
       :title="$t('side_menu.cars_machine')"
       :subtitle="t('cars_count', { count: paginationData.total ?? 0 })"
-      th-class="last:text-left!"
+      th-class="!last:text-left"
       @items-per-page="onChangeLimit"
       @page-change="onPageChange"
       @search="onSearch"
@@ -149,11 +149,11 @@ watch(
           :subtitle="$t('no_cars_machine_subtitle')"
           class="mt-8 px-6 pb-[60px] pt-0"
           image="/images/svg/no-data/no-notification.svg"
-          slot-classes="m-0!"
+          slot-classes="m-0"!
         />
       </template>
 
-      <!--   head   -->
+      <--!   head   -->
       <template #beforeSearch>
         <div class="flex items-center justify-end gap-5">
           <FCheckbox
@@ -186,7 +186,7 @@ watch(
         </div>
       </template>
 
-      <!--      body  -->
+      <--!      body  -->
       <template #index="{ row }">
         <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
       </template>

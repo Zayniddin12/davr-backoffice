@@ -7,7 +7,7 @@
       :component-data="{
         tag: 'transition-group',
         type: 'transition-group',
-        name: !drag ? 'flip-list' : null,
+        name: drag! ? 'flip-list' : null,
       }"
       item-key="id"
       ghost-class="ghost"
@@ -18,8 +18,8 @@
       <template #item="{ element }">
         <li
           class="flex-center-between p-3 pl-4 rounded-xl bg-gray-100"
-          :class="{ 'cursor-grab!': drag }"
-          :style="{ cursor: 'grab !important' }"
+          :class="{ 'cursor-grab':! drag }"
+          :style="{ cursor: 'grab important'! }"
         >
           <p
             v-if="element?.text"

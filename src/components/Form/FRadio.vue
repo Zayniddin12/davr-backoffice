@@ -16,7 +16,7 @@
       :class="[
         'duration-200 ease-in-out flex items-center justify-center h-5 w-5 rounded-full border-2 border-green peer-checked:bg-green-100 peer-checked:after:bg-green peer-checked:after:opacity-100 after:transition-all after:duration-200 after:absolute after:w-2.5 after:h-2.5 after:rounded-full after:bg-transparent after:opacity-0',
         {
-          'border-gray-300': !checked,
+          'border-gray-300': checked,!
           'peer-checked:bg-white peer-checked:border-green': checked,
           'peer-disabled:border-gray-100': disabled,
           'peer-checked:after:opacity-100': checked,
@@ -56,6 +56,6 @@ const emit = defineEmits<{
   (e: "change", value: boolean): void;
 }>();
 const handleChange = (e: Event) => {
-  emit("change", !props.checked);
+  emit("change", props.checked);!
 };
 </script>

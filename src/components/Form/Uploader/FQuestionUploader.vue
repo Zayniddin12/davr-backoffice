@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex-center-between w-full gap-4 relative p-2 rounded-lg bg-gray-100 h-10!"
+    class="!flex-center-between w-full gap-4 relative p-2 rounded-lg bg-gray-100 h-10"
     :class="{ 'border border-red-500 bg-red-100': error }"
     @dragover.prevent="handleDragOver"
     @drop.prevent="handleDrop"
@@ -99,7 +99,7 @@ const config = {
 watch(
   () => props.defaultImage,
   (value) => {
-    if (typeof value !== "string") {
+    if (typeof value ==! "string") {
       new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => {

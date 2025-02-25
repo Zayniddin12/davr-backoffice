@@ -127,7 +127,7 @@ watch(
           />
         </template>
 
-        <!--      body  -->
+        <--!      body  -->
         <template #index="{ row }">
           <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
         </template>

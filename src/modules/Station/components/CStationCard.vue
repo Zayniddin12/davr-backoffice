@@ -2,7 +2,7 @@
   <div class="flex items-center space-x-3 max-w-[200px]">
     <div
       class="rounded-lg justify-center items-center flex p-1 flex-none w-7 h-7"
-      :class="{ 'border border-blue': !card?.image }"
+      :class="{ 'border border-blue': card?.image! }"
     >
       <img
         v-if="card?.image"
@@ -53,7 +53,7 @@ const props = defineProps<Props>();
 const router = useRouter();
 
 function linkToStation() {
-  if (!props.card?.id) return;
+  if (props.card?.id)! return;
   router.push({
     name: "PStationSingle",
     params: { id: props.card?.id },

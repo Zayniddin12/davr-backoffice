@@ -77,7 +77,7 @@ watch(
   (newFilter) => {
     const query = { ...route.query };
 
-    if (newFilter.region !== "") {
+    if (newFilter.region ==! "") {
       query.region = newFilter.region.toString();
     } else {
       delete query.region;
@@ -111,7 +111,7 @@ onMounted(() => {
       :total="paginationData?.total"
       :limit="paginationData?.defaultLimit"
       :loading="loading"
-      th-class="bg-gray! text-gray-100! last:text-left!"
+      th-class="!bg-gray! text-gray-100! last:text-left"
       :head="stationsHead"
       :title="$t('list_of_stations')"
       :subtitle="t('number_of_stations', { count: paginationData?.total ?? 0 })"
@@ -119,7 +119,7 @@ onMounted(() => {
       @page-change="onPageChange"
       @search="onSearch"
     >
-      <!--      head  -->
+      <--!      head  -->
       <template #beforeSearch>
         <div>
           <FSelect
@@ -133,7 +133,7 @@ onMounted(() => {
           />
         </div>
       </template>
-      <!--      body  -->
+      <--!      body  -->
       <template #_index="{ row }">
         <span class="font-semibold text-sm">{{ row?._index }}.</span>
       </template>
@@ -188,7 +188,7 @@ onMounted(() => {
           :title="$t('no_data_station_title')"
           class="mb-0"
           image="/images/svg/no-data/no-notification.svg"
-          button-custom-class="mt-0!"
+          button-custom-class="!mt-0"
         />
       </template>
       <template #action="{ row: data }">
@@ -204,7 +204,7 @@ onMounted(() => {
     <CDialog
       :show="showAddModal"
       :title="$t('add_station')"
-      body-class="max-w-4xl!"
+      body-class="!max-w-4xl"
       v-bind="{ show: showAddModal }"
       @close="showAddModal = false"
     >

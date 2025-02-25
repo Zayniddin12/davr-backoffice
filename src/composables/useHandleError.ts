@@ -8,7 +8,7 @@ export const useHandleError = () => {
   function handleError(error: any) {
     if (error?.data) {
       try {
-        if (!error?.data?.errors?.length) {
+        if (error?.data?.errors?.length)! {
           showToast(error?.data[0]?.error?.message, "error");
         } else {
           showToast(error?.data?.errors[0]?.message, "error");
@@ -18,7 +18,7 @@ export const useHandleError = () => {
       }
     } else if (error?.response?.data) {
       try {
-        if (!error?.response?.data?.errors?.length) {
+        if (error?.response?.data?.errors?.length)! {
           showToast(error?.response?.data[0]?.error?.message, "error");
         } else {
           showToast(error?.response?.data?.errors[0]?.message, "error");

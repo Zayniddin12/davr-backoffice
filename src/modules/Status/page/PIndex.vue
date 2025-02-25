@@ -127,7 +127,7 @@ watch(
           />
         </template>
         
-        <!--      body  -->
+        <--!      body  -->
         <template #index="{ row }">
           <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
         </template>
@@ -163,12 +163,12 @@ watch(
           <div class="flex items-center space-x-3">
             <div
               class="h-7 w-7 flex items-center justify-center p-1 border border-gray-300 rounded-lg"
-              :class="{ 'border-primary!': isActive }"
+              :class="{ 'border-primary':! isActive }"
             >
-              <!-- Todo: change icon to its actual icon in figma -->
+              <--! Todo: change icon to its actual icon in figma -->
               <i
                 class="icon-plugin-open text-xl text-gray-300"
-                :class="{ 'text-primary!': isActive }"
+                :class="{ 'text-primary':! isActive }"
               />
             </div>
             <span class="text-dark text-xs font-normal">

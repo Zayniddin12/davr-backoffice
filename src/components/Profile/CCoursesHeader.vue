@@ -1,8 +1,8 @@
 <template>
-  <CCard class="p-0!">
+  <CCard class="p-0">!
     <div
       class="p-6 flex gap-5"
-      :class="{ 'pb-0': !noTabs }"
+      :class="{ 'pb-0': noTabs! }"
     >
       <div
         class="w-[122px] h-[122px] rounded-lg border border-white-100 overflow-hidden shrink-0"
@@ -55,7 +55,7 @@
         </div>
       </div>
     </div>
-    <div class="flex gap-4 p-6 pb-0!">
+    <div class="flex gap-4 p-6 pb-0">!
       <slot name="details">
         <CProfileDashDetail title="16.09.2022 / 09:41" />
 
@@ -69,13 +69,13 @@
       </slot>
     </div>
     <div
-      v-if="!noTabs"
+      v-if="noTabs"!
       class="w-full pl-6 mt-6"
     >
       <hr class="border-white-100">
     </div>
     <CTab
-      v-if="!noTabs"
+      v-if="noTabs"!
       v-model="activeTab"
       :list="tabList"
     />

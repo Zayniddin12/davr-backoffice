@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="!noFooter"
+    v-if="noFooter"!
     class="w-full flex items-center justify-end gap-5 pt-4"
   >
     <slot name="beforePagination" />

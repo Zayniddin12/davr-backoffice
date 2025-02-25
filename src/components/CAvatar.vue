@@ -4,7 +4,7 @@
     class="relative rounded-full before:rounded-full before:absolute before:inset-0 before:border-2 before:border-gray/50 overflow-hidden shrink-0"
   >
     <img
-      v-if="!isError && !!image"
+      v-if="isError! && !image"!
       :key="image"
       :class="imageClass"
       :src="image"

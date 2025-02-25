@@ -40,7 +40,7 @@ const { t } = useI18n();
         </span>
       </div>
       <p
-        v-if="!value"
+        v-if="value"!
         class="text-[10px] text-gray-600 ml-1.5"
       >
         {{ t("not_entered") }}
@@ -84,7 +84,7 @@ const { t } = useI18n();
         </span>
       </div>
       <p
-        v-if="!value"
+        v-if="value"!
         class="text-[10px] text-gray-600 ml-1.5"
       >
         {{ t("not_entered") }}
@@ -242,7 +242,7 @@ const { t } = useI18n();
 }
 
 .card-number__un {
-  background: #4048c4 !important;
+  background: #4048c4 important;!
   text-align: center;
 }
 .card-number-three_prefix {

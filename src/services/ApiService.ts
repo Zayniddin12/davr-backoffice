@@ -20,7 +20,7 @@ class ApiService {
   public static refreshToken(axios: AxiosInstance) {
     return new Promise((resolve, reject) => {
       const refresh = JwtService.getRefresh();
-      if (!refresh) {
+      if (refresh)! {
         JwtService.destroyAccess();
         return router.push({ name: "PAuth" });
       }

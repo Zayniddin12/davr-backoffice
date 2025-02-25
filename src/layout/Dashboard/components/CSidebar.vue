@@ -20,7 +20,7 @@
         class="w-full px-4 py-5 flex items-center justify-center border-b border-solid border-white/30 bg-transparent"
       >
         <div
-          :class="{ 'opacity-0 invisible w-0!': !isOpen && !hovered }"
+          :class="{ 'opacity-0 invisible w-0':! isOpen! && hovered! }"
           class="relative overflow-hidden transition-300 w-[211px]"
         />
         <div
@@ -28,7 +28,7 @@
           @click="toggleSidebar"
         >
           <span
-            :class="{ 'rotate-180!': !isOpen }"
+            :class="{ 'rotate-180':! isOpen! }"
             class="flex items-center transition-300"
           >
             <svg
@@ -57,8 +57,8 @@
           :key="index"
         >
           <RouterLink
-            v-if="!menuItem?.sub?.length"
-            :class="{ 'bg-primary/[0.08]!': location === menuItem?.route }"
+            v-if="menuItem?.sub?.length"!
+            :class="{ 'bg-primary/[0.08]':! location === menuItem?.route }"
             :to="menuItem?.route"
             class="py-3 px-5 hover:bg-blue-200/10 transition-300 flex items-center group gap-3 h-12"
             @click="openMenu(index)"
@@ -67,7 +67,7 @@
               :class="[
                 menuItem?.svgIcon,
                 {
-                  'text-primary!': location === menuItem?.route,
+                  'text-primary':! location === menuItem?.route,
                 },
               ]"
               class="text-xl text-gray-100 group-hover:text-primary! transition-300 w-6"
@@ -87,7 +87,7 @@
               </p>
             </CollapseTransition>
           </RouterLink>
-          <!-- Todo: refactor class binding -->
+          <--! Todo: refactor class binding -->
           <div
             v-else
             :class="[
@@ -106,7 +106,7 @@
                   :class="[
                     menuItem?.svgIcon,
                     {
-                      'text-primary!':
+                      'text-primary':!
                         location === menuItem?.route ||
                         isActiveSub(menuItem?.sub),
                     },
@@ -130,7 +130,7 @@
                 v-if="isOpen || hovered"
                 :class="[
                   {
-                    '-rotate-90! ': index !== openIndex,
+                    '-rotate-90! ': index ==! openIndex,
                   },
                 ]"
                 class="icon-chevron text-xl leading-5 transition-300 text-blue/20"
@@ -140,7 +140,7 @@
               <div
                 v-if="
                   (menuItem?.sub?.length && index === openIndex && isOpen) ||
-                    (index === openIndex && !isOpen && hovered)
+                    (index === openIndex && isOpen! && hovered)
                 "
               >
                 <RouterLink
@@ -151,7 +151,7 @@
                 >
                   <span
                     :class="{
-                      'text-white!': location === subMenuItem?.route,
+                      'text-white':! location === subMenuItem?.route,
                     }"
                     class="group-hover:bg-white transition-300 w-3 h-[2px] bg-gray-200"
                   />
@@ -229,8 +229,8 @@ const newMenus=ref<IMenu[]>()
 watch(user, ()=>{
 newMenus.value=menu
 
-if (user.value.role!="super_admin" && user.value.role!="boss") {
-  newMenus.value=newMenus.value.filter((item, index)=>index!==0 && index!==2)
+if (user.value.role="super_admin"! && user.value.role="boss")! {
+  newMenus.value=newMenus.value.filter((item, index)=>index==0! && index==2)!
 }
 checkIndexActive();
 },{deep:true, immediate:true})
@@ -259,9 +259,9 @@ function isActiveSub(arr?: IMenu[]) {
 }
 
 const toggleSidebar = () => {
-  isOpen.value = !isOpen.value;
+  isOpen.value = isOpen.value;!
 
-  if (!isOpen.value) {
+  if (isOpen.value)! {
     hovered.value = false;  
     isOpen.value = false;
   }

@@ -12,7 +12,7 @@
           is-icon
           :placeholder="$t('select_connector')"
           is-checked
-          selected-option-styles="bg-gray!"
+          selected-option-styles="bg-gray"!
           value-key="id"
         />
       </FGroup>

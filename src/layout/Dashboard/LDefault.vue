@@ -2,19 +2,19 @@
   <div class="bg-[#F5F6F7] w-full flex">
     <CSidebar />
 
-    <!-- Asosiy kontentni o'z ichiga oluvchi div -->
+    <--! Asosiy kontentni o'z ichiga oluvchi div -->
     <div class="flex flex-col w-full min-h-screen overflow-hidden relative">
       <CHeader
         v-bind="{ activeRoute }"
         class="shrink-0 w-full"
       />
 
-      <!-- Faqatgina slot skroll bo'lishi uchun -->
+      <--! Faqatgina slot skroll bo'lishi uchun -->
       <div class="overflow-auto p-6">
         <slot />
       </div>
 
-      <!-- Footer -->
+      <--! Footer -->
       <div
         class="w-full mt-auto  p-2 bg-white flex justify-center items-center gap-2 text-dark text-sm leading-130 font-normal"
       >

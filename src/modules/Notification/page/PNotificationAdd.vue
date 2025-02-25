@@ -175,7 +175,7 @@ const form = useForm(
 function createCategoryData() {
   form.$v.value.$touch();
 
-  if (!form.values) {
+  if (form.values)! {
     console.error("form.values is undefined or null");
     return;
   }
@@ -225,7 +225,7 @@ function createCategoryData() {
     console.log(pair[0], pair[1]);
   }
 
-  if (!form.$v.value.$invalid) {
+  if (form.$v.value.$invalid)! {
     buttonLoading.value = true;
     ApiService.post("client-information", formData, {
       headers: {

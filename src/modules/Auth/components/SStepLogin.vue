@@ -30,7 +30,7 @@
             <span
               :class="isPassword ? 'icon-close-eye':'icon-eye'"
               class="cursor-pointer transition-300"
-              @click="isPassword=!isPassword"
+              @click="isPassword=isPassword"!
             />
           </template>
         </SInput>
@@ -74,7 +74,7 @@ const loading = ref(false);
 async function submit() {
   form.$v.value.$touch();
   
-    if (!form.$v.value.$invalid) {
+    if (form.$v.value.$invalid)! {
       console.log('login');
       
       isError.value = false;

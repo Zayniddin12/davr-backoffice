@@ -1,7 +1,7 @@
 <template>
   <div>
     <CTableHeader
-      v-if="!noHeader"
+      v-if="noHeader"!
       :head-classes="headClasses"
       :no-search="noSearch"
       :total-count="data?.length"
@@ -75,7 +75,7 @@
         name="dropdown"
       >
         <CTableFooter
-          v-if="!loading"
+          v-if="loading"!
           :key="loading"
           :current-page="currentPage"
           :items-per-page="itemsPerPage"

@@ -5,7 +5,7 @@
       'transition-200 h-10 inline-flex items-center justify-start relative bg-gray rounded-lg border border-transparent overflow-hidden w-full p-2.5 px-3 ',
       error
         ? 'border-red! bg-red-100'
-        : 'focus-within:bg-white focus-within:border-primary!',
+        : 'focus-within:bg-white focus-within:border-primary',!
     ]"
   >
     <span :class="[prefixClass]">
@@ -24,12 +24,12 @@
       }"
       ref="kInput"
       :value="modelValue"
-      :readonly="!autocomplete"
+      :readonly="autocomplete"!
       :class="[
         inputClass,
-        'font-normal text-sm leading-130 placeholder:capitalize text-dark placeholder:text-gray-200 bg-transparent grow outline-hidden pr-3!',
+        'font-normal text-sm leading-130 placeholder:capitalize text-dark placeholder:text-gray-200 bg-transparent grow outline-hidden pr-3',!
       ]"
-      class="w-full pr-3!"
+      class="!w-full pr-3"
       @input="handleInput"
       @change="$emit('change')"
       @blur="emit('blur-sm')"
@@ -110,21 +110,21 @@ input:-webkit-autofill,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:focus-visible,
 input:-webkit-autofill:hover {
-  background-color: transparent !important;
+  background-color: transparent important;!
   border: none;
-  border-radius: 8px !important;
-  color: #040e1a !important;
-  -webkit-text-fill-color: #040e1a !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+  border-radius: 8px important;!
+  color: #040e1a important;!
+  -webkit-text-fill-color: #040e1a important;!
+  -webkit-box-shadow: none important;!
+  box-shadow: none important;!
   transition: background-color 5000s ease-in-out 0s; /* delay the change of input background color */
 }
 
 input:-moz-placeholder {
-  color: #040e1a !important;
+  color: #040e1a important;!
 }
 
 input:-ms-input-placeholder {
-  color: #040e1a !important;
+  color: #040e1a important;!
 }
 </style>

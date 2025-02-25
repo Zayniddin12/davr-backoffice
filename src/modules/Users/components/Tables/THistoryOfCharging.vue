@@ -117,7 +117,7 @@ const openChargingHistory = (data: any) => {
         :limit="paginationData?.defaultLimit"
         :loading="loading"
         :head="historyChargingTableHeadData()"
-        th-class="bg-gray! text-gray-100! last:text-left!"
+        th-class="!bg-gray! text-gray-100! last:text-left"
         tr-class="hover:cursor-pointer"
         @items-per-page="onChangeLimit"
         @page-change="onPageChange"
@@ -144,7 +144,7 @@ const openChargingHistory = (data: any) => {
           <div class="flex items-center gap-5 w-full justify-end">
             <CProfileDashDetail
               v-if="totals?.sum_cost"
-              class="max-h-10!"
+              class="!max-h-10"
               active
               :description="$t('total_amount_spent')"
               :title="`${changeNumberFormat(+totals?.sum_cost)} UZS`"
@@ -164,14 +164,14 @@ const openChargingHistory = (data: any) => {
         <template #no-data>
           <NoData
             :title="$t('history.charging_no_data')"
-            title-class="min-w-[440px]!"
+            title-class="!min-w-[440px]"
             :subtitle="$t('history.charging_no_data_subtitle')"
             class="mt-8 px-6 pb-[88px] pt-0"
             image="/images/svg/no-data/no-notification.svg"
           />
         </template>
 
-        <!--      body-->
+        <--!      body-->
         <template #index="{ row }">
           <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
         </template>
@@ -189,7 +189,7 @@ const openChargingHistory = (data: any) => {
             :name="data?.address_name"
             class="hover:text-primary transition-300 cursor-pointer"
           />
-          <!--            @click="openCheckModal(data)"-->
+          <--!            @click="openCheckModal(data)"-->
         </template>
         <template #columns="{ row: data }">
           <span class="text-dark text-sm font-normal">{{

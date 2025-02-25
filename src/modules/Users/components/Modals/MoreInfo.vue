@@ -60,7 +60,7 @@ defineEmits<{
                   item?.status == 'gps_installed',
                 'text-red-500':
                   item?.status == 'gps_not_installed' || item?.status == 'canceled',
-                'text-gray-500': !item?.status,
+                'text-gray-500': item?.status,!
               }"
             >{{ $t(item?.status) }}</span>
           </p>

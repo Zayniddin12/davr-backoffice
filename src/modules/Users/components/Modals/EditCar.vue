@@ -78,7 +78,7 @@ watch(
       form.values.manufacturer = val?.manufacturer?.id;
       form.values.model = val?.model?.id;
       val?.charging_type.forEach((el: any) => {
-        if (!form.values.charging_type.includes(el?.id)) {
+        if (form.values.charging_type.includes(el?.id))! {
           form.values.charging_type.push(el?.id);
         }
       });
@@ -88,7 +88,7 @@ watch(
 watch(
   () => props.show,
   () => {
-    if (!props.show) {
+    if (props.show)! {
       form.$v.value.$reset();
       form.values.model = null;
       form.values.manufacturer = null;
@@ -104,7 +104,7 @@ watch(
     <CDialog
       :show="show"
       :title="$t('add_car_form.edit')"
-      body-class="w-[421px]!"
+      body-class="!w-[421px]"
       @close="() => $emit('close')"
     >
       <template #default>
@@ -118,9 +118,9 @@ watch(
               :options="carMarks"
               :error="form.$v.value.manufacturer.$error"
               filter-key="name"
-              selected-option-styles="bg-gray!"
+              selected-option-styles="bg-gray"!
               :placeholder="$t('add_car_form.mark_placeholder')"
-              placeholder-classes="text-dark! font-normal!"
+              placeholder-classes="text-dark! font-normal"!
               is-search-icon
             >
               <template #option="{ option: option, selected: selected }">
@@ -147,7 +147,7 @@ watch(
               :options="carModels"
               :error="form.$v.value.model.$error"
               :placeholder="$t('add_car_form.model_placeholder')"
-              selected-option-styles="h-10! bg-gray! border-transparent !focus:!border-primary"
+              selected-option-styles="h-10! bg-gray! border-transparent focus:!border-primary"!
               is-checked
             />
           </FGroup>
@@ -158,7 +158,7 @@ watch(
               filter-key="name"
               :error="form.$v.value.charging_type.$error"
               :placeholder="$t('add_car_form.connector_placeholder')"
-              selected-option-styles="bg-gray! h-auto!"
+              selected-option-styles="bg-gray! h-auto"!
               label-key="name"
               @on-toggle="onToggle = $event"
             >
@@ -191,10 +191,10 @@ watch(
               >
                 <i
                   class="icon-chevron absolute right-2.5 flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
-                  :class="{ 'rotate-180!': onToggle }"
+                  :class="{ 'rotate-180':! onToggle }"
                 />
                 <p
-                  v-if="!selectedValues.length"
+                  v-if="selectedValues.length"!
                   class="text-sm"
                 >
                   {{ $t("add_car_form.connector_placeholder") }}
@@ -206,7 +206,7 @@ watch(
                     v-for="(so, idx) in selectedValues"
                     :key="idx"
                     class="flex items-center rounded-[4px] bg-gray px-2 py-1.5 gap-1"
-                    :class="{ 'bg-white!': !onToggle }"
+                    :class="{ 'bg-white':! onToggle! }"
                   >
                     <img
                       v-if="so?.icon"

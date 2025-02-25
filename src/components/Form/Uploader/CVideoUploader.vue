@@ -7,7 +7,7 @@
     @drop="handleDrop"
   >
     <input
-      v-if="!isRemoveClicked"
+      v-if="isRemoveClicked"!
       :id="randomId"
       type="file"
       name="file"
@@ -58,23 +58,23 @@
           />
         </div>
       </div>
-      <!--      <div-->
-      <!--        class="absolute top-1/2 left-1/2 -translate-1/2 -mt-5"-->
-      <!--        @click="showVideo = true"-->
-      <!--      >-->
-      <!--        <div-->
-      <!--          class="duration-200 transition-all group w-[44px] h-[44px] bg-white/[16%] flex items-center justify-center z-20 rounded-full cursor-pointer border border-transparent hover:scale-110"-->
-      <!--        >-->
-      <!--          <span class="transition-300 icon-player text-white text-3xl" />-->
-      <!--        </div>-->
-      <!--      </div>-->
+      <--!      <div-->
+      <--!        class="absolute top-1/2 left-1/2 -translate-1/2 -mt-5"-->
+      <--!        @click="showVideo = true"-->
+      <--!      >-->
+      <--!        <div-->
+      <--!          class="duration-200 transition-all group w-[44px] h-[44px] bg-white/[16%] flex items-center justify-center z-20 rounded-full cursor-pointer border border-transparent hover:scale-110"-->
+      <--!        >-->
+      <--!          <span class="transition-300 icon-player text-white text-3xl" />-->
+      <--!        </div>-->
+      <--!      </div>-->
     </div>
     <div
       v-else
       class="w-full h-full flex items-center justify-center flex-col rounded-lg transition-300 hover:border-gray-100 cursor-pointer px-6 py-11 border-2 border-dashed border-gray-800"
       :class="[
         {
-          'border-red!': error,
+          'border-red':! error,
         },
       ]"
       @click="getFile('create')"
@@ -106,7 +106,7 @@
       <div
         class="w-full h-full border-dashed border-2 rounded-md border-white border-opacity-60 flex items-center justify-center"
       >
-        <p class="text-white text-base font-bold leading-[130%]!">
+        <p class="text-white text-base font-bold leading-[130%]">!
           {{ $t("drop_file_here") }}
         </p>
       </div>
@@ -220,7 +220,7 @@ const getFile = (type: string) => {
 };
 const handleFile = async (event: Event) => {
   // await obtainUploadAccess();
-  // if (!credentials.value) {
+  // if (credentials.value)! {
   //   return;
   // }
   const target = event?.target as HTMLInputElement | null;

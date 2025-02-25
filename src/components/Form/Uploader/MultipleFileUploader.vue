@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <!-- Fayl Yuklash Tugmasi -->
+    <--! Fayl Yuklash Tugmasi -->
     <label
       for="fileInput"
       class="flex items-center gap-2 cursor-pointer text-blue-600 font-medium py-2.5 px-3.5 rounded-lg border border-gray-800 shadow-xs w-fit transition duration-300 hover:border-blue-600"
@@ -18,7 +18,7 @@
       @change="onFileSelect"
     >
 
-    <!-- Yuklangan Fayllar Ro'yxati -->
+    <--! Yuklangan Fayllar Ro'yxati -->
     <ul class="mt-4 space-y-2">
       <li
         v-for="(file, index) in files"

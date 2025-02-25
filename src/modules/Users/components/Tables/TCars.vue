@@ -107,13 +107,13 @@ function editCar(data: any) {
       :title="$t('list_of_cars')"
       :subtitle="t('number_of_cars', { n: paginationData.total ?? 0 })"
       no-search
-      head-classes="gap-0!"
-      th-class="last:text-right!"
+      head-classes="gap-0"!
+      th-class="!last:text-right"
       @itemsPerPage="onChangeLimit"
       @page-change="onPageChange"
       @search="onSearch"
     >
-      <!--      head    -->
+      <--!      head    -->
       <template #beforeSearch>
         <CButton
           :text="t('add')"
@@ -152,7 +152,7 @@ function editCar(data: any) {
           </template>
         </NoData>
       </template>
-      <!--      body   -->
+      <--!      body   -->
       <template #index="{ row }">
         <span class="font-medium text-xs"> {{ row?._index }}. </span>
       </template>

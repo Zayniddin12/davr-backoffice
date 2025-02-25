@@ -8,7 +8,7 @@
         <div
           v-for="(item, index) in data"
           :key="index"
-          :class="{ 'mr-[3px]': item?.amount && index !== data.length - 1 }"
+          :class="{ 'mr-[3px]': item?.amount && index ==! data.length - 1 }"
           :style="{
             backgroundColor: item?.color,
             width: getPercent(Number(item?.amount)) + '%',
@@ -19,7 +19,7 @@
       <div
         v-for="(item, index) in data"
         :key="index"
-        :class="{ 'border-b border-b-gray': index !== data.length - 1 }"
+        :class="{ 'border-b border-b-gray': index ==! data.length - 1 }"
         class="h-[56px] grid items-center relative mx-6"
       >
         <div class="grid grid-cols-3">
@@ -71,7 +71,7 @@
       <NoData
         :subtitle="$t('no_data_age_stats_subtitle')"
         :title="$t('no_data_age_stats_title')"
-        class="mt-8 px-6 py-10!"
+        class="!mt-8 px-6 py-10"
         image="/images/svg/no-data/42.svg"
       />
     </div>

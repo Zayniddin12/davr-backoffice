@@ -11,7 +11,7 @@
       >
         <div class="rounded-lg h-full w-full">
           <div class="absolute top-0 right-3 flex gap-2">
-            <!-- Delete button -->
+            <--! Delete button -->
             <div
               class="rounded-full p-2 bg-blur/30 z-10 border border-white/9 transition-all duration-300 cursor-pointer"
               @click="removeImage"
@@ -21,7 +21,7 @@
                 alt="trash"
               >
             </div>
-            <!-- Change button -->
+            <--! Change button -->
             <div
               class="rounded-full p-2 bg-blur/30 z-10 border border-white/9 transition-all duration-300 cursor-pointer"
               @click="selectFile"
@@ -35,7 +35,7 @@
               >
             </div>
           </div>
-          <!-- Display the selected image -->
+          <--! Display the selected image -->
           <img
             :src="data.image"
             alt="image"
@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <!-- Drag and drop area for uploading a new image -->
+      <--! Drag and drop area for uploading a new image -->
       <div
         v-else
         class="max-h-[360px] text-center bg-stone-1 rounded-lg p-6 max-sm:p-1 border-dashed border-grey-2 border flex justify-center items-center flex-col h-full"

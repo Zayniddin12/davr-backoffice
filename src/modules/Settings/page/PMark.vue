@@ -17,7 +17,7 @@
         :total="paginationData?.total"
         :limit="paginationData?.defaultLimit"
         :loading="loading"
-        th-class="bg-gray! text-gray-100! last:text-right!"
+        th-class="!bg-gray! text-gray-100! last:text-right"
         @items-per-page="onChangeLimit"
         @page-change="onPageChange"
         @search="onSearch"
@@ -60,7 +60,7 @@
             class="mt-8 px-6 pb-20 pt-0"
             :button-text="t('add_mark')"
             image="/images/svg/no-data/no-notification.svg"
-            button-custom-class="mt-0!"
+            button-custom-class="!mt-0"
             @submit="openAddMark"
           />
         </template>
@@ -79,7 +79,7 @@
     <CDialog
       v-bind="{ show }"
       :title="$t(isEdit ? 'edit_mark_car' : 'add_mark_car')"
-      body-class="max-w-[421px]!"
+      body-class="!max-w-[421px]"
       @close="show = false"
     >
       <div class="p-5 pt-4">
@@ -223,7 +223,7 @@ const {
 watch(
   () => show.value,
   () => {
-    if (!show.value) {
+    if (show.value)! {
       form.values.mark = "";
       form.values.image = "";
       form.$v.value.$reset();

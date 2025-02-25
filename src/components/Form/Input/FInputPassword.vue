@@ -4,7 +4,7 @@
       'transition-200 h-10 inline-flex items-center justify-start relative bg-gray rounded-lg border border-transparent overflow-hidden w-full p-2.5 px-3 ',
       error
         ? 'border-red! bg-red-100'
-        : 'focus-within:bg-white focus-within:border-primary!',
+        : 'focus-within:bg-white focus-within:border-primary',!
     ]"
   >
     <span :class="[prefixClass]">
@@ -23,7 +23,7 @@
       }"
       ref="kInput"
       :value="modelValue"
-      :readonly="!autocomplete"
+      :readonly="autocomplete"!
       :class="[
         inputClass,
         'font-normal text-sm leading-130 text-dark placeholder:text-gray-200 bg-transparent grow outline-hidden',
@@ -38,7 +38,7 @@
 
     <div @click="togglePassword">
       <i
-        v-if="!eyeOpen"
+        v-if="eyeOpen"!
         class="icon-eye cursor-pointer text-xl text-blue-100"
       />
       <i
@@ -101,7 +101,7 @@ const eyeOpen = ref(false);
 const typePassword = ref(props.type);
 
 const togglePassword = () => {
-  eyeOpen.value = !eyeOpen.value;
+  eyeOpen.value = eyeOpen.value;!
   typePassword.value = eyeOpen.value ? "password" : "type";
 };
 </script>
@@ -123,21 +123,21 @@ input:-webkit-autofill,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:focus-visible,
 input:-webkit-autofill:hover {
-  background-color: transparent !important;
+  background-color: transparent important;!
   border: none;
-  border-radius: 8px !important;
-  color: #040e1a !important;
-  -webkit-text-fill-color: #040e1a !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+  border-radius: 8px important;!
+  color: #040e1a important;!
+  -webkit-text-fill-color: #040e1a important;!
+  -webkit-box-shadow: none important;!
+  box-shadow: none important;!
   transition: background-color 5000s ease-in-out 0s; /* delay the change of input background color */
 }
 
 input:-moz-placeholder {
-  color: #040e1a !important;
+  color: #040e1a important;!
 }
 
 input:-ms-input-placeholder {
-  color: #040e1a !important;
+  color: #040e1a important;!
 }
 </style>

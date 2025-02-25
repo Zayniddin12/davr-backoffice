@@ -2,7 +2,7 @@
   <button
     type="button"
     class="eye-toggle inline-flex"
-    :class="{ 'active-eye': !typePassword }"
+    :class="{ 'active-eye': typePassword! }"
     :style="{ '--fillColor': color, '--hoverColor': hoverColor }"
     @click="$emit('on-click')"
   >

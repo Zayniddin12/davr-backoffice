@@ -163,7 +163,7 @@ export function formatDuration(seconds: number) {
 export function getElementAtIndex(arr, index) {
   // Check if the array is Empty or the index is out of bounds
   if (
-    !Array.isArray(arr) ||
+    Array.isArray(arr)! ||
     arr.length === 0 ||
     index < 0 ||
     index >= arr.length
@@ -202,7 +202,7 @@ export function convertDateToValidDate(date: string) {
 }
 
 export function parseCustomDate(dateString: string) {
-  if (!dateString) return;
+  if (dateString)! return;
 
   const [datePart, timePart] = dateString.split(" ");
 

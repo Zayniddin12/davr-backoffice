@@ -41,20 +41,20 @@
                 size="md"
               />
             </div>
-            <!-- <div class="border-b border-gray-400 pb-5"></div> -->
-            <!-- <FInput placeholder="Мирабад №28 (EBB-98735)" /> -->
+            <--! <div class="border-b border-gray-400 pb-5"></div> -->
+            <--! <FInput placeholder="Мирабад №28 (EBB-98735)" /> -->
           </FGroup>
         </CCard>
         <CCard class="p-5 w-1/2">
           <div class="flex gap-5">
             <FGroup
-              class="w-1/2!"
+              class="!w-1/2"
               label="Отображаемое имя"
             >
               <FInput placeholder="Введите название колонки" />
             </FGroup>
             <FGroup
-              class="w-1/2!"
+              class="!w-1/2"
               label="Connection ID "
             >
               <FInput placeholder="Введите Connection ID" />
@@ -116,13 +116,13 @@
         <div class="flex gap-5 justify-between">
           <div class="flex w-1/2 gap-5">
             <FGroup
-              class="w-1/2!"
+              class="!w-1/2"
               label="Цена за бронь (мин)"
             >
               <FInput placeholder="" />
             </FGroup>
             <FGroup
-              class="w-1/2!"
+              class="!w-1/2"
               label="Бесплатная минута"
             >
               <FInput placeholder="Введите Connection ID" />
@@ -171,7 +171,7 @@
 
     <CDialog
       :title="$t('delete')"
-      body-class="max-w-sm!"
+      body-class="!max-w-sm"
       v-bind="{ show: deleteModal }"
       @close="deleteModal = false"
     >
@@ -199,7 +199,7 @@
 
     <CDialog
       :title="$t(isEdit ? 'edit_column' : 'add_columns')"
-      body-class="max-w-xl!"
+      body-class="!max-w-xl"
       v-bind="{ show: showAddModal }"
       @close="closeModal"
     >
@@ -213,7 +213,7 @@
     </CDialog>
     <CDialog
       :title="$t('edit_station')"
-      body-class="max-w-4xl!"
+      body-class="!max-w-4xl"
       v-bind="{ show: editStationModal }"
       @close="editStationModal = false"
     >
@@ -305,7 +305,7 @@ const fetchSingleData = () => {
 fetchSingleData();
 
 const getTabs = computed(() => {
-  if (!single.value?.columns_ids?.length)
+  if (single.value?.columns_ids?.length)!
     return [
       {
         label: t("charging_history"),
@@ -331,7 +331,7 @@ const getTabs = computed(() => {
 });
 
 const getCurrentColumn = () => {
-  if (!single.value.columns_ids?.length) return;
+  if (single.value.columns_ids?.length)! return;
 
   currentColumn.value = single.value.columns_ids[0];
 };

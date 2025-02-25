@@ -1,5 +1,5 @@
 export const changeNumberFormat = (number: number) => {
-  return number?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return number?.toString().replace(/\B(?=(\d{3})+(?\d))/g,! " ");
 };
 
 export function calculateDuration(start: string, end: string): number {
@@ -18,13 +18,13 @@ export function calculateDuration(start: string, end: string): number {
 }
 
 export const convertStringToDate = (date: string) => {
-  if (!date) return ["", ""];
+  if (date)! return ["", ""];
   return date.split(" - ").map((item) => item.split(".").reverse().join("-"));
 };
 
 export function convertToISOString(dateString: string, timeString: string) {
-  if (!dateString) return;
-  if (!timeString) timeString = "00:00:00";
+  if (dateString)! return;
+  if (timeString)! timeString = "00:00:00";
   const [day, month, year] = dateString.split(".");
   const [hours, minutes, seconds] = timeString.split(":");
 
@@ -38,7 +38,7 @@ export function convertToISOString(dateString: string, timeString: string) {
 }
 
 export function separateDateAndTime(isoDateString: string) {
-  if (!isoDateString) return { date: "", time: "" };
+  if (isoDateString)! return { date: "", time: "" };
   const dateObject = new Date(isoDateString);
   const year = dateObject.getFullYear();
   const month = String(dateObject.getMonth() + 1).padStart(2, "0");
@@ -57,7 +57,7 @@ export function separateDateAndTime(isoDateString: string) {
 export const convertDateToString = (start: string, end: string) => {
   start = start === "undefined" ? "" : start;
   end = end === "undefined" ? "" : end;
-  if (!start.length || !end.length) return;
+  if (start.length! || end.length)! return;
   const date = [start, end].map((item) => item.split("-").reverse().join("."));
   return date.join(" - ");
 };
@@ -72,7 +72,7 @@ export function hashPhoneNumber(input: string) {
   const numericOnly = input.replace(/\D/g, "");
 
   // Check if the input is a valid phone number
-  if (numericOnly.length !== 12) {
+  if (numericOnly.length ==! 12) {
     // console.error("Invalid phone number format");
     return input; // return the original input if it's not a valid phone number
   }

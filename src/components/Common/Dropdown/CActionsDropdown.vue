@@ -24,14 +24,14 @@ const emit = defineEmits(["edit", "delete", "more"]);
 
 // User role propsga teng bo'lgan statuslarni emit qilish
 const emitEditStatus = () => {
-  if (!props.status || props.status.length === 0) {
+  if (props.status! || props.status.length === 0) {
     emit("edit", "in_progress", props.id);
     return;
   }
 
   switch (props.role) {
     case "gps_engineer":
-      if (!props.status[0] || props.status[0].status === "in_progress") {
+      if (props.status[0]! || props.status[0].status === "in_progress") {
         emit("edit", "gps_installed", props.id);
       } else if (props.status[0].status === "gps_installed") {
         emit("edit", "gps_not_installed", props.id);
@@ -39,7 +39,7 @@ const emitEditStatus = () => {
       break;
 
     case "verifier":
-      if (!props.status?.[1]?.status) {
+      if (props.status?.[1]?.status)! {
         emit("edit", "in_progress", props.id);
       } else if (props.status[1].status === "in_progress") {
         emit("edit", "confirmed", props.id);
@@ -49,7 +49,7 @@ const emitEditStatus = () => {
       break;
 
     case "lawyer":
-      if (!props.status?.[2]?.status) {
+      if (props.status?.[2]?.status)! {
         emit("edit", "in_progress", props.id);
       } else if (props.status[2].status === "in_progress") {
         emit("edit", "confirmed", props.id);

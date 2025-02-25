@@ -29,7 +29,7 @@
         </div>
       </div>
       <div
-        v-if="!hasClose && file?.type === 'video'"
+        v-if="hasClose! && file?.type === 'video'"
         class="icon-player text-gray mr-1 text-xl hover:cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
         @click="showVideo = true"
       />

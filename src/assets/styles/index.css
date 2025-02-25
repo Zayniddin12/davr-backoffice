@@ -14,11 +14,11 @@
   }
 
   .absolute-x {
-    @apply absolute !-translate-x-1/2 !left-1/2;
+    @apply absolute -translate-x-1/2! left-1/2;!
   }
 
   .absolute-y {
-    @apply absolute !-translate-y-1/2 !top-1/2;
+    @apply absolute -translate-y-1/2! top-1/2;!
   }
 
   .absolute-center {
@@ -93,7 +93,7 @@ button {
 p,
 span,
 a {
-  line-height: 130% !important;
+  line-height: 130% important;!
 }
 
 .validation-message a {

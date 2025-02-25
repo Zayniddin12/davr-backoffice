@@ -28,7 +28,7 @@ const emit = defineEmits<{
 }>();
 function send(){
   form.$v.value.$touch();
-  if(!form.$v.value.$invalid){
+  if(form.$v.value.$invalid){!
     emit('send', form.values.name)
   }
 }
@@ -38,8 +38,8 @@ function send(){
   <CDialog
     :show="props.show"
     :title="t('cause_title')"
-    body-class="max-w-[421px]!"
-    header-style="border-none!"
+    body-class="!max-w-[421px]"
+    header-style="border-none"!
     @close="emit('close')"
   >
     <CCard class="p-5 pt-1.5">

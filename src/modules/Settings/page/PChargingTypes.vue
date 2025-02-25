@@ -17,7 +17,7 @@
         :current-page="paginationData?.currentPage ?? 0"
         :total="paginationData?.total"
         :loading="loading"
-        th-class="bg-gray! text-gray-100! last:text-right!"
+        th-class="!bg-gray! text-gray-100! last:text-right"
         @search="onSearch"
         @items-per-page="onChangeLimit"
         @page-change="onPageChange"
@@ -66,7 +66,7 @@
             :title="$t('no_charge_title')"
             :subtitle="$t('no_charge_subtitle')"
             :button-text="t('add_charger')"
-            button-custom-class="mt-0!"
+            button-custom-class="!mt-0"
             class="mt-8 px-6 pb-20 pt-0"
             image="/images/svg/no-data/no-notification.svg"
             @submit="openAddModal"
@@ -87,7 +87,7 @@
     <CDialog
       v-bind="{ show }"
       :title="$t(isEdit ? 'edit_user_modal.title' : 'history.charging_add')"
-      body-class="max-w-[421px]! overflow-y-visible!"
+      body-class="!max-w-[421px]! overflow-y-visible"
       @close="show = false"
     >
       <div class="p-5 pt-4">
@@ -119,7 +119,7 @@
             v-model="form.values.category"
             :options="selectOptions"
             :error="form.$v.value.category?.$error || isError"
-            selected-option-styles="bg-gray!"
+            selected-option-styles="bg-gray"!
             :placeholder="$t('enter_charger_category')"
             is-checked
             @change="isError = false"
@@ -245,7 +245,7 @@ const {
 watch(
   () => show.value,
   () => {
-    if (!show.value) {
+    if (show.value)! {
       form.values.name = "";
       form.values.category = "";
       form.values.image = "";

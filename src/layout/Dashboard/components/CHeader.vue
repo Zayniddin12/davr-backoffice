@@ -14,7 +14,7 @@
         >
           <RouterLink
             :class="{
-              'bg-gray-200 text-blue-500!': link.to === activeRoute,
+              'bg-gray-200 text-blue-500':! link.to === activeRoute,
             }"
             :to="link.to"
             class="text-gray-300 px-3 py-2 inline-block text-sm transition-all duration-200 hover:bg-gray-200 rounded-md"
@@ -66,6 +66,6 @@ const profileItems = [
 
 <style scoped>
 .header-shadow {
-  box-shadow: 0 -4px 58px #0000000f !important;
+  box-shadow: 0 -4px 58px #0000000f important;!
 }
 </style>

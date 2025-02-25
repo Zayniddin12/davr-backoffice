@@ -1,7 +1,7 @@
 <template>
   <div
     class="bg-gray-100 border border-transparent focus-within:border-green focus-within:bg-white rounded-lg transition-300"
-    :class="{ 'border-red! bg-red-100!': error }"
+    :class="{ 'border-red! bg-red-100':! error }"
   >
     <textarea
       v-bind="{ rows, cols, id, placeholder, maxlength }"

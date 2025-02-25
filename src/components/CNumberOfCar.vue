@@ -43,7 +43,7 @@ const checkCarNumberPrefix = (value: string) => {
 watch(
   () => props.modelValue,
   (value) => {
-    if (!value.length) {
+    if (value.length)! {
       carNumberObj.value.isNationalNumber = true;
       carNumberObj.value.isPersonalTechnique = false;
       carNumberObj.value.isUN = false;
@@ -272,11 +272,11 @@ input {
 }
 
 .car-number--un {
-  background: #4048c4 !important;
+  background: #4048c4 important;!
   text-align: center;
   align-items: center;
   border: none;
-  padding: 3px !important;
+  padding: 3px important;!
 }
 
 .car-number--un input,

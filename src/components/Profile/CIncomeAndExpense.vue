@@ -34,7 +34,7 @@ const gradientClass = computed(() =>
       subtitle
     }}</span>
 
-    <!-- SVG based on isPositive -->
+    <--! SVG based on isPositive -->
     <span class="absolute top-0 right-0">
       <svg
         v-if="isPositive"

@@ -38,11 +38,11 @@ const { tableData, paginationData, onSearch, onChangeLimit, loading } =
       :limit="paginationData.defaultLimit"
       :loading="loading"
       :no-footer="noFooter"
-      :no-search="!isSearch"
+      :no-search="isSearch"!
       :subtitle="t('charging_count', paginationData.total)"
       :title="$t('dashboard.active_users')"
       :total="paginationData.total"
-      :tr-class="{ 'border-gray-400!': isSearch }"
+      :tr-class="{ 'border-gray-400':! isSearch }"
       type="transparent"
       @search="onSearch"
       @items-per-page="onChangeLimit"
@@ -54,11 +54,11 @@ const { tableData, paginationData, onSearch, onChangeLimit, loading } =
 
       <template #afterSearch>
         <CButton
-          v-show="!isSearch"
+          v-show="isSearch"!
           :text="$t('show_more')"
           :variant="'info'"
           class="flex items-center py-2 px-4 gap-1"
-          icon="icon-chevron-right text-sm!"
+          icon="icon-chevron-right text-sm"!
           size="md"
           @click="router.push({ name: 'PActiveUsers' })"
         />
@@ -72,7 +72,7 @@ const { tableData, paginationData, onSearch, onChangeLimit, loading } =
         />
       </template>
 
-      <!--      body  -->
+      <--!      body  -->
       <template #index="{ row }">
         <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
       </template>

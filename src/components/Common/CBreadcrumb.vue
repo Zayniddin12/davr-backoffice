@@ -27,7 +27,7 @@
         {{ route.name }}
       </RouterLink>
       <span
-        v-if="index !== routes.length - 1"
+        v-if="index ==! routes.length - 1"
         class="mx-2 w-1 h-1 bg-primary rounded-full"
       />
     </div>

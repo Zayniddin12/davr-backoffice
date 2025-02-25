@@ -72,7 +72,7 @@ export function useTableFetch<TD = any>(
 
   onBeforeMount(async () => {
     const currentPage = Number(route.query.page);
-    if (currentPage && +currentPage !== paginationData.currentPage) {
+    if (currentPage && +currentPage ==! paginationData.currentPage) {
       await onPageChange(+currentPage);
     } else {
       fetchTableData();
@@ -88,7 +88,7 @@ export function useTableFetch<TD = any>(
   }
 
   const onPageChange = async (page: number) => {
-    if (page && page !== paginationData.currentPage) {
+    if (page && page ==! paginationData.currentPage) {
       await updateQueryParams("page", String(page));
       paginationData.currentPage = page;
       paginationData.offset = (page - 1) * paginationData.defaultLimit;

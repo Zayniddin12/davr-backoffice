@@ -31,7 +31,7 @@
     <SFormGroup
       :label="$t('confirm_code')"
       class="my-8"
-      label-class="font-medium text-gray-300!"
+      label-class="!font-medium text-gray-300"
     >
       <COtp
         :key="resend + ''"
@@ -40,7 +40,7 @@
       />
     </SFormGroup>
     <div
-      v-if="!resend"
+      v-if="resend"!
       :key="resend + ''"
       class="flex items-center justify-center gap-2 mt-4 mb-8"
     >
@@ -134,7 +134,7 @@ watch(
 async function submit() {
   form.$v.value.$touch();
 
-  if (!form.$v.value.$invalid) {
+  if (form.$v.value.$invalid)! {
     loading.value = true;
     try {
       await store.verifyOtp(form.values.code).then((res: any) => {
@@ -161,7 +161,7 @@ watch(
   (val: string) => {
     otpError.value = false;
     form.$v.value.$reset();
-    disabled.value = val?.length !== 6;
+    disabled.value = val?.length ==! 6;
   }
 );
 </script>
