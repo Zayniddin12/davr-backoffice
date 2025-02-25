@@ -1,44 +1,35 @@
 <template>
-  <CCard class="shrink-0 p-6">
+  <CCard class="flex-shrink-0 p-6"             
+  v-if="formattedSeries?.data"
+  >
     <div class="flex justify-between mb-5">
       <div>
         <h4 class="text-xl text-dark font-semibold mb-1">
-          {{ $t("attendance") }}
+          {{ $t("gps_activity") }}
         </h4>
         <p class="text-gray-300 text-xs font-normal leading-130">
-          {{ $t("graphic_attendance") }}
+          {{ $t("gps_activity_description") }}
         </p>
       </div>
-
       <Tab
         :list="tabList"
-        :model-value="tabValue"
+        v-model="tabValue"
         class="space-x-3 border-none"
-        item-class="pt-0! whitespace-nowrap"
-        @update:model-value="handleUpdateTab"
+        item-class="!pt-0 whitespace-nowrap"
       />
     </div>
     <div v-if="!loading">
       <Transition mode="out-in" name="fade">
         <div :key="tabValue" class="h-[280px]">
-          <template v-if="tabValue === 'today'">
-            <ApexChart
-              :options="options"
-              :series="seriesToday"
-              height="280px"
-            />
-          </template>
-          <template v-if="tabValue === 'all'">
-            <ApexChart :options="options" :series="seriesAll" height="280px" />
-          </template>
+          <ApexChart
+            :options="options"
+            :series="formattedSeries"
+            height="280px"
+          />
         </div>
       </Transition>
     </div>
-    <div
-      v-if="
-        loading && (seriesToday[0]?.data?.length || seriesAll[0]?.data?.length)
-      "
-    >
+    <div v-else>
       <NoData
         :title="$t('empty_data')"
         class="mt-8"
@@ -49,44 +40,32 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted, reactive, ref } from "vue";
-import dayjs from "dayjs";
+import { ref, computed, watch, onMounted, reactive } from "vue";
 import ApexChart from "vue3-apexcharts";
 import CCard from "@/components/Card/CCard.vue";
 import Tab from "@/components/Tab/CTab.vue";
-import { useI18n } from "vue-i18n";
-import "dayjs/locale/ru";
-import "dayjs/locale/uz-latn.js";
 import NoData from "@/components/Common/NoData/NoData.vue";
+import { useI18n } from "vue-i18n";
 import { useDashboardStore } from "@/modules/Dashboard/store";
 
-interface Props {
-  disabled?: boolean;
-  data?: object;
-}
+const { t } = useI18n();
+const dashboardStore = useDashboardStore();
 
-defineProps<Props>();
-const mainStore = useDashboardStore();
-
-const { t, locale } = useI18n();
-dayjs.locale(locale.value === "uz" ? "uz-latn" : locale.value);
 const loading = ref(true);
+const tabValue = ref("gps_installed");
 
-const tabList = reactive([
-  {
-    label: t("for_today"),
-    value: "today",
-  },
-  {
-    label: t("for_all_time"),
-    value: "all",
-  },
-]);
-const tabValue = ref("today");
+// Tab ro'yxatini hisoblash
+const tabList = computed(() => {
+  return dashboardStore.gps.tabs.map((tab) => ({
+    label: t(tab),
+    value: tab,
+  }));
+});
 
-const handleUpdateTab = (value: string) => {
-  tabValue.value = value;
-};
+// Chart ma'lumotlarini saqlash
+const chartSeries = ref< {createdAt: string, count: number}[]>([]);
+
+// Chart opsiyalarini hisoblash
 const options = reactive({
   chart: {
     type: "area",
@@ -242,103 +221,46 @@ const options = reactive({
   },
 });
 
-function changeKeysInArray(arr: object[], keyMap: object) {
-  return arr?.map((obj) => {
-    const newObj = {};
-    for (const oldKey in obj) {
-      // eslint-disable-next-line no-prototype-builtins
-      if (keyMap?.hasOwnProperty(oldKey)) {
-        newObj[keyMap[oldKey]] = obj[oldKey] ? obj[oldKey] : 0;
-      } else {
-        newObj[oldKey] = obj[oldKey] ? obj[oldKey] : 0;
-      }
-    }
-    return newObj;
-  });
-}
+// tabValue o'zgarganda chartSeries ni yangilash
+watch(tabValue, (newTab) => {
+  updateChartSeries(tabValue.value);
+});
 
-// mji
-const hourKeyMap = {
-  hour: "x",
-  count: "y",
-};
-const monthKeyMapHour = {
-  month: "x",
-  count: "y",
-};
-const monthNames = [
-  t("january_short"),
-  t("february_short"),
-  t("march_short"),
-  t("april_short"),
-  t("may_short"),
-  t("june_short"),
-  t("july_short"),
-  t("august_short"),
-  t("september_short"),
-  t("october_short"),
-  t("november_short"),
-  t("december_short"),
-];
-const seriesToday = computed(() => {
-  return [
-    {
-      name: "hour",
-      data: changeKeysInArray(
-        mainStore?.appUsageStats?.daily_statistics,
-        hourKeyMap
-      ),
-    },
-  ];
+const data = computed(() => {
+  return dashboardStore.gps.stats;
 });
-const seriesAll = computed(() => {
-  return [
-    {
-      name: "month",
-      data: changeKeysInArray(
-        mainStore?.appUsageStats?.yearly_statistics,
-        monthKeyMapHour
-      )?.map((item) => ({
-        x: monthNames[item?.x - 1], // Subtract 1 to match the array index
-        y: item?.y,
-      })),
-    },
-  ];
-});
+
+watch(data,()=>{
+  updateChartSeries(tabValue.value);
+},{deep:true})
+
+// Komponent yuklanganda dastlabki chartSeries ni o'rnatish
 onMounted(() => {
-  setTimeout(() => {
-    loading.value = false;
-  }, 100);
+  if (tabList.value.length > 0) {
+    tabValue.value = tabList.value[0].value;
+    updateChartSeries(tabValue.value);
+  }
+
+  loading.value = false;
+});
+
+// chartSeries ni yangilash funksiyasi
+function updateChartSeries(activeTab:string) {
+  // Bu yerda activeTab ga asoslangan holda chartSeries ni yangilash lozim
+  // Masalan:
+console.log(dashboardStore.gps.stats?.[activeTab])
+
+  chartSeries.value = dashboardStore.gps.stats?.[activeTab] ;
+}
+const formattedSeries = computed(() => {
+  return [
+    {
+      name: "Faoliyat",
+      data: chartSeries.value?.map(item => ({
+        x: item.createdAt,
+        y: item.count
+      }))
+    }
+  ];
 });
 </script>
-
-<style>
-.apexcharts-canvas {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.apexcharts-legend-series {
-  display: flex !important;
-  align-items: center !important;
-}
-
-.apexcharts-legend-marker {
-  font-weight: 500 !important;
-  font-size: 12px !important;
-  line-height: 14px !important;
-  margin-right: 6px !important;
-}
-
-.apexcharts-legend-text {
-  font-family: Roboto, sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 12px !important;
-  line-height: 14px !important;
-  color: #8e9ba8 !important;
-}
-
-.apexcharts-legend-series:nth-child(1) ~ .apexcharts-legend-marker {
-  background: red !important;
-}
-</style>
