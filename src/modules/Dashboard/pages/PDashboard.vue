@@ -1,6 +1,9 @@
 <template>
   <div>
-    <Teleport v-if="mounted" to="#header-breadcrumbs">
+    <Teleport
+      v-if="mounted"
+      to="#header-breadcrumbs"
+    >
       <SBreadcrumb v-bind="{ routes }" />
     </Teleport>
     <!-- <div class="py-4 px-5 w-full bg-white rounded-xl mb-6 flex gap-4">
@@ -40,7 +43,10 @@
         />
       </div>
       <div class="w-full flex flex-wrap gap-5">
-        <CLineChart :data="mainStore.appUsageStats" class="col-span-2" />
+        <CLineChart
+          :data="mainStore.appUsageStats"
+          class="col-span-2"
+        />
         <!-- <CGenderChart :data="genderChartData" class="col-span-1" /> -->
         <!-- <CAgeChart :data="ageChartData" class="col-span-1" /> -->
       </div>

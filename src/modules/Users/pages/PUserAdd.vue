@@ -1,65 +1,68 @@
 <template>
-    <Teleport v-if="mounted" to="#header-breadcrumbs">
-      <CBreadcrumb v-bind="{ routes }" />
-    </Teleport>
- <div class="min-h-screen">
-  <div class="p-6 bg-white rounded-xl">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
+    <CBreadcrumb v-bind="{ routes }" />
+  </Teleport>
+  <div class="min-h-screen">
+    <div class="p-6 bg-white rounded-xl">
       <h3 class="text-xl font-bold text-dark border-b border-gray-400 pb-5">
         {{ $t("title_add_notification") }}
       </h3>
       <div class="w-full pt-6 bg-white rounded-xl grid grid-cols-2 gap-4">
-            <FGroup :label="$t('fullName')">
-              <FInput
-                :placeholder="$t('enter_full_name_of_user')"
-                :maxlength="256"
-                v-model="form.values.fullName"
-                :error="form.$v.value.fullName?.$error"
-              />
-            </FGroup>
-            <FGroup :label="$t('username')">
-              <FInput
-                :placeholder="$t('add_username_of_user')"
-                v-model="form.values.userName"
-                :error="form.$v.value.userName?.$error"
-              />
-            </FGroup>
-            <FGroup :label="$t('role')">
-                <FSelect
-              :options="roleList"
-              v-model="form.values.role"
-              :placeholder="$t('all_users')"
-              value-key="id"
-              label-key="role"
-              selected-option-styles="h-10 w-full"
-              :error="form.$v.value.role?.$error"
-              is-checked
-            />
-            </FGroup>
+        <FGroup :label="$t('fullName')">
+          <FInput
+            v-model="form.values.fullName"
+            :placeholder="$t('enter_full_name_of_user')"
+            :maxlength="256"
+            :error="form.$v.value.fullName?.$error"
+          />
+        </FGroup>
+        <FGroup :label="$t('username')">
+          <FInput
+            v-model="form.values.userName"
+            :placeholder="$t('add_username_of_user')"
+            :error="form.$v.value.userName?.$error"
+          />
+        </FGroup>
+        <FGroup :label="$t('role')">
+          <FSelect
+            v-model="form.values.role"
+            :options="roleList"
+            :placeholder="$t('all_users')"
+            value-key="id"
+            label-key="role"
+            selected-option-styles="h-10 w-full"
+            :error="form.$v.value.role?.$error"
+            is-checked
+          />
+        </FGroup>
       </div>
       <div
-          class="space-x-4 flex items-center justify-end"
-        >
-          <CButton
-            variant="info"
-            :text="$t('cancel')"
-            @click="router.push({ name: 'PUsers' })"
-          />
-          <CButton
-            variant="primary"
-            :loading="buttonLoading"
-            :disabled="buttonLoading"
-            :text="$t('add')"
-            @click="createCategoryData"
-          />
-        </div>
-        <CarModal
-      :show="carModal"
-      @close="closeModal"
-      :response="response"
-    />
+        class="space-x-4 flex items-center justify-end"
+      >
+        <CButton
+          variant="info"
+          :text="$t('cancel')"
+          @click="router.push({ name: 'PUsers' })"
+        />
+        <CButton
+          variant="primary"
+          :loading="buttonLoading"
+          :disabled="buttonLoading"
+          :text="$t('add')"
+          @click="createCategoryData"
+        />
+      </div>
+      <CarModal
+        :show="carModal"
+        :response="response"
+        @close="closeModal"
+      />
     </div>
- </div>
-  </template>
+  </div>
+</template>
   <script setup lang="ts">
   import { useMounted } from "@/composables/useMounted";
   import { computed, ref } from "vue";

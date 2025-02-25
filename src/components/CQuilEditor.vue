@@ -1,10 +1,10 @@
 <template>
   <div>
     <QuillEditor
+      v-model:content="text"
       theme="snow"
       :toolbar="toolbar"
-      v-model:content="text"
-      contentType="html"
+      content-type="html"
       :read-only="readOnly"
       :class="[
         'min-h-[180px] bg-gray rounded-b-lg',

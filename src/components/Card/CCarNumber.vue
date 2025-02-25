@@ -18,14 +18,20 @@ const { t } = useI18n();
 
 <template>
   <div class="font-car">
-    <div v-if="type === 'TYPE_I'" class="car-number">
+    <div
+      v-if="type === 'TYPE_I'"
+      class="car-number"
+    >
       <div
         v-if="value"
         class="card-number_prefix flex items-center justify-center py-[5px] pr-1 pl-[5px]"
       >
         {{ value[0] + value[1] }}
       </div>
-      <div v-if="value" class="card-number__letters px-1">
+      <div
+        v-if="value"
+        class="card-number__letters px-1"
+      >
         <span class="inline-block mr-[2px]">
           {{ value?.slice(2, 5) }}
         </span>
@@ -33,24 +39,40 @@ const { t } = useI18n();
           {{ value?.slice(5) }}
         </span>
       </div>
-      <p v-if="!value" class="text-[10px] text-gray-600 ml-1.5">
+      <p
+        v-if="!value"
+        class="text-[10px] text-gray-600 ml-1.5"
+      >
         {{ t("not_entered") }}
       </p>
 
       <div class="ml-auto! mr-[5px]">
-        <img src="/images/uz-flag.svg" alt="image of uzbek flag" />
-        <img src="/images/uz-word.svg" alt="word of uz" class="mt-[2px]" />
+        <img
+          src="/images/uz-flag.svg"
+          alt="image of uzbek flag"
+        >
+        <img
+          src="/images/uz-word.svg"
+          alt="word of uz"
+          class="mt-[2px]"
+        >
       </div>
     </div>
 
-    <div v-if="type === 'TYPE_II'" class="car-number">
+    <div
+      v-if="type === 'TYPE_II'"
+      class="car-number"
+    >
       <div
         v-if="value"
         class="card-number_prefix flex items-center justify-center py-[5px] pr-1 pl-[5px]"
       >
         {{ value[0] + value[1] }}
       </div>
-      <div v-if="value" class="card-number__letters pl-1">
+      <div
+        v-if="value"
+        class="card-number__letters pl-1"
+      >
         <span class="inline-block mr-[2px]">
           {{ value[2] }}
         </span>
@@ -61,16 +83,29 @@ const { t } = useI18n();
           {{ value?.slice(6) }}
         </span>
       </div>
-      <p v-if="!value" class="text-[10px] text-gray-600 ml-1.5">
+      <p
+        v-if="!value"
+        class="text-[10px] text-gray-600 ml-1.5"
+      >
         {{ t("not_entered") }}
       </p>
 
       <div class="ml-auto! mr-[5px]">
-        <img src="/images/uz-flag.svg" alt="image of uzbek flag" />
-        <img src="/images/uz-word.svg" alt="word of uz" class="mt-[2px]" />
+        <img
+          src="/images/uz-flag.svg"
+          alt="image of uzbek flag"
+        >
+        <img
+          src="/images/uz-word.svg"
+          alt="word of uz"
+          class="mt-[2px]"
+        >
       </div>
     </div>
-    <div v-if="type === 'TYPE_III'" class="car-number car-number__three">
+    <div
+      v-if="type === 'TYPE_III'"
+      class="car-number car-number__three"
+    >
       <div class="flex items-center justify-center">
         <span class="inline-block mr-[3px]">{{ value[0] }}</span>
         <span>{{
@@ -78,7 +113,10 @@ const { t } = useI18n();
         }}</span>
       </div>
     </div>
-    <div v-if="type === 'TYPE_IV'" class="car-number car-number__three">
+    <div
+      v-if="type === 'TYPE_IV'"
+      class="car-number car-number__three"
+    >
       <div class="flex items-center justify-center">
         <span class="inline-block mr-1">{{
           value[0] + value[1] + value[2]

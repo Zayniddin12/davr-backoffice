@@ -186,7 +186,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
   <section>
@@ -203,46 +206,46 @@ onMounted(() => {
         :total="paginationData?.total"
         th-class="last:text-left!"
         head-classes="max-w-[1300px]!"
-        @sort="sortBy"
         :order-value="filter.order_by"
-        @itemsPerPage="onChangeLimit"
-        @pageChange="onPageChange"
+        @sort="sortBy"
+        @items-per-page="onChangeLimit"
+        @page-change="onPageChange"
         @search="onSearch"
       >
         <template #beforeSearch>
           <div class="flex items-center gap-5 flex-wrap w-full">
             <div class="flex items-center gap-2">
               <p
-                class="text-base text-dark capitalize"
                 v-if="$i18n.locale !== 'uz'"
+                class="text-base text-dark capitalize"
               >
                 {{ t("from") }}
               </p>
               <FormTime
                 v-model="filter.time_range_after"
-                @startTime="filter.time_range_after = $event"
+                @start-time="filter.time_range_after = $event"
               />
               <p
-                class="text-base text-dark capitalize"
                 v-if="$i18n.locale === 'uz'"
+                class="text-base text-dark capitalize"
               >
                 {{ t("from") }}
               </p>
             </div>
             <div class="flex items-center gap-2">
               <p
-                class="text-base text-dark capitalize"
                 v-if="$i18n.locale !== 'uz'"
+                class="text-base text-dark capitalize"
               >
                 {{ t("to") }}
               </p>
               <FormTime
                 v-model="filter.time_range_before"
-                @startTime="filter.time_range_before = $event"
+                @start-time="filter.time_range_before = $event"
               />
               <p
-                class="text-base text-dark capitalize"
                 v-if="$i18n.locale === 'uz'"
+                class="text-base text-dark capitalize"
               >
                 {{ t("to") }}
               </p>
@@ -271,23 +274,23 @@ onMounted(() => {
           <div class="flex items-center gap-5 flex-wrap w-full justify-end">
             <div class="flex items-center gap-2">
               <p
-                class="text-base text-dark capitalize"
                 v-if="$i18n.locale !== 'uz'"
+                class="text-base text-dark capitalize"
               >
                 {{ t("from") }}
               </p>
               <FormDateTime v-model="filter.start_timestamp__gte" />
               <p
-                class="text-base text-dark capitalize"
                 v-if="$i18n.locale === 'uz'"
+                class="text-base text-dark capitalize"
               >
                 {{ t("from") }}
               </p>
             </div>
             <div class="flex items-center gap-2">
               <p
-                class="text-base text-dark capitalize"
                 v-if="$i18n.locale !== 'uz'"
+                class="text-base text-dark capitalize"
               >
                 {{ t("to") }}
               </p>
@@ -299,8 +302,8 @@ onMounted(() => {
                 :disabled="!Boolean(filter.start_timestamp__gte)"
               />
               <p
-                class="text-base text-dark capitalize"
                 v-if="$i18n.locale === 'uz'"
+                class="text-base text-dark capitalize"
               >
                 {{ t("to") }}
               </p>
@@ -308,7 +311,10 @@ onMounted(() => {
           </div>
         </template>
         <template #filter>
-          <transition mode="out-in" name="fade">
+          <transition
+            mode="out-in"
+            name="fade"
+          >
             <div
               v-if="totalData.length && Object.keys(totals).length"
               class="grid grid-cols-2 gap-4 my-6"
@@ -346,7 +352,7 @@ onMounted(() => {
                 :alt="data?.user?.full_name"
                 :src="data?.user?.avatar_url"
                 class="w-full h-full object-cover rounded-full"
-              />
+              >
               <svg
                 v-else
                 xmlns="http://www.w3.org/2000/svg"
@@ -401,7 +407,9 @@ onMounted(() => {
             >
               {{ changeNumberFormat(data?.cost) }}
             </span>
-            <p v-else>0</p>
+            <p v-else>
+              0
+            </p>
             <!--            <TooltipVip v-else />-->
           </div>
         </template>

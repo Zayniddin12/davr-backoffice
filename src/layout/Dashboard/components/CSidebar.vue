@@ -11,10 +11,10 @@
   >
     <div
       class="absolute w-full h-[136px] bg-primary/60 -top-[56px] blur-[99px] z-10"
-    ></div>
+    />
     <div
       class="absolute top-[77px] left-0 w-full h-[620px] before:absolute before:left-0 before:top-[-50px] before:h-[620px] before:w-full z-1 before:z-0 before:bg-no-repeat before:bg-cover"
-    ></div>
+    />
     <div class="z-20">
       <div
         class="w-full px-4 py-5 flex items-center justify-center border-b border-solid border-white/30 bg-transparent"
@@ -22,8 +22,7 @@
         <div
           :class="{ 'opacity-0 invisible w-0!': !isOpen && !hovered }"
           class="relative overflow-hidden transition-300 w-[211px]"
-        >
-        </div>
+        />
         <div
           class="cursor-pointer w-6 h-6 flex items-center justify-center transition-300"
           @click="toggleSidebar"
@@ -53,7 +52,10 @@
         </div>
       </div>
       <div class="flex flex-col py-5 gap-1">
-        <div v-for="(menuItem, index) in newMenus" :key="index">
+        <div
+          v-for="(menuItem, index) in newMenus"
+          :key="index"
+        >
           <RouterLink
             v-if="!menuItem?.sub?.length"
             :class="{ 'bg-primary/[0.08]!': location === menuItem?.route }"
@@ -70,7 +72,10 @@
               ]"
               class="text-xl text-gray-100 group-hover:text-primary! transition-300 w-6"
             />
-            <CollapseTransition :duration="300" dimension="width">
+            <CollapseTransition
+              :duration="300"
+              dimension="width"
+            >
               <p
                 v-if="isOpen || hovered"
                 :class="{
@@ -108,7 +113,10 @@
                   ]"
                   class="text-xl text-gray-100 group-hover:text-primary! transition-300"
                 />
-                <CollapseTransition :duration="300" dimension="width">
+                <CollapseTransition
+                  :duration="300"
+                  dimension="width"
+                >
                   <p
                     v-if="isOpen || hovered"
                     :class="{ 'font-semibold': isActiveSub(menuItem?.sub) }"
@@ -132,7 +140,7 @@
               <div
                 v-if="
                   (menuItem?.sub?.length && index === openIndex && isOpen) ||
-                  (index === openIndex && !isOpen && hovered)
+                    (index === openIndex && !isOpen && hovered)
                 "
               >
                 <RouterLink
@@ -147,7 +155,10 @@
                     }"
                     class="group-hover:bg-white transition-300 w-3 h-[2px] bg-gray-200"
                   />
-                  <CollapseTransition :duration="300" dimension="width">
+                  <CollapseTransition
+                    :duration="300"
+                    dimension="width"
+                  >
                     <p
                       v-if="isOpen || hovered"
                       :class="{
@@ -167,13 +178,20 @@
       </div>
     </div>
 
-    <div class="p-5 relative z-10" v-if="isOpen || hovered">
-      <a :href="'https://t.me/nodirbekrajaboff'" target="_blank" class="cursor-pointer transition-all duration-500">
-  <div class="bg-white/5 px-3.5 mb-6 py-2 rounded-lg flex items-center justify-between">
-    <p class="text-gray text-xs font-normal">{{ $t("support") }}</p>
-    <span class="icon-support text-gray"></span>
-  </div>
-</a>
+    <div
+      v-if="isOpen || hovered"
+      class="p-5 relative z-10"
+    >
+      <a
+        :href="'https://t.me/nodirbekrajaboff'"
+        target="_blank"
+        class="cursor-pointer transition-all duration-500"
+      >
+        <div class="bg-white/5 px-3.5 mb-6 py-2 rounded-lg flex items-center justify-between">
+          <p class="text-gray text-xs font-normal">{{ $t("support") }}</p>
+          <span class="icon-support text-gray" />
+        </div>
+      </a>
     </div>
   </div>
 </template>

@@ -1,5 +1,8 @@
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
   <main>
@@ -9,8 +12,14 @@
           Добавить новую станцию
         </h3>
         <div class="space-x-4 flex items-center">
-          <CButton variant="info" :text="$t('cancel')" />
-          <CButton variant="primary" :text="$t('add')" />
+          <CButton
+            variant="info"
+            :text="$t('cancel')"
+          />
+          <CButton
+            variant="primary"
+            :text="$t('add')"
+          />
         </div>
       </CCard>
     </header>
@@ -19,9 +28,11 @@
       <div class="flex space-x-5 mb-5">
         <CCard class="p-5 w-1/2">
           <FGroup label="Эта станция прикрепляется к текущему локацию">
-            <div class="border-b border-gray-400 -mt-1"></div>
+            <div class="border-b border-gray-400 -mt-1" />
             <div class="flex justify-between items-center">
-              <p class="text-sm font-normal">Мирабад №28 (EBB-98735)</p>
+              <p class="text-sm font-normal">
+                Мирабад №28 (EBB-98735)
+              </p>
               <CButton
                 variant="info"
                 icon="icon-edit"
@@ -36,10 +47,16 @@
         </CCard>
         <CCard class="p-5 w-1/2">
           <div class="flex gap-5">
-            <FGroup class="w-1/2!" label="Отображаемое имя">
+            <FGroup
+              class="w-1/2!"
+              label="Отображаемое имя"
+            >
               <FInput placeholder="Введите название колонки" />
             </FGroup>
-            <FGroup class="w-1/2!" label="Connection ID ">
+            <FGroup
+              class="w-1/2!"
+              label="Connection ID "
+            >
               <FInput placeholder="Введите Connection ID" />
             </FGroup>
           </div>
@@ -58,12 +75,12 @@
           </FGroup>
         </div>
         <div class="flex gap-5 mt-3">
-          <div class="w-1/2"></div>
+          <div class="w-1/2" />
           <FCheckbox
             :checked="false"
-            @change="() => {}"
             label="Для всех пользователей"
             class="w-1/2"
+            @change="() => {}"
           />
         </div>
       </CCard>
@@ -72,19 +89,25 @@
           <label
             class="relative my-4 inline-flex items-center cursor-pointer max-w-[166px]"
           >
-            <input type="checkbox" class="sr-only peer" />
+            <input
+              type="checkbox"
+              class="sr-only peer"
+            >
             <span
               class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-0 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:rtl:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green"
-            ></span>
+            />
             <span class="ms-3 text-sm font-medium text-dark">Бронирование</span>
           </label>
           <label
             class="relative my-4 inline-flex items-center cursor-pointer w-1/2"
           >
-            <input type="checkbox" class="sr-only peer" />
+            <input
+              type="checkbox"
+              class="sr-only peer"
+            >
             <span
               class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-0 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:rtl:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green"
-            ></span>
+            />
             <span class="ms-3 text-sm font-medium text-dark text-nowrap">{{
               $t("charging_history_modal.parking.title")
             }}</span>
@@ -92,10 +115,16 @@
         </div>
         <div class="flex gap-5 justify-between">
           <div class="flex w-1/2 gap-5">
-            <FGroup class="w-1/2!" label="Цена за бронь (мин)">
+            <FGroup
+              class="w-1/2!"
+              label="Цена за бронь (мин)"
+            >
               <FInput placeholder="" />
             </FGroup>
-            <FGroup class="w-1/2!" label="Бесплатная минута">
+            <FGroup
+              class="w-1/2!"
+              label="Бесплатная минута"
+            >
               <FInput placeholder="Введите Connection ID" />
             </FGroup>
           </div>
@@ -119,8 +148,9 @@
             icon="icon-trash"
             icon-position="left"
             :text="$t('delete')"
-            >Удалить</CButton
           >
+            Удалить
+          </CButton>
         </div>
         <h3 class="text-lg font-medium text-dark border-b border-gray-400 pb-5">
           Доступы пользователям

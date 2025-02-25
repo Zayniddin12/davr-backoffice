@@ -4,7 +4,7 @@
       <div class="relative">
         <VueDatePicker
           v-model="computedDateRange"
-          :inputClassName="
+          :input-class-name="
             activePick
               ? 'placeholder:text-dark! w-[260px]! overflow-visible! border-white! text-dark! font-medium! text-xs! bg-white!'
               : 'placeholder:text-dark! w-[260px]! overflow-visible! border-gray! text-dark! font-medium! text-xs! bg-gray!'
@@ -21,7 +21,7 @@
           @open="isActive = true"
           @closed="isActive = false"
         >
-          <template #input-icon></template>
+          <template #input-icon />
         </VueDatePicker>
         <span
           class="icon-chevron absolute-y right-3 text-dark transition-300"

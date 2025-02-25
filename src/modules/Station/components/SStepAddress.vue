@@ -5,11 +5,17 @@
         v-model="nameValue"
         :list="tabListLanguage"
         class="w-full!"
-        withIcon
+        with-icon
       />
 
-      <Transition mode="out-in" name="fade">
-        <div :key="nameValue" class="mt-6 space-y-5">
+      <Transition
+        mode="out-in"
+        name="fade"
+      >
+        <div
+          :key="nameValue"
+          class="mt-6 space-y-5"
+        >
           <FGroup :label="$t(`region`)">
             <FSelect
               v-model="form.values.region"
@@ -44,7 +50,10 @@
           </FGroup>
           <FGroup :label="$t('right_address')">
             <div class="h-[260px] relative shadow-sm rounded-xl mb-5">
-              <div ref="container" class="container" />
+              <div
+                ref="container"
+                class="container"
+              />
               <yandex-map
                 :cluster-options="clusterSettings"
                 :controls="[]"
@@ -82,7 +91,11 @@
         </div>
       </Transition>
       <div class="space-x-4 mt-5 flex items-center justify-end">
-        <CButton :text="$t('cancel')" variant="info" @click="emit('back')" />
+        <CButton
+          :text="$t('cancel')"
+          variant="info"
+          @click="emit('back')"
+        />
         <CButton
           :disabled="form.$v.value.$error"
           :text="isEdit ? $t('save') : $t('add')"

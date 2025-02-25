@@ -5,7 +5,10 @@
       class="group cursor-pointer"
       :class="`${itemClass} ${hasLast ? disableClass : ''}`"
     >
-      <button :disabled="hasFirst" @click="prev">
+      <button
+        :disabled="hasFirst"
+        @click="prev"
+      >
         <svg
           width="16"
           height="16"
@@ -38,8 +41,8 @@
       <button
         v-else
         class="w-full h-full text-gray-300 duration-200 group-hover:text-white! text-sm font-medium"
-        @click="goto(page.label)"
         :class="{ 'text-white!': page.active }"
+        @click="goto(page.label)"
       >
         {{ page.label }}
       </button>
@@ -50,7 +53,10 @@
       class="group cursor-pointer"
       :class="`${itemClass} ${hasLast ? disableClass : ''}`"
     >
-      <button :disabled="hasLast" @click="next">
+      <button
+        :disabled="hasLast"
+        @click="next"
+      >
         <svg
           width="16"
           height="16"

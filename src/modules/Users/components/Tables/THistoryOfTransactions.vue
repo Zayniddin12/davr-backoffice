@@ -79,16 +79,16 @@ watch(
       <CTableWrapper
         :data="tableData"
         :current-page="paginationData?.currentPage"
-        @itemsPerPage="onChangeLimit"
         :items-per-page="+route.query?.limit || 10"
         :total="paginationData?.total"
-        @pageChange="onPageChange"
-        @search="onSearch"
         :limit="paginationData?.defaultLimit"
         :loading="loading"
         :head="historyTransactionHeadData()"
         th-class="bg-gray! text-gray-100! last:text-left!"
-        @onRowClick="openCheckModal"
+        @items-per-page="onChangeLimit"
+        @page-change="onPageChange"
+        @search="onSearch"
+        @on-row-click="openCheckModal"
       >
         <template #header_title>
           <div class="flex items-center space-x-3 divide-gray-300 divide-x">
@@ -113,12 +113,12 @@ watch(
             <CIncomeAndExpense
               :amount="`${changeNumberFormat(+totals?.total_sum)} ${$t('uzs')}`"
               :subtitle="$t('income')"
-              :isPositive="true"
+              :is-positive="true"
             />
             <CIncomeAndExpense
               :amount="`${changeNumberFormat(+totals?.total_sum)} ${$t('uzs')}`"
               :subtitle="$t('expense')"
-              :isPositive="false"
+              :is-positive="false"
             />
             <!--            <CProfileDashDetail-->
             <!--              class="w-max!"-->
@@ -148,18 +148,16 @@ watch(
 
         <!--      body-->
         <template #index="{ row }">
-          <span class="text-dark text-xs! font-medium!"
-            >{{ row?._index }}.</span
-          >
+          <span class="text-dark text-xs! font-medium!">{{ row?._index }}.</span>
         </template>
         <template #method="{ row: data }">
           <CPaymentCardTable :data="data" />
         </template>
         <template #amount="{ row: data }">
           <span
-            @click="openCheckModal(data)"
             :class="[data?.amount > 0 ? 'text-green' : 'text-red']"
             class="text-xs font-normal leading-130 duration-200! hover:underline cursor-pointer"
+            @click="openCheckModal(data)"
           >
             {{ data?.amount > 0 ? "+" : "-" }}
             {{ changeNumberFormat(+data?.amount) }}
@@ -175,12 +173,12 @@ watch(
     </CCard>
     <CheckModal
       :show="showCheckModal"
-      @close="showCheckModal = false"
       v-bind="{
         upper,
         lower,
         total: `${changeNumberFormat(Number(singleData?.payed_cost ?? 0))} UZS`,
       }"
+      @close="showCheckModal = false"
     />
   </section>
 </template>

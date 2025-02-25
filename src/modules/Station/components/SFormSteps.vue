@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-col gap-2">
-    <template v-for="(item, index) in steps" :key="index">
+    <template
+      v-for="(item, index) in steps"
+      :key="index"
+    >
       <div class="flex-y-center gap-3">
         <div
           class="w-10 h-10 flex-center flex-none bg-gray-400 rounded-lg transition-300"

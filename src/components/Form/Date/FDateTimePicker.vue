@@ -3,8 +3,8 @@
     <!-- Date and Time Picker -->
     <VueDatePicker
       v-bind="{ range, yearRange, formatLocale }"
-      :min-date="minDate"
       ref="dateTimePicker"
+      :min-date="minDate"
       auto-apply
       :disabled="disabled"
       :readonly="disabled"
@@ -28,7 +28,7 @@
       ]"
       :model-value="pickerValue"
       format="dd.MM.yyyy HH:mm"
-      @update:modelValue="onChangeValue"
+      @update:model-value="onChangeValue"
     >
       <template #dp-input>
         <!-- Custom Input Field -->
@@ -38,8 +38,8 @@
           :model-value="value"
           :disabled="disabled"
           :placeholder="inputPlaceholder"
-          @update:modelValue="value = $event"
           :input-class="customClass"
+          @update:model-value="value = $event"
           @blur="emit('blur-sm')"
         />
       </template>
@@ -48,8 +48,8 @@
     <!-- Clear and Toggle Buttons -->
     <div class="flex-center absolute-y right-0">
       <button
-        :disabled="disabled"
         v-if="pickerValue"
+        :disabled="disabled"
         class="w-5 h-5 flex-center bg-gray/[16%] rounded-full p-1 transition-200 group hover:bg-red"
         @click="clearDateFilter"
       >
@@ -58,7 +58,11 @@
         />
       </button>
 
-      <button class="flex-center group px-3" type="button" @click="toggleMenu">
+      <button
+        class="flex-center group px-3"
+        type="button"
+        @click="toggleMenu"
+      >
         <i
           class="icon-calendar-year transition-200 text-[18px] text-gray-200 group group-hover:text-blue"
         />

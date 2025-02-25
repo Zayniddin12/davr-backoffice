@@ -15,7 +15,12 @@ defineProps<{
       {{ dayjs(date)?.format("HH:mm") }}
     </p>
   </div>
-  <div v-else class="ml-6">-</div>
+  <div
+    v-else
+    class="ml-6"
+  >
+    -
+  </div>
 </template>
 
 <style scoped></style>

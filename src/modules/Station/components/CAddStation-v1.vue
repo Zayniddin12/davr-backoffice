@@ -5,8 +5,15 @@
         <SFormSteps v-bind="{ step, steps }" />
       </div>
 
-      <Transition class="basis-[75%]" mode="out-in" name="fade">
-        <div :key="step" class="py-5">
+      <Transition
+        class="basis-[75%]"
+        mode="out-in"
+        name="fade"
+      >
+        <div
+          :key="step"
+          class="py-5"
+        >
           <SStepInfo
             v-if="step === 1"
             :form="form"

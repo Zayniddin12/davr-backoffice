@@ -2,7 +2,10 @@
   <div class="relative flex-center-between bg-transparent max-w-[343px]">
     <div class="flex-y-center w-full justify-between pr-3">
       <div class="flex-y-center px-3 py-4">
-        <img :src="images[type]" alt="icon" />
+        <img
+          :src="images[type]"
+          alt="icon"
+        >
         <div class="ml-2">
           <p class="text-white font-medium text-xs leading-130">
             {{ title }}
@@ -11,7 +14,7 @@
       </div>
       <p
         class="icon-close text-gray-200 cursor-pointer hover:scale-105 transition-300 text-sm"
-      ></p>
+      />
     </div>
   </div>
 </template>

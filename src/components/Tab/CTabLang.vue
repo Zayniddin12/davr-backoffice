@@ -9,7 +9,7 @@
         activeClass,
       ]"
       :style="{ width: `${active.width}`, left: `${active.left}px` }"
-    ></div>
+    />
     <button
       v-for="(tab, idx) in list"
       :id="`item_${tab.value}`"
@@ -23,12 +23,12 @@
       @click="pick(tab.value, $event)"
     >
       <img
+        v-if="withIcon"
         :src="tab?.icon"
         alt="flags"
-        @click.stop
-        v-if="withIcon"
         class="w-5 h-5 mr-2 pointer-events-none"
-      />
+        @click.stop
+      >
       {{ $t(tab.label) }}
     </button>
   </div>

@@ -6,15 +6,14 @@
       class="grid grid-cols-2 gap-x-4 gap-y-5"
     >
       <FCheckbox
-        class="relative aspect-video overflow-hidden rounded-xl"
-        :checked="item?.is_correct"
         v-for="(item, index) in items"
         :key="index"
+        class="relative aspect-video overflow-hidden rounded-xl"
+        :checked="item?.is_correct"
         :label="item[labelKey]"
         :value="item[valueKey]"
         :disabled="answered"
         :name="name"
-        @change="onChange($event, item[valueKey])"
         :class="[
           { 'pointer-events-none': answered },
           {
@@ -37,6 +36,7 @@
             'pointer-events-none': answered,
           },
         ]"
+        @change="onChange($event, item[valueKey])"
       >
         <template #label>
           <div
@@ -89,9 +89,12 @@
             :src="item?.photo"
             class="absolute w-full h-full inset-0 user-select-none pointer-events-none"
             alt="test"
-          />
+          >
         </template>
-        <template v-if="answered" #value>
+        <template
+          v-if="answered"
+          #value
+        >
           <svg
             v-if="!item?.is_correct"
             class="absolute! top-2 right-2 mr-0 z-10"

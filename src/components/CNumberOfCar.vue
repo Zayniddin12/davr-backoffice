@@ -148,15 +148,15 @@ const getNumberStyle = computed(() => {
       <div
         v-if="
           regularNumberPattern.test(modelValue) ||
-          extraNumberPattern.test(modelValue)
+            extraNumberPattern.test(modelValue)
         "
         class="absolute left-0"
       >
         <div
           v-if="
             carNumberObj.isNationalNumber ||
-            carNumberObj.isMexists ||
-            carNumberObj.isHexist
+              carNumberObj.isMexists ||
+              carNumberObj.isHexist
           "
           class="card-number__prefix h-full flex items-center justify-center py-[6px] px-[7px]"
         >
@@ -170,19 +170,19 @@ const getNumberStyle = computed(() => {
         class="w-[90%] h-full text-2xl font-bold outline-hidden uppercase bg-transparent"
         type="text"
         @input="handleInput"
-      />
+      >
 
       <div v-if="carNumberObj.isNationalNumber">
         <img
           alt="image of uzbek flag"
           class="w-5 h-5"
           src="/images/uz-flag.svg"
-        />
+        >
         <img
           alt="word of uz"
           class="mt-[2px] w-[14px]"
           src="/images/uz-word.svg"
-        />
+        >
       </div>
     </div>
   </div>

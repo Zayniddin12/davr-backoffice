@@ -2,8 +2,8 @@
   <div class="c-date-picker relative">
     <VueDatePicker
       v-bind="{ range, yearRange, formatLocale }"
-      :min-date="minDate"
       ref="datePicker"
+      :min-date="minDate"
       auto-apply
       :disabled="disabled"
       :readonly="disabled"
@@ -26,7 +26,7 @@
       ]"
       :model-value="pickerValue"
       format="dd.MM.yyyy"
-      @update:modelValue="onChangeValue"
+      @update:model-value="onChangeValue"
     >
       <template #dp-input>
         <FInput
@@ -35,16 +35,16 @@
           :model-value="value"
           :disabled="disabled"
           :placeholder="inputPlaceholder"
-          @update:modelValue="value = $event"
           :input-class="customClass"
+          @update:model-value="value = $event"
           @blur="emit('blur-sm')"
         />
       </template>
     </VueDatePicker>
     <div class="flex-center absolute-y right-0">
       <button
-        :disabled="disabled"
         v-if="pickerValue"
+        :disabled="disabled"
         class="w-5 h-5 flex-center bg-gray/[16%] rounded-full p-1 transition-200 group hover:bg-red"
         @click="clearDateFilter"
       >
@@ -53,7 +53,11 @@
         />
       </button>
 
-      <button class="flex-center group px-3" type="button" @click="toggleMenu">
+      <button
+        class="flex-center group px-3"
+        type="button"
+        @click="toggleMenu"
+      >
         <i
           class="icon-calendar transition-200 text-[18px] text-gray-200 group group-hover:text-blue"
         />

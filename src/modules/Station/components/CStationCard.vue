@@ -9,17 +9,28 @@
         :src="card?.image"
         alt="card icon"
         class="w-5 object-cover"
+      >
+      <span
+        v-else-if="card?.icon"
+        :class="card?.icon"
       />
-      <span v-else-if="card?.icon" :class="card?.icon" />
-      <img v-else src="/images/svg/icon-car.svg" alt="icon car" />
+      <img
+        v-else
+        src="/images/svg/icon-car.svg"
+        alt="icon car"
+      >
     </div>
     <div
       class="transition-300"
       :class="{ 'cursor-pointer hover:text-primary': card?.id }"
       @click="linkToStation"
     >
-      <p class="text-xs font-bold leading-none">{{ card?.title }}</p>
-      <p class="text-xs font-bold leading-none">{{ card?.subtitle }}</p>
+      <p class="text-xs font-bold leading-none">
+        {{ card?.title }}
+      </p>
+      <p class="text-xs font-bold leading-none">
+        {{ card?.subtitle }}
+      </p>
     </div>
   </div>
 </template>

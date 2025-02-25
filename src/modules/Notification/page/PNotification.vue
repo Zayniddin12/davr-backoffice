@@ -125,7 +125,10 @@ function geteDatas(data:{
 </script>
 
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
   <div class="p-6 bg-white rounded-xl w-full">
@@ -134,16 +137,16 @@ function geteDatas(data:{
         <CTableWrapper
           :data="tableData"
           :current-page="paginationData?.currentPage"
-          @itemsPerPage="onChangeLimit"
           :items-per-page="+route.query?.limit || 10"
           :total="paginationData?.total"
-          @pageChange="onPageChange"
-          @search="onSearch"
           :limit="paginationData?.defaultLimit"
           :loading="loading"
           :title="$t('general_information')"
           :head="notificationHead(user?.role)"
           th-class="bg-gray! text-gray-100! last:text-right! max-w-[342px]! shrink-0!"
+          @items-per-page="onChangeLimit"
+          @page-change="onPageChange"
+          @search="onSearch"
         >
           <template #id="{ row }">
             <span class="font-semibold text-sm text-dark">{{
@@ -153,8 +156,7 @@ function geteDatas(data:{
           <template #name="{ row: data }">
             <span
               class="text-dark font-semibold text-xs line-clamp-2 max-w-[382px]!"
-              >{{ data?.user?.fullName }}</span
-            >
+            >{{ data?.user?.fullName }}</span>
           </template>
           <template #pinfl="{ row: data }">
             <p class="text-xs text-dark font-normal mb-1">
@@ -282,9 +284,9 @@ function geteDatas(data:{
           </template>
           <template #action="{ row: data }">
             <CActionsDropdown
+              :id="data?.id"
               :role="user?.role"
               :status="data?.statuses"
-              :id="data?.id"
               class="mr-4"
               :list="exchangeActions(user?.role, data, data?.statuses)"
               :selected-item="data"
@@ -301,7 +303,11 @@ function geteDatas(data:{
       @close="openMessageModal = false"
       @send="getMessage"
     />
-    <MoreInfo :show="moreInfoModal" :data="statusesdata" @close="moreInfoModal=false"/>
+    <MoreInfo
+      :show="moreInfoModal"
+      :data="statusesdata"
+      @close="moreInfoModal=false"
+    />
   </div>
 </template>
 

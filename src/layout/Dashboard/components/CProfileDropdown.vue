@@ -22,7 +22,7 @@
         <span
           :class="{ 'rotate-180': show }"
           class="icon-chevron font-medium transition-200 text-2xl text-gray-100"
-        ></span>
+        />
       </div>
     </template>
     <ul class="p-1 shadow-dropdown">
@@ -37,7 +37,10 @@
           :class="{ 'border-b-0!': idx === dropdownItems.length - 1 }"
           class="flex-y-center px-3 py-2 border-b border-[#F5F6F7] gap-2"
         >
-          <i :class="item?.icon" class="text-xs!" />
+          <i
+            :class="item?.icon"
+            class="text-xs!"
+          />
           {{ item.label }}
         </div>
       </li>

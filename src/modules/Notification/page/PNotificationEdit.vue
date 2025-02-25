@@ -1,5 +1,8 @@
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <CBreadcrumb v-bind="{ routes }" />
   </Teleport>
   <div class="p-6 bg-white rounded-xl">
@@ -7,23 +10,33 @@
       {{ $t("title_edit_notification") }}
     </h3>
     <div class="w-full pt-6 bg-white rounded-xl space-y-4">
-      <CTabLang v-model="nameValue" :list="tabListLanguage" withIcon />
+      <CTabLang
+        v-model="nameValue"
+        :list="tabListLanguage"
+        with-icon
+      />
 
-      <Transition name="fade" mode="out-in">
-        <div :key="nameValue" class="mt-6 gap-6 flex flex-col">
+      <Transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          :key="nameValue"
+          class="mt-6 gap-6 flex flex-col"
+        >
           <FGroup :label="$t('notification_name')">
             <FInput
+              v-model="form.values[`title_${nameValue}`]"
               :placeholder="$t('enter_name')"
               :maxlength="256"
-              v-model="form.values[`title_${nameValue}`]"
               :error="form.$v.value[`title_${nameValue}`]?.$error"
             />
           </FGroup>
           <FGroup :label="$t('notification_heading')">
             <FInput
+              v-model="form.values[`message_${nameValue}`]"
               :placeholder="$t('enter_title')"
               :maxlength="512"
-              v-model="form.values[`message_${nameValue}`]"
               :error="form.$v.value[`message_${nameValue}`]?.$error"
             />
           </FGroup>
@@ -31,23 +44,26 @@
             <CQuilEditor
               v-if="nameValue === 'ru'"
               :content="form.values.text_ru"
-              @get-content="(val) => (form.values.text_ru = val)"
               :error="form.$v.value.text_ru.$error"
+              @get-content="(val) => (form.values.text_ru = val)"
             />
             <CQuilEditor
               v-if="nameValue === 'uz'"
               :content="form.values.text_uz"
-              @get-content="(val) => (form.values.text_uz = val)"
               :error="form.$v.value.text_uz.$error"
+              @get-content="(val) => (form.values.text_uz = val)"
             />
             <CQuilEditor
               v-if="nameValue === 'en'"
               :content="form.values.text_en"
-              @get-content="(val) => (form.values.text_en = val)"
               :error="form.$v.value.text_en.$error"
+              @get-content="(val) => (form.values.text_en = val)"
             />
           </FGroup>
-          <FGroup v-if="false" :label="$t('platform')">
+          <FGroup
+            v-if="false"
+            :label="$t('platform')"
+          >
             <FRadio
               v-model="form.values.platformChecked"
               :label="$t('mobile_app')"
@@ -60,21 +76,21 @@
               class="relative my-4 inline-flex items-center cursor-pointer max-w-[166px]"
             >
               <input
-                type="checkbox"
                 v-model="isDisabled"
+                type="checkbox"
                 class="sr-only peer"
-              />
+              >
               <span
                 class="w-11 h-6 bg-gray-300 rounded-full peer peer-focus:ring-0 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:rtl:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green"
-              ></span>
+              />
               <span class="ms-3 text-sm font-medium text-dark">{{
                 $t("schedule")
               }}</span>
             </label>
             <div class="flex items-center gap-5">
               <FDatePicker
-                class="min-w-[240px]"
                 v-model="form.values.datePicker"
+                class="min-w-[240px]"
                 :disabled="!isDisabled"
               />
               <FTimePicker

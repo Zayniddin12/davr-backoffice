@@ -1,5 +1,8 @@
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <CBreadcrumb v-bind="{ routes }" />
   </Teleport>
   <div class="min-h-screen">
@@ -10,63 +13,66 @@
       <div class="w-full pt-6 bg-white rounded-xl grid grid-cols-2 gap-4">
         <FGroup :label="$t('notification_name')">
           <FInput
+            v-model="form.values.name"
             :placeholder="$t('enter_name')"
             :maxlength="256"
-            v-model="form.values.name"
             :error="form.$v.value.name?.$error"
           />
         </FGroup>
         <FGroup :label="$t('pinfl')">
           <FInput
-            :placeholder="$t('add_pinfl')"
             v-model="form.values.pinfl"
             v-maska="'##############'"
+            :placeholder="$t('add_pinfl')"
             :error="form.$v.value.pinfl?.$error"
           />
         </FGroup>
         <FGroup :label="$t('car_number')">
           <FInput
-            :placeholder="$t('enter_car_number')"
             v-model="form.values.carNumber"
+            :placeholder="$t('enter_car_number')"
             :error="form.$v.value.carNumber?.$error"
           />
         </FGroup>
         <FGroup :label="$t('vin_code')">
           <FInput
-            :placeholder="$t('enter_vin_code')"
             v-model="form.values.vin"
+            :placeholder="$t('enter_vin_code')"
             :error="form.$v.value.vin?.$error"
           />
         </FGroup>
         <FGroup :label="$t('mark_of_car')">
           <FInput
-            :placeholder="$t('enter_mark_car')"
             v-model="form.values.mark"
+            :placeholder="$t('enter_mark_car')"
             :error="form.$v.value.mark?.$error"
           />
         </FGroup>
         <FGroup :label="$t('model_of_car')">
           <FInput
-            :placeholder="$t('enter_model_car')"
             v-model="form.values.model"
+            :placeholder="$t('enter_model_car')"
             :error="form.$v.value.model?.$error"
           />
         </FGroup>
         <FGroup :label="$t('use_id')">
           <FInput
-            :placeholder="$t('enter_user_id')"
             v-model="form.values.id"
+            :placeholder="$t('enter_user_id')"
             :error="form.$v.value.id?.$error"
           />
         </FGroup>
         <FGroup :label="$t('filial_of_bank')">
           <FInput
-            :placeholder="$t('enter_filial_bank')"
             v-model="form.values.filial"
+            :placeholder="$t('enter_filial_bank')"
             :error="form.$v.value.filial?.$error"
           />
         </FGroup>
-        <FGroup :label="$t('upload_file')" class="max-[1000px]:col-span-2">
+        <FGroup
+          :label="$t('upload_file')"
+          class="max-[1000px]:col-span-2"
+        >
           <MultipleFileUploader v-model="form.values.photo" />
         </FGroup>
       </div>

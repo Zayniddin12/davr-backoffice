@@ -81,17 +81,23 @@ const emitEditStatus = () => {
 
     <template #default>
       <div class="flex flex-col bg-white rounded-lg shadow-dropdown">
-        <template v-for="(item, index) in list" :key="index">
+        <template
+          v-for="(item, index) in list"
+          :key="index"
+        >
           <div
+            class="min-w-[158px] h-11 cursor-pointer flex items-center p-3 gap-2 hover:bg-gray/40 transition-300 group"
+            :class="item.class"
             @click="
               item.value === 'edit'
                 ? emitEditStatus() :item.value === 'more'? emit('more', status)
-                : emit('delete', props.status)
+                  : emit('delete', props.status)
             "
-            class="min-w-[158px] h-11 cursor-pointer flex items-center p-3 gap-2 hover:bg-gray/40 transition-300 group"
-            :class="item.class"
           >
-            <i :class="item.icon" class="text-xl transition-300" />
+            <i
+              :class="item.icon"
+              class="text-xl transition-300"
+            />
             <span class="text-sm font-medium text-dark-100 leading-normal capitalize">
               {{ $t(item.label) }}
             </span>

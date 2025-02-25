@@ -47,7 +47,7 @@ const pattern = ref();
           {{ transaction?.merchant_id }}
         </span>
       </li>
-      <li class="line"></li>
+      <li class="line" />
       <li>
         {{ t("transaction_commission") }}:
         <span>
@@ -61,7 +61,10 @@ const pattern = ref();
         </span>
       </li>
     </ul>
-    <div ref="pattern" class="check-pattern"></div>
+    <div
+      ref="pattern"
+      class="check-pattern"
+    />
     <ul>
       <li class="text-gray-200! font-semibold!">
         {{ t("transaction_paid_amount") }}:

@@ -1,6 +1,9 @@
 <template>
   <div class="flex-y-center gap-3">
-    <CAvatar :image="card?.avatar" avatar-class="w-8! h-8! before:border" />
+    <CAvatar
+      :image="card?.avatar"
+      avatar-class="w-8! h-8! before:border"
+    />
     <div>
       <div>
         <router-link :to="card?.userLink">
@@ -10,7 +13,10 @@
             >
               {{ card?.full_name }}
             </h5>
-            <div v-if="isAdmin" class="bg-gray py-[1px] px-1 rounded-sm">
+            <div
+              v-if="isAdmin"
+              class="bg-gray py-[1px] px-1 rounded-sm"
+            >
               <span class="text-gray-200 font-medium text-[10px]">{{
                 t("admin")
               }}</span>
@@ -24,10 +30,10 @@
               src="/images/cake.png"
               alt="cake"
               class="w-[11px] object-cover mb-0.5"
-            />
+            >
           </div>
         </router-link>
-        <slot name="feature"></slot>
+        <slot name="feature" />
       </div>
       <p class="text-xs text-gray-300 leading-130">
         {{ card?.phone_number }}

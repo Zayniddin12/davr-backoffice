@@ -1,19 +1,21 @@
 <template>
   <div class="flex items-center space-x-[6px]">
     <Select
-        selected-option-styles="py-2! bg-gray! flex gap-20"
-        inputClasses="text-dark! text-sm font-normal leading-130"
-        :options="startOptions"
-        value-key="id"
-        :disabled="disabled"
-        label-key="title"
-        :model-value="startTime"
-        @update:model-value="handleUpdateStart"
-        :placeholder="placeholder"
-        :is-custom="isCustom"
-    ><template #chevron
-    ><span class="icon-icon-clock text-gray-100" /></template
-    ></Select>
+      selected-option-styles="py-2! bg-gray! flex gap-20"
+      input-classes="text-dark! text-sm font-normal leading-130"
+      :options="startOptions"
+      value-key="id"
+      :disabled="disabled"
+      label-key="title"
+      :model-value="startTime"
+      :placeholder="placeholder"
+      :is-custom="isCustom"
+      @update:model-value="handleUpdateStart"
+    >
+      <template #chevron>
+        <span class="icon-icon-clock text-gray-100" />
+      </template>
+    </Select>
   </div>
 </template>
 

@@ -17,7 +17,7 @@ defineProps<{
         :src="charging_type[0]?.icon"
         alt="icon"
         class="w-[14px] object-cover"
-      />
+      >
       <p class="text-[#141414] font-medium text-xxs">
         {{ charging_type[0]?.name }}
       </p>

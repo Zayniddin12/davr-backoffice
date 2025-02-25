@@ -5,7 +5,10 @@
       data-modal="wrapper"
       class="items-center p-3 fixed w-full h-full bg-black/50 flex justify-center z-100 top-0 left-0 invisible opacity-0 transition-all duration-300"
     >
-      <Transition name="modal" mode="out-in">
+      <Transition
+        name="modal"
+        mode="out-in"
+      >
         <div
           v-if="show"
           class="bg-white w-full max-w-xl shadow-xl relative max-h-[90vh] my-4 rounded-xl"

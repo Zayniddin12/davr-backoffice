@@ -6,12 +6,25 @@
       'py-1! px-1.5!': mini,
     }"
   >
-    <CPreloader width="32px" height="32px" v-bind="{ loading }" v-if="image">
-      <CAvatar class="w-8! h-8!" v-if="image" v-bind="{ image }" />
+    <CPreloader
+      v-if="image"
+      width="32px"
+      height="32px"
+      v-bind="{ loading }"
+    >
+      <CAvatar
+        v-if="image"
+        class="w-8! h-8!"
+        v-bind="{ image }"
+      />
     </CPreloader>
     <div>
       <slot>
-        <CPreloader width="120px" height="18px" v-bind="{ loading }">
+        <CPreloader
+          width="120px"
+          height="18px"
+          v-bind="{ loading }"
+        >
           <div class="flex items-center gap-1">
             <slot name="icon" />
             <p
@@ -23,7 +36,11 @@
           </div>
         </CPreloader>
       </slot>
-      <CPreloader width="100px" height="17px" v-bind="{ loading }">
+      <CPreloader
+        width="100px"
+        height="17px"
+        v-bind="{ loading }"
+      >
         <p
           class="text-gray-200 text-2xs font-normal leading-130 truncate"
           :class="[descriptionClass, { 'text-[11px]!': mini }]"

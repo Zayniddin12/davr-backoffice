@@ -11,14 +11,14 @@
       alt="avatar-image"
       class="w-full h-full object-cover"
       @error="isError = true"
-    />
+    >
     <img
       v-else
       :class="imageClass"
       alt="avatar-default-image"
       class="w-full h-full object-cover"
       src="/images/default-avatar.png"
-    />
+    >
   </div>
 </template>
 

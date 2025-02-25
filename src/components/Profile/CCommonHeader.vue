@@ -7,8 +7,15 @@
     >
       <i class="icon-chevron-left text-xs text-gray-200" />
     </div>
-    <div v-if="!checkRouteFromUser" class="p-6 pb-0 flex gap-5">
-      <CPreloader :loading="loading" height="135px" width="135px">
+    <div
+      v-if="!checkRouteFromUser"
+      class="p-6 pb-0 flex gap-5"
+    >
+      <CPreloader
+        :loading="loading"
+        height="135px"
+        width="135px"
+      >
         <div
           class="w-[132px]! h-[132px]! flex-none flex items-center justify-center rounded-lg overflow-hidden bg-gray"
         >
@@ -17,17 +24,21 @@
             :src="image"
             alt="title"
             class="w-full h-full object-cover"
-          />
+          >
           <span
             v-else
             class="icon-plugin-open text-[88px] text-gray-300"
-          ></span>
+          />
         </div>
       </CPreloader>
       <div class="flex flex-col w-full">
         <div class="grow flex justify-between">
           <div>
-            <CPreloader :loading="loading" height="31px" width="235px">
+            <CPreloader
+              :loading="loading"
+              height="31px"
+              width="235px"
+            >
               <slot name="title">
                 <div class="flex items-center space-x-3">
                   <h1
@@ -47,7 +58,10 @@
               width="135px"
             >
               <slot name="subTitle">
-                <p v-if="subTitle" class="text-sm text-gray-300 leading-130">
+                <p
+                  v-if="subTitle"
+                  class="text-sm text-gray-300 leading-130"
+                >
                   {{ subTitle }}
                 </p>
               </slot>
@@ -124,11 +138,18 @@
         </div>
       </div>
     </div>
-    <div v-else class="p-6 pb-0 flex gap-5">
+    <div
+      v-else
+      class="p-6 pb-0 flex gap-5"
+    >
       <div class="flex flex-col w-full">
         <div class="grow flex justify-between">
           <div>
-            <CPreloader :loading="loading" height="31px" width="235px">
+            <CPreloader
+              :loading="loading"
+              height="31px"
+              width="235px"
+            >
               <slot name="title">
                 <div class="flex items-center space-x-3">
                   <h1
@@ -148,7 +169,10 @@
               width="135px"
             >
               <slot name="subTitle">
-                <p v-if="subTitle" class="text-sm text-gray-300 leading-130">
+                <p
+                  v-if="subTitle"
+                  class="text-sm text-gray-300 leading-130"
+                >
                   {{ subTitle }}
                 </p>
               </slot>
@@ -156,10 +180,13 @@
           </div>
 
           <div>
-            <slot name="actions"></slot>
+            <slot name="actions" />
           </div>
         </div>
-        <div v-show="!checkRouteFromUser" class="flex gap-4">
+        <div
+          v-show="!checkRouteFromUser"
+          class="flex gap-4"
+        >
           <template v-if="loading">
             <CProfileDashDetail
               title="16.09.2022 / 09:41"
@@ -195,7 +222,7 @@
       </div>
     </div>
     <div class="w-full pl-6 mt-7">
-      <hr class="border-gray" />
+      <hr class="border-gray">
     </div>
     <CTab
       v-model="activeTab"

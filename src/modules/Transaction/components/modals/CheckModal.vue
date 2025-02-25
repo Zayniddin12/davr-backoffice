@@ -39,15 +39,15 @@ function send(){
     :show="props.show"
     :title="t('cause_title')"
     body-class="max-w-[421px]!"
-    headerStyle="border-none!"
+    header-style="border-none!"
     @close="emit('close')"
   >
     <CCard class="p-5 pt-1.5">
       <FInput
-              :placeholder="$t('couse_placeholder')"
-              v-model="form.values.name"
-              :error="form.$v.value.name?.$error"
-            />
+        v-model="form.values.name"
+        :placeholder="$t('couse_placeholder')"
+        :error="form.$v.value.name?.$error"
+      />
       <CButton
         :text="t('close')"
         class="w-full mt-6"

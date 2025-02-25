@@ -1,6 +1,8 @@
 <template>
   <div class="rounded-xl bg-white py-4 px-5 flex-center-between">
-    <h2 class="text-dark-100 text-xl font-semibold">{{ $t(title) }}</h2>
+    <h2 class="text-dark-100 text-xl font-semibold">
+      {{ $t(title) }}
+    </h2>
     <div class="flex items-center gap-4">
       <CButton
         variant="info"

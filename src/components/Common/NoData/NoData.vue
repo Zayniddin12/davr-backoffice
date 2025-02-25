@@ -1,6 +1,10 @@
 <template>
   <div class="flex-center flex-col py-12">
-    <img :src="image" alt="no-data-image" class="mx-auto min-h-[125px]" />
+    <img
+      :src="image"
+      alt="no-data-image"
+      class="mx-auto min-h-[125px]"
+    >
     <slot name="text" />
     <p
       v-if="title"
@@ -16,7 +20,11 @@
     >
       {{ subtitle }}
     </p>
-    <div :class="slotClasses" class="mt-8" v-if="buttonText">
+    <div
+      v-if="buttonText"
+      :class="slotClasses"
+      class="mt-8"
+    >
       <CButton
         :class="buttonCustomClass"
         :text="buttonText"

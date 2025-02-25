@@ -4,12 +4,12 @@
     :class="value ? 'bg-green' : 'bg-gray-350'"
   >
     <input
+      id="_toggle"
       :checked="value"
       type="checkbox"
-      id="_toggle"
       class="absolute w-px h-px opacity-0"
       @change="handleChange"
-    />
+    >
     <span
       class="absolute w-5 h-5 rounded-full top-0.5 left-0.5 transition-all duration-200"
       :class="value ? 'translate-x-5 bg-white' : 'translate-x-0 bg-gray'"

@@ -35,13 +35,19 @@
       image="/images/svg/no-data/default_no_data.svg"
     />
     <div class="bg-[#EDF0F2] h-[1px] w-full mt-4" />
-    <div v-if="checkChartData" class="px-6 mt-6">
+    <div
+      v-if="checkChartData"
+      class="px-6 mt-6"
+    >
       <div
         v-for="(el, i) of genderContent"
         :key="i"
         class="custom-border flex items-center space-x-3 py-3"
       >
-        <div :class="el?.color" class="w-3 h-3 rounded-sm" />
+        <div
+          :class="el?.color"
+          class="w-3 h-3 rounded-sm"
+        />
         <div>
           <p class="text-[#667779] text-sm font-normal leading-normal">
             {{ $t(el?.gender) }}

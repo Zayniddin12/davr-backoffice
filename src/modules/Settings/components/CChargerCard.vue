@@ -5,20 +5,22 @@
       class="rounded-lg bg-gray w-7 h-7 flex-center"
     >
       <inline-svg
+        v-if="card.marc_icon"
         class="inline-svg"
         :class="style[card.status]?.class"
-        v-if="card.marc_icon"
         :src="card?.marc_icon"
       />
       <i
         v-else
         :class="style[card.status]?.icon"
         class="text-sm icon-chademo2 text-gray-200 leading-none"
-      ></i>
+      />
     </div>
 
     <div class="cursor-pointer hover:text-primary transition-300">
-      <p class="text-xs font-bold leading-none">{{ card?.title }}</p>
+      <p class="text-xs font-bold leading-none">
+        {{ card?.title }}
+      </p>
     </div>
   </div>
 </template>

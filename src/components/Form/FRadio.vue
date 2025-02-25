@@ -11,7 +11,7 @@
       :value="value"
       :name="name"
       @change="handleChange"
-    />
+    >
     <span
       :class="[
         'duration-200 ease-in-out flex items-center justify-center h-5 w-5 rounded-full border-2 border-green peer-checked:bg-green-100 peer-checked:after:bg-green peer-checked:after:opacity-100 after:transition-all after:duration-200 after:absolute after:w-2.5 after:h-2.5 after:rounded-full after:bg-transparent after:opacity-0',
@@ -23,9 +23,11 @@
         },
       ]"
       class="shrink-0"
+    />
+    <span
+      v-if="label"
+      class="ml-2"
     >
-    </span>
-    <span v-if="label" class="ml-2">
       <slot name="label">
         <span
           :class="['leading-130 text-dark text-xs font-medium', labelStyles]"

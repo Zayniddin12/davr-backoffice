@@ -1,6 +1,9 @@
 <template>
   <div class="w-[340px]">
-    <Transition :name="transitionName" mode="out-in">
+    <Transition
+      :name="transitionName"
+      mode="out-in"
+    >
       <div :key="step">
         <SStepLogin
           v-if="step === 1"

@@ -12,7 +12,6 @@
       <slot name="prefix" />
     </span>
     <input
-      :value="modelValue"
       v-bind="{
         type,
         minlength,
@@ -23,19 +22,20 @@
         placeholder,
         id,
       }"
+      ref="kInput"
+      :value="modelValue"
       :readonly="!autocomplete"
       :class="[
         inputClass,
         'font-normal text-sm leading-130 placeholder:capitalize text-dark placeholder:text-gray-200 bg-transparent grow outline-hidden pr-3!',
       ]"
       class="w-full pr-3!"
-      ref="kInput"
       @input="handleInput"
       @change="$emit('change')"
       @blur="emit('blur-sm')"
       @focus="emit('focus')"
       @keyup.enter="$emit('enter')"
-    />
+    >
 
     <span :class="[suffixClass]">
       <slot name="suffix" />

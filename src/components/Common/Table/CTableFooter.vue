@@ -1,10 +1,13 @@
 <template>
-  <div v-if="!noFooter" class="w-full flex items-center justify-end gap-5 pt-4">
+  <div
+    v-if="!noFooter"
+    class="w-full flex items-center justify-end gap-5 pt-4"
+  >
     <slot name="beforePagination" />
 
     <CommonPageLimitChange
       v-if="total > 5"
-      v-model:itemsPerPage="itemsCountInTable"
+      v-model:items-per-page="itemsCountInTable"
     />
 
     <CommonPagination

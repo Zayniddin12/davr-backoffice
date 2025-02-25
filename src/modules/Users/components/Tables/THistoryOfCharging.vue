@@ -112,17 +112,17 @@ const openChargingHistory = (data: any) => {
       <CTableWrapper
         :data="tableData"
         :current-page="paginationData?.currentPage"
-        @itemsPerPage="onChangeLimit"
         :items-per-page="+route.query?.limit || 10"
         :total="paginationData?.total"
-        @pageChange="onPageChange"
-        @search="onSearch"
         :limit="paginationData?.defaultLimit"
         :loading="loading"
         :head="historyChargingTableHeadData()"
         th-class="bg-gray! text-gray-100! last:text-left!"
-        @onRowClick="openChargingHistory"
         tr-class="hover:cursor-pointer"
+        @items-per-page="onChangeLimit"
+        @page-change="onPageChange"
+        @search="onSearch"
+        @on-row-click="openChargingHistory"
       >
         <template #header_title>
           <div class="flex items-center space-x-3 divide-gray-300 divide-x">
@@ -143,8 +143,8 @@ const openChargingHistory = (data: any) => {
         <template #beforeSearch>
           <div class="flex items-center gap-5 w-full justify-end">
             <CProfileDashDetail
-              class="max-h-10!"
               v-if="totals?.sum_cost"
+              class="max-h-10!"
               active
               :description="$t('total_amount_spent')"
               :title="`${changeNumberFormat(+totals?.sum_cost)} UZS`"
@@ -207,13 +207,12 @@ const openChargingHistory = (data: any) => {
           <span
             class="text-white flex items-center justify-center text-xs font-medium p-1 w-[34px] h-6 min-h-6 min-w-[34px] rounded-md bg-red border-2 border-dark/20"
           >
-            10%</span
-          >
+            10%</span>
         </template>
         <template #paid_amount="{ row: data }">
           <span
-            @click="openCheckModal(data)"
             class="text-dark text-xs font-normal leading-130 duration-200 cursor-pointer hover:underline hover:text-blue"
+            @click="openCheckModal(data)"
           >
             {{ changeNumberFormat(data?.cost) }}
           </span>
@@ -226,20 +225,20 @@ const openChargingHistory = (data: any) => {
 
     <CheckModal
       :show="showCheckModal"
-      @close="showCheckModal = false"
       v-bind="{
         upper,
         lower,
         total: `${changeNumberFormat(Number(singleData?.payed_cost ?? 0))} UZS`,
       }"
+      @close="showCheckModal = false"
     />
     <ChargingHistoryModal
-      @openCheck="showCheckModal = true"
       :show="showChargingHistory"
-      @close="showChargingHistory = false"
       v-bind="{
         data: chargingHistoryModalData,
       }"
+      @open-check="showCheckModal = true"
+      @close="showChargingHistory = false"
     />
     <CarModal
       :show="carModal"

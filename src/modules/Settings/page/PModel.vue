@@ -1,5 +1,8 @@
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
   <section class="p-6 bg-white rounded-xl">
@@ -15,8 +18,8 @@
         :title="$t('models')"
         :total="paginationData?.total"
         th-class="bg-gray! text-gray-100! last:text-right!"
-        @itemsPerPage="onChangeLimit"
-        @pageChange="onPageChange"
+        @items-per-page="onChangeLimit"
+        @page-change="onPageChange"
         @search="onSearch"
       >
         <template #id="{ row }">
@@ -50,7 +53,10 @@
             @click="openAddModel"
           />
         </template>
-        <template v-if="dataValue?.length" #beforeSearch>
+        <template
+          v-if="dataValue?.length"
+          #beforeSearch
+        >
           <div class="flex items-center justify-end">
             <FSelect
               v-model="mark"
@@ -94,14 +100,17 @@
       @close="show = false"
     >
       <div class="p-5 pt-4">
-        <FGroup :label="$t('mark_car')" class="mb-5">
+        <FGroup
+          :label="$t('mark_car')"
+          class="mb-5"
+        >
           <FSelect
             v-model="form.values.mark"
             :error="form.$v.value.mark?.$error"
             :options="selectOptions"
             :placeholder="$t('select_model_car')"
             is-checked
-            selectedOptionStyles="bg-gray!"
+            selected-option-styles="bg-gray!"
           />
         </FGroup>
         <FGroup :label="$t('model_car')">

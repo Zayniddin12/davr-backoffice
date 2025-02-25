@@ -7,7 +7,7 @@ import { useRoute, useRouter } from "vue-router";
 import CBreadcrumb from "@/components/Common/CBreadcrumb.vue";
 import CCommonHeader from "@/components/Profile/CCommonHeader.vue";
 import CProfileDashDetail from "@/components/Profile/CProfileDashDetail.vue";
-import { reactive } from "@vue/runtime-core";
+import { reactive } from "vue";
 import { ITabItem } from "@/components/Tab/CTab.types";
 import { formatMoneyDecimal, formatPhoneNumber } from "@/utils";
 import CButton from "@/components/Common/CButton.vue";
@@ -146,13 +146,16 @@ function changeStatus(type: string) {
 </script>
 
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <CBreadcrumb :routes="breadcrumbRoutes" />
   </Teleport>
 
   <CCommonHeader
-    v-model="activeTab"
     :key="userData?.id"
+    v-model="activeTab"
     v-bind="{
       loading,
       tabList,
@@ -164,7 +167,11 @@ function changeStatus(type: string) {
     class="mb-6"
   >
     <template #status>
-      <CPreloader width="107px" height="24px" v-bind="{ loading }">
+      <CPreloader
+        width="107px"
+        height="24px"
+        v-bind="{ loading }"
+      >
         <CStatus
           :text="userData?.active_status ? t('active') : t('blocked')"
           :status="userData?.active_status ? 'Available' : 'Unavailable'"
@@ -203,7 +210,11 @@ function changeStatus(type: string) {
     </template>
     <template #actions>
       <div class="flex items-center gap-4">
-        <CPreloader width="157px" height="36px" v-bind="{ loading }">
+        <CPreloader
+          width="157px"
+          height="36px"
+          v-bind="{ loading }"
+        >
           <div class="flex flex-row items-center gap-4">
             <CButton
               :text="$t('edit')"
@@ -231,7 +242,10 @@ function changeStatus(type: string) {
     </template>
   </CCommonHeader>
 
-  <Transition name="fade" mode="out-in">
+  <Transition
+    name="fade"
+    mode="out-in"
+  >
     <section :key="activeTab">
       <TCars v-if="activeTab === 'cars'" />
       <TStations v-if="activeTab === 'stations'" />
@@ -241,13 +255,13 @@ function changeStatus(type: string) {
   </Transition>
 
   <EditUser
-    @close="showEditModal = false"
-    @submit="editUser"
     v-bind="{
       loading,
       user: userData,
       show: showEditModal,
     }"
+    @close="showEditModal = false"
+    @submit="editUser"
   />
   <BlockUser
     :show="showLockModal"

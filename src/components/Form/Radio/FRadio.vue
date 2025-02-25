@@ -10,10 +10,13 @@
       :checked="modelValue === value"
       v-bind="{ name, value, disabled }"
       @change="handleChange"
-    />
+    >
 
     <slot name="label">
-      <span class="transition-200 text-base" :class="[labelStyles]">
+      <span
+        class="transition-200 text-base"
+        :class="[labelStyles]"
+      >
         {{ label }}
       </span>
     </slot>

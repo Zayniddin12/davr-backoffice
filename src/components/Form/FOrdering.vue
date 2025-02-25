@@ -27,8 +27,14 @@
           >
             {{ element?.text }}
           </p>
-          <div v-if="element?.photo" class="w-10 h-auto">
-            <img :src="element?.photo" alt="image" />
+          <div
+            v-if="element?.photo"
+            class="w-10 h-auto"
+          >
+            <img
+              :src="element?.photo"
+              alt="image"
+            >
           </div>
           <div>
             <i class="icon-menu text-xl text-gray" />

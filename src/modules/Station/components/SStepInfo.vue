@@ -5,11 +5,17 @@
         v-model="nameValue"
         :list="tabListLanguage"
         class="w-full!"
-        withIcon
+        with-icon
       />
 
-      <Transition mode="out-in" name="fade">
-        <div :key="nameValue" class="mt-6 space-y-5">
+      <Transition
+        mode="out-in"
+        name="fade"
+      >
+        <div
+          :key="nameValue"
+          class="mt-6 space-y-5"
+        >
           <FGroup :label="$t(`ezc_name`)">
             <FInput
               v-model="form.values[`name_${nameValue}`]"
@@ -32,7 +38,11 @@
         </div>
       </Transition>
       <div class="space-x-4 mt-5 flex items-center justify-end">
-        <CButton :text="$t('cancel')" variant="info" @click="emit('close')" />
+        <CButton
+          :text="$t('cancel')"
+          variant="info"
+          @click="emit('close')"
+        />
         <CButton
           :disabled="form.$v.value.$error"
           :text="$t('next')"

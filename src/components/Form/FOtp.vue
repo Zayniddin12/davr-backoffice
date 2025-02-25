@@ -1,5 +1,8 @@
 <template>
-  <div :class="error ? 'error' : ''" class="code-input">
+  <div
+    :class="error ? 'error' : ''"
+    class="code-input"
+  >
     <label
       v-if="label"
       :for="`verification-input-${randomNumber}`"
@@ -8,7 +11,10 @@
       {{ label }}
     </label>
     <div class="flex-y-center gap-3">
-      <template v-for="(v, index) in values" :key="index">
+      <template
+        v-for="(v, index) in values"
+        :key="index"
+      >
         <input
           :id="`verification-input-${randomNumber + index}`"
           :ref="
@@ -29,7 +35,7 @@
           @input="onValueChange"
           @keydown="onKeyDown"
           @paste="handlePaste"
-        />
+        >
       </template>
     </div>
   </div>

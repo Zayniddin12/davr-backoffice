@@ -4,34 +4,43 @@
       {{ $t("enter_system") }}
     </p>
     <div class="mt-8">
-      <SFormGroup class="mb-4" :label="$t('username')">
+      <SFormGroup
+        class="mb-4"
+        :label="$t('username')"
+      >
         <SInput
+          v-model="form.values.username"
           :error="form.$v.value.username?.$error || isError"
           :placeholder="$t('enter_username')"
-          v-model="form.values.username"
           :prefix-class="'text-sm pr-1'"
-        >
-        </SInput>
+        />
       </SFormGroup>
-      <SFormGroup class="mb-4" :label="$t('password')">
+      <SFormGroup
+        class="mb-4"
+        :label="$t('password')"
+      >
         <SInput
-        :type="isPassword ? 'password':'text'"
+          v-model="form.values.password"
+          :type="isPassword ? 'password':'text'"
           :error="form.$v.value.password?.$error || isError"
           :placeholder="$t('enter_password')"
-          v-model="form.values.password"
           :prefix-class="'text-sm pr-1'"
         >
-        <template #suffix>
-          <span @click="isPassword=!isPassword" :class="isPassword ? 'icon-close-eye':'icon-eye'" class="cursor-pointer transition-300"></span>
-        </template>
+          <template #suffix>
+            <span
+              :class="isPassword ? 'icon-close-eye':'icon-eye'"
+              class="cursor-pointer transition-300"
+              @click="isPassword=!isPassword"
+            />
+          </template>
         </SInput>
       </SFormGroup>
       <SButton
         class="w-full"
         :text="$t('enter')"
-        @click="submit"
         v-bind="{ loading }"
         :disabled="loading"
+        @click="submit"
       />
     </div>
   </div>

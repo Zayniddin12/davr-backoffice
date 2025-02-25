@@ -32,7 +32,7 @@ const isProfile = computed(() => props.userType === "profile");
         :alt="'user image of' + user?.fullName"
         class="w-8 h-8 object-cover border border-gray/[60] rounded-full"
         :class="{ 'w-9! h-9! p-0! bg-transparent!': isProfile }"
-      />
+      >
     </div>
     <div>
       <a

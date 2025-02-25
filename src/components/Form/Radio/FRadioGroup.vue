@@ -1,6 +1,9 @@
 <template>
   <slot>
-    <div v-if="items?.length" :class="wrapperClass">
+    <div
+      v-if="items?.length"
+      :class="wrapperClass"
+    >
       <Radio
         v-for="(item, index) in items"
         :key="index"
@@ -81,18 +84,31 @@
             >
               {{ item[labelKey] }}
             </p>
-            <div v-if="item?.photo" class="w-10 h-auto">
-              <img :src="item?.photo" alt="image" />
+            <div
+              v-if="item?.photo"
+              class="w-10 h-auto"
+            >
+              <img
+                :src="item?.photo"
+                alt="image"
+              >
             </div>
           </div>
         </template>
-        <template v-if="answered" #value>
+        <template
+          v-if="answered"
+          #value
+        >
           <img
             v-if="item?.is_correct"
             src="/images/svg/tick-circle.svg"
             alt="incorrect"
-          />
-          <img v-else src="/images/svg/close-circle.svg" alt="incorrect" />
+          >
+          <img
+            v-else
+            src="/images/svg/close-circle.svg"
+            alt="incorrect"
+          >
         </template>
       </Radio>
     </div>

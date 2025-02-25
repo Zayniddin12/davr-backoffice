@@ -35,25 +35,28 @@ const showTooltip = ref(false);
         :src="car.image"
         :alt="'car image of ' + car?.name"
         class="w-[30px] h-[30px] inline-block p-1 object-cover border border-gray rounded-lg"
-      />
+      >
 
       <img
         v-else
         src="/public/images/svg/car.svg"
         alt="default car image"
         class="w-[30px] h-[30px]"
-      />
+      >
     </div>
     <div class="flex flex-col gap-1">
       <div class="flex items-center gap-1">
-        <h1 v-if="car?.name" class="text-dark text-xs font-bold leading-[14px]">
+        <h1
+          v-if="car?.name"
+          class="text-dark text-xs font-bold leading-[14px]"
+        >
           {{ car?.name }}
         </h1>
         <span
           v-if="car.user_defined"
+          class="icon-info-circle relative text-yellow text-center cursor-pointer"
           @mouseenter="showTooltip = true"
           @mouseleave="showTooltip = false"
-          class="icon-info-circle relative text-yellow text-center cursor-pointer"
         >
           <Tooltip :show="showTooltip">
             <p class="text-sm text-white">{{ $t("car_added_by") }}</p>
@@ -68,7 +71,10 @@ const showTooltip = ref(false);
       </p>
     </div>
   </div>
-  <span v-else class="flex items-center ml-10">-</span>
+  <span
+    v-else
+    class="flex items-center ml-10"
+  >-</span>
 </template>
 
 <style scoped></style>

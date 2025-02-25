@@ -3,7 +3,9 @@
     <span class="bg-gray block h-[1px] w-full" />
 
     <div class="p-5">
-      <p class="text-sm text-gray-100 mb-4">{{ $t("deactivate_question") }}</p>
+      <p class="text-sm text-gray-100 mb-4">
+        {{ $t("deactivate_question") }}
+      </p>
       <div class="p-3 border border-gray rounded-[10px]">
         <p class="text-xs text-gray-100 font-medium mb-2">
           {{ $t("users_module.cars.model") }}:
@@ -29,7 +31,9 @@
             <p class="text-xs text-gray-100 font-medium mb-2">
               {{ $t("current_power") }}
             </p>
-            <p class="text-xs">{{ data?.voltage ?? 0.0 }} kWt</p>
+            <p class="text-xs">
+              {{ data?.voltage ?? 0.0 }} kWt
+            </p>
           </div>
         </div>
       </div>
@@ -38,7 +42,11 @@
     <span class="bg-gray block h-[1px] w-full" />
 
     <div class="space-x-4 m-5 mt-5 flex items-center justify-end">
-      <CButton variant="info" :text="$t('cancel')" @click="$emit('cancel')" />
+      <CButton
+        variant="info"
+        :text="$t('cancel')"
+        @click="$emit('cancel')"
+      />
       <CButton
         variant="warning"
         :text="$t('stop_charging')"

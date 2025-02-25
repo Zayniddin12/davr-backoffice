@@ -1,4 +1,4 @@
-import { reactive } from "@vue/runtime-core";
+import { reactive } from "vue";
 import { computed, onBeforeMount, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 

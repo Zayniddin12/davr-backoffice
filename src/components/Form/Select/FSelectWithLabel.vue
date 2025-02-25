@@ -1,5 +1,8 @@
 <template>
-  <div class="relative" ref="select">
+  <div
+    ref="select"
+    class="relative"
+  >
     <div
       class="transition-200 px-3 h-10 py-[9px] bg-gray-50 transition-all duration-300 border border-transparent cursor-pointer flex items-center justify-between rounded-lg w-full"
       tabindex="1"
@@ -12,8 +15,11 @@
       ]"
       @click="toggleSelect(!showOptions)"
     >
-<!--      <span class="text-gray-900 font-medium">Активность</span>-->
-      <slot name="selectedOption" :value="value">
+      <!--      <span class="text-gray-900 font-medium">Активность</span>-->
+      <slot
+        name="selectedOption"
+        :value="value"
+      >
         <div class="flex items-center justify-between">
           <div
             v-if="!value"
@@ -41,8 +47,7 @@
             <span
               class="icon-chevron flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
               :class="{ 'rotate-180!': showOptions }"
-            >
-            </span>
+            />
           </div>
         </slot>
       </slot>
@@ -59,10 +64,10 @@
         <li class="my-3 relative">
           <span
             class="absolute z-10 text-dark top-1/2 -translate-y-1/2 left-2"
-          ></span>
+          />
           <FInput
-            :placeholder="$t('search')"
             v-model="search"
+            :placeholder="$t('search')"
             class="pl-2.5 rounded-md bg-gray"
             input-class="placeholder:font-medium"
           >
@@ -89,7 +94,12 @@
             class="transition-300 cursor-pointer group hover:bg-gray rounded-md first:border-none"
             @click="onSelect(option)"
           >
-            <slot name="option" :option="option" :selected="value" :index="idx">
+            <slot
+              name="option"
+              :option="option"
+              :selected="value"
+              :index="idx"
+            >
               <p
                 class="flex-y-center space-x-1.5 p-3"
                 :class="{
@@ -106,7 +116,7 @@
                 <i
                   v-if="isActive(option)"
                   class="icon-tick text-base text-dark"
-                ></i>
+                />
               </p>
             </slot>
           </li>

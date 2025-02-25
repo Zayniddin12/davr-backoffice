@@ -1,21 +1,28 @@
 <template>
   <CCard class="px-5 pt-4 pb-5">
-    <form @submit.prevent class="grid grid-cols-1 gap-5">
+    <form
+      class="grid grid-cols-1 gap-5"
+      @submit.prevent
+    >
       <FGroup :label="$t('add_car_form.model')">
         <FSelect
           v-model="form.values.station"
           :error="form.$v.value.station?.$error"
           :options="addressList"
-          isIcon
+          is-icon
           :placeholder="$t('select_connector')"
           is-checked
-          selectedOptionStyles="bg-gray!"
+          selected-option-styles="bg-gray!"
           value-key="id"
         />
       </FGroup>
 
       <div class="flex items-center justify-end gap-5">
-        <CButton :text="$t('cancel')" variant="info" @click="$emit('close')" />
+        <CButton
+          :text="$t('cancel')"
+          variant="info"
+          @click="$emit('close')"
+        />
         <CButton
           type="button"
           :text="$t('continue')"

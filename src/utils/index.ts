@@ -86,7 +86,7 @@ const cTimeout = (key = "key") => {
     timeouts[key] = undefined;
   }
 };
-// eslint-disable-next-line
+ 
 export const debounce = (key = "key", fn = () => {}, timeout = 500) => {
   const sTimeout = (key: string, fn: any, timeout: number) => {
     cTimeout(key);

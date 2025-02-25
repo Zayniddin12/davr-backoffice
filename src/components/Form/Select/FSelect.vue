@@ -1,5 +1,8 @@
 <template>
-  <div ref="select" class="relative">
+  <div
+    ref="select"
+    class="relative"
+  >
     <!--  SELECTED OPTION  -->
     <div
       :class="[
@@ -10,7 +13,10 @@
       class="transition-200 h-10 inline-flex items-center justify-between relative bg-gray rounded-lg border border-transparent overflow-hidden w-full p-2.5 px-3 "
       @click="toggleSelect(!showOptions)"
     >
-      <slot :value="value" name="selectedOption">
+      <slot
+        :value="value"
+        name="selectedOption"
+      >
         <div
           v-if="isSearchable"
           :class="parentInputClasses"
@@ -22,7 +28,7 @@
             :placeholder="placeholder"
             class="font-normal text-sm leading-130 text-dark placeholder:text-gray-200 bg-transparent grow outline-hidden pr-3! w-full!"
             type="text"
-          />
+          >
         </div>
 
         <div v-else>
@@ -43,7 +49,7 @@
               :src="value.icon"
               alt="icon"
               class="w-5 object-cover"
-            />
+            >
             <span>
               {{ $t(String(value[labelKey])) || $t(value) }}
             </span>
@@ -53,12 +59,15 @@
           <span
             :class="{ '-rotate-180 text-blue! mt-0!': showOptions }"
             class="icon-chevron text-[#667779] transition-all h-max duration-200 ml-[6px] inline-block text-base"
-          ></span>
+          />
         </slot>
       </slot>
     </div>
     <!--  OPTIONS  -->
-    <Transition mode="out-in" name="select">
+    <Transition
+      mode="out-in"
+      name="select"
+    >
       <div
         v-if="showOptions && !noOptions"
         :key="showOptions"
@@ -76,7 +85,11 @@
               }"
               @click="onSelect(option)"
             >
-              <slot :index="idx" :option="option" name="option">
+              <slot
+                :index="idx"
+                :option="option"
+                name="option"
+              >
                 <div class="flex-y-center gap-2 justify-between">
                   <div class="flex gap-2">
                     <img
@@ -84,7 +97,7 @@
                       :src="option?.icon"
                       alt="icon"
                       class="w-5 object-cover"
-                    />
+                    >
                     <p class="text-dark text-2xs leading-130! mr-3">
                       {{ $t(option[labelKey]) }}
                     </p>
@@ -104,7 +117,11 @@
               </p>
             </div>
           </template>
-          <div v-if="infiniteScroll" ref="target" class="py-0.5 w-full"></div>
+          <div
+            v-if="infiniteScroll"
+            ref="target"
+            class="py-0.5 w-full"
+          />
         </slot>
       </div>
     </Transition>

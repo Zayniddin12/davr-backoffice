@@ -8,7 +8,10 @@
     <div
       class="col-span-4 w-full h-screen bg-primary bg-image relative flex flex-col items-center justify-between"
     >
-      <SUicLogo class="absolute -translate-x-1/2 left-1/2 bottom-24" main-color="#fff" />
+      <SUicLogo
+        class="absolute -translate-x-1/2 left-1/2 bottom-24"
+        main-color="#fff"
+      />
     </div>
   </div>
 </template>

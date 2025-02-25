@@ -121,24 +121,27 @@ watch(
 </script>
 
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <CBreadcrumb :routes="breadcrumbRoutes" />
   </Teleport>
   <CCard class="p-6">
     <CTableWrapper
       :data="tableData"
       :current-page="paginationData?.currentPage"
-      @itemsPerPage="onChangeLimit"
       :items-per-page="+route.query?.limit || 10"
       :total="paginationData?.total"
-      @pageChange="onPageChange"
-      @search="onSearch"
       :limit="paginationData?.defaultLimit"
       :loading="loading"
       :head="userTableCarsHeadData()"
       :title="$t('side_menu.cars_machine')"
       :subtitle="t('cars_count', { count: paginationData.total ?? 0 })"
       th-class="last:text-left!"
+      @items-per-page="onChangeLimit"
+      @page-change="onPageChange"
+      @search="onSearch"
     >
       <template #no-data>
         <NoData
@@ -155,27 +158,27 @@ watch(
         <div class="flex items-center justify-end gap-5">
           <FCheckbox
             :checked="filter.is_user_defined"
-            @change="filter.is_user_defined = $event"
             :label="$t('user_machine.checkbox_title')"
             label-styles="inline-block max-w-[132px]"
+            @change="filter.is_user_defined = $event"
           />
-          <pre></pre>
+          <pre />
           <FSelect
+            v-model="filter.model"
             :options="[
               { name: $t('user_machine.selects.all_models'), id: '' },
               ...modelList,
             ]"
-            v-model="filter.model"
             :placeholder="$t('user_machine.selects.all_models')"
             selected-option-styles="h-10 max-w-[250px]"
             is-checked
           />
           <FSelect
+            v-model="filter.manufacturer"
             :options="[
               { name: $t('user_machine.selects.all_marks'), id: '' },
               ...manufacturerList,
             ]"
-            v-model="filter.manufacturer"
             :placeholder="$t('user_machine.selects.all_marks')"
             selected-option-styles="h-10 max-w-[250px]"
             is-checked
@@ -213,8 +216,14 @@ watch(
         />
       </template>
       <template #vin="{ row: data }">
-        <span v-if="data?.vin" class="text-xs">{{ data?.vin }}</span>
-        <span v-else class="text-xs"> - </span>
+        <span
+          v-if="data?.vin"
+          class="text-xs"
+        >{{ data?.vin }}</span>
+        <span
+          v-else
+          class="text-xs"
+        > - </span>
       </template>
       <template #connector="{ row: data }">
         <TypeConnector :charging_type="data?.charging_type" />

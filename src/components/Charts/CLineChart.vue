@@ -1,6 +1,7 @@
 <template>
-  <CCard class="flex-shrink-0 p-6"             
-  v-if="formattedSeries?.data"
+  <CCard
+    v-if="formattedSeries?.data"             
+    class="flex-shrink-0 p-6"
   >
     <div class="flex justify-between mb-5">
       <div>
@@ -12,15 +13,21 @@
         </p>
       </div>
       <Tab
-        :list="tabList"
         v-model="tabValue"
+        :list="tabList"
         class="space-x-3 border-none"
         item-class="!pt-0 whitespace-nowrap"
       />
     </div>
     <div v-if="!loading">
-      <Transition mode="out-in" name="fade">
-        <div :key="tabValue" class="h-[280px]">
+      <Transition
+        mode="out-in"
+        name="fade"
+      >
+        <div
+          :key="tabValue"
+          class="h-[280px]"
+        >
           <ApexChart
             :options="options"
             :series="formattedSeries"

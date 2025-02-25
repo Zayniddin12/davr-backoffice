@@ -29,7 +29,9 @@ defineProps<{
           class="py-[5px] pl-2.5 pr-2 rounded-md border border-transparent bg-gray group duration-200 flex items-center gap-2 justify-between cursor-pointer"
         >
           <div>
-            <p class="text-xs font-medium">+{{ users?.length - 2 }}</p>
+            <p class="text-xs font-medium">
+              +{{ users?.length - 2 }}
+            </p>
             <p class="text-xxs text-gray-300">
               {{ $t("owners") }}
             </p>
@@ -37,7 +39,7 @@ defineProps<{
 
           <i
             class="icon-chevron duration-200 text-gray-100 group-focus:rotate-180"
-          ></i>
+          />
         </div>
       </template>
 
@@ -46,7 +48,10 @@ defineProps<{
           v-if="users.length"
           class="bg-white rounded-lg box-shadow flex flex-col py-2 max-h-[202px] overflow-scroll"
         >
-          <div v-for="(item, i) in users.slice(2)" :key="i">
+          <div
+            v-for="(item, i) in users.slice(2)"
+            :key="i"
+          >
             <CProfile
               :user="{
                 image: item.avatar_url,

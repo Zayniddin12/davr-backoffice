@@ -20,7 +20,10 @@
       <div class="ml-auto flex justify-end shrink-0">
         <slot name="beforeSearch" />
       </div>
-      <div v-if="isSearch && !noSearch" class="w-full max-w-[250px] shrink-0">
+      <div
+        v-if="isSearch && !noSearch"
+        class="w-full max-w-[250px] shrink-0"
+      >
         <Input
           v-model="search"
           :input-class="inputClasses"
@@ -29,7 +32,7 @@
           prefix-class="pr-2.5"
         >
           <template #prefix>
-            <span class="icon-search text-gray-200 text-xl"></span>
+            <span class="icon-search text-gray-200 text-xl" />
           </template>
           <template #suffix>
             <button

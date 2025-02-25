@@ -15,7 +15,7 @@
       name="file"
       type="file"
       @change="handleFile"
-    />
+    >
     <div class="flex items-center gap-3">
       <div
         v-if="image?.url"
@@ -26,7 +26,7 @@
           alt="avatar"
           class="object-cover relative z-0 rounded-lg w-full aspect-square"
           @error="image.url = null"
-        />
+        >
       </div>
       <div
         v-else
@@ -40,11 +40,14 @@
       >
         <slot>
           <div>
-            <div :class="wrapperClass" class="flex-y-center gap-2">
+            <div
+              :class="wrapperClass"
+              class="flex-y-center gap-2"
+            >
               <i
                 :class="icon"
                 class="icon-add-picture text-primary text-3.5xl"
-              ></i>
+              />
             </div>
           </div>
         </slot>
@@ -54,8 +57,10 @@
         class="px-2 py-1 flex items-center gap-1 rounded-md bg-gray duration-300 cursor-pointer hover:bg-gray-300/10"
         @click="getFile('create')"
       >
-        <i class="icon-edit text-gray-300"></i>
-        <p class="font-semibold text-xs">{{ $t("edit2") }}</p>
+        <i class="icon-edit text-gray-300" />
+        <p class="font-semibold text-xs">
+          {{ $t("edit2") }}
+        </p>
       </div>
     </div>
     <h3 class="mt-2 text-gray-100 font-normal text-[13px]">

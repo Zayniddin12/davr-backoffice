@@ -72,7 +72,10 @@ watch(
 
 <template>
   <header>
-    <Teleport v-if="mounted" to="#header-breadcrumbs">
+    <Teleport
+      v-if="mounted"
+      to="#header-breadcrumbs"
+    >
       <SBreadcrumb v-bind="{ routes }" />
     </Teleport>
   </header>
@@ -81,23 +84,23 @@ watch(
       <CTableWrapper
         :data="tableData"
         :current-page="paginationData?.currentPage"
-        @itemsPerPage="onChangeLimit"
         :items-per-page="+route.query?.limit || 10"
         :total="paginationData?.total"
-        @pageChange="onPageChange"
-        @search="onSearch"
         :limit="paginationData?.defaultLimit"
         :loading="loading"
         :head="activeUsersTableHeadData()"
         :subtitle="t('charging_count', paginationData.total)"
         :title="$t('dashboard.active_users')"
         type="transparent"
+        @items-per-page="onChangeLimit"
+        @page-change="onPageChange"
+        @search="onSearch"
       >
         <template #beforeSearch>
           <nav class="flex items-center gap-5">
             <FSelect
-              :options="[{ name: t('all_ezc'), id: '' }, ...addressList]"
               v-model="filter.address"
+              :options="[{ name: t('all_ezc'), id: '' }, ...addressList]"
               :placeholder="$t('all_ezc')"
               value-key="id"
               label-key="name"
@@ -105,8 +108,8 @@ watch(
               is-checked
             />
             <FSelect
-              :options="[{ full_name: t('all_users'), id: '' }, ...userList]"
               v-model="filter.user"
+              :options="[{ full_name: t('all_users'), id: '' }, ...userList]"
               :placeholder="$t('all_users')"
               value-key="id"
               label-key="full_name"

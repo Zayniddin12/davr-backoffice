@@ -127,7 +127,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
   <section>
@@ -135,11 +138,8 @@ onMounted(() => {
       <CTableWrapper
         :data="tableData"
         :current-page="paginationData?.currentPage"
-        @itemsPerPage="onChangeLimit"
         :items-per-page="+route.query?.limit || 10"
         :total="paginationData?.total"
-        @pageChange="onPageChange"
-        @search="onSearch"
         :limit="paginationData?.defaultLimit"
         :loading="loading"
         :head="transactionTableHeadData()"
@@ -150,15 +150,18 @@ onMounted(() => {
           })
         "
         th-class="last:text-left!"
+        @items-per-page="onChangeLimit"
+        @page-change="onPageChange"
+        @search="onSearch"
       >
         <template #beforeSearch>
           <div class="flex items-center gap-5">
             <FSelect
+              v-model="filter.payment"
               :options="[
                 { title: $t('payment_types.title'), value: '' },
                 ...paymentSelects(),
               ]"
-              v-model="filter.payment"
               :placeholder="$t('payment_types.title')"
               value-key="value"
               label-key="title"
@@ -166,8 +169,8 @@ onMounted(() => {
               is-checked
             />
             <FSelect
-              :options="[{ full_name: $t('all_users'), id: '' }, ...userList]"
               v-model="filter.user"
+              :options="[{ full_name: $t('all_users'), id: '' }, ...userList]"
               :placeholder="$t('all_users')"
               value-key="id"
               label-key="full_name"
@@ -187,7 +190,10 @@ onMounted(() => {
 
         <!--        after selecting show this-->
         <template #filter>
-          <transition mode="out-in" name="fade">
+          <transition
+            mode="out-in"
+            name="fade"
+          >
             <div
               v-if="totalData.length && Object.keys(totals).length"
               class="grid grid-cols-2 gap-4 my-6"
@@ -198,7 +204,7 @@ onMounted(() => {
                 >
                   <CProfile
                     user-type="profile"
-                    noBg
+                    no-bg
                     :user="{
                       fullName: totals?.user?.full_name,
                       phone: formatPhoneNumber(totals?.user?.phone),
@@ -207,7 +213,10 @@ onMounted(() => {
                   />
                 </div>
                 <div class="flex items-center gap-3 pl-4">
-                  <img src="/images/svg/money-stack.svg" alt="money stack" />
+                  <img
+                    src="/images/svg/money-stack.svg"
+                    alt="money stack"
+                  >
                   <div class="flex flex-col">
                     <h5 class="mb-0.5 text-gray-100 text-xs font-normal">
                       {{ t("not_paid_vip") }}
@@ -244,8 +253,8 @@ onMounted(() => {
         <template #method="{ row: data }">
           <CPaymentCardTable
             :data="data"
-            @click="openCheckModal(data)"
             class="cursor-pointer"
+            @click="openCheckModal(data)"
           />
         </template>
         <template #transactionId="{ row: data }">
@@ -287,13 +296,13 @@ onMounted(() => {
                 :src="data?.user?.avatar_url"
                 :alt="data?.user?.full_name"
                 class="w-full h-full object-cover rounded-full"
-              />
+              >
               <img
                 v-else
                 src="/images/default-avatar.png"
                 :alt="data?.user?.full_name"
                 class="w-full h-full object-cover rounded-full"
-              />
+              >
             </div>
             <div>
               <h5 class="mb-0.5 text-dark text-xs font-medium leading-130">
@@ -310,7 +319,6 @@ onMounted(() => {
 
     <CheckModal
       :show="showCheckModal"
-      @close="showCheckModal = false"
       v-bind="{
         upper,
         lower,
@@ -318,6 +326,7 @@ onMounted(() => {
           Number(Number(checkData?.payed_cost ?? 0))
         )} UZS`,
       }"
+      @close="showCheckModal = false"
     />
   </section>
 </template>

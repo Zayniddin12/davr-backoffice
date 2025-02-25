@@ -78,7 +78,10 @@ watch(
 </script>
 
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
   <div class="p-6 bg-white rounded-xl w-full h-full">
@@ -87,16 +90,16 @@ watch(
         <CTableWrapper
           :data="tableData"
           :current-page="paginationData?.currentPage"
-          @itemsPerPage="onChangeLimit"
           :items-per-page="+route.query?.limit || 10"
           :total="paginationData?.total"
-          @pageChange="onPageChange"
-          @search="onSearch"
           :limit="paginationData?.defaultLimit"
           :loading="loading"
           :title="$t('accounts')"
           :head="newUserHead"
           th-class="bg-gray! text-gray-100! last:text-right! max-w-[342px]! last:max-w-[100px]!"
+          @items-per-page="onChangeLimit"
+          @page-change="onPageChange"
+          @search="onSearch"
         >
           <template #id="{ row }">
             <span class="font-semibold text-sm text-dark">{{
@@ -106,8 +109,7 @@ watch(
           <template #name="{ row: data }">
             <span
               class="text-dark font-semibold text-xs line-clamp-2 max-w-[382px]!"
-              >{{ data?.fullName }}</span
-            >
+            >{{ data?.fullName }}</span>
           </template>
           <template #username="{ row: data }">
             <p class="text-dark font-semibold text-xs">
