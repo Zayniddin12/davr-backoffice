@@ -20,7 +20,7 @@ interface Props {
 }
 const props = defineProps<Props>();
 
-const emit = defineEmits(["edit", "delete"]);
+const emit = defineEmits(["edit", "delete", "more"]);
 
 // User role propsga teng bo'lgan statuslarni emit qilish
 const emitEditStatus = () => {
@@ -85,8 +85,8 @@ const emitEditStatus = () => {
           <div
             @click="
               item.value === 'edit'
-                ? emitEditStatus()
-                : emit('delete', selectedItem)
+                ? emitEditStatus() :item.value === 'more'? emit('more', props.status)
+                : emit('delete', props.status)
             "
             class="min-w-[158px] h-11 cursor-pointer flex items-center p-3 gap-2 hover:bg-gray/40 transition-300 group"
             :class="item.class"

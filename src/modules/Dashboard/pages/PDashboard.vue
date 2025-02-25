@@ -39,10 +39,10 @@
           :card="card"
         />
       </div>
-      <div class="w-full grid grid-cols-4 gap-5">
+      <div class="w-full flex flex-wrap gap-5">
         <CLineChart :data="mainStore.appUsageStats" class="col-span-2" />
         <!-- <CGenderChart :data="genderChartData" class="col-span-1" /> -->
-        <CAgeChart :data="ageChartData" class="col-span-1" />
+        <!-- <CAgeChart :data="ageChartData" class="col-span-1" /> -->
       </div>
     </main>
   </div>

@@ -221,6 +221,13 @@ export const exchangeActions = (userRole: string, row: any, status?: {
         icon: "icon-fold-download !text-yellow",
         class: "hover:!bg-yellow/20 !text-yellow",
       });
+    } else if(["boss", "super_admin"].includes(userRole)){
+      actions.push({
+        label: "more_info",
+        value: "more",
+        icon: "icon-info-circle !text-dark",
+        class: "hover:!bg-yellow/20 !text-dark",
+      });
     }
   }
   if (userRole === "verifier") {
