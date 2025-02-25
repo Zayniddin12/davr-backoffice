@@ -116,7 +116,7 @@ if (user.value.role!=="super_admin") {
           </template>
           <template #role="{ row: data }">
             <p class="text-dark font-semibold text-xs">
-              {{ data?.role }}
+              {{ $t(data?.role) }}
             </p>
           </template>
           <template #date_create="{ row: data }">

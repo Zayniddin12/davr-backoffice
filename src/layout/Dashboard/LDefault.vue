@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-[#F5F6F7]  w-full flex">
+  <div class="bg-[#F5F6F7] w-full flex">
     <CSidebar />
 
     <!-- Asosiy kontentni o'z ichiga oluvchi div -->
-    <div class="flex flex-col w-full min-h-[calc(100vh-558px)] overflow-hidden relative">
+    <div class="flex flex-col w-full min-h-screen overflow-hidden relative">
       <CHeader v-bind="{ activeRoute }" class="shrink-0 w-full" />
 
       <!-- Faqatgina slot skroll bo'lishi uchun -->
@@ -13,14 +13,19 @@
 
       <!-- Footer -->
       <div
-        class="w-full absolute bottom-0 left-0 p-2 bg-white flex justify-center items-center gap-2 text-dark text-sm leading-130 font-normal group"
+        class="w-full mt-auto  p-2 bg-white flex justify-center items-center gap-2 text-dark text-sm leading-130 font-normal"
       >
-        made by:
-        <a
-        href="https://digitalaggregator.team/website"
-        target="_blank"
-         class="text-primary opacity-50 group-hover:opacity-100 transition-300">digitalaggregator.team</a>
-    </div>
+        <span class="opacity-50 hover:opacity-100 transition-300">
+          made by:
+          <a
+            href="https://digitalaggregator.team/website"
+            target="_blank"
+            class="text-primary"
+          >
+            digitalaggregator.team
+          </a>
+        </span>
+      </div>
     </div>
   </div>
 </template>
