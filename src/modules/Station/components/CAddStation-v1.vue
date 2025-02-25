@@ -14,6 +14,7 @@
           :key="step"
           class="py-5"
         >
+        <!-- fmrdk -->
           <SStepInfo
             v-if="step === 1"
             :form="form"
