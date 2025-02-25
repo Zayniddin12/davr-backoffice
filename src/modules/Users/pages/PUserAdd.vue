@@ -48,7 +48,7 @@
             variant="primary"
             :loading="buttonLoading"
             :disabled="buttonLoading"
-            :text="$t('publish')"
+            :text="$t('add')"
             @click="createCategoryData"
           />
         </div>
