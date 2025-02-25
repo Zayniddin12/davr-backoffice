@@ -36,7 +36,6 @@ const { showToast } = useCustomToast();
 const router = useRouter();
 const isLoading = ref(false);
 
-
 const {
   tableData,
   paginationData,
@@ -61,23 +60,23 @@ function deleteNotification(id: any) {
       isLoading.value = false;
     });
 }
-const openMessageModal=ref(false)
-const statusData=ref('')
-const idData=ref(NaN)
-function sendStatus(status:string, id:number) {
-  if (status=="canceled") {
-    openMessageModal.value=true
-    statusData.value=status
-    idData.value=id
-  }else{
-    postStatus(status, id)
+const openMessageModal = ref(false);
+const statusData = ref("");
+const idData = ref(NaN);
+function sendStatus(status: string, id: number) {
+  if (status == "canceled") {
+    openMessageModal.value = true;
+    statusData.value = status;
+    idData.value = id;
+  } else {
+    postStatus(status, id);
   }
 }
-function postStatus(status:string, id:number, message?:string) {    
+function postStatus(status: string, id: number, message?: string) {
   isLoading.value = true;
-  ApiService.put(`client-information/${id}`,{
-  "status":status,
-  "message":message
+  ApiService.put(`client-information/${id}`, {
+    status: status,
+    message: message,
   })
     .then(() => {
       showToast(t("success_messages.successfully_send"), "success");
@@ -91,11 +90,10 @@ function postStatus(status:string, id:number, message?:string) {
     });
 }
 
-function getMessage(message:string){
-  postStatus(statusData.value, idData.value, message)
-  openMessageModal.value=false
+function getMessage(message: string) {
+  postStatus(statusData.value, idData.value, message);
+  openMessageModal.value = false;
 }
-
 </script>
 
 <template>
@@ -114,15 +112,15 @@ function getMessage(message:string){
           @pageChange="onPageChange"
           @search="onSearch"
           :limit="paginationData?.defaultLimit"
-          :loading="loading" 
+          :loading="loading"
           :title="$t('general_information')"
           :head="notificationHead(user?.role)"
           th-class="bg-gray! text-gray-100! last:text-right! max-w-[342px]! shrink-0!"
         >
           <template #id="{ row }">
-            <span class="font-semibold text-sm text-dark"
-              >{{ row?._index }}</span
-            >
+            <span class="font-semibold text-sm text-dark">{{
+              row?._index
+            }}</span>
           </template>
           <template #name="{ row: data }">
             <span
@@ -165,40 +163,75 @@ function getMessage(message:string){
               {{ data?.bank?.branch }}
             </p>
           </template>
-          <template #gps_situation="{ row: data }" >
-            <div 
-            :class="{'bg-primary':data?.statuses?.[0]?.status=='in_progress',
-             'bg-green':data?.statuses?.[0]?.status=='gps_installed', 
-             'bg-red':data?.statuses?.[0]?.status=='gps_not_installed',
-             'bg-gray':!data?.statuses?.[0]?.status}" class="px-2 py-1 rounded-md">
-              <p class="text-xs text-dark font-normal">
-              {{ data?.statuses?.[0]?.status ? $t(data?.statuses?.[0]?.status) : $t('waiting') }} 
-            </p>
+          <template #gps_situation="{ row: data }">
+            <div
+              :class="{
+                'bg-indigo-500/10 text-indigo-500':
+                  data?.statuses?.[0]?.status == 'in_progress',
+                'bg-green-500/10 text-green-500':
+                  data?.statuses?.[0]?.status == 'gps_installed',
+                'bg-red-500/10 text-red-500':
+                  data?.statuses?.[0]?.status == 'gps_not_installed',
+                'bg-gray-500/10 text-gray-500': !data?.statuses?.[0]?.status,
+              }"
+              class="px-2 py-1 rounded-md text-center"
+            >
+              <p class="text-xs font-semibold capitalize">
+                {{
+                  data?.statuses?.[0]?.status
+                    ? $t(data?.statuses?.[0]?.status)
+                    : $t("waiting")
+                }}
+              </p>
             </div>
           </template>
-          <template #verifier_situation="{ row: data }" >
-            <div :class="{'bg-primary':data?.statuses?.[1]?.status=='in_progress',
-             'bg-green':data?.statuses?.[1]?.status=='confirmed',
-             'bg-red':data?.statuses?.[1]?.status=='canceled', 
-             'bg-gray':!data?.statuses?.[1]?.status}" class="px-2 py-1 rounded-md">
-              <p class="text-xs text-dark font-normal">
-              {{ data?.statuses?.[1]?.status ? $t(data?.statuses?.[1]?.status) : $t('waiting') }}
-            </p>
+          <template #verifier_situation="{ row: data }">
+            <div
+              :class="{
+                'bg-indigo-500/10 text-indigo-500':
+                  data?.statuses?.[0]?.status == 'in_progress',
+                'bg-green-500/10 text-green-500':
+                  data?.statuses?.[0]?.status == 'gps_installed',
+                'bg-red-500/10 text-red-500':
+                  data?.statuses?.[0]?.status == 'gps_not_installed',
+                'bg-gray-500/10 text-gray-500': !data?.statuses?.[0]?.status,
+              }"
+              class="px-2 py-1 rounded-md text-center"
+            >
+              <p class="text-xs font-semibold capitalize">
+                {{
+                  data?.statuses?.[1]?.status
+                    ? $t(data?.statuses?.[1]?.status)
+                    : $t("waiting")
+                }}
+              </p>
             </div>
           </template>
-          <template #lawyer_situation="{ row: data }" >
-            <div :class="{'bg-primary':data?.statuses?.[2]?.status=='in_progress',
-             'bg-green':data?.statuses?.[2]?.status=='confirmed',
-             'bg-red':data?.statuses?.[2]?.status=='canceled', 
-             'bg-gray':!data?.statuses?.[2]?.status}" class="px-2 py-1 rounded-md">
-              <p class="text-xs text-dark font-normal">
-              {{ data?.statuses?.[2]?.status ? $t(data?.statuses?.[2]?.status) : $t('waiting') }}
-            </p>
+          <template #lawyer_situation="{ row: data }">
+            <div
+              :class="{
+                'bg-indigo-500/10 text-indigo-500':
+                  data?.statuses?.[0]?.status == 'in_progress',
+                'bg-green-500/10 text-green-500':
+                  data?.statuses?.[0]?.status == 'gps_installed',
+                'bg-red-500/10 text-red-500':
+                  data?.statuses?.[0]?.status == 'gps_not_installed',
+                'bg-gray-500/10 text-gray-500': !data?.statuses?.[0]?.status,
+              }"
+              class="px-2 py-1 rounded-md text-center"
+            >
+              <p class="text-xs font-semibold capitalize">
+                {{
+                  data?.statuses?.[2]?.status
+                    ? $t(data?.statuses?.[2]?.status)
+                    : $t("waiting")
+                }}
+              </p>
             </div>
           </template>
-          <template #afterSearch >
+          <template #afterSearch>
             <CButton
-            v-if="user.role==='credit_manager'"
+              v-if="user.role === 'credit_manager'"
               :text="$t('add')"
               icon="icon-plus"
               class="flex items-center py-2 px-4 gap-2"
@@ -213,11 +246,13 @@ function getMessage(message:string){
               class="mt-8 px-6 pb-20 pt-0"
               :button-text="$t('add_notification')"
               image="/images/svg/no-data/no-notification.svg"
-              :button-custom-class="user.role!=='credit_manager'?'hidden!':'mt-0!'"
+              :button-custom-class="
+                user.role !== 'credit_manager' ? 'hidden!' : 'mt-0!'
+              "
               @submit="router.push({ name: 'PNotificationAdd' })"
             />
           </template>
-          <template #action="{ row: data }" >
+          <template #action="{ row: data }">
             <CActionsDropdown
               :role="user?.role"
               :status="data?.statuses"
@@ -233,9 +268,9 @@ function getMessage(message:string){
       </CCard>
     </div>
     <CheckModal
-    :show="openMessageModal"
-    @close="openMessageModal=false"
-    @send="getMessage"
+      :show="openMessageModal"
+      @close="openMessageModal = false"
+      @send="getMessage"
     />
   </div>
 </template>

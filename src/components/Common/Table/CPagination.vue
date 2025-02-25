@@ -24,7 +24,7 @@
     <li
       v-for="page in items"
       :key="page.label"
-      class="hover:bg-blue! duration-200 group"
+      class="hover:bg-primary-100! duration-200 group"
       :class="`${itemClass} ${page.active ? activeClass : 'text-white!'} ${
         page.disable ? disableClass : ''
       }`"

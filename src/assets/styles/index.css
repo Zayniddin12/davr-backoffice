@@ -7,8 +7,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-100: #f6feff;
-  --color-primary: #6366f1;
+  --color-primary-100: var(--color-indigo-400);
+  --color-primary: var(--color-indigo-500);
 
   --color-white: #ffffff;
 
