@@ -13,7 +13,12 @@
       >
         {{ route.name }}
       </RouterLink>
-      <p v-else-if="route.disabled" class="text-2xs">{{ route.name }}</p>
+      <p
+        v-else-if="route.disabled"
+        class="text-2xs"
+      >
+        {{ route.name }}
+      </p>
       <RouterLink
         v-else
         class="transition duration-500 text-2xs"
@@ -24,7 +29,7 @@
       <span
         v-if="index !== routes.length - 1"
         class="mx-2 w-1 h-1 bg-primary rounded-full"
-      ></span>
+      />
     </div>
   </div>
 </template>

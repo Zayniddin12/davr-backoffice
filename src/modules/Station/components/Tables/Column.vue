@@ -305,9 +305,9 @@ const times = ref([
   <section>
     <CCard class="pb-5">
       <CTableWrapper
+        :key="columnSingle.connectors"
         :current-page="1 ?? 0"
         :data="columnSingle.connectors ?? []"
-        :key="columnSingle.connectors"
         :head="connectorsHead"
         :items-per-page="10 ?? 0"
         :limit="10 ?? 0"
@@ -391,19 +391,13 @@ const times = ref([
           />
         </template>
         <template #price="{ row: data }">
-          <span class="text-xs"
-            >{{ changeNumberFormat(data?.price ?? 0) }} UZS</span
-          >
+          <span class="text-xs">{{ changeNumberFormat(data?.price ?? 0) }} UZS</span>
         </template>
         <template #with_discount="{ row: data }">
-          <span class="text-xs"
-            >{{ changeNumberFormat(data?.with_discount ?? 0) }} UZS</span
-          >
+          <span class="text-xs">{{ changeNumberFormat(data?.with_discount ?? 0) }} UZS</span>
         </template>
         <template #power="{ row: data }">
-          <span class="text-xs"
-            >{{ changeNumberFormat(data?.power ?? 0) }} kWt</span
-          >
+          <span class="text-xs">{{ changeNumberFormat(data?.power ?? 0) }} kWt</span>
         </template>
         <template #date="{ row: data }">
           <CTableDate :date="data?.created_at" />
@@ -414,14 +408,19 @@ const times = ref([
               'text-red': !data?.available,
             }"
             class="text-xs"
-            >{{ data?.available ? $t("active") : $t("inactive") }}</span
-          >
+          >{{ data?.available ? $t("active") : $t("inactive") }}</span>
         </template>
 
         <template #action="{ row: data }">
-          <CDropdown v-if="!data?.stop_data" class="w-7 ml-auto">
+          <CDropdown
+            v-if="!data?.stop_data"
+            class="w-7 ml-auto"
+          >
             <template #head>
-              <transition mode="out-in" name="fade">
+              <transition
+                mode="out-in"
+                name="fade"
+              >
                 <div
                   v-if="loading && actionData?.id === data?.id"
                   class="spinner-circle"
@@ -440,7 +439,10 @@ const times = ref([
 
             <template #default>
               <div class="flex flex-col bg-white rounded-lg shadow-dropdown">
-                <template v-for="(item, idx) in actionListConnector" :key="idx">
+                <template
+                  v-for="(item, idx) in actionListConnector"
+                  :key="idx"
+                >
                   <div
                     v-if="item?.active === !data?.available"
                     class="min-w-[158px] h-11 cursor-pointer flex items-center p-3 gap-2 hover:bg-gray/40 transition-300 group"
@@ -452,17 +454,16 @@ const times = ref([
                     />
                     <span
                       class="text-sm font-medium text-dark-100 leading-normal"
-                      >{{ $t(item.value) }}
+                    >{{ $t(item.value) }}
                     </span>
                   </div>
                 </template>
                 <div
-                  @click="openModalEdit"
                   class="min-w-[158px] h-11 cursor-pointer flex items-center p-3 gap-2 hover:bg-gray/40 transition-300 group"
+                  @click="openModalEdit"
                 >
                   <i class="icon-edit text-gray-200 text-xl transition-300" />
-                  <span class="text-sm font-medium text-dark-100 leading-normal"
-                    >{{ $t("edit") }}
+                  <span class="text-sm font-medium text-dark-100 leading-normal">{{ $t("edit") }}
                   </span>
                 </div>
               </div>
@@ -473,7 +474,10 @@ const times = ref([
             class="bg-red/[9%] cursor-pointer duration-200 hover:bg-red/[11%] w-max ml-auto rounded-md px-2.5 py-1.5 flex gap-2 items-center"
             @click="openActionModal(data)"
           >
-            <img alt="flag icon" src="/images/flag.png" />
+            <img
+              alt="flag icon"
+              src="/images/flag.png"
+            >
             <span class="text-red font-semibold text-sm">{{
               t("end_charging")
             }}</span>
@@ -481,8 +485,8 @@ const times = ref([
           <CDialog
             v-bind="{ show: openHours }"
             :title="$t('edit_price')"
-            @close="closeModalEdit"
             body-class="max-w-[540px]!"
+            @close="closeModalEdit"
           >
             <div class="p-5 pt-4">
               <div>
@@ -496,14 +500,12 @@ const times = ref([
                     <FGroup :label="$t('without_discount')">
                       <FInput
                         v-model="form.values.dayWithoutDiscount"
-                        :error="form.$v.value.dayWithoutDiscount?.$error"
                         v-maska="moneyMask()"
+                        :error="form.$v.value.dayWithoutDiscount?.$error"
                         placeholder="0"
                       >
                         <template #suffix>
-                          <span class="text-sm font-normal text-gray-200"
-                            >UZS</span
-                          >
+                          <span class="text-sm font-normal text-gray-200">UZS</span>
                         </template>
                       </FInput>
                     </FGroup>
@@ -511,14 +513,12 @@ const times = ref([
                     <FGroup :label="$t('with_discount')">
                       <FInput
                         v-model="form.values.price"
-                        :error="form.$v.value.price?.$error"
                         v-maska="moneyMask()"
+                        :error="form.$v.value.price?.$error"
                         placeholder="0"
                       >
                         <template #suffix>
-                          <span class="text-sm font-normal text-gray-200"
-                            >UZS</span
-                          >
+                          <span class="text-sm font-normal text-gray-200">UZS</span>
                         </template>
                       </FInput>
                     </FGroup>
@@ -536,28 +536,24 @@ const times = ref([
                       <FGroup :label="$t('without_discount')">
                         <FInput
                           v-model="form.values.nightWithoutDiscount"
-                          :error="form.$v.value.nightWithoutDiscount?.$error"
                           v-maska="moneyMask()"
+                          :error="form.$v.value.nightWithoutDiscount?.$error"
                           placeholder="0"
                         >
                           <template #suffix>
-                            <span class="text-sm font-normal text-gray-200"
-                              >UZS</span
-                            >
+                            <span class="text-sm font-normal text-gray-200">UZS</span>
                           </template>
                         </FInput>
                       </FGroup>
                       <FGroup :label="$t('with_discount')">
                         <FInput
                           v-model="form.values.nightWithDiscount"
-                          :error="form.$v.value.nightWithDiscount?.$error"
                           v-maska="moneyMask()"
+                          :error="form.$v.value.nightWithDiscount?.$error"
                           placeholder="0"
                         >
                           <template #suffix>
-                            <span class="text-sm font-normal text-gray-200"
-                              >UZS</span
-                            >
+                            <span class="text-sm font-normal text-gray-200">UZS</span>
                           </template>
                         </FInput>
                       </FGroup>
@@ -569,8 +565,8 @@ const times = ref([
                   <div class="flex-y-center space-x-5">
                     <FGroup :label="$t('with')">
                       <FSelect
-                        class="w-full"
                         v-model="form.values.start_time"
+                        class="w-full"
                         :options="times"
                         :placeholder="$t('add_car_form.start_time')"
                         filter-key="value"
@@ -582,8 +578,8 @@ const times = ref([
                     </FGroup>
                     <FGroup :label="$t('to')">
                       <FSelect
-                        class="w-full"
                         v-model="form.values.end_time"
+                        class="w-full"
                         :options="times"
                         :placeholder="$t('add_car_form.end_time')"
                         filter-key="value"

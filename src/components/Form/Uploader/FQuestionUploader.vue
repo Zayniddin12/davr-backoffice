@@ -1,11 +1,11 @@
 <template>
   <div
     class="flex-center-between w-full gap-4 relative p-2 rounded-lg bg-gray-100 h-10!"
+    :class="{ 'border border-red-500 bg-red-100': error }"
     @dragover.prevent="handleDragOver"
     @drop.prevent="handleDrop"
     @dragenter.prevent="handleDragEnter"
     @dragleave.prevent="handleDragLeave"
-    :class="{ 'border border-red-500 bg-red-100': error }"
   >
     <input
       :id="randomId"
@@ -16,9 +16,12 @@
       multiple
       @change="handleFile"
       @click="$event.target.value = ''"
-    />
+    >
     <div class="w-full max-w-[90%]">
-      <div v-if="image?.url" class="flex-y-center gap-2">
+      <div
+        v-if="image?.url"
+        class="flex-y-center gap-2"
+      >
         <div
           class="w-6 h-6 rounded-sm relative overflow-hidden border border-gray-800"
         >
@@ -26,7 +29,7 @@
             :src="image?.url"
             alt="image"
             class="object-cover w-full h-full"
-          />
+          >
         </div>
         <p class="text-xs leading-normal font-normal text-dark-100 truncate">
           {{ image?.name }}
@@ -36,7 +39,10 @@
           @click="removeImage"
         />
       </div>
-      <div v-else class="w-full">
+      <div
+        v-else
+        class="w-full"
+      >
         <div class="flex-y-center gap-2">
           <i class="icon-photo text-2xl text-green" />
 
@@ -49,8 +55,7 @@
               <span
                 class="text-green hover:text-dark transition-300 cursor-pointer"
                 @click="getFile('create')"
-                >{{ $t("select_image") }}</span
-              >
+              >{{ $t("select_image") }}</span>
             </template>
           </i18n-t>
         </div>

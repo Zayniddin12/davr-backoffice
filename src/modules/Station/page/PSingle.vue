@@ -1,5 +1,8 @@
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
   <main>
@@ -16,7 +19,10 @@
         @delete="deleteModal = true"
         @edit="editStationModal = true"
       >
-        <template v-if="checkRouteFromUser" #actions>
+        <template
+          v-if="checkRouteFromUser"
+          #actions
+        >
           <CButton
             :text="$t('add_column')"
             class="mt-0"
@@ -48,9 +54,15 @@
 
     <section class="mt-5">
       <CCard class="p-5 pb-0">
-        <Transition mode="out-in" name="fade">
+        <Transition
+          mode="out-in"
+          name="fade"
+        >
           <div :key="activeTab">
-            <div v-for="(tab, idx) in tabs" :key="idx">
+            <div
+              v-for="(tab, idx) in tabs"
+              :key="idx"
+            >
               <div v-if="activeTab === tab.value">
                 <Column
                   :column="currentColumn"

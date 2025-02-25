@@ -15,52 +15,65 @@
       @search="handleTableSearch"
     >
       <template #header_title>
-        <slot name="header_title"></slot>
+        <slot name="header_title" />
       </template>
       <template #afterSearch>
-        <slot name="afterSearch"></slot>
+        <slot name="afterSearch" />
       </template>
       <template #beforeSearch>
-        <slot name="beforeSearch"></slot>
+        <slot name="beforeSearch" />
       </template>
     </CTableHeader>
     <slot name="filter" />
     <slot name="main">
-    <div class="w-full">
-      <Transition mode="out-in" name="fade">
-        <CTable
-          :key="loading"
-          :body-tr-class="trClass"
-          :current-page="currentPage"
-          :data="data"
-          :head="data?.length ? head : []"
-          :limit="limit"
-          :order-value="orderValue"
-          :loading="loading"
-          :td-class="tdClass"
-          :th-class="['bg-gray-800', thClass]"
-          :total="data?.length"
-          :type="type"
-          :statusColors="statusColors"
-          @sort="emit('sort', $event)"
-          @onRowClick="emit('onRowClick', $event)"
+      <div class="w-full">
+        <Transition
+          mode="out-in"
+          name="fade"
         >
-          <template
-            v-for="(row, j) in head"
-            :key="j"
-            v-slot:[row?.key]="{ data }"
+          <CTable
+            :key="loading"
+            :body-tr-class="trClass"
+            :current-page="currentPage"
+            :data="data"
+            :head="data?.length ? head : []"
+            :limit="limit"
+            :order-value="orderValue"
+            :loading="loading"
+            :td-class="tdClass"
+            :th-class="['bg-gray-800', thClass]"
+            :total="data?.length"
+            :type="type"
+            :status-colors="statusColors"
+            @sort="emit('sort', $event)"
+            @on-row-click="emit('onRowClick', $event)"
           >
-            <slot v-if="row?.key" :name="`${row?.key}`" :row="data" />
-          </template>
-          <template #no-data>
-            <slot name="no-data" />
-          </template>
-        </CTable>
-      </Transition>
-    </div>
+            <template
+              v-for="(row, j) in head"
+              :key="j"
+              #[row?.key]="{ data }"
+            >
+              <slot
+                v-if="row?.key"
+                :name="`${row?.key}`"
+                :row="data"
+              />
+            </template>
+            <template #no-data>
+              <slot name="no-data" />
+            </template>
+          </CTable>
+        </Transition>
+      </div>
     </slot>
-    <slot v-if="total > 10 || noFooter" name="footer">
-      <Transition mode="out-in" name="dropdown">
+    <slot
+      v-if="total > 10 || noFooter"
+      name="footer"
+    >
+      <Transition
+        mode="out-in"
+        name="dropdown"
+      >
         <CTableFooter
           v-if="!loading"
           :key="loading"
@@ -72,8 +85,8 @@
           @items-per-page="(e) => emit('itemsPerPage', e)"
           @page-change="(e) => emit('pageChange', e)"
         >
-          <template v-slot:beforePagination>
-            <slot name="beforePagination"></slot>
+          <template #beforePagination>
+            <slot name="beforePagination" />
           </template>
         </CTableFooter>
       </Transition>

@@ -1,5 +1,8 @@
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
   <section class="p-6 bg-white rounded-xl">
@@ -10,14 +13,14 @@
         :head="mainModelHead"
         :data="tableData"
         :current-page="paginationData?.currentPage"
-        @itemsPerPage="onChangeLimit"
         :items-per-page="+route.query?.limit || 10"
         :total="paginationData?.total"
-        @pageChange="onPageChange"
-        @search="onSearch"
         :limit="paginationData?.defaultLimit"
         :loading="loading"
         th-class="bg-gray! text-gray-100! last:text-right!"
+        @items-per-page="onChangeLimit"
+        @page-change="onPageChange"
+        @search="onSearch"
       >
         <template #id="{ row }">
           <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
@@ -56,9 +59,9 @@
             :subtitle="$t('no_mark_added_subtitle')"
             class="mt-8 px-6 pb-20 pt-0"
             :button-text="t('add_mark')"
-            @submit="openAddMark"
             image="/images/svg/no-data/no-notification.svg"
             button-custom-class="mt-0!"
+            @submit="openAddMark"
           />
         </template>
         <template #action="{ row: data }">
@@ -76,21 +79,24 @@
     <CDialog
       v-bind="{ show }"
       :title="$t(isEdit ? 'edit_mark_car' : 'add_mark_car')"
-      @close="show = false"
       body-class="max-w-[421px]!"
+      @close="show = false"
     >
       <div class="p-5 pt-4">
         <FGroup :label="$t('logo')">
           <ImageUploader
-            @change="form.values.image = $event"
             size="10 MB"
             :default-image="form.values.image"
+            @change="form.values.image = $event"
           />
         </FGroup>
-        <FGroup class="mt-5" :label="$t('mark_car')">
+        <FGroup
+          class="mt-5"
+          :label="$t('mark_car')"
+        >
           <FInput
-            :placeholder="$t('choose_mark_car')"
             v-model="form.values.mark"
+            :placeholder="$t('choose_mark_car')"
             :error="form.$v.value.mark?.$error || isError"
             @input="isError = false"
           />

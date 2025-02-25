@@ -1,5 +1,8 @@
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <SBreadcrumb v-bind="{ routes }" />
   </Teleport>
   <section class="p-6 bg-white rounded-xl">
@@ -13,11 +16,11 @@
         :limit="paginationData?.defaultLimit ?? 0"
         :current-page="paginationData?.currentPage ?? 0"
         :total="paginationData?.total"
-        @search="onSearch"
-        @itemsPerPage="onChangeLimit"
         :loading="loading"
-        @pageChange="onPageChange"
         th-class="bg-gray! text-gray-100! last:text-right!"
+        @search="onSearch"
+        @items-per-page="onChangeLimit"
+        @page-change="onPageChange"
       >
         <template #id="{ row }">
           <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
@@ -84,36 +87,42 @@
     <CDialog
       v-bind="{ show }"
       :title="$t(isEdit ? 'edit_user_modal.title' : 'history.charging_add')"
-      @close="show = false"
       body-class="max-w-[421px]! overflow-y-visible!"
+      @close="show = false"
     >
       <div class="p-5 pt-4">
         <FGroup :label="$t('logo')">
           <ImageUploader
-            @change="form.values.image = $event"
             size="10 MB"
             :default-image="form.values.image"
             :error="form.$v.value.image?.$error || isError"
+            @change="form.values.image = $event"
           />
         </FGroup>
-        <FGroup class="mt-5" :label="$t('charger_name')">
+        <FGroup
+          class="mt-5"
+          :label="$t('charger_name')"
+        >
           <FInput
-            :placeholder="$t('enter_charger_name')"
             v-model="form.values.name"
+            :placeholder="$t('enter_charger_name')"
             :error="form.$v.value.name?.$error || isError"
             @input="isError = false"
           />
         </FGroup>
 
-        <FGroup class="mt-5" :label="$t('category')">
+        <FGroup
+          class="mt-5"
+          :label="$t('category')"
+        >
           <FSelect
-            :options="selectOptions"
             v-model="form.values.category"
+            :options="selectOptions"
             :error="form.$v.value.category?.$error || isError"
-            @change="isError = false"
-            selectedOptionStyles="bg-gray!"
+            selected-option-styles="bg-gray!"
             :placeholder="$t('enter_charger_category')"
             is-checked
+            @change="isError = false"
           />
         </FGroup>
       </div>
@@ -139,9 +148,9 @@
     </CDialog>
     <CDeleteDialog
       :show="deleteModal"
-      @close="deleteModal = false"
       :title="singleData?.name"
       :subtitle="$t('delete_charge_type')"
+      @close="deleteModal = false"
       @submit="deleteCharger(singleData)"
     />
   </section>

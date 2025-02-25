@@ -18,10 +18,12 @@ withDefaults(defineProps<Props>(), {
       <i
         class="icon-ring-location text-xl text-gray-300"
         :class="{ 'text-primary!': isActive }"
-      ></i>
+      />
     </div>
 
-    <p class="text-xs font-bold leading-130">{{ name }}</p>
+    <p class="text-xs font-bold leading-130">
+      {{ name }}
+    </p>
   </div>
 </template>
 

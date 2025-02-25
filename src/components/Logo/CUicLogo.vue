@@ -3,8 +3,7 @@
     href="telegrame: @nodirbekrajaboff"
     target="_blank"
     class="cursor-pointer inline-flex items-center transition-all duration-500"
-  > 
-  </a>
+  />
 </template>
 
 <script setup lang="ts">

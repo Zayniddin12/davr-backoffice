@@ -39,12 +39,15 @@ watch(
   <div>
     <CDialog
       :show="show"
-      @close="() => $emit('close')"
       :title="$t('edit_user_modal.title')"
       body-class="w-[421px]!"
+      @close="() => $emit('close')"
     >
       <template #default>
-        <form @submit.prevent class="grid grid-cols-1 px-5 pt-4 pb-5 gap-5">
+        <form
+          class="grid grid-cols-1 px-5 pt-4 pb-5 gap-5"
+          @submit.prevent
+        >
           <FGroup :label="$t('edit_user_modal.user')">
             <div class="flex items-center px-3 py-2 bg-gray rounded-lg gap-2">
               <img
@@ -52,13 +55,13 @@ watch(
                 :src="user?.avatar_url"
                 :alt="user?.full_name ?? 'image of user'"
                 class="w-9 h-9 rounded-full object-cover"
-              />
+              >
               <img
                 v-else
                 alt="avatar-default-image"
                 class="w-9 h-9 rounded-full object-cover"
                 src="/images/default-avatar.png"
-              />
+              >
               <h5
                 v-if="user?.full_name"
                 class="text-sm font-medium leading-130 text-dark"
@@ -81,20 +84,20 @@ watch(
 
           <FGroup :label="$t('edit_user_modal.status')">
             <FSelect
-              :options="allStatus().slice(1)"
               v-model="data.is_active"
+              :options="allStatus().slice(1)"
               selected-option-styles="bg-gray! h-10! border-transparent"
               label-key="label"
               value-key="value"
-              @change="data.is_active = $event"
               is-checked
+              @change="data.is_active = $event"
             />
           </FGroup>
 
           <FCheckbox
             :checked="data.is_admin"
-            @change="data.is_admin = $event"
             :label="$t('edit_user_modal.checkbox')"
+            @change="data.is_admin = $event"
           />
 
           <div class="flex items-center gap-3 justify-end">

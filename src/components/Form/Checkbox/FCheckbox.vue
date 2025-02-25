@@ -11,7 +11,7 @@
       :value="value"
       :name="name"
       @change="handleChange"
-    />
+    >
     <slot name="value">
       <span
         :class="[

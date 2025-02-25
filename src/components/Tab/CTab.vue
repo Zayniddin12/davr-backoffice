@@ -6,7 +6,7 @@
       :class="activeClass"
       :style="{ width: `${active.width}`, left: `${active.left}px` }"
       class="absolute h-[2px] bg-primary w-full -bottom-px transition-all duration-200"
-    ></div>
+    />
     <button
       v-for="(tab, idx) in list"
       :id="`item_${tab.value}`"

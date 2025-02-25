@@ -116,8 +116,8 @@ watch(
         :no-search="tableData.length === 0"
         :total="paginationData?.total"
         th-class="bg-gray! text-gray-100!"
-        @itemsPerPage="onChangeLimit"
-        @pageChange="onPageChange"
+        @items-per-page="onChangeLimit"
+        @page-change="onPageChange"
         @search="onSearch"
       >
         <template #header_title>
@@ -145,7 +145,7 @@ watch(
                 :alt="data?.user?.full_name"
                 :src="data?.user?.avatar_url"
                 class="w-full h-full object-cover rounded-full"
-              />
+              >
             </div>
             <div>
               <h5 class="mb-0.5 text-dark text-xs font-medium leading-130">
@@ -194,7 +194,10 @@ watch(
           width="32"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M13 4H4v9.01h2V6h7V4z" fill="currentColor" />
+          <path
+            d="M13 4H4v9.01h2V6h7V4z"
+            fill="currentColor"
+          />
           <path
             d="M29.49 13.12l-9-5a1 1 0 0 0-1 0l-9 5A1 1 0 0 0 10 14v10a1 1 0 0 0 .52.87l9 5A1 1 0 0 0 20 30a1.05 1.05 0 0 0 .49-.13l9-5A1 1 0 0 0 30 24V14a1 1 0 0 0-.51-.88zM19 27.3l-7-3.89v-7.72l7 3.89zm1-9.45L13.06 14L20 10.14L26.94 14zm8 5.56l-7 3.89v-7.72l7-3.89z"
             fill="currentColor"
@@ -235,7 +238,6 @@ watch(
 
       <CheckModal
         :show="checkModal"
-        @close="checkModal = false"
         v-bind="{
           upper,
           lower,
@@ -243,6 +245,7 @@ watch(
             Number(Number(checkData?.payed_cost ?? 0))
           )} UZS`,
         }"
+        @close="checkModal = false"
       />
     </CCard>
   </section>

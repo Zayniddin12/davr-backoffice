@@ -32,8 +32,8 @@
           },
         ]"
         class="relative aspect-video overflow-hidden"
-        @click="activeRadio = !disabled ? item[valueKey] : modelValue"
         radio-class="absolute! top-3 right-3 mr-0"
+        @click="activeRadio = !disabled ? item[valueKey] : modelValue"
       >
         <template #label>
           <div
@@ -84,9 +84,12 @@
             src="/images/fake/fake.png"
             class="absolute w-full h-full inset-0 user-select-none pointer-events-none"
             alt="test"
-          />
+          >
         </template>
-        <template v-if="answered" #value>
+        <template
+          v-if="answered"
+          #value
+        >
           <svg
             v-if="!item?.is_correct"
             class="absolute! top-2 right-2 mr-0"

@@ -14,7 +14,7 @@
           <i
             :class="{ 'rotate-180': show }"
             class="icon-chevron transition-200 text-xs! inline-block"
-          ></i>
+          />
         </div>
       </div>
     </template>
@@ -34,7 +34,7 @@
         <i
           v-if="item.value === currentLanguage?.value"
           class="icon-tick-square text-base! text-green"
-        ></i>
+        />
       </li>
     </ul>
   </CDropdown>

@@ -54,7 +54,7 @@ const { tableData, paginationData, onChangeLimit, loading } = useTableFetch(
       no-search
       th-class="bg-gray! text-gray-100!"
       title-class="truncate!"
-      @itemsPerPage="onChangeLimit"
+      @items-per-page="onChangeLimit"
     >
       <!--      body-->
       <template #index="{ row }">
@@ -82,12 +82,10 @@ const { tableData, paginationData, onChangeLimit, loading } = useTableFetch(
         </p>
       </template>
       <template #balance="{ row: data }">
-        <span v-if="data?.balance"
-          >{{
-            data?.balance ? formatMoneyDecimal(data?.balance) : "-"
-          }}
-          UZS</span
-        >
+        <span v-if="data?.balance">{{
+          data?.balance ? formatMoneyDecimal(data?.balance) : "-"
+        }}
+          UZS</span>
       </template>
       <template #registration_date="{ row: data }">
         <CTableDate :date="data?.date_joined" />

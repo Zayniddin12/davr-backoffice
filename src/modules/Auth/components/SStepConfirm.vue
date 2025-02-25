@@ -1,6 +1,9 @@
 <template>
   <div>
-    <button class="flex-y-center gap-2 group" @click="$emit('back')">
+    <button
+      class="flex-y-center gap-2 group"
+      @click="$emit('back')"
+    >
       <i
         class="icon-chevron-left text-base block font-thin text-dark transition group-hover:-translate-x-1"
       />
@@ -22,7 +25,7 @@
       </span>
       <i
         class="icon-edit-square text-gray-300 group-hover:text-dark transition-300"
-      ></i>
+      />
     </button>
 
     <SFormGroup
@@ -42,7 +45,10 @@
       class="flex items-center justify-center gap-2 mt-4 mb-8"
     >
       <span class="text-sm text-gray-300">{{ $t("resend_code") }}:</span>
-      <CTimer seconds="60" @timeout="timeout" />
+      <CTimer
+        seconds="60"
+        @timeout="timeout"
+      />
     </div>
     <div
       v-else
@@ -50,7 +56,10 @@
       @click="onResend"
     >
       <span class="text-sm text-gray-300">{{ $t("resend_code") }}: </span>
-      <img alt="" src="/images/svg/refresh.svg" />
+      <img
+        alt=""
+        src="/images/svg/refresh.svg"
+      >
     </div>
     <SButton
       :loading="loading"

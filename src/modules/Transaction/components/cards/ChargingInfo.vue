@@ -16,8 +16,11 @@ defineProps<{
     <div
       class="flex items-center gap-3 border-r border-[rgba(148, 168, 170, 0.4)"
     >
-      <div v-if="card?.icon1" class="flex items-center">
-        <i :class="card?.icon1"></i>
+      <div
+        v-if="card?.icon1"
+        class="flex items-center"
+      >
+        <i :class="card?.icon1" />
       </div>
       <div>
         <h5 class="mb-0.5 text-gray-100 text-xs font-normal">
@@ -29,8 +32,11 @@ defineProps<{
       </div>
     </div>
     <div class="flex items-center gap-3 pl-4">
-      <div v-if="card?.icon2" class="flex items-center">
-        <i :class="card?.icon2"></i>
+      <div
+        v-if="card?.icon2"
+        class="flex items-center"
+      >
+        <i :class="card?.icon2" />
       </div>
       <div class="flex flex-col">
         <h5 class="mb-0.5 text-gray-100 text-xs font-normal">

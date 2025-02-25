@@ -57,7 +57,10 @@ watch(
 </script>
 
 <template>
-  <Teleport v-if="mounted" to="#header-breadcrumbs">
+  <Teleport
+    v-if="mounted"
+    to="#header-breadcrumbs"
+  >
     <CBreadcrumb :routes="breadcrumbRoutes" />
   </Teleport>
 
@@ -76,9 +79,9 @@ watch(
       :total="paginationData?.total"
       head-classes="max-w-[870px]!"
       th-class="users-module__row last:text-right!"
-      @itemsPerPage="onChangeLimit"
-      @pageChange="onPageChange"
       no-search
+      @items-per-page="onChangeLimit"
+      @page-change="onPageChange"
     >
       <!--      head   -->
       <template #beforeSearch>
@@ -135,7 +138,10 @@ watch(
       </template>
       <template #last_login="{ row: data }">
         <div class="flex flex-col gap-1">
-          <p v-if="data?.end_timestamp" class="text-xs font-normal mb-1">
+          <p
+            v-if="data?.end_timestamp"
+            class="text-xs font-normal mb-1"
+          >
             {{ dayjs(data?.end_timestamp)?.format("DD.MM.YYYY") }}
           </p>
           <p

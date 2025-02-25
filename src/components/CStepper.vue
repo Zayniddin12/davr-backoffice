@@ -23,8 +23,8 @@
               index + 1 === modelValue
                 ? 'text-dark'
                 : index + 1 < modelValue
-                ? 'text-dark'
-                : 'text-gray-700',
+                  ? 'text-dark'
+                  : 'text-gray-700',
             ]"
           >
             {{ $t(item?.title) }}

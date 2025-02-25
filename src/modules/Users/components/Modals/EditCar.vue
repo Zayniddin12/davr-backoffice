@@ -103,17 +103,20 @@ watch(
   <div>
     <CDialog
       :show="show"
-      @close="() => $emit('close')"
       :title="$t('add_car_form.edit')"
       body-class="w-[421px]!"
+      @close="() => $emit('close')"
     >
       <template #default>
-        <form @submit.prevent class="grid grid-cols-1 px-5 pt-4 pb-5 gap-5">
+        <form
+          class="grid grid-cols-1 px-5 pt-4 pb-5 gap-5"
+          @submit.prevent
+        >
           <FGroup :label="$t('add_car_form.mark')">
             <FSelectCustom
+              v-model="form.values.manufacturer"
               :options="carMarks"
               :error="form.$v.value.manufacturer.$error"
-              v-model="form.values.manufacturer"
               filter-key="name"
               selected-option-styles="bg-gray!"
               :placeholder="$t('add_car_form.mark_placeholder')"
@@ -128,8 +131,8 @@ watch(
                     {{ option?.name }}
                   </p>
                   <p
-                    class="text-dark pr-2 icon-star"
                     v-if="selected?.id === option?.id"
+                    class="text-dark pr-2 icon-star"
                   >
                     <i class="icon-checked text-green text-sm" />
                   </p>
@@ -140,8 +143,8 @@ watch(
 
           <FGroup :label="$t('add_car_form.model')">
             <FSelect
-              :options="carModels"
               v-model="form.values.model"
+              :options="carModels"
               :error="form.$v.value.model.$error"
               :placeholder="$t('add_car_form.model_placeholder')"
               selected-option-styles="h-10! bg-gray! border-transparent !focus:!border-primary"
@@ -150,14 +153,14 @@ watch(
           </FGroup>
           <FGroup :label="$t('add_car_form.connector')">
             <FSelectMultiple
-              :options="connectors"
               v-model="form.values.charging_type"
+              :options="connectors"
               filter-key="name"
               :error="form.$v.value.charging_type.$error"
-              @on-toggle="onToggle = $event"
               :placeholder="$t('add_car_form.connector_placeholder')"
               selected-option-styles="bg-gray! h-auto!"
               label-key="name"
+              @on-toggle="onToggle = $event"
             >
               <template
                 #option="{ option: option, selectedList: selectedList }"
@@ -172,7 +175,7 @@ watch(
                         :src="option?.icon"
                         alt="image icon"
                         class="w-[14px] object-cover"
-                      />
+                      >
                     </div>
                     <div class="text-dark transition-300">
                       {{ option?.name }}
@@ -189,8 +192,11 @@ watch(
                 <i
                   class="icon-chevron absolute right-2.5 flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
                   :class="{ 'rotate-180!': onToggle }"
-                ></i>
-                <p v-if="!selectedValues.length" class="text-sm">
+                />
+                <p
+                  v-if="!selectedValues.length"
+                  class="text-sm"
+                >
                   {{ $t("add_car_form.connector_placeholder") }}
                 </p>
                 <div
@@ -207,11 +213,13 @@ watch(
                       :src="so?.icon"
                       alt="icon"
                       class="w-[14px] object-cover"
-                    />
-                    <p class="text-xs font-medium">{{ so?.name }}</p>
+                    >
+                    <p class="text-xs font-medium">
+                      {{ so?.name }}
+                    </p>
                     <div
-                      @click="removeTag(so?.id)"
                       class="w-4 h-4 p-[3px] group hover:bg-red-100 flex items-center justify-center bg-[#66777929] rounded-full"
+                      @click="removeTag(so?.id)"
                     >
                       <i
                         class="icon-close text-gray-200 text-[6px] group-hover:text-red transition-300"

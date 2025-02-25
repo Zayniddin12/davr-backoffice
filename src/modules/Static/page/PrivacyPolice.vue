@@ -17,7 +17,7 @@ fetchStaticContent();
     <h1 class="text-2xl leading-130 font-semibold text-dark mb-3">
       {{ staticContent?.title }}
     </h1>
-    <div v-html="staticContent?.body_html"></div>
+    <div v-html="staticContent?.body_html" />
   </main>
 </template>
 

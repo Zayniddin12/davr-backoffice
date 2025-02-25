@@ -4,10 +4,16 @@
       v-model="nameValue"
       :list="tabListLanguage"
       class="w-full!"
-      withIcon
+      with-icon
     />
-    <Transition mode="out-in" name="fade">
-      <div :key="nameValue" class="mt-6 space-y-5">
+    <Transition
+      mode="out-in"
+      name="fade"
+    >
+      <div
+        :key="nameValue"
+        class="mt-6 space-y-5"
+      >
         <FGroup :label="$t(`column_title`)">
           <FInput
             v-model="form.values[`name_${nameValue}`]"
@@ -49,8 +55,11 @@
               <i
                 :class="{ 'rotate-180!': onToggleOwner }"
                 class="icon-chevron absolute right-2.5 flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
-              ></i>
-              <p v-if="!selectedValues.length" class="text-sm">
+              />
+              <p
+                v-if="!selectedValues.length"
+                class="text-sm"
+              >
                 {{ $t("add_car_form.choose_user") }}
               </p>
               <div
@@ -62,7 +71,9 @@
                   :class="{ 'bg-white!': !onToggleOwner }"
                   class="flex items-center rounded-[4px] bg-gray px-2 py-1.5 gap-1"
                 >
-                  <p class="text-xs font-medium">{{ so?.phone }}</p>
+                  <p class="text-xs font-medium">
+                    {{ so?.phone }}
+                  </p>
                   <div
                     class="w-4 h-4 p-[3px] group hover:bg-red-100 flex items-center justify-center bg-[#66777929] rounded-full"
                     @click="removeTag(so?.id)"
@@ -123,9 +134,12 @@
                 v-if="!stationStore.loadingUserList"
                 :class="{ 'rotate-180!': onToggleUser }"
                 class="icon-chevron absolute right-2.5 flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
-              ></i>
+              />
               <CSelectLoading v-else />
-              <p v-if="!selectedValues.length" class="text-sm">
+              <p
+                v-if="!selectedValues.length"
+                class="text-sm"
+              >
                 {{ $t("select_user") }}
               </p>
               <div
@@ -137,7 +151,9 @@
                   :class="{ 'bg-white!': !onToggleUser }"
                   class="flex items-center rounded-[4px] bg-gray px-2 py-1.5 gap-1"
                 >
-                  <p class="text-xs font-medium">{{ so?.phone }}</p>
+                  <p class="text-xs font-medium">
+                    {{ so?.phone }}
+                  </p>
                   <div
                     class="w-4 h-4 p-[3px] group hover:bg-red-100 flex items-center justify-center bg-[#66777929] rounded-full"
                     @click="removeTag(so?.id)"
@@ -172,8 +188,8 @@
           <FGroup :label="$t('price_booking')">
             <FInput
               v-model="form.values.price"
-              :error="form.$v.value.price?.$error"
               v-maska="moneyMask()"
+              :error="form.$v.value.price?.$error"
               placeholder="0"
             >
               <template #suffix>
@@ -215,7 +231,11 @@
       </div>
     </Transition>
     <div class="space-x-4 mt-5 flex items-center justify-end">
-      <CButton :text="$t('cancel')" variant="info" @click="emit('close')" />
+      <CButton
+        :text="$t('cancel')"
+        variant="info"
+        @click="emit('close')"
+      />
       <CButton
         :disabled="form.$v.value.$invalid || loading"
         :loading="loading"

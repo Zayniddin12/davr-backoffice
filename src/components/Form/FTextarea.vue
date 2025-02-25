@@ -6,11 +6,14 @@
     <textarea
       v-bind="{ rows, cols, id, placeholder, maxlength }"
       :value="modelValue"
-      @input="handleInput"
       class="resize-none w-full bg-transparent rounded-lg outline-hidden py-2.5 px-3 leading-130 text-dark placeholder:text-gray text-sm transition-300"
       :class="textareaClass"
-    ></textarea>
-    <p v-if="maxlength" class="text-gray-50 px-3 pb-2.5 text-right text-xs">
+      @input="handleInput"
+    />
+    <p
+      v-if="maxlength"
+      class="text-gray-50 px-3 pb-2.5 text-right text-xs"
+    >
       {{ (modelValue?.length ?? 0) + "/" + maxlength }}
     </p>
   </div>

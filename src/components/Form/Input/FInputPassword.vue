@@ -11,7 +11,6 @@
       <slot name="prefix" />
     </span>
     <input
-      :value="modelValue"
       v-bind="{
         type: typePassword,
         minlength,
@@ -22,26 +21,30 @@
         placeholder,
         id,
       }"
+      ref="kInput"
+      :value="modelValue"
       :readonly="!autocomplete"
       :class="[
         inputClass,
         'font-normal text-sm leading-130 text-dark placeholder:text-gray-200 bg-transparent grow outline-hidden',
       ]"
       class="w-full"
-      ref="kInput"
       @input="handleInput"
       @change="$emit('change')"
       @blur="emit('blur-sm')"
       @focus="emit('focus')"
       @keyup.enter="$emit('enter')"
-    />
+    >
 
     <div @click="togglePassword">
       <i
         v-if="!eyeOpen"
         class="icon-eye cursor-pointer text-xl text-blue-100"
       />
-      <i v-else class="icon-close-eye cursor-pointer text-xl text-blue-100" />
+      <i
+        v-else
+        class="icon-close-eye cursor-pointer text-xl text-blue-100"
+      />
     </div>
   </div>
 </template>

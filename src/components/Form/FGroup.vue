@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-col gap-2 w-full">
-    <div :class="wrapperClass" class="flex-center-between w-full">
+    <div
+      :class="wrapperClass"
+      class="flex-center-between w-full"
+    >
       <Label v-bind="{ forText, label, labelClass }" />
       <slot name="labelOpposite" />
     </div>

@@ -1,5 +1,8 @@
 <template>
-  <div ref="select" class="relative">
+  <div
+    ref="select"
+    class="relative"
+  >
     <!--  SELECTED OPTION  -->
     <div
       :class="[
@@ -42,8 +45,7 @@
             <span
               :class="{ 'rotate-180!': showOptions }"
               class="icon-chevron flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
-            >
-            </span>
+            />
           </div>
         </slot>
       </slot>
@@ -78,7 +80,10 @@
             image="/images/svg/no-data/default_no_data.svg"
           />
         </li>
-        <slot v-else name="options">
+        <slot
+          v-else
+          name="options"
+        >
           <li
             v-for="(option, idx) in filteredOptions"
             :key="idx"
@@ -88,7 +93,7 @@
             <slot
               :index="idx"
               :option="option"
-              :selectedList="selectedList"
+              :selected-list="selectedList"
               name="option"
             >
               <p
@@ -107,7 +112,7 @@
                 <i
                   v-if="isActive(option)"
                   class="icon-tick text-base text-dark"
-                ></i>
+                />
               </p>
             </slot>
           </li>

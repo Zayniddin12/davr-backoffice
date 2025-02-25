@@ -1,12 +1,12 @@
 <template>
   <div
+    ref="inputWrapper"
     class="phone-input transition-200 relative bg-gray-500 rounded-lg border border-transparent"
     :class="
       error
         ? 'border-red! !focus-within:border-red'
         : 'focus-within:border-violet'
     "
-    ref="inputWrapper"
   >
     <VueTelInput
       ref="phoneInput"

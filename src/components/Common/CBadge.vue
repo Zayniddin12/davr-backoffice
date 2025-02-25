@@ -3,7 +3,10 @@
     class="p-1 rounded-md text-sm text-center inline-flex items-center gap-1"
     :class="badgeStyle"
   >
-    <i v-if="iconName" :class="`${iconName} text-base leading-4`" />
+    <i
+      v-if="iconName"
+      :class="`${iconName} text-base leading-4`"
+    />
     {{ status }}
   </span>
 </template>

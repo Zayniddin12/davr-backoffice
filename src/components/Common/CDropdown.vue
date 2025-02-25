@@ -1,7 +1,17 @@
 <template>
-  <div class="relative" ref="target">
-    <div :class="headClass" @click.stop="toggleShow" class="select-none">
-      <slot name="head" v-bind="{ show }"></slot>
+  <div
+    ref="target"
+    class="relative"
+  >
+    <div
+      :class="headClass"
+      class="select-none"
+      @click.stop="toggleShow"
+    >
+      <slot
+        name="head"
+        v-bind="{ show }"
+      />
     </div>
 
     <Transition name="dropdown">

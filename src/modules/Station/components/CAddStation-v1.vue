@@ -5,21 +5,21 @@
         <SFormSteps v-bind="{ step, steps }" />
       </div>
 
-      <Transition class="basis-[75%]" mode="out-in" name="fade">
-        <div :key="step" class="py-5">
+      <Transition
+        class="basis-[75%]"
+        mode="out-in"
+        name="fade"
+      >
+        <div
+          :key="step"
+          class="py-5"
+        >
           <SStepInfo
             v-if="step === 1"
             :form="form"
             :is-edit="isEdit"
             @next="step = 2"
             @close="emits('close')"
-          />
-          <SStepAddress
-            v-if="step === 2"
-            :form="addressForm"
-            :is-edit="isEdit"
-            @back="back()"
-            @submit="isEdit ? edit() : save()"
           />
         </div>
       </Transition>
@@ -30,7 +30,6 @@
 import { useCustomToast } from "@/composables/useCustomToast";
 import { useForm } from "@/composables/useForm";
 import SFormSteps from "@/modules/Station/components/SFormSteps.vue";
-import SStepAddress from "@/modules/Station/components/SStepAddress.vue";
 import SStepInfo from "@/modules/Station/components/SStepInfo.vue";
 import { IStation } from "@/modules/Station/types/interface";
 import ApiService from "@/services/ApiService";

@@ -26,7 +26,11 @@ const checkStatus = () => {
 </script>
 
 <template>
-  <CDialog :show="show" no-header body-class="max-w-[421px]!">
+  <CDialog
+    :show="show"
+    no-header
+    body-class="max-w-[421px]!"
+  >
     <template #default>
       <section class="flex items-center justify-center flex-col p-5 gap-5">
         <div
@@ -38,14 +42,14 @@ const checkStatus = () => {
             src="@/assets/svg/lock.svg"
             alt="image of lock"
             class="w-full h-full"
-          />
+          >
 
           <img
             v-else
             src="@/assets/svg/unlock.svg"
             alt="image of unlock"
             class="w-full h-full"
-          />
+          >
         </div>
         <div>
           <h1
@@ -69,8 +73,8 @@ const checkStatus = () => {
           <CButton
             :text="$t('cancel')"
             info
-            @click="() => $emit('cancel')"
             variant="info"
+            @click="() => $emit('cancel')"
           />
           <CButton
             :text="type === 'lock' ? $t('lock') : $t('unlock')"

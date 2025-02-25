@@ -24,9 +24,9 @@ const emit = defineEmits(["openCheck"]);
   <div>
     <CDialog
       :show="show"
-      @close="() => $emit('close')"
       :title="$t('charging_history_modal.title')"
       body-class="w-[540px]!"
+      @close="() => $emit('close')"
     >
       <template #default>
         <div class="flex flex-col space-y-5 p-5">
@@ -80,7 +80,7 @@ const emit = defineEmits(["openCheck"]);
                         {{ data?.car?.manufacturer_name }}
                       </h5>
                     </div>
-                    <slot name="feature"></slot>
+                    <slot name="feature" />
                   </div>
                   <p class="text-xs text-gray-300 leading-130">
                     {{ data?.car?.model_name }}
@@ -102,7 +102,7 @@ const emit = defineEmits(["openCheck"]);
                 class="w-[28px] h-[28px]"
                 src="@/assets/svg/map-pin.svg"
                 alt="location icon"
-              />
+              >
 
               <p class="text-dark text-xs font-semibold">
                 {{ data?.address_name }}
@@ -136,8 +136,7 @@ const emit = defineEmits(["openCheck"]);
               <div class="flex flex-row space-x-2 items-center">
                 <span
                   class="min-w-7 flex items-center justify-center w-7 min-h-7 h-7 bg-white rounded-lg"
-                  >1</span
-                >
+                >1</span>
 
                 <p class="text-gray-300 text-xs font-semibold">
                   <span class="text-dark">A</span> TYPE 1 J1772
@@ -150,7 +149,11 @@ const emit = defineEmits(["openCheck"]);
             class="px-3 w-full py-2.5 bg-gray-700 rounded-lg flex flex-col space-y-2.5"
           >
             <div class="flex flex-row space-x-1 items-center">
-              <img class="" src="@/assets/svg/parking.svg" alt="parking icon" />
+              <img
+                class=""
+                src="@/assets/svg/parking.svg"
+                alt="parking icon"
+              >
               <span class="text-dark text-sm font-semibold">{{
                 $t("charging_history_modal.parking.title")
               }}</span>
@@ -185,7 +188,9 @@ const emit = defineEmits(["openCheck"]);
               <div class="flex flex-row space-x-1 items-center">
                 <i class="icon-flesh text-blue-300" />
 
-                <p class="text-dark text-sm font-medium">44.4 kw</p>
+                <p class="text-dark text-sm font-medium">
+                  44.4 kw
+                </p>
               </div>
             </div>
             <div
@@ -197,8 +202,7 @@ const emit = defineEmits(["openCheck"]);
 
               <span
                 class="text-white flex items-center justify-center text-xs font-medium p-1 w-[34px] h-6 min-h-6 min-w-[34px] rounded-md bg-red border-2 border-dark/20"
-                >10%</span
-              >
+              >10%</span>
             </div>
           </div>
           <div class="flex flex-row space-x-4 items-center">
@@ -273,10 +277,11 @@ const emit = defineEmits(["openCheck"]);
       <template #footer>
         <div class="border-t border-gray p-5">
           <CButton
-            @click="[emit('openCheck'), emit('close')]"
             class="w-full bg-primary/[25%] **:text-primary! hover:**:text-white! **:duration-200 **:transition-all"
             :text="$t('charging_history_modal.show_check')"
-            ><span class="text-primary!">{{
+            @click="[emit('openCheck'), emit('close')]"
+          >
+            <span class="text-primary!">{{
               $t("charging_history_modal.show_check")
             }}</span>
           </CButton>

@@ -99,11 +99,8 @@ function editCar(data: any) {
     <CTableWrapper
       :data="tableData"
       :current-page="paginationData?.currentPage"
-      @itemsPerPage="onChangeLimit"
       :items-per-page="+route.query?.limit || 10"
       :total="paginationData?.total"
-      @pageChange="onPageChange"
-      @search="onSearch"
       :limit="paginationData?.defaultLimit"
       :loading="loading"
       :head="userTableCarHeadData()"
@@ -112,6 +109,9 @@ function editCar(data: any) {
       no-search
       head-classes="gap-0!"
       th-class="last:text-right!"
+      @itemsPerPage="onChangeLimit"
+      @page-change="onPageChange"
+      @search="onSearch"
     >
       <!--      head    -->
       <template #beforeSearch>
@@ -183,8 +183,8 @@ function editCar(data: any) {
       </template>
       <template #action="{ row: data }">
         <div
-          @click="openEditModal(data)"
           class="flex justify-end text-gray-200 text-xl mr-3"
+          @click="openEditModal(data)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -209,11 +209,11 @@ function editCar(data: any) {
     </CTableWrapper>
 
     <EditCar
-      @close="isOpenEditModal = false"
       v-bind="{
         data: singleData,
         show: isOpenEditModal,
       }"
+      @close="isOpenEditModal = false"
       @submit="editCar"
     />
   </CCard>

@@ -1,149 +1,51 @@
-@import url("../fonts/fonts.css") layer(base);
-@import url("./_toastification.css") layer(base);
-@import url("./_transitions.css") layer(base);
-@import url("./_plugins.scss") layer(base);
-@import url("../icomoon/style.css") layer(base);
+@import url("../fonts/fonts.css");
+@import url("./_toastification.css");
+@import url("./_transitions.css");
+@import url("./_plugins.scss");
+@import url("../icomoon/style.css");
 
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --color-primary-100: var(--color-indigo-400);
-  --color-primary: var(--color-indigo-500);
-
-  --color-white: #ffffff;
-
-  --color-gray-100: #4d696e;
-  --color-gray-200: #667779;
-  --color-gray-300: #94a8aa;
-  --color-gray-400: #f5f6f7;
-  --color-gray-600: #74807b;
-  --color-gray-700: #f2f2f7;
-  --color-gray-800: #d4d4d8;
-  --color-gray: #edf0f2;
-
-  --color-green-100: #1cb57a;
-  --color-green-200: #1bad55;
-  --color-green-300: #00bc7d;
-  --color-green: #20cc65;
-
-  --color-blue-200: #02bfdf;
-  --color-blue-300: #2684fc;
-  --color-blue-400: #2088ff;
-  --color-blue: #0edcfe;
-
-  --color-dark-100: #111014;
-  --color-dark: #061018;
-
-  --color-red-100: #fef5f5;
-  --color-red-200: #e93b50;
-  --color-red-300: #ad2324;
-  --color-red-400: #fb2c36;
-  --color-red: #e52e30;
-
-  --color-yellow-100: #fff7e7;
-  --color-yellow: #f2b33a;
-
-  --color-orange: #ebc032;
-
-  --grid-template-columns-1-max: 1fr max-content;
-  --grid-template-columns-max-1: max-content 1fr;
-  --grid-template-columns-max-1-max: max-content 1fr max-content;
-
-  --leading-14: 14px;
-  --leading-20: 20px;
-  --leading-23: 23px;
-  --leading-110: 110%;
-  --leading-130: 130%;
-  --leading-140: 140%;
-
-  --font-sans: Roboto, sans-serif;
-  --font-car: uzb-auto, sans-serif;
-
-  --z-index-90: 90;
-  --z-index-100: 100;
-
-  --text-xxs: 11px;
-  --text-2xs: 0.8125rem;
-  --text-4_5xl: 2.5rem;
-  --text-3_5xl: 2rem;
-
-  --shadow-card: 0px 4px 20px 0px rgba(8, 213, 115, 0.2);
-  --shadow-select: 0px 0px 50px 0px rgba(82, 63, 105, 0.15);
-  --shadow-dropdown: 0px 8px 30px 0px rgba(25, 30, 54, 0.12);
-  --shadow-tab: 0px 4px 8px 0px rgba(18, 28, 37, 0.1);
-  --shadow-custom_select: 0px 8px 30px 0px rgba(25, 30, 54, 0.2);
-}
-
-@utility container {
-  margin-inline: auto;
-  padding-inline: 1rem;
-}
-
-/* Fix for Tailwind v4 default border color change */
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
-}
-
-@layer utilities {
+@layer ui {
   .transition-300 {
-    transition-property: all;
-    transition-duration: 300ms;
+    @apply transition-all duration-300;
   }
 
   .absolute-x {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    @apply absolute !-translate-x-1/2 !left-1/2;
   }
 
   .absolute-y {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    @apply absolute !-translate-y-1/2 !top-1/2;
   }
 
   .absolute-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @apply absolute-x absolute-y;
   }
 
   .flex-y-center {
-    display: flex;
-    align-items: center;
+    @apply flex items-center;
   }
 
   .flex-x-center {
-    display: flex;
-    justify-content: center;
+    @apply flex justify-center;
   }
 
   .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @apply flex justify-center items-center;
   }
 
   .flex-center-between {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @apply flex justify-between items-center;
   }
 
   .flex-between {
-    display: flex;
-    justify-content: space-between;
+    @apply flex justify-between;
   }
 }
 
-/* Regular CSS */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -161,6 +63,23 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   background: #f7faf8;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+.flex-y-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-center-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 * {

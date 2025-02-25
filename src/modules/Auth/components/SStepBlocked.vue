@@ -1,6 +1,9 @@
 <template>
   <div class="flex-center flex-col">
-    <img src="/images/svg/block.svg" alt="" />
+    <img
+      src="/images/svg/block.svg"
+      alt=""
+    >
     <h3 class="text-[28px] text-dark font-medium mt-8 text-center">
       {{ $t("too_many_requests") }}
     </h3>
@@ -11,8 +14,7 @@
       href="tel:+998998886765"
       class="block text-dark text-sm font-semibold leading-130 bg-gray py-1.5 px-3 rounded-md mt-10 flex-y-center"
     >
-      <i class="icon-phone text-xl text-dark mr-2"></i> +998 99 888 67 65</a
-    >
+      <i class="icon-phone text-xl text-dark mr-2" /> +998 99 888 67 65</a>
     <p class="text-gray-300 text-xs mt-2">
       {{ $t("support_phone") }}
     </p>

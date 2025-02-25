@@ -15,7 +15,7 @@
       multiple
       @change="handleFile"
       @click="$event.target.value = ''"
-    />
+    >
     <div
       v-if="image?.url"
       class="flex-y-center relative rounded-lg transition-300 hover:border-blue cursor-pointer h-[142px] w-[180px]"
@@ -24,7 +24,7 @@
         :src="image.url"
         alt="avatar"
         class="w-full h-full object-cover relative z-0 rounded-lg"
-      />
+      >
       <div class="absolute top-2 right-2 flex-y-center gap-2 z-0">
         <div
           class="duration-200 transition-all group w-7 h-7 bg-dark-100/[44%] flex items-center justify-center z-20 rounded-lg cursor-pointer border border-transparent hover:scale-110 hover:bg-dark/60"

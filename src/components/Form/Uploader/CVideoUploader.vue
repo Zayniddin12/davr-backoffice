@@ -15,29 +15,35 @@
       accept=".mp4, .avi"
       @change="handleFile"
       @click="$event.target.value = null"
-    />
+    >
     <div
       v-if="videoInfo?.otp"
       class="w-full flex-y-center relative rounded-lg transition-300 hover:border-blue cursor-pointer h-[186px] overflow-hidden"
     >
-      <Transition name="fade" mode="out-in">
+      <Transition
+        name="fade"
+        mode="out-in"
+      >
         <iframe
           v-if="videoStatusInfo?.status === 'ready'"
           :src="`https://player.vdocipher.com/v2/?otp=${videoInfo?.otp}&playbackInfo=${videoInfo?.playback_info}`"
           style="border: 0; width: 100%; height: 100%"
           allow="encrypted-media"
           allowfullscreen
-        ></iframe>
-        <div v-else class="w-full h-full relative">
+        />
+        <div
+          v-else
+          class="w-full h-full relative"
+        >
           <img
             :src="videoStatusInfo?.preview"
             alt=""
             class="w-full h-full object-cover"
-          />
+          >
           <div
             class="w-full h-full absolute top-0 left-0 bg-dark/70 flex-center flex-col text-base text-white"
           >
-            <div class="progress mb-3"></div>
+            <div class="progress mb-3" />
             {{ statusMessage }}
           </div>
         </div>
@@ -75,7 +81,7 @@
     >
       <slot>
         <div class="flex flex-col items-center">
-          <i class="icon-video-add text-green text-4xl"></i>
+          <i class="icon-video-add text-green text-4xl" />
           <p class="text-base leading-normal font-medium text-dark-100 mt-2">
             {{ $t("drop_video") }}
           </p>
@@ -110,8 +116,17 @@
         v-if="loading"
         class="absolute w-full h-full inset-0 flex-center bg-white border-2 border-dashed border-gray-800 rounded-lg"
       >
-        <svg class="stat-circle" width="80" viewBox="0 0 20 20">
-          <circle class="bg" cx="10" cy="10" r="8" />
+        <svg
+          class="stat-circle"
+          width="80"
+          viewBox="0 0 20 20"
+        >
+          <circle
+            class="bg"
+            cx="10"
+            cy="10"
+            r="8"
+          />
           <circle
             class="progress"
             cx="10"
@@ -119,7 +134,10 @@
             r="8"
             :data-percentage="progress"
           />
-          <text x="50%" y="55%">{{ progress.toFixed(0) }}%</text>
+          <text
+            x="50%"
+            y="55%"
+          >{{ progress.toFixed(0) }}%</text>
         </svg>
       </div>
     </Transition>
@@ -131,8 +149,8 @@
   </div>
   <p
     v-if="props.default"
-    @click="copyTextToClipboard(props.default)"
     class="text-xs text-dark-100 py-1 px-3 rounded-sm bg-gray/20 inline-block cursor-pointer"
+    @click="copyTextToClipboard(props.default)"
   >
     ID: <span>{{ props.default }}</span>
   </p>

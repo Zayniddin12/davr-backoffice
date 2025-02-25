@@ -1,6 +1,13 @@
 <template>
-  <transition :key="loading" name="skeleton" mode="out-in">
-    <div :key="loading" v-if="loading">
+  <transition
+    :key="loading"
+    name="skeleton"
+    mode="out-in"
+  >
+    <div
+      v-if="loading"
+      :key="loading"
+    >
       <div
         key="loading"
         class="shrink-0"
@@ -10,11 +17,14 @@
           width: width,
         }"
       >
-        <span class="skeleton" :style="shimmerStyles" />
+        <span
+          class="skeleton"
+          :style="shimmerStyles"
+        />
       </div>
     </div>
     <template v-else>
-      <slot></slot>
+      <slot />
     </template>
   </transition>
 </template>

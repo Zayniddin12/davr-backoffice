@@ -34,9 +34,12 @@
       <span
         v-if="icon?.length"
         :class="[icon, { 'text-base': size === 'md' }, variantTexts[variant]]"
-      ></span>
+      />
     </span>
-    <transition mode="out-in" name="fade">
+    <transition
+      mode="out-in"
+      name="fade"
+    >
       <span
         v-if="loading"
         class="absolute-center z-10 inline-block! w-max h-max loading transition-300"

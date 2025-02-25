@@ -14,7 +14,7 @@
             width: getPercent(Number(item?.amount)) + '%',
           }"
           class="h-10 rounded-xs mb-4"
-        ></div>
+        />
       </div>
       <div
         v-for="(item, index) in data"
@@ -24,8 +24,14 @@
       >
         <div class="grid grid-cols-3">
           <div class="flex items-center gap-2">
-            <div v-if="item.image" class="absolute -top-2 -left-5">
-              <img :alt="item.label + ' image'" :src="item.image" />
+            <div
+              v-if="item.image"
+              class="absolute -top-2 -left-5"
+            >
+              <img
+                :alt="item.label + ' image'"
+                :src="item.image"
+              >
             </div>
             <div
               v-else
@@ -33,7 +39,7 @@
                 backgroundColor: item?.color,
               }"
               class="w-3 h-3 rounded-[3px]"
-            ></div>
+            />
 
             <p class="text-[#94A8AA] text-xs leading-normal! font-medium">
               {{ $t(item?.label) }}
@@ -58,7 +64,10 @@
         </div>
       </div>
     </div>
-    <div v-else class="flex flex-col items-center h-min">
+    <div
+      v-else
+      class="flex flex-col items-center h-min"
+    >
       <NoData
         :subtitle="$t('no_data_age_stats_subtitle')"
         :title="$t('no_data_age_stats_title')"

@@ -1,17 +1,18 @@
 <template>
   <div class="h-8 flex-y-center gap-2">
-    <p class="text-xs leading-20 font-normal text-dark-100">{{ $t("show") }}</p>
+    <p class="text-xs leading-20 font-normal text-dark-100">
+      {{ $t("show") }}
+    </p>
     <Select
+      v-bind="{ options }"
+      v-model="itemsCountInTable"
       selected-styles="text-dark-100! mr-1"
       selected-option-styles="py-1.5! px-2.5! rounded-md!  text-sm leading-normal bg-gray! gap-1"
-      v-bind="{ options }"
       value-key="value"
       from-top
       :disabled="disabled"
       label-key="value"
-      v-model="itemsCountInTable"
-    >
-    </Select>
+    />
   </div>
 </template>
 

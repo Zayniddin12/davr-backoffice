@@ -3,11 +3,11 @@
     <div class="w-full bg-white rounded-xl">
       <div
         v-if="data.image"
+        class="relative rounded-lg h-full w-full"
+        draggable="true"
         @dragstart="handleDragStart"
         @dragover.prevent="handleDragOver"
         @drop="handleDrop"
-        class="relative rounded-lg h-full w-full"
-        draggable="true"
       >
         <div class="rounded-lg h-full w-full">
           <div class="absolute top-0 right-3 flex gap-2">
@@ -16,7 +16,10 @@
               class="rounded-full p-2 bg-blur/30 z-10 border border-white/9 transition-all duration-300 cursor-pointer"
               @click="removeImage"
             >
-              <img src="../../public/images/trash.svg" alt="trash" />
+              <img
+                src="../../public/images/trash.svg"
+                alt="trash"
+              >
             </div>
             <!-- Change button -->
             <div
@@ -26,24 +29,34 @@
               @dragleave.prevent="onDragLeave"
               @drop.prevent="onDrop"
             >
-              <img src="../../public/images/edit.svg" alt="change" />
+              <img
+                src="../../public/images/edit.svg"
+                alt="change"
+              >
             </div>
           </div>
           <!-- Display the selected image -->
-          <img :src="data.image" alt="image" class="rounded-lg h-full w-full" />
+          <img
+            :src="data.image"
+            alt="image"
+            class="rounded-lg h-full w-full"
+          >
         </div>
       </div>
 
       <!-- Drag and drop area for uploading a new image -->
       <div
         v-else
+        class="max-h-[360px] text-center bg-stone-1 rounded-lg p-6 max-sm:p-1 border-dashed border-grey-2 border flex justify-center items-center flex-col h-full"
         @click="selectFile"
         @dragover.prevent="onDragOver"
         @dragleave.prevent="onDragLeave"
         @drop.prevent="onDrop"
-        class="max-h-[360px] text-center bg-stone-1 rounded-lg p-6 max-sm:p-1 border-dashed border-grey-2 border flex justify-center items-center flex-col h-full"
       >
-        <img src="../../public/images/uploadImg.svg" alt="uploadImg" />
+        <img
+          src="../../public/images/uploadImg.svg"
+          alt="uploadImg"
+        >
         <h3 class="font-semibold text-base max-sm:text-xs leading-5 mt-5 mb-2">
           Перетащите изображение сюда
         </h3>
@@ -55,9 +68,9 @@
           ref="input"
           class="file hidden"
           type="file"
-          @change="onFileSelect"
           accept="image/*"
-        />
+          @change="onFileSelect"
+        >
       </div>
     </div>
   </div>

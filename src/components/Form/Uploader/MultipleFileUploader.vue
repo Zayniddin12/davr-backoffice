@@ -5,7 +5,7 @@
       for="fileInput"
       class="flex items-center gap-2 cursor-pointer text-blue-600 font-medium py-2.5 px-3.5 rounded-lg border border-gray-800 shadow-xs w-fit transition duration-300 hover:border-blue-600"
     >
-      <span class="icon-square text-xl text-gray-600"></span>
+      <span class="icon-square text-xl text-gray-600" />
       <span class="text-dark leading-130 text-base font-semibold">{{
         $t("upload_file")
       }}</span>
@@ -16,7 +16,7 @@
       multiple
       class="hidden"
       @change="onFileSelect"
-    />
+    >
 
     <!-- Yuklangan Fayllar Ro'yxati -->
     <ul class="mt-4 space-y-2">
@@ -29,7 +29,10 @@
           <div
             class="bg-gray-200/20 rounded-md flex items-center justify-center w-7 h-7"
           >
-            <span :class="file.icon" class="text-lg"></span>
+            <span
+              :class="file.icon"
+              class="text-lg"
+            />
           </div>
           <span class="truncate max-w-64">{{ file.file.name }}</span>
         </div>
@@ -38,12 +41,15 @@
             :class="file.error ? 'bg-red-400' : 'bg-green-300'"
             class="rounded-full w-6 h-6 flex items-center justify-center"
           >
-            <span :class="file.statusIcon" class="text-sm text-white"></span>
+            <span
+              :class="file.statusIcon"
+              class="text-sm text-white"
+            />
           </div>
           <span
             class="icon-close cursor-pointer text-red-500"
             @click="removeFile(index)"
-          ></span>
+          />
         </div>
       </li>
     </ul>

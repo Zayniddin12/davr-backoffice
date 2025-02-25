@@ -1,8 +1,17 @@
 <template>
-  <div :class="wrapperClass" class="relative w-full max-w-full overflow-auto overflow-x-scroll">
-    <Transition mode="out-in" name="dropdown">
+  <div
+    :class="wrapperClass"
+    class="relative w-full max-w-full overflow-auto overflow-x-scroll"
+  >
+    <Transition
+      mode="out-in"
+      name="dropdown"
+    >
       <div>
-        <table v-if="!loading" class="w-full c-table">
+        <table
+          v-if="!loading"
+          class="w-full c-table"
+        >
           <thead>
             <tr>
               <th
@@ -15,9 +24,9 @@
                   {{ $t(h.title) }}
                   <span
                     v-if="h?.sortable"
-                    @click="emit('sort', h.sort_key!)"
                     class="hover:bg-gray-300 hover:text-white size-5 flex-center justify-center rounded-md transition-all cursor-pointer"
                     :class="{'bg-gray-300 text-white': orderValue?.includes(h.sort_key!)}"
+                    @click="emit('sort', h.sort_key!)"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -31,10 +40,10 @@
                       stroke-linejoin="round"
                       class="lucide lucide-arrow-up-down h-4 w-4"
                     >
-                      <path d="m21 16-4 4-4-4"></path>
-                      <path d="M17 20V4"></path>
-                      <path d="m3 8 4-4 4 4"></path>
-                      <path d="M7 4v16"></path>
+                      <path d="m21 16-4 4-4-4" />
+                      <path d="M17 20V4" />
+                      <path d="m3 8 4-4 4 4" />
+                      <path d="M7 4v16" />
                     </svg>
                   </span>
                 </span>
@@ -63,16 +72,27 @@
                   v-if="statusColors"
                   class="w-1 h-10 absolute left-0 top-2 bg-red rounded-none rounded-tr-2xl rounded-br-2xl"
                 />
-                <div v-if="idx === 0" class="w-1 h-10 absolute left-0 top-2" />
-                <slot :data="{ ...d, _index: getIndex(index) }" :name="h.key">
+                <div
+                  v-if="idx === 0"
+                  class="w-1 h-10 absolute left-0 top-2"
+                />
+                <slot
+                  :data="{ ...d, _index: getIndex(index) }"
+                  :name="h.key"
+                >
                   {{ h.key === "_index" ? getIndex(index) : d[h.key] }}
                 </slot>
               </td>
             </tr>
           </tbody>
         </table>
-        <slot v-if="!data?.length && !loading" name="no-data">
-          <div class="flex-center py-16">No Data</div>
+        <slot
+          v-if="!data?.length && !loading"
+          name="no-data"
+        >
+          <div class="flex-center py-16">
+            No Data
+          </div>
         </slot>
       </div>
     </Transition>
@@ -88,7 +108,12 @@
           xmlns="http://www.w3.org/2000/svg"
         >
           <g>
-            <circle cx="12" cy="3" fill="currentColor" r="1">
+            <circle
+              cx="12"
+              cy="3"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotate0"
                 attributeName="r"
@@ -99,7 +124,12 @@
                 values="1;2;1"
               />
             </circle>
-            <circle cx="16.5" cy="4.21" fill="currentColor" r="1">
+            <circle
+              cx="16.5"
+              cy="4.21"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotate1"
                 attributeName="r"
@@ -110,7 +140,12 @@
                 values="1;2;1"
               />
             </circle>
-            <circle cx="7.5" cy="4.21" fill="currentColor" r="1">
+            <circle
+              cx="7.5"
+              cy="4.21"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotate2"
                 attributeName="r"
@@ -121,7 +156,12 @@
                 values="1;2;1"
               />
             </circle>
-            <circle cx="19.79" cy="7.5" fill="currentColor" r="1">
+            <circle
+              cx="19.79"
+              cy="7.5"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotate3"
                 attributeName="r"
@@ -132,7 +172,12 @@
                 values="1;2;1"
               />
             </circle>
-            <circle cx="4.21" cy="7.5" fill="currentColor" r="1">
+            <circle
+              cx="4.21"
+              cy="7.5"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotate4"
                 attributeName="r"
@@ -143,7 +188,12 @@
                 values="1;2;1"
               />
             </circle>
-            <circle cx="21" cy="12" fill="currentColor" r="1">
+            <circle
+              cx="21"
+              cy="12"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotate5"
                 attributeName="r"
@@ -154,7 +204,12 @@
                 values="1;2;1"
               />
             </circle>
-            <circle cx="3" cy="12" fill="currentColor" r="1">
+            <circle
+              cx="3"
+              cy="12"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotate6"
                 attributeName="r"
@@ -165,7 +220,12 @@
                 values="1;2;1"
               />
             </circle>
-            <circle cx="19.79" cy="16.5" fill="currentColor" r="1">
+            <circle
+              cx="19.79"
+              cy="16.5"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotate7"
                 attributeName="r"
@@ -176,7 +236,12 @@
                 values="1;2;1"
               />
             </circle>
-            <circle cx="4.21" cy="16.5" fill="currentColor" r="1">
+            <circle
+              cx="4.21"
+              cy="16.5"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotate8"
                 attributeName="r"
@@ -187,7 +252,12 @@
                 values="1;2;1"
               />
             </circle>
-            <circle cx="16.5" cy="19.79" fill="currentColor" r="1">
+            <circle
+              cx="16.5"
+              cy="19.79"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotate9"
                 attributeName="r"
@@ -198,7 +268,12 @@
                 values="1;2;1"
               />
             </circle>
-            <circle cx="7.5" cy="19.79" fill="currentColor" r="1">
+            <circle
+              cx="7.5"
+              cy="19.79"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotatea"
                 attributeName="r"
@@ -209,7 +284,12 @@
                 values="1;2;1"
               />
             </circle>
-            <circle cx="12" cy="21" fill="currentColor" r="1">
+            <circle
+              cx="12"
+              cy="21"
+              fill="currentColor"
+              r="1"
+            >
               <animate
                 id="svgSpinners12DotsScaleRotateb"
                 attributeName="r"

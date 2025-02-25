@@ -21,8 +21,8 @@
             {{ file?.file_name }}
           </p>
           <p
-            class="text-xs leading-130 font-medium text-gray"
             v-if="file?.size"
+            class="text-xs leading-130 font-medium text-gray"
           >
             {{ convertBytes(file?.size) }}
           </p>
@@ -32,7 +32,7 @@
         v-if="!hasClose && file?.type === 'video'"
         class="icon-player text-gray mr-1 text-xl hover:cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
         @click="showVideo = true"
-      ></div>
+      />
     </div>
 
     <i

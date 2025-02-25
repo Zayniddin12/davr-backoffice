@@ -4,7 +4,7 @@
       :class="activeClass"
       class="absolute h-[calc(100%_-_8px)] rounded-sm bg-white tab-shadow -translate-y-1/2 top-1/2 transition-all duration-300"
       :style="{ width: `${active.width}px`, left: `${active.left}px` }"
-    ></div>
+    />
     <button
       v-for="(tab, idx) in list"
       :id="`item_${tab.value}`"
@@ -13,7 +13,11 @@
       :class="[itemClass, modelValue === tab.value ? activeItemsClass : '']"
       @click="pick(tab.value, $event)"
     >
-      <i v-if="tab.icon?.length" :class="tab.icon" class="text-xl" />
+      <i
+        v-if="tab.icon?.length"
+        :class="tab.icon"
+        class="text-xl"
+      />
       {{ tab.label }}
     </button>
   </div>

@@ -2,25 +2,29 @@
   <header
     class="w-full bg-white py-4 px-6 z-20 flex items-center justify-between sticky top-0 header-shadow"
   >
-    <div id="header-breadcrumbs"></div>
+    <div id="header-breadcrumbs" />
 
     <nav class="flex w-full h-full items-center gap-6 justify-end">
       <slot name="before-links" />
 
       <ul class="flex gap-x-2">
-        <li v-for="(link, index) in links" :key="index">
+        <li
+          v-for="(link, index) in links"
+          :key="index"
+        >
           <RouterLink
             :class="{
               'bg-gray-200 text-blue-500!': link.to === activeRoute,
             }"
             :to="link.to"
             class="text-gray-300 px-3 py-2 inline-block text-sm transition-all duration-200 hover:bg-gray-200 rounded-md"
-            >{{ link.title }}
+          >
+            {{ link.title }}
           </RouterLink>
         </li>
       </ul>
 
-      <slot name="after-links"></slot>
+      <slot name="after-links" />
 
       <CLanguageSwitcher />
       <CProfileDropdown

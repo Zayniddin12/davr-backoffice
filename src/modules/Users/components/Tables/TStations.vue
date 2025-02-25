@@ -107,17 +107,17 @@ onMounted(() => {
     <CTableWrapper
       :data="tableData"
       :current-page="paginationData?.currentPage"
-      @itemsPerPage="onChangeLimit"
       :items-per-page="+route.query?.limit || 10"
       :total="paginationData?.total"
-      @pageChange="onPageChange"
-      @search="onSearch"
       :limit="paginationData?.defaultLimit"
       :loading="loading"
       th-class="bg-gray! text-gray-100! last:text-left!"
       :head="stationsHead"
       :title="$t('list_of_stations')"
       :subtitle="t('number_of_stations', { count: paginationData?.total ?? 0 })"
+      @items-per-page="onChangeLimit"
+      @page-change="onPageChange"
+      @search="onSearch"
     >
       <!--      head  -->
       <template #beforeSearch>
@@ -163,7 +163,10 @@ onMounted(() => {
         width="32"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M13 4H4v9.01h2V6h7V4z" fill="currentColor" />
+        <path
+          d="M13 4H4v9.01h2V6h7V4z"
+          fill="currentColor"
+        />
         <path
           d="M29.49 13.12l-9-5a1 1 0 0 0-1 0l-9 5A1 1 0 0 0 10 14v10a1 1 0 0 0 .52.87l9 5A1 1 0 0 0 20 30a1.05 1.05 0 0 0 .49-.13l9-5A1 1 0 0 0 30 24V14a1 1 0 0 0-.51-.88zM19 27.3l-7-3.89v-7.72l7 3.89zm1-9.45L13.06 14L20 10.14L26.94 14zm8 5.56l-7 3.89v-7.72l7-3.89z"
           fill="currentColor"

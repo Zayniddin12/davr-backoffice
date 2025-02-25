@@ -22,7 +22,10 @@ const getStyle = () => {
     :class="getStyle()"
     class="h-9 w-9 flex items-center justify-center rounded-lg"
   >
-    <i class="icon-charger-off" :class="getStyle" />
+    <i
+      class="icon-charger-off"
+      :class="getStyle"
+    />
   </div>
 </template>
 

@@ -7,11 +7,11 @@
           v-model="form.values.name"
           :error="form.$v.value.name?.$error"
           :options="options"
-          isIcon
+          is-icon
           :placeholder="$t('select_connector')"
           is-checked
           label-key="name"
-          selectedOptionStyles="bg-gray!"
+          selected-option-styles="bg-gray!"
           value-key="id"
         />
       </FGroup>
@@ -29,7 +29,7 @@
             :options="powerUnits"
             is-checked
             label-key="name"
-            selectedOptionStyles="w-[max-content]! bg-gray!"
+            selected-option-styles="w-[max-content]! bg-gray!"
             value-key="id"
           />
         </div>
@@ -51,7 +51,11 @@
     <span class="h-[1px] bg-gray w-full block" />
     <div class="p-5 flex justify-end">
       <div class="flex gap-4 items-center">
-        <CButton :text="$t('cancel')" variant="info" @click="$emit('cancel')" />
+        <CButton
+          :text="$t('cancel')"
+          variant="info"
+          @click="$emit('cancel')"
+        />
         <CButton
           :disabled="form.$v.value.$invalid"
           :text="$t('add')"

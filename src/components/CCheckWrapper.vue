@@ -1,17 +1,23 @@
 <script lang="ts" setup></script>
 <template>
-  <section ref="parentBox" class="mb-6 w-full">
+  <section
+    ref="parentBox"
+    class="mb-6 w-full"
+  >
     <div class="upper-box bg-white p-4">
       <slot name="info" />
     </div>
     <div
       class="pattern h-5 px-6 relative bg-white flex items-center gap-[2px] overflow-hidden"
     >
-      <div class="prefix mr-2"></div>
+      <div class="prefix mr-2" />
       <div class="flex items-center justify-center overflow-hidden gap-0.5">
-        <span v-for="n in 21" :key="n" />
+        <span
+          v-for="n in 21"
+          :key="n"
+        />
       </div>
-      <div class="suffix ml-2"></div>
+      <div class="suffix ml-2" />
     </div>
     <div class="lower-box bg-white p-4">
       <slot name="paid" />
