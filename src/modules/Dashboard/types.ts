@@ -21,8 +21,9 @@ export interface ChargingStationStats {
   lawyer: number,
   boss: number,
   verifier: number,
-  gps_engineer: number,
-  credit_manager: number,
+  gpsEngineer: number,
+  creditManager: number,
+  clientInformation: number,
 }
 
 export interface ICard {

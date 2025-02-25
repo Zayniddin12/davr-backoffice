@@ -32,7 +32,7 @@
       </div>
     </div> -->
     <main class="grid grid-cols-1 gap-6">
-      <div class="grid grid-cols-4 gap-x-5 gap-y-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6">
         <CInfoCard
           v-for="(card, idx) in staticsCards"
           :key="idx"
@@ -89,49 +89,55 @@ oneMonthAgo.setHours(0, 0, 0, 0);
 const staticsCards = reactive([
   {
     icon: "icon-users",
-    count: "",
+    count: 0,
     title: t("customers"),
     class: "plugin",
   },
   {
     icon: "icon-users",
-    count: "",
+    count: 0,
     title: t("leaders"),
     class: "users",
   },
   {
     icon: "icon-users",
-    count: "",
+    count: 0,
     title: t("lawyers"),
     class: "cars",
   },
   {
     icon: "icon-users",
-    count: "",
+    count: 0,
     title: t("approvers"),
     class: "transaction",
   },
   {
     icon: "icon-users",
-    count: "",
+    count: 0,
+    title: t("verifier"),
+    class: "bg-yellow-500",
+  },
+  {
+    icon: "icon-users",
+    count: 0,
     title: t("gps_engineers"),
     class: "paid_cost",
   },
   // {
   //   icon: "icon-users",
-  //   count: "",
+  //   count: 0,
   //   title: t("static_cards.used_kv"),
   //   class: "used_kv",
   // },
   // {
   //   icon: "icon-users",
-  //   count: "",
+  //   count: 0,
   //   title: t("static_cards.station_owners"),
   //   class: "user",
   // },
   // {
   //   icon: "icon-users",
-  //   count: "",
+  //   count: 0,
   //   title: t("static_cards.visit_per_month"),
   //   class: "station_owners",
   // },
@@ -176,52 +182,52 @@ const dateTable = [
   },
 ];
 
-const weeks = [];
-function upDateRangePick(value: [number, number]) {
-  isActive.value = true;
-  isClear.value = false;
-  dateFrom.value = value[0];
-  dateTo.value = value[1];
-  router.replace({
-    query: {
-      from: dayjs(value[0]).format("DD-MM-YYYY"),
-      to: dayjs(value[1]).format("DD-MM-YYYY"),
-    },
-  });
-}
+// const weeks = [];
+// function upDateRangePick(value: [number, number]) {
+//   isActive.value = true;
+//   isClear.value = false;
+//   dateFrom.value = value[0];
+//   dateTo.value = value[1];
+//   router.replace({
+//     query: {
+//       from: dayjs(value[0]).format("DD-MM-YYYY"),
+//       to: dayjs(value[1]).format("DD-MM-YYYY"),
+//     },
+//   });
+// }
 const routes = computed(() => [
   {
     name: t("main_page"),
     route: "/",
   },
 ]);
-function selectDateType(item: number) {
-  isActive.value = false;
-  activeDate.value = item;
-  dateTable.forEach((e, key) => {
-    if (key == item) {
-      router.replace({
-        query: { from: e.date, to: e.toDate },
-      });
-    }
-  });
-}
+// function selectDateType(item: number) {
+//   isActive.value = false;
+//   activeDate.value = item;
+//   dateTable.forEach((e, key) => {
+//     if (key == item) {
+//       router.replace({
+//         query: { from: e.date, to: e.toDate },
+//       });
+//     }
+//   });
+// }
 const getDashboardCount = async () => {
-    try {
-      const res = await ApiService.get<ChargingStationStats>(
-        `/statistics/users`
-      );
-      console.log(res?.data);
-      
-      staticsCards[0].count = res.data.verifier;
-      staticsCards[1].count = res.data.boss;
-      staticsCards[2].count = res.data.lawyer;
-      staticsCards[3].count = res.data.credit_manager;
-      staticsCards[4].count = res.data.gps_engineer;
-    } catch (error) {
-      console.log(error);
-    }
-  } ;
+  try {
+    const res = await ApiService.get<ChargingStationStats>(`/statistics/users`);
+
+    console.log(res?.data);
+
+    staticsCards[0].count = res.data.clientInformation;
+    staticsCards[1].count = res.data.boss;
+    staticsCards[2].count = res.data.lawyer;
+    staticsCards[3].count = res.data.verifier;
+    staticsCards[4].count = res.data.creditManager;
+    staticsCards[5].count = res.data.gpsEngineer;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 watch(
   route,
