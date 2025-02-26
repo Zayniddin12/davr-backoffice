@@ -1,4 +1,3 @@
-import path from "path";
 import vue from "@vitejs/plugin-vue";
 import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
@@ -7,12 +6,6 @@ import vueDevTools from "vite-plugin-vue-devtools";
 
 export default defineConfig({
   base: "/",
-  define: {
-    global: "window",
-  },
-  build: {
-    outDir: "dist",
-  },
   plugins: [
     vueDevTools(),
     vue(),
@@ -22,19 +15,9 @@ export default defineConfig({
       cache: false,
     }),
   ],
-  optimizeDeps: {
-    exclude: ["crypto"],
-  },
-  assetsInclude: [
-    "**/*.eot",
-    "**/*.woff",
-    "**/*.woff2",
-    "**/*.ttf",
-    "**/*.svg",
-  ],
+
   resolve: {
     alias: {
-      "@fonts": path.resolve(__dirname, "src/assets/fonts"),
       "@": fileURLToPath(new URL("./src", import.meta.url)),
       "~": fileURLToPath(new URL("./src", import.meta.url)),
     },
