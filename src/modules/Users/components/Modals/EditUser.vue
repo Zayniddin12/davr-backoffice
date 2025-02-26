@@ -41,7 +41,7 @@ watch(
       :show="show"
       @close="() => $emit('close')"
       :title="$t('edit_user_modal.title')"
-      body-class="!w-[421px]"
+      body-class="w-[421px]!"
     >
       <template #default>
         <form @submit.prevent class="grid grid-cols-1 px-5 pt-4 pb-5 gap-5">
@@ -83,7 +83,7 @@ watch(
             <FSelect
               :options="allStatus().slice(1)"
               v-model="data.is_active"
-              selected-option-styles="!bg-gray !h-10 border-transparent"
+              selected-option-styles="bg-gray! h-10! border-transparent"
               label-key="label"
               value-key="value"
               @change="data.is_active = $event"

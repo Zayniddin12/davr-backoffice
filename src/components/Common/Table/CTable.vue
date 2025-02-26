@@ -15,7 +15,7 @@
                   { 'w-[5%]': h.key === '_index' || h.key == 'action' },
                   thClass,
                 ]"
-                class="p-3 !bg-gray first:rounded-tl-md last:rounded-tr-md text-xs text-left first:pl-4 last:pr-4 last:text-left text-gray-100 font-medium"
+                class="p-3 bg-gray! first:rounded-tl-md last:rounded-tr-md text-xs text-left first:pl-4 last:pr-4 last:text-left text-gray-100 font-medium"
               >
                 <span
                   class="flex flex-nowrap shrink-0 whitespace-nowrap items-center gap-2 w-full capitalize"

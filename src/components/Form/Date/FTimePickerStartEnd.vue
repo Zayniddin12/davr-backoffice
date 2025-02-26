@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center space-x-[6px]">
     <Select
-      selected-option-styles="border border-gray-100 !py-2"
+      selected-option-styles="border border-gray-100 py-2!"
       :options="startOptions"
       value-key="id"
       :disabled="disabled"
@@ -11,7 +11,7 @@
     />
     <div class="w-3 h-1 bg-gray-100 rounded-lg" />
     <Select
-      selected-option-styles="border border-gray-100 !py-2"
+      selected-option-styles="border border-gray-100 py-2!"
       :options="endOptions"
       value-key="id"
       :disabled="disabled"

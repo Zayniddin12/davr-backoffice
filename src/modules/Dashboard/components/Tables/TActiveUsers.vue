@@ -42,7 +42,7 @@ const { tableData, paginationData, onSearch, onChangeLimit, loading } =
       :subtitle="t('charging_count', paginationData.total)"
       :title="$t('dashboard.active_users')"
       :total="paginationData.total"
-      :tr-class="{ '!border-gray-400': isSearch }"
+      :tr-class="{ 'border-gray-400!': isSearch }"
       type="transparent"
       @search="onSearch"
       @items-per-page="onChangeLimit"
@@ -58,7 +58,7 @@ const { tableData, paginationData, onSearch, onChangeLimit, loading } =
           :text="$t('show_more')"
           :variant="'info'"
           class="flex items-center py-2 px-4 gap-1"
-          icon="icon-chevron-right !text-sm"
+          icon="icon-chevron-right text-sm!"
           size="md"
           @click="router.push({ name: 'PActiveUsers' })"
         />

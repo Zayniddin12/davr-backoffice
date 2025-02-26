@@ -87,7 +87,7 @@ watch(
         :limit="paginationData?.defaultLimit"
         :loading="loading"
         :head="historyTransactionHeadData()"
-        th-class="!bg-gray !text-gray-100 last:!text-left"
+        th-class="bg-gray! text-gray-100! last:text-left!"
         @onRowClick="openCheckModal"
       >
         <template #header_title>
@@ -121,7 +121,7 @@ watch(
               :isPositive="false"
             />
             <!--            <CProfileDashDetail-->
-            <!--              class="!w-max"-->
+            <!--              class="w-max!"-->
             <!--              active-->
             <!--              :description="$t('total_amount_spent')"-->
             <!--              :title="`${changeNumberFormat(+totals?.total_sum)} UZS`"-->
@@ -139,7 +139,7 @@ watch(
         <template #no-data>
           <NoData
             :title="$t('transaction.no_transactions')"
-            title-class="!min-w-[440px]"
+            title-class="min-w-[440px]!"
             :subtitle="$t('transaction.no_transactions_subtitle')"
             class="mt-8 px-6 pb-[100px] pt-0"
             image="/images/svg/no-data/no-notification.svg"
@@ -148,7 +148,7 @@ watch(
 
         <!--      body-->
         <template #index="{ row }">
-          <span class="text-dark !text-xs !font-medium"
+          <span class="text-dark text-xs! font-medium!"
             >{{ row?._index }}.</span
           >
         </template>
@@ -159,7 +159,7 @@ watch(
           <span
             @click="openCheckModal(data)"
             :class="[data?.amount > 0 ? 'text-green' : 'text-red']"
-            class="text-xs font-normal leading-130 !duration-200 hover:underline cursor-pointer"
+            class="text-xs font-normal leading-130 duration-200! hover:underline cursor-pointer"
           >
             {{ data?.amount > 0 ? "+" : "-" }}
             {{ changeNumberFormat(+data?.amount) }}

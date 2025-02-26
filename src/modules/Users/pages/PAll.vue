@@ -96,7 +96,7 @@ watch(
           :loading="loading"
           :title="$t('accounts')"
           :head="newUserHead"
-          th-class="!bg-gray !text-gray-100 last:!text-right !max-w-[342px] last:!max-w-[100px]"
+          th-class="bg-gray! text-gray-100! last:text-right! max-w-[342px]! last:max-w-[100px]!"
         >
           <template #id="{ row }">
             <span class="font-semibold text-sm text-dark">{{
@@ -105,7 +105,7 @@ watch(
           </template>
           <template #name="{ row: data }">
             <span
-              class="text-dark font-semibold text-xs line-clamp-2 !max-w-[382px]"
+              class="text-dark font-semibold text-xs line-clamp-2 max-w-[382px]!"
               >{{ data?.fullName }}</span
             >
           </template>
@@ -144,7 +144,7 @@ watch(
               class="mt-8 px-6 pb-20 pt-0"
               :button-text="$t('add_notification')"
               image="/images/svg/no-data/no-notification.svg"
-              button-custom-class="!mt-0"
+              button-custom-class="mt-0!"
               @submit="router.push({ name: 'PUserAdd' })"
             />
           </template>

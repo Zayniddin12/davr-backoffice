@@ -6,10 +6,10 @@
       tabindex="1"
       :class="[
         selectedOptionStyles,
-        error ? '!border-red bg-red-100' : '',
+        error ? 'border-red! bg-red-100' : '',
         { 'focus-within:border-gray-100': disabled },
         headStyles,
-        { 'border !border-primary !bg-transparent': showOptions },
+        { 'border border-primary! bg-transparent!': showOptions },
       ]"
       @click="toggleSelect(!showOptions)"
     >
@@ -19,7 +19,7 @@
             v-if="!value"
             tabindex="1"
             class="flex items-center text-gray-200 font-medium select-none text-sm leading-140 mr-4"
-            :class="[{ '!text-gray': disabled }, placeholderClasses]"
+            :class="[{ 'text-gray!': disabled }, placeholderClasses]"
           >
             {{ placeholder ?? $t("select") }}
           </div>
@@ -34,13 +34,13 @@
               v-if="value"
               class="font-normal select-none text-sm text-dark leading-140"
               tabindex="1"
-              :class="[{ '!text-dark': disabled }, selectedStyles]"
+              :class="[{ 'text-dark!': disabled }, selectedStyles]"
             >
               {{ value[labelKey] || value }}
             </p>
             <span
               class="icon-chevron flex-center h-4 transition-200 text-base text-gray-700 block shrink-0"
-              :class="{ '!rotate-180': showOptions }"
+              :class="{ 'rotate-180!': showOptions }"
             >
             </span>
           </div>

@@ -22,7 +22,7 @@
           :disabled="props.disabled"
           :required="props.required"
           :value="v"
-          class="w-full text-center rounded-lg otp-input outline-none transition-300 bg-gray/40 focus:border-primary h-[46px] font-medium text-xl leading-130 overflow-hidden focus:bg-white"
+          class="w-full text-center rounded-lg otp-input outline-hidden transition-300 bg-gray/40 focus:border-primary h-[46px] font-medium text-xl leading-130 overflow-hidden focus:bg-white"
           maxlength="1"
           pattern="[0-9]"
           @focus="onFocus"

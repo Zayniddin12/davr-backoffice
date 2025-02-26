@@ -74,8 +74,8 @@ watch(
       "
       :title="t('transaction_for_parking')"
       :total="paginationData?.total"
-      head-classes="!max-w-[870px]"
-      th-class="users-module__row last:!text-right"
+      head-classes="max-w-[870px]!"
+      th-class="users-module__row last:text-right!"
       @itemsPerPage="onChangeLimit"
       @pageChange="onPageChange"
       no-search
@@ -168,7 +168,9 @@ watch(
 
 <style>
 span {
-  @apply text-dark text-xs font-normal;
+  color: var(--color-dark);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-normal);
 }
 
 .users-module__row:nth-child(3),

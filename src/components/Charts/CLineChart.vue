@@ -10,7 +10,7 @@
         :list="tabList"
         v-model="tabValue"
         class="space-x-3 border-none"
-        item-class="!pt-0 whitespace-nowrap"
+        item-class="pt-0! whitespace-nowrap"
       />
     </div>
     <div v-if="!loading">

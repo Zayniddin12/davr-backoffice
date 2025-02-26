@@ -4,7 +4,7 @@
       <CTabLang
         v-model="nameValue"
         :list="tabListLanguage"
-        class="!w-full"
+        class="w-full!"
         withIcon
       />
 

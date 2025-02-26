@@ -11,7 +11,7 @@
         <li v-for="(link, index) in links" :key="index">
           <RouterLink
             :class="{
-              'bg-gray-200 !text-blue-500': link.to === activeRoute,
+              'bg-gray-200 text-blue-500!': link.to === activeRoute,
             }"
             :to="link.to"
             class="text-gray-300 px-3 py-2 inline-block text-sm transition-all duration-200 hover:bg-gray-200 rounded-md"

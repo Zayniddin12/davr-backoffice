@@ -115,7 +115,7 @@ watch(
         :loading="loading"
         :no-search="tableData.length === 0"
         :total="paginationData?.total"
-        th-class="!bg-gray !text-gray-100"
+        th-class="bg-gray! text-gray-100!"
         @itemsPerPage="onChangeLimit"
         @pageChange="onPageChange"
         @search="onSearch"

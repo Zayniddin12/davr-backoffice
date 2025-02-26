@@ -17,7 +17,7 @@
         @search="onSearch"
         :limit="paginationData?.defaultLimit"
         :loading="loading"
-        th-class="!bg-gray !text-gray-100 last:!text-right"
+        th-class="bg-gray! text-gray-100! last:text-right!"
       >
         <template #id="{ row }">
           <span class="text-dark text-xs font-medium">{{ row?._index }}.</span>
@@ -58,7 +58,7 @@
             :button-text="t('add_mark')"
             @submit="openAddMark"
             image="/images/svg/no-data/no-notification.svg"
-            button-custom-class="!mt-0"
+            button-custom-class="mt-0!"
           />
         </template>
         <template #action="{ row: data }">
@@ -77,7 +77,7 @@
       v-bind="{ show }"
       :title="$t(isEdit ? 'edit_mark_car' : 'add_mark_car')"
       @close="show = false"
-      body-class="!max-w-[421px]"
+      body-class="max-w-[421px]!"
     >
       <div class="p-5 pt-4">
         <FGroup :label="$t('logo')">

@@ -164,8 +164,8 @@ export const exchangeActions: IActionType[] = [
   {
     label: "delete",
     value: "deleteExchange",
-    icon: "icon-trash group-hover:!text-red",
-    class: "hover:!bg-red/20",
+    icon: "icon-trash group-hover:text-red!",
+    class: "hover:bg-red/20!",
   },
 ];
 

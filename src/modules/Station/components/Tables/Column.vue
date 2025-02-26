@@ -482,7 +482,7 @@ const times = ref([
             v-bind="{ show: openHours }"
             :title="$t('edit_price')"
             @close="closeModalEdit"
-            body-class="!max-w-[540px]"
+            body-class="max-w-[540px]!"
           >
             <div class="p-5 pt-4">
               <div>
@@ -576,7 +576,7 @@ const times = ref([
                         filter-key="value"
                         from-top
                         label-key="value"
-                        selected-option-styles="!bg-gray"
+                        selected-option-styles="bg-gray!"
                         value-key="value"
                       />
                     </FGroup>
@@ -589,7 +589,7 @@ const times = ref([
                         filter-key="value"
                         from-top
                         label-key="value"
-                        selected-option-styles="!bg-gray"
+                        selected-option-styles="bg-gray!"
                         value-key="value"
                       />
                     </FGroup>
@@ -616,7 +616,7 @@ const times = ref([
 
       <CDialog
         :title="$t(isEditConnector ? 'edit_connector' : 'add_connector')"
-        body-class="!max-w-[421px]"
+        body-class="max-w-[421px]!"
         v-bind="{ show: connectorModal }"
         @close="connectorModal = false"
       >
@@ -629,7 +629,7 @@ const times = ref([
 
       <CDialog
         :title="$t('deactivate_connector')"
-        body-class="!max-w-[421px]"
+        body-class="max-w-[421px]!"
         v-bind="{ show: actionModal }"
         @close="actionModal = false"
       >

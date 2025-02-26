@@ -4,8 +4,8 @@
     <div
       :class="[
         selectedOptionStyles,
-        { '!border-red': error },
-        { 'border !border-primary !bg-transparent': showOptions },
+        { 'border-red!': error },
+        { 'border border-primary! bg-transparent!': showOptions },
       ]"
       class="transition-200 h-10 inline-flex items-center justify-between relative bg-gray rounded-lg border border-transparent overflow-hidden w-full p-2.5 px-3"
       @click="toggleSelect(!showOptions)"
@@ -14,13 +14,13 @@
         <div
           v-if="isSearchable"
           :class="parentInputClasses"
-          class="flex items-center !w-full"
+          class="flex items-center w-full!"
         >
           <input
             v-model="searchValue"
             :class="inputClasses"
             :placeholder="placeholder"
-            class="font-normal text-sm leading-130 text-dark placeholder:text-gray-200 bg-transparent flex-grow outline-none !pr-3 !w-full"
+            class="font-normal text-sm leading-130 text-dark placeholder:text-gray-200 bg-transparent grow outline-hidden pr-3! w-full!"
             type="text"
           />
         </div>
@@ -29,14 +29,14 @@
           <div
             v-if="!value"
             :class="labelClass"
-            class="text-gray-200 font-normal text-sm !leading-130"
+            class="text-gray-200 font-normal text-sm leading-130!"
           >
             {{ placeholder }}
           </div>
           <div
             v-else
             :class="labelClass"
-            class="flex-y-center gap-2 text-dark text-sm !leading-130 line-clamp-1"
+            class="flex-y-center gap-2 text-dark text-sm leading-130! line-clamp-1"
           >
             <img
               v-if="isIcon"
@@ -51,7 +51,7 @@
         </div>
         <slot name="chevron">
           <span
-            :class="{ '-rotate-180 !text-blue !mt-0': showOptions }"
+            :class="{ '-rotate-180 text-blue! mt-0!': showOptions }"
             class="icon-chevron text-[#667779] transition-all h-max duration-200 ml-[6px] inline-block text-base"
           ></span>
         </slot>
@@ -63,7 +63,7 @@
         v-if="showOptions && !noOptions"
         :key="showOptions"
         :class="fromTop ? 'bottom-[55px]' : 'top-full'"
-        class="absolute min-w-full w-[max-content] p-[8px] bg-white border border-gray rounded-md z-[999] translate-y-3 overflow-hidden max-h-[250px] overflow-y-scroll shadow-custom_select"
+        class="absolute min-w-full w-[max-content] p-[8px] bg-white border border-gray rounded-md z-999 translate-y-3 overflow-hidden max-h-[250px] overflow-y-scroll shadow-custom_select"
       >
         <slot name="options">
           <template v-if="options?.length">
@@ -85,7 +85,7 @@
                       alt="icon"
                       class="w-5 object-cover"
                     />
-                    <p class="text-dark text-2xs !leading-130 mr-3">
+                    <p class="text-dark text-2xs leading-130! mr-3">
                       {{ $t(option[labelKey]) }}
                     </p>
                   </div>
@@ -99,7 +99,7 @@
           </template>
           <template v-else>
             <div class="flex-y-center gap-2">
-              <p class="text-dark-100 text-xs !leading-130">
+              <p class="text-dark-100 text-xs leading-130!">
                 {{ $t("no_results") }}
               </p>
             </div>

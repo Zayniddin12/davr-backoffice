@@ -14,7 +14,7 @@
         :subtitle="t('model_count', { count: paginationData?.total ?? 0 })"
         :title="$t('models')"
         :total="paginationData?.total"
-        th-class="!bg-gray !text-gray-100 last:!text-right"
+        th-class="bg-gray! text-gray-100! last:text-right!"
         @itemsPerPage="onChangeLimit"
         @pageChange="onPageChange"
         @search="onSearch"
@@ -69,7 +69,7 @@
             :button-text="t('add_model')"
             :subtitle="$t('no_models_subtitle')"
             :title="$t('no_models')"
-            button-custom-class="!mt-0"
+            button-custom-class="mt-0!"
             class="mt-8 px-6 pb-20 pt-0"
             image="/images/svg/no-data/no-notification.svg"
             @submit="openAddModel"
@@ -89,7 +89,7 @@
 
     <CDialog
       :title="$t(isEdit ? 'edit_model_car' : 'add_model_car')"
-      body-class="!max-w-[420px] !overflow-visible"
+      body-class="max-w-[420px]! overflow-visible!"
       v-bind="{ show }"
       @close="show = false"
     >
@@ -101,7 +101,7 @@
             :options="selectOptions"
             :placeholder="$t('select_model_car')"
             is-checked
-            selectedOptionStyles="!bg-gray"
+            selectedOptionStyles="bg-gray!"
           />
         </FGroup>
         <FGroup :label="$t('model_car')">

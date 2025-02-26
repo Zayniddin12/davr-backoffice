@@ -12,7 +12,7 @@
       {{ $t("we_send_code") }}
     </p>
     <button
-      class="flex-y-center px-2 py-1.5 gap-2.5 rounded bg-gray group mt-2 group hover:bg-gray-100/40 transition-300"
+      class="flex-y-center px-2 py-1.5 gap-2.5 rounded-sm bg-gray group mt-2 group hover:bg-gray-100/40 transition-300"
       @click="$emit('back')"
     >
       <span
@@ -28,7 +28,7 @@
     <SFormGroup
       :label="$t('confirm_code')"
       class="my-8"
-      label-class="font-medium !text-gray-300"
+      label-class="font-medium text-gray-300!"
     >
       <COtp
         :key="resend + ''"

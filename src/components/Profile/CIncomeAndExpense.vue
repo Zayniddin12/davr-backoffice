@@ -19,8 +19,8 @@ const props = defineProps({
 // Determine the gradient class based on `isPositive`
 const gradientClass = computed(() =>
   props.isPositive
-    ? "bg-gradient-to-r from-green to-green-200"
-    : "bg-gradient-to-r from-red to-red-300"
+    ? "bg-linear-to-r from-green to-green-200"
+    : "bg-linear-to-r from-red to-red-300"
 );
 </script>
 

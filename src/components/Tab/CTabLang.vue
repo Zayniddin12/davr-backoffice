@@ -15,7 +15,7 @@
       :id="`item_${tab.value}`"
       :key="idx"
       :class="[
-        'flex items-center justify-center !w-auto px-5 py-3 text-base font-medium',
+        'flex items-center justify-center w-auto! px-5 py-3 text-base font-medium',
         itemClass,
         modelValue === tab.value ? 'text-primary' : 'text-dark',
       ]"

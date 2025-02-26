@@ -47,7 +47,7 @@
       class="w-full flex items-center justify-center flex-col rounded-lg transition-300 hover:border-green cursor-pointer px-6 py-11 border-2 border-dashed border-green-100 h-[186px]"
       :class="[
         {
-          '!border-red': error,
+          'border-red!': error,
         },
       ]"
       @click="getFile('create')"
@@ -83,7 +83,7 @@
       <div
         class="w-full h-full border-dashed border-2 rounded-md border-white border-opacity-60 flex items-center justify-center"
       >
-        <p class="text-white text-base font-bold !leading-[130%]">
+        <p class="text-white text-base font-bold leading-[130%]!">
           {{ $t("drop_file_here") }}
         </p>
       </div>

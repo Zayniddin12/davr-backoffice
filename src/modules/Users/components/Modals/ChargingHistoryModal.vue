@@ -26,7 +26,7 @@ const emit = defineEmits(["openCheck"]);
       :show="show"
       @close="() => $emit('close')"
       :title="$t('charging_history_modal.title')"
-      body-class="!w-[540px]"
+      body-class="w-[540px]!"
     >
       <template #default>
         <div class="flex flex-col space-y-5 p-5">
@@ -41,7 +41,7 @@ const emit = defineEmits(["openCheck"]);
               <div class="flex-y-center gap-3">
                 <CAvatar
                   :image="data?.user?.avatar_url"
-                  avatar-class="!w-8 !h-8 before:border"
+                  avatar-class="w-8! h-8! before:border"
                 />
                 <div>
                   <div>
@@ -69,7 +69,7 @@ const emit = defineEmits(["openCheck"]);
               <div class="flex-y-center gap-3">
                 <CAvatar
                   :image="data?.car?.manufacturer_icon"
-                  avatar-class="!w-8 !h-8 before:border"
+                  avatar-class="w-8! h-8! before:border"
                 />
                 <div>
                   <div>
@@ -274,9 +274,9 @@ const emit = defineEmits(["openCheck"]);
         <div class="border-t border-gray p-5">
           <CButton
             @click="[emit('openCheck'), emit('close')]"
-            class="w-full bg-primary/[25%] [&_*]:!text-primary [&_*]:hover:!text-white [&_*]:duration-200 [&_*]:transition-all"
+            class="w-full bg-primary/[25%] **:text-primary! hover:**:text-white! **:duration-200 **:transition-all"
             :text="$t('charging_history_modal.show_check')"
-            ><span class="!text-primary">{{
+            ><span class="text-primary!">{{
               $t("charging_history_modal.show_check")
             }}</span>
           </CButton>

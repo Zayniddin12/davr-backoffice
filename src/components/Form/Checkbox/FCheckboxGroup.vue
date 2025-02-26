@@ -13,17 +13,17 @@
         :class="[
           { 'pointer-events-none': answered },
           {
-            '!bg-white !border-green border':
+            'bg-white! border-green! border':
               modelValue?.answers?.includes(item[valueKey]) && !answered,
           },
           {
-            '!bg-white !border-green border':
+            'bg-white! border-green! border':
               modelValue?.answers?.includes(item[valueKey]) &&
               answered &&
               item?.is_correct,
           },
           {
-            '!bg-white !border-red border':
+            'bg-white! border-red! border':
               modelValue?.answers?.includes(item[valueKey]) &&
               answered &&
               !item?.is_correct,
@@ -40,17 +40,17 @@
               class="w-8 h-8 rounded-lg bg-gray-800 flex-center"
               :class="[
                 {
-                  '!bg-green':
+                  'bg-green!':
                     modelValue?.answers?.includes(item[valueKey]) && !answered,
                 },
                 {
-                  '!bg-green/[12%]':
+                  'bg-green/[12%]!':
                     modelValue?.answers?.includes(item[valueKey]) &&
                     answered &&
                     item?.is_correct,
                 },
                 {
-                  '!bg-red/[12%]':
+                  'bg-red/[12%]!':
                     modelValue?.answers?.includes(item[valueKey]) &&
                     answered &&
                     !item?.is_correct,
@@ -61,18 +61,18 @@
                 class="text-base leading-130 font-semibold text-gray-700 uppercase"
                 :class="[
                   {
-                    '!text-white':
+                    'text-white!':
                       modelValue?.answers?.includes(item[valueKey]) &&
                       !answered,
                   },
                   {
-                    '!text-green':
+                    'text-green!':
                       modelValue?.answers?.includes(item[valueKey]) &&
                       answered &&
                       item?.is_correct,
                   },
                   {
-                    '!text-red':
+                    'text-red!':
                       modelValue?.answers?.includes(item[valueKey]) &&
                       answered &&
                       !item?.is_correct,

@@ -37,7 +37,7 @@
           :placeholder="inputPlaceholder"
           @update:modelValue="value = $event"
           :input-class="customClass"
-          @blur="emit('blur')"
+          @blur="emit('blur-sm')"
         />
       </template>
     </VueDatePicker>
@@ -84,7 +84,7 @@ interface Props {
 const props = defineProps<Props>();
 
 interface Emits {
-  (event: "blur"): void;
+  (event: "blur-sm"): void;
   (event: "update:modelValue", value: string): void;
 }
 const emit = defineEmits<Emits>();

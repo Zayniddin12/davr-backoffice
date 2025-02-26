@@ -3,7 +3,7 @@
     <!-- Fayl Yuklash Tugmasi -->
     <label
       for="fileInput"
-      class="flex items-center gap-2 cursor-pointer text-blue-600 font-medium py-2.5 px-3.5 rounded-lg border border-gray-800 shadow-sm w-fit transition duration-300 hover:border-blue-600"
+      class="flex items-center gap-2 cursor-pointer text-blue-600 font-medium py-2.5 px-3.5 rounded-lg border border-gray-800 shadow-xs w-fit transition duration-300 hover:border-blue-600"
     >
       <span class="icon-square text-xl text-gray-600"></span>
       <span class="text-dark leading-130 text-base font-semibold">{{

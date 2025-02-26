@@ -110,8 +110,8 @@ function editCar(data: any) {
       :title="$t('list_of_cars')"
       :subtitle="t('number_of_cars', { n: paginationData.total ?? 0 })"
       no-search
-      head-classes="!gap-0"
-      th-class="last:!text-right"
+      head-classes="gap-0!"
+      th-class="last:text-right!"
     >
       <!--      head    -->
       <template #beforeSearch>

@@ -18,7 +18,7 @@
       <template #item="{ element }">
         <li
           class="flex-center-between p-3 pl-4 rounded-xl bg-gray-100"
-          :class="{ '!cursor-grab': drag }"
+          :class="{ 'cursor-grab!': drag }"
           :style="{ cursor: 'grab !important' }"
         >
           <p

@@ -1,7 +1,7 @@
 <template>
   <div
     class="text-sm font-medium text-primary transition-200"
-    :class="{ '!text-red': seconds < 15 }"
+    :class="{ 'text-red!': seconds < 15 }"
   >
     {{ time }}
   </div>

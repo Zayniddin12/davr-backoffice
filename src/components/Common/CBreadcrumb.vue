@@ -49,7 +49,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 const checkLastRoute = (index: number) => {
   if (index === props.routes.length - 1) {
-    return "font-medium !text-gray-300 cursor-not-allowed pointer-events-none";
+    return "font-medium text-gray-300! cursor-not-allowed pointer-events-none";
   } else {
     return "font-medium text-dark hover:text-gray-300 cursor-pointer";
   }

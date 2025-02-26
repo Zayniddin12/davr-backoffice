@@ -5,14 +5,14 @@
         <div
           class="w-10 h-10 flex-center flex-none bg-gray-400 rounded-lg transition-300"
           :class="[
-            { '!bg-primary': step === item?.id },
-            { '!bg-white-700': step > item?.id },
+            { 'bg-primary!': step === item?.id },
+            { 'bg-white-700!': step > item?.id },
           ]"
         >
           <p
             class="text-gray-700 leading-5 text-base font-bold transition-300"
             :class="[
-              { '!text-white': step === item?.id },
+              { 'text-white!': step === item?.id },
               { 'text-gray-200 icon-checked': step > item?.id },
             ]"
           >
@@ -31,7 +31,7 @@
       <div
         v-if="index !== steps?.length - 1"
         class="w-px h-5 bg-gray-400 ml-5 transition-300"
-        :class="{ '!bg-primary opacity-20': step >= item?.id }"
+        :class="{ 'bg-primary! opacity-20': step >= item?.id }"
       />
     </template>
   </div>

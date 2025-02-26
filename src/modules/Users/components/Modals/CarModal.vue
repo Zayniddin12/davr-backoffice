@@ -42,7 +42,7 @@ function copyTextToClipboard(text: string | undefined) {
   <CDialog
     :show="show"
     :title="t('username_created')"
-    body-class="!max-w-[421px] !h-max !h-[482px]"
+    body-class="max-w-[421px]! h-max! h-[482px]!"
     @close="$emit('close')"
   >
     <div class="p-4">

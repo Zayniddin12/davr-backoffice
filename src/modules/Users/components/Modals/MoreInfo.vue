@@ -30,7 +30,7 @@ defineEmits<{
       :show="show"
       @close="$emit('close')"
       :title="$t('general_information')"
-      body-class="!w-[421px]"
+      body-class="w-[421px]!"
     >
       <div v-if="data?.length" class="flex flex-col gap-4 px-5 py-2">
         <div

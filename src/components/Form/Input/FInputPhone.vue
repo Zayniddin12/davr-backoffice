@@ -3,7 +3,7 @@
     class="phone-input transition-200 relative bg-gray-500 rounded-lg border border-transparent"
     :class="
       error
-        ? '!border-red !focus-within:border-red'
+        ? 'border-red! !focus-within:border-red'
         : 'focus-within:border-violet'
     "
     ref="inputWrapper"
@@ -52,7 +52,7 @@ const props = defineProps<Props>();
 interface Emits {
   (event: "update:modelValue", value: string): void;
   (event: "validate", value: boolean): void;
-  (event: "blur", value: string): void;
+  (event: "blur-sm", value: string): void;
   (event: "reset-validation"): void;
 }
 const emit = defineEmits<Emits>();
@@ -102,7 +102,7 @@ const onBlur = () => {
   }
 
   // On change tab validation touch method fires immediately. So we need to wait
-  setTimeout(() => emit("blur", phone.value), 500);
+  setTimeout(() => emit("blur-sm", phone.value), 500);
 };
 
 const onPaste = (e: ClipboardEvent) => {

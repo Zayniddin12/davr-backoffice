@@ -17,9 +17,9 @@
         'duration-200 ease-in-out flex items-center justify-center bg-white h-5 w-5 rounded-md border-2 peer-checked:-rotate-90 peer-checked:after:opacity-100 peer-checked:after:rotate-[138deg] after:transition-all after:duration-200 after:absolute after:left-[7px] after:top-1 after:w-[5px] after:h-2.5 after:border-r-[2.2px] after:border-b-[2.2px] after:rotate-[0deg] after:opacity-0 peer-checked:bg-green',
         'border-[#C8CFD6] peer-checked:border-transparent after:border-white peer-disabled:border-grey-100 peer-disabled:after:border-grey-100',
         {
-          '!border-red': error,
+          'border-red!': error,
           'group-hover:border-primary': !disabled,
-          '!border-green relative': isAllCars,
+          'border-green! relative': isAllCars,
         },
       ]"
       class="shrink-0"

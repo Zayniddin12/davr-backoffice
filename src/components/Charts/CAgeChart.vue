@@ -1,5 +1,5 @@
 <template>
-  <CCard class="flex-shrink-0 h-auto">
+  <CCard class="shrink-0 h-auto">
     <h4 class="text-xl text-dark font-semibold px-6 pt-6 mb-5">
       {{ $t("dashboard.charts.sort_title") }}
     </h4>
@@ -13,7 +13,7 @@
             backgroundColor: item?.color,
             width: getPercent(Number(item?.amount)) + '%',
           }"
-          class="h-10 rounded-sm mb-4"
+          class="h-10 rounded-xs mb-4"
         ></div>
       </div>
       <div
@@ -35,7 +35,7 @@
               class="w-3 h-3 rounded-[3px]"
             ></div>
 
-            <p class="text-[#94A8AA] text-xs !leading-normal font-medium">
+            <p class="text-[#94A8AA] text-xs leading-normal! font-medium">
               {{ $t(item?.label) }}
             </p>
           </div>
@@ -50,7 +50,7 @@
 
           <div class="ml-auto text-right">
             <h5
-              class="mb-1 text-sm !leading-normal text-dark-100 font-semibold truncate"
+              class="mb-1 text-sm leading-normal! text-dark-100 font-semibold truncate"
             >
               {{ changeNumberFormat(item.amount) }}
             </h5>
@@ -62,7 +62,7 @@
       <NoData
         :subtitle="$t('no_data_age_stats_subtitle')"
         :title="$t('no_data_age_stats_title')"
-        class="mt-8 px-6 !py-10"
+        class="mt-8 px-6 py-10!"
         image="/images/svg/no-data/42.svg"
       />
     </div>

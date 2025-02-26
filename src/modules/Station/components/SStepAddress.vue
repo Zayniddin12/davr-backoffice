@@ -4,7 +4,7 @@
       <CTabLang
         v-model="nameValue"
         :list="tabListLanguage"
-        class="!w-full"
+        class="w-full!"
         withIcon
       />
 
@@ -43,7 +43,7 @@
             />
           </FGroup>
           <FGroup :label="$t('right_address')">
-            <div class="h-[260px] relative shadow rounded-xl mb-5">
+            <div class="h-[260px] relative shadow-sm rounded-xl mb-5">
               <div ref="container" class="container" />
               <yandex-map
                 :cluster-options="clusterSettings"
@@ -65,7 +65,7 @@
               </yandex-map>
               <div
                 ref="controls"
-                class="flex right-3 flex-col gap-3 shadow rounded-[10px] p-2 bg-white absolute bottom-8"
+                class="flex right-3 flex-col gap-3 shadow-sm rounded-[10px] p-2 bg-white absolute bottom-8"
               >
                 <i
                   class="icon-plus text-xl text-center cursor-pointer hover:text-blue transition-300"

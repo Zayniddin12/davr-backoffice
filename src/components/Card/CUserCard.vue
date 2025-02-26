@@ -1,6 +1,6 @@
 <template>
   <div class="flex-y-center gap-3">
-    <CAvatar :image="card?.avatar" avatar-class="!w-8 !h-8 before:border" />
+    <CAvatar :image="card?.avatar" avatar-class="w-8! h-8! before:border" />
     <div>
       <div>
         <router-link :to="card?.userLink">
@@ -10,7 +10,7 @@
             >
               {{ card?.full_name }}
             </h5>
-            <div v-if="isAdmin" class="bg-gray py-[1px] px-1 rounded">
+            <div v-if="isAdmin" class="bg-gray py-[1px] px-1 rounded-sm">
               <span class="text-gray-200 font-medium text-[10px]">{{
                 t("admin")
               }}</span>

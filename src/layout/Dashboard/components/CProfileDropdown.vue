@@ -31,14 +31,14 @@
         v-for="(item, idx) in dropdownItems"
         :key="idx"
         :class="item.styles"
-        class="transition-200 flex flex-col gap-1 text-sm w-full text-dark hover:bg-gray/[10%] rounded"
+        class="transition-200 flex flex-col gap-1 text-sm w-full text-dark hover:bg-gray/[10%] rounded-sm"
         @click="item.action"
       >
         <div
-          :class="{ '!border-b-0': idx === dropdownItems.length - 1 }"
+          :class="{ 'border-b-0!': idx === dropdownItems.length - 1 }"
           class="flex-y-center px-3 py-2 border-b border-[#F5F6F7] gap-2"
         >
-          <i :class="item?.icon" class="!text-xs" />
+          <i :class="item?.icon" class="text-xs!" />
           {{ item.label }}
         </div>
       </li>
@@ -96,7 +96,7 @@ interface IDropdownItem {
 const dropdownItems: IDropdownItem[] = [
   {
     label: t("log_out"),
-    styles: "text-red-500 hover:!bg-red-50",
+    styles: "text-red-500 hover:bg-red-50!",
     action: () => logout(),
     icon: "icon-chevron-left",
   },

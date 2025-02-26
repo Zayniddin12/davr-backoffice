@@ -6,8 +6,8 @@
           v-model="computedDateRange"
           :inputClassName="
             activePick
-              ? 'placeholder:!text-dark !w-[260px] !overflow-visible !border-white !text-dark !font-medium !text-xs !bg-white'
-              : 'placeholder:!text-dark !w-[260px] !overflow-visible !border-gray !text-dark !font-medium !text-xs !bg-gray'
+              ? 'placeholder:text-dark! w-[260px]! overflow-visible! border-white! text-dark! font-medium! text-xs! bg-white!'
+              : 'placeholder:text-dark! w-[260px]! overflow-visible! border-gray! text-dark! font-medium! text-xs! bg-gray!'
           "
           class="w-full"
           range
