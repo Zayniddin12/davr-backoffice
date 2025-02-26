@@ -2,12 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import AuthRoutes from "@/modules/Auth/routes";
 import DashboardRoutes from "@/modules/Dashboard/routes";
 import NotificationRoutes from "@/modules/Notification/routes";
-import StationRoutes from "@/modules/Station/routes";
-import SettingsRoutes from "@/modules/Settings/routes";
-import TransactionRoutes from "@/modules/Transaction/routes";
 import UserRoutes from "@/modules/Users/routes";
-import StaticPagesRotues from "@/modules/Static/routes";
-import StatusPagesRotues from "@/modules/Status/routes";
 import { JwtService } from "@/services/JwtService";
 import { useAuthStore } from "@/modules/Auth/stores";
 import { computed } from "vue";
@@ -17,11 +12,6 @@ const routes: Array<RouteRecordRaw> = [
   ...DashboardRoutes,
   ...UserRoutes,
   ...NotificationRoutes,
-  ...SettingsRoutes,
-  ...StationRoutes,
-  ...TransactionRoutes,
-  ...StaticPagesRotues,
-  ...StatusPagesRotues,
   {
     path: "/:pathMatch(.*)*",
     meta: {

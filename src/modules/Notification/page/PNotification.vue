@@ -15,7 +15,7 @@ import { useCustomToast } from "@/composables/useCustomToast";
 import ApiService from "@/services/ApiService";
 import { useHandleError } from "@/composables/useHandleError";
 import { useAuthStore } from "@/modules/Auth/stores";
-import CheckModal from "@/modules/Transaction/components/modals/CheckModal.vue";
+import CheckModal from "@/modules/Notification/components/Modals/CheckModal.vue";
 import MoreInfo from "@/modules/Users/components/Modals/MoreInfo.vue";
 import ModalFiles from "@/modules/Users/components/Modals/Files.vue";
 
