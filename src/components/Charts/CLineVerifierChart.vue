@@ -5,9 +5,6 @@
         <h4 class="text-xl text-dark font-semibold mb-1">
           {{ $t("verifier_activity") }}
         </h4>
-        <p class="text-gray-300 text-xs font-normal leading-130">
-          {{ $t("verifier_activity_description") }}
-        </p>
       </div>
       <Tab
         :list="tabList"

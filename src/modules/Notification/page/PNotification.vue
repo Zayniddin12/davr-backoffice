@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SBreadcrumb from "@/components/Common/CBreadcrumb.vue";
-import { computed, ref, watch } from "vue";
+import { computed, ref } from "vue";
 import { useMounted } from "@/composables/useMounted";
 import { useI18n } from "vue-i18n";
 import CNodata from "@/components/Common/NoData/NoData.vue";
@@ -17,6 +17,7 @@ import { useHandleError } from "@/composables/useHandleError";
 import { useAuthStore } from "@/modules/Auth/stores";
 import CheckModal from "@/modules/Transaction/components/modals/CheckModal.vue";
 import MoreInfo from "@/modules/Users/components/Modals/MoreInfo.vue";
+import ModalFiles from "@/modules/Users/components/Modals/Files.vue";
 
 const store = useAuthStore();
 
@@ -62,6 +63,8 @@ function deleteNotification(id: any) {
 }
 const openMessageModal = ref(false);
 const moreInfoModal = ref(false);
+const showFiles = ref(false);
+const files = ref<string[]>();
 const statusData = ref("");
 const idData = ref(NaN);
 function sendStatus(status: string, id: number) {
@@ -125,6 +128,10 @@ function geteDatas(
 ) {
   moreInfoModal.value = true;
   statusesdata.value = data;
+}
+function showfiles(data: string[]) {
+  showFiles.value = true;
+  files.value = data;
 }
 </script>
 
@@ -195,6 +202,15 @@ function geteDatas(
               {{ data?.bank?.branch }}
             </p>
           </template>
+          <template #files="{ row: data }">
+            <div
+              @click="showfiles(data?.files)"
+              class="text-xs text-dark cursor-pointer transition-300 hover:bg-gray font-normal mb-1 p-1 rounded-md border border-gray flex justify-center items-center"
+            >
+              {{ $t("files") }}
+            </div>
+          </template>
+
           <template #gps_situation="{ row: data }">
             <div
               :class="{
@@ -218,46 +234,44 @@ function geteDatas(
             </div>
           </template>
           <template #verifier_situation="{ row: data }">
-            <div>
-              <div
-                :class="{
-                  'bg-indigo-500/10 text-indigo-500':
-                    (['super_admin', 'boss'].includes(user?.role)
-                      ? data?.statuses?.[0]?.status
-                      : data?.statuses?.[1]?.status) == 'in_progress',
-                  'bg-green-500/10 text-green-500':
-                    (['super_admin', 'boss'].includes(user?.role)
-                      ? data?.statuses?.[0]?.status
-                      : data?.statuses?.[1]?.status) == 'confirmed',
-                  'bg-red-500/10 text-red-500':
-                    (['super_admin', 'boss'].includes(user?.role)
-                      ? data?.statuses?.[0]?.status
-                      : data?.statuses?.[1]?.status) == 'canceled',
-                  'bg-gray-500/10 text-gray-500': !([
-                    'super_admin',
-                    'boss',
-                  ].includes(user?.role)
-                    ? data?.statuses?.[0]?.status
-                    : data?.statuses?.[1]?.status),
-                }"
-                class="px-2 py-1 rounded-md text-center"
-              >
-                <p class="text-xs font-semibold capitalize">
-                  {{
-                    (
-                      ["super_admin", "boss"].includes(user?.role)
-                        ? data?.statuses?.[0]?.status
-                        : data?.statuses?.[1]?.status
-                    )
-                      ? $t(
-                          ["super_admin", "boss"].includes(user?.role)
-                            ? data?.statuses?.[0]?.status
-                            : data?.statuses?.[1]?.status
-                        )
-                      : $t("waiting")
-                  }}
-                </p>
-              </div>
+            <div
+              :class="{
+                'bg-indigo-500/10 text-indigo-500':
+                  (['super_admin', 'boss'].includes(user?.role)
+                    ? data?.statuses?.[1]?.status
+                    : data?.statuses?.[0]?.status) == 'in_progress',
+                'bg-green-500/10 text-green-500':
+                  (['super_admin', 'boss'].includes(user?.role)
+                    ? data?.statuses?.[1]?.status
+                    : data?.statuses?.[0]?.status) == 'confirmed',
+                'bg-red-500/10 text-red-500':
+                  (['super_admin', 'boss'].includes(user?.role)
+                    ? data?.statuses?.[1]?.status
+                    : data?.statuses?.[0]?.status) == 'canceled',
+                'bg-gray-500/10 text-gray-500': !([
+                  'super_admin',
+                  'boss',
+                ].includes(user?.role)
+                  ? data?.statuses?.[1]?.status
+                  : data?.statuses?.[0]?.status),
+              }"
+              class="px-2 py-1 rounded-md text-center"
+            >
+              <p class="text-xs font-semibold capitalize">
+                {{
+                  (
+                    ["super_admin", "boss"].includes(user?.role)
+                      ? data?.statuses?.[1]?.status
+                      : data?.statuses?.[0]?.status
+                  )
+                    ? $t(
+                        ["super_admin", "boss"].includes(user?.role)
+                          ? data?.statuses?.[1]?.status
+                          : data?.statuses?.[0]?.status
+                      )
+                    : $t("waiting")
+                }}
+              </p>
             </div>
           </template>
 
@@ -265,19 +279,38 @@ function geteDatas(
             <div
               :class="{
                 'bg-indigo-500/10 text-indigo-500':
-                  data?.statuses?.[0]?.status == 'in_progress',
+                  (['super_admin', 'boss'].includes(user?.role)
+                    ? data?.statuses?.[2]?.status
+                    : data?.statuses?.[0]?.status) == 'in_progress',
                 'bg-green-500/10 text-green-500':
-                  data?.statuses?.[0]?.status == 'confirmed',
+                  (['super_admin', 'boss'].includes(user?.role)
+                    ? data?.statuses?.[2]?.status
+                    : data?.statuses?.[0]?.status) == 'confirmed',
                 'bg-red-500/10 text-red-500':
-                  data?.statuses?.[0]?.status == 'canceled',
-                'bg-gray-500/10 text-gray-500': !data?.statuses?.[2]?.status,
+                  (['super_admin', 'boss'].includes(user?.role)
+                    ? data?.statuses?.[2]?.status
+                    : data?.statuses?.[0]?.status) == 'canceled',
+                'bg-gray-500/10 text-gray-500': !([
+                  'super_admin',
+                  'boss',
+                ].includes(user?.role)
+                  ? data?.statuses?.[2]?.status
+                  : data?.statuses?.[0]?.status),
               }"
               class="px-2 py-1 rounded-md text-center"
             >
               <p class="text-xs font-semibold capitalize">
                 {{
-                  data?.statuses?.[0]?.status
-                    ? $t(data?.statuses?.[0]?.status)
+                  (
+                    ["super_admin", "boss"].includes(user?.role)
+                      ? data?.statuses?.[2]?.status
+                      : data?.statuses?.[0]?.status
+                  )
+                    ? $t(
+                        ["super_admin", "boss"].includes(user?.role)
+                          ? data?.statuses?.[2]?.status
+                          : data?.statuses?.[0]?.status
+                      )
                     : $t("waiting")
                 }}
               </p>
@@ -333,6 +366,7 @@ function geteDatas(
       :data="statusesdata"
       @close="moreInfoModal = false"
     />
+    <ModalFiles :show="showFiles" :data="files" @close="showFiles = false" />
   </div>
 </template>
 

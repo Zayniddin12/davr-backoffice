@@ -542,5 +542,9 @@
   "couse_placeholder": "Sabab yozing",
   "unconfirm": "Bekor qilish",
   "confirmed": "tasdiqlandi",
-  "canceled": "bekor qilindi"
+  "canceled": "bekor qilindi",
+  "files": "fayllar",
+  "verifier_activity": "Tasdiqlovchilar holati",
+  "lawyer_activity": "Yuristlar holati",
+  "gps_activity": "GPS xodimlar holati"
 }
