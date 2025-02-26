@@ -16,7 +16,7 @@
 
         <CAvatar
           :image="user?.avatar_url"
-          avatar-class="border-2 border-gray/[60]"
+          avatar-class="border-1 border-gray-300"
           size="sm"
         />
 

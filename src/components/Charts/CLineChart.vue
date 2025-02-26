@@ -1,5 +1,5 @@
 <template>
-  <CCard class="shrink-0 p-6" v-if="dataGps?.tabs?.length">
+  <CCard class="shrink-0 p-6">
     <div class="flex justify-between mb-5">
       <div>
         <h4 class="text-xl text-dark font-semibold mb-1">
@@ -17,19 +17,20 @@
       <Transition mode="out-in" name="fade">
         <div :key="tabValue" class="h-[280px]">
           <ApexChart
+          v-if="formattedSeries?.data?.length"
             :options="options"
             :series="formattedSeries"
             height="280px"
           />
-        </div>
-      </Transition>
-    </div>
-    <div v-else>
+          <div v-else>
       <NoData
         :title="$t('empty_data')"
         class="mt-8"
-        image="/svg/empty-state.svg"
+        image="/images/svg/no-data/default_no_data.svg"
       />
+    </div>
+        </div>
+      </Transition>
     </div>
   </CCard>
 </template>

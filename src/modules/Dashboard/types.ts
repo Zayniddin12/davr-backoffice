@@ -23,6 +23,7 @@ export interface ChargingStationStats {
   verifier: number;
   gps_engineer: number;
   credit_manager: number;
+  clientInformation:number
 }
 
 export interface ICard {

@@ -36,7 +36,7 @@
             :placeholder="$t('enter_vin_code')"
             v-model="form.values.vin"
             :error="form.$v.value.vin?.$error"
-            v-maska="'XXXXXXXXXXXXXXXXX'"
+            v-maska="'*****************'"
           />
         </FGroup>
         <FGroup :label="$t('mark_of_car')">
@@ -90,6 +90,9 @@
 </template>
 <script setup lang="ts">
 import { useMounted } from "@/composables/useMounted";
+
+import { vMaska } from "maska/vue"
+
 import { computed, reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import CBreadcrumb from "@/components/Common/CBreadcrumb.vue";

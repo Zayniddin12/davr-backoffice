@@ -39,7 +39,7 @@
           :card="card"
         />
       </div>
-      <div class="w-full grid grid-cols-1  gap-5">
+      <div class="w-full grid grid-cols-2 gap-5">
         <CLineChart />
         <CLineVerifierChart />
         <CLineLawyerChart />
@@ -119,12 +119,12 @@ const staticsCards = reactive([
     title: t("gps_engineers"),
     class: "paid_cost",
   },
-  // {
-  //   icon: "icon-users",
-  //   count: "",
-  //   title: t("static_cards.used_kv"),
-  //   class: "used_kv",
-  // },
+  {
+    icon: "icon-users",
+    count: "",
+    title: t("informations"),
+    class: "used_kv",
+  },
   // {
   //   icon: "icon-users",
   //   count: "",
@@ -178,36 +178,14 @@ const dateTable = [
   },
 ];
 
-const weeks = [];
-function upDateRangePick(value: [number, number]) {
-  isActive.value = true;
-  isClear.value = false;
-  dateFrom.value = value[0];
-  dateTo.value = value[1];
-  router.replace({
-    query: {
-      from: dayjs(value[0]).format("DD-MM-YYYY"),
-      to: dayjs(value[1]).format("DD-MM-YYYY"),
-    },
-  });
-}
+
 const routes = computed(() => [
   {
     name: t("main_page"),
     route: "/",
   },
 ]);
-function selectDateType(item: number) {
-  isActive.value = false;
-  activeDate.value = item;
-  dateTable.forEach((e, key) => {
-    if (key == item) {
-      router.replace({
-        query: { from: e.date, to: e.toDate },
-      });
-    }
-  });
-}
+
 const getDashboardCount = async () => {
   try {
     const res = await ApiService.get<ChargingStationStats>(`/statistics/users`);
@@ -218,6 +196,7 @@ const getDashboardCount = async () => {
     staticsCards[2].count = res.data.lawyer;
     staticsCards[3].count = res.data.credit_manager;
     staticsCards[4].count = res.data.gps_engineer;
+    staticsCards[5].count = res.data.clientInformation;
   } catch (error) {
     console.log(error);
   }

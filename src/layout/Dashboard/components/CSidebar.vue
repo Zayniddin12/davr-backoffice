@@ -15,14 +15,19 @@
     <div
       class="absolute top-[77px] left-0 w-full h-[620px] before:absolute before:left-0 before:top-[-50px] before:h-[620px] before:w-full z-1 before:z-0 before:bg-no-repeat before:bg-cover"
     ></div>
+    
     <div class="z-20">
+     <div class="flex items-center justify-between">
+      
       <div
-        class="w-full px-4 py-5 flex items-center justify-center border-b border-solid border-white/30 bg-transparent"
+        class="w-full px-4 py-5 flex items-center gap-4 justify-center border-b border-solid border-white/30 bg-transparent"
       >
         <div
           :class="{ 'opacity-0 invisible w-0!': !isOpen && !hovered }"
           class="relative overflow-hidden transition-300 w-[211px]"
-        ></div>
+        >
+        <img src="/svg/logo_white.svg" class="size-full" alt="">
+      </div>
         <div
           class="cursor-pointer w-6 h-6 flex items-center justify-center transition-300"
           @click="toggleSidebar"
@@ -51,6 +56,7 @@
           </span>
         </div>
       </div>
+     </div>
       <div class="flex flex-col py-5 gap-1">
         <div v-for="(menuItem, index) in newMenus" :key="index">
           <RouterLink
