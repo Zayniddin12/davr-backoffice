@@ -3,7 +3,6 @@ import apiService from "@/services/ApiService";
 import {
   AgeDistribution,
   GenderStats,
-  IAppUsageStats,
   IMainInfo,
   IResponseUsageStats,
 } from "@/modules/Dashboard/types";

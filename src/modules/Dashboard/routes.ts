@@ -8,15 +8,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
       layout: "default",
     },
     component: () => import("@/modules/Dashboard/pages/PDashboard.vue"),
-  },
-  {
-    path: "/active-users",
-    name: "PActiveUsers",
-    meta: {
-      layout: "default",
-    },
-    component: () => import("@/modules/Dashboard/pages/PActiveUsers.vue"),
-  },
+  }
 ];
 
 export default routes;

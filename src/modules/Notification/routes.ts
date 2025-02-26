@@ -17,15 +17,6 @@ const routes: Readonly<RouteRecordRaw[]> = [
     },
     component: () => import("@/modules/Notification/page/PNotificationAdd.vue"),
   },
-  {
-    path: "/informations/:id/edit",
-    name: "PNotificationEdit",
-    meta: {
-      layout: "default",
-    },
-    component: () =>
-      import("@/modules/Notification/page/PNotificationEdit.vue"),
-  },
 ];
 
 export default routes;
