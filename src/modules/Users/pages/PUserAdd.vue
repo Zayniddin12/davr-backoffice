@@ -165,8 +165,7 @@ function createCategoryData() {
       carModal.value = true;
     })
     .catch((err) => {
-      showToast(t("error"), "error");
-      handleError(err);
+       showToast(t("failed_with_some_errors"), "error");
     })
     .finally(() => {
       buttonLoading.value = false;

@@ -235,7 +235,6 @@ function createCategoryData() {
         router.push({ name: "PNotification" });
       })
       .catch((err) => {
-        console.error("API error:", err);
         showToast(t("failed_with_some_errors"), "error");
       })
       .finally(() => {

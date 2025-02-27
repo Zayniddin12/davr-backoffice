@@ -24,7 +24,6 @@
           />
           <div v-else>
       <NoData
-        :title="$t('empty_data')"
         class="mt-8"
         image="/images/svg/no-data/default_no_data.svg"
       />

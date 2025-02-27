@@ -1,6 +1,6 @@
 <template>
   <div class="flex-center flex-col py-12">
-    <img :src="image" alt="no-data-image" class="mx-auto min-h-[125px]" />
+    <img :src="image" alt="no-data-image" class="mx-auto min-h-[125px] opacity-40" />
     <slot name="text" />
     <p
       v-if="title"
@@ -40,7 +40,7 @@ interface Props {
   image: string;
   subtitle?: string;
   subtitleClass?: string;
-  title: string;
+  title?: string;
   titleClass?: string;
   buttonText?: string;
   buttonCustomClass?: string;

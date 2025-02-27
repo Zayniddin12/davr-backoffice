@@ -64,7 +64,12 @@ function deleteNotification(id: any) {
 const openMessageModal = ref(false);
 const moreInfoModal = ref(false);
 const showFiles = ref(false);
-const files = ref<string[]>();
+const files = ref<{
+  extension: string
+  href: string
+  mimeType: string
+  name:string 
+  }[]>();
 const statusData = ref("");
 const idData = ref(NaN);
 function sendStatus(status: string, id: number) {
@@ -129,7 +134,12 @@ function geteDatas(
   moreInfoModal.value = true;
   statusesdata.value = data;
 }
-function showfiles(data: string[]) {
+function showfiles(data: {
+  extension: string
+  href: string
+  mimeType: string
+  name:string 
+  }[]) {
   showFiles.value = true;
   files.value = data;
 }
@@ -204,10 +214,14 @@ function showfiles(data: string[]) {
           </template>
           <template #files="{ row: data }">
             <div
+            v-if="data?.files?.length"
               @click="showfiles(data?.files)"
               class="text-xs text-dark cursor-pointer transition-300 hover:bg-gray font-normal mb-1 p-1 rounded-md border border-gray flex justify-center items-center"
             >
               {{ $t("files") }}
+            </div>
+            <div v-else>
+              {{""}}
             </div>
           </template>
 
@@ -341,6 +355,7 @@ function showfiles(data: string[]) {
           </template>
           <template #action="{ row: data }">
             <CActionsDropdown
+            v-if="data?.statuses?.length"
               :isTop="tableData?.[tableData.length - 1]?.id == data?.id"
               :id="data?.id"
               :role="user?.role"

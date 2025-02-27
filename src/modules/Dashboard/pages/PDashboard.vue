@@ -122,7 +122,7 @@ const staticsCards = reactive([
   {
     icon: "icon-users",
     count: "",
-    title: t("informations"),
+    title: t("credit_manager"),
     class: "used_kv",
   },
   // {
@@ -191,12 +191,12 @@ const getDashboardCount = async () => {
     const res = await ApiService.get<ChargingStationStats>(`/statistics/users`);
     console.log(res?.data);
 
-    staticsCards[0].count = res.data.verifier;
+    staticsCards[0].count = res.data.clientInformation;
     staticsCards[1].count = res.data.boss;
     staticsCards[2].count = res.data.lawyer;
-    staticsCards[3].count = res.data.credit_manager;
+    staticsCards[3].count = res.data.verifier;
     staticsCards[4].count = res.data.gps_engineer;
-    staticsCards[5].count = res.data.clientInformation;
+    staticsCards[5].count = res.data.credit_manager;
   } catch (error) {
     console.log(error);
   }

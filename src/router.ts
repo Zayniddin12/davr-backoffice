@@ -40,7 +40,7 @@ router.beforeEach(async (to) => {
   // Faqat super_admin yoki boss PDashboard'ga kira oladi
   if (to.name === "PDashboard") {
     if (!["super_admin", "boss"].includes(user.value?.role)) {
-      return { path: "/404" }; // Not Found sahifasiga yo'naltirish
+      return { path: "/informations" }; // Not Found sahifasiga yo'naltirish
     }
   }
 

@@ -26,7 +26,7 @@
           :class="{ 'opacity-0 invisible w-0!': !isOpen && !hovered }"
           class="relative overflow-hidden transition-300 w-[211px]"
         >
-        <img src="/svg/logo_white.svg" class="size-full" alt="">
+        <img src="/svg/logo_white.svg" class="size-full max-w-[140px]" alt="">
       </div>
         <div
           class="cursor-pointer w-6 h-6 flex items-center justify-center transition-300"

@@ -83,7 +83,7 @@ export const notificationHead = (userRole: string) => {
     );
   }
   actions.push({
-    title: "action",
+    title: "",
     key: "action",
   });
 

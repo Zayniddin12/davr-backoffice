@@ -3,7 +3,12 @@ import { defineProps, defineEmits, computed } from "vue";
 import CDialog from "@/components/Common/Dialog/CDialog.vue";
 
 interface Props {
-  data?: string[];
+  data?: {
+  extension: string
+  href: string
+  mimeType: string
+  name:string 
+  }[];
   show: boolean;
 }
 defineProps<Props>();
@@ -14,25 +19,25 @@ defineEmits<{
 
 // Rasm kengaytmalari
 const imageExtensions = [
-  "jpg",
-  "jpeg",
-  "png",
-  "gif",
-  "webp",
-  "svg",
-  "bmp",
-  "tiff",
-  "ico",
+  ".jpg",
+  ".jpeg",
+  ".png",
+  ".gif",
+  ".webp",
+  ".svg",
+  ".bmp",
+  ".tiff",
+  ".ico",
 ];
-const videoExtensions = ["mp4", "avi", "mov", "mkv", "webm"];
-const pdfExtensions = ["pdf"];
-const docExtensions = ["doc", "docx"];
-const excelExtensions = ["xls", "xlsx"];
-const archiveExtensions = ["zip", "rar", "7z", "tar"];
+const videoExtensions = [".mp4", ".avi", ".mov", ".mkv", ".webm"];
+const pdfExtensions = [".pdf"];
+const docExtensions = [".doc", ".docx"];
+const excelExtensions = [".xls", ".xlsx"];
+const archiveExtensions = [".zip", ".rar", ".7z", ".tar"];
 
 // Fayl ikonalarini aniqlash
 const getFileIcon = (filename: string) => {
-  const ext = filename.split(".").pop()?.toLowerCase();
+  const ext = filename;
 
   if (!ext) return "icon-file"; // Nomalum fayl
   if (imageExtensions.includes(ext)) return "icon-add-picture";
@@ -57,18 +62,18 @@ const getFileIcon = (filename: string) => {
         <a
           v-for="(item, key) in data"
           :key="key"
-          :href="item"
+          :href="item?.href"
           class="border border-gray cursor-pointer transition-300 rounded-xl p-2 flex items-center gap-3 p-2"
         >
           <!-- Ikona -->
           <div
             class="bg-gray rounded-md flex items-center justify-center w-8 h-8"
           >
-            <span :class="getFileIcon(item)" class="text-xl"></span>
+            <span :class="getFileIcon(item?.extension)" class="text-xl"></span>
           </div>
 
           <!-- Fayl nomi -->
-          <span class="truncate w-40">{{ item }}</span>
+          <span class="truncate w-40">{{ item?.name }}</span>
         </a>
       </div>
     </CDialog>
