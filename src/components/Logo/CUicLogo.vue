@@ -4,7 +4,7 @@
     target="_blank"
     class="cursor-pointer inline-flex items-center transition-all duration-500"
   >
-  <img src="/svg/logo_white.svg" alt="">
+  <img src="/svg/logo_all_white.svg" alt="">
   </a>
 </template>
 
