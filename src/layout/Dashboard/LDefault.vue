@@ -13,7 +13,7 @@
 
       <!-- Footer -->
       <div
-        class="w-full mt-auto  p-2 bg-white flex justify-center items-center gap-2 text-dark text-sm leading-130 font-normal"
+        class="w-full mt-auto p-2 bg-white flex justify-center items-center gap-2 text-dark text-sm leading-130 font-normal"
       >
         <span class="opacity-50 hover:opacity-100 transition-300">
           made by:
@@ -24,6 +24,8 @@
           >
             digitalaggregator.team
           </a>
+          and
+          <a href="#" class="text-primary"> itprojectsunion.team </a>
         </span>
       </div>
     </div>
