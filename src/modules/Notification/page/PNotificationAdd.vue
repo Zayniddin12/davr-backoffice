@@ -10,11 +10,13 @@
       <div class="w-full pt-6 bg-white rounded-xl grid grid-cols-2 gap-4">
         <FGroup :label="$t('notification_name')">
           <FInput
-            :placeholder="$t('enter_name')"
-            :maxlength="256"
-            v-model="form.values.name"
-            :error="form.$v.value.name?.$error"
+          :placeholder="$t('enter_name')"
+          :maxlength="256"
+          v-model="form.values.name"
+          :error="form.$v.value.name?.$error"
+          @input="form.values.name = form.values.name.replace(/[^a-zA-Z\s]/g, '')"
           />
+
         </FGroup>
         <FGroup :label="$t('pinfl')">
           <FInput
@@ -58,6 +60,7 @@
             :placeholder="$t('enter_user_id')"
             v-model="form.values.id"
             :error="form.$v.value.id?.$error"
+            v-maska="'#####'"
           />
         </FGroup>
         <FGroup :label="$t('filial_of_bank')">
@@ -65,6 +68,7 @@
             :placeholder="$t('enter_filial_bank')"
             v-model="form.values.filial"
             :error="form.$v.value.filial?.$error"
+            v-maska="'#####'"
           />
         </FGroup>
         <FGroup :label="$t('upload_file')" class="max-[1000px]:col-span-2">
