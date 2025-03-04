@@ -68,7 +68,7 @@
             :placeholder="$t('enter_filial_bank')"
             v-model="form.values.filial"
             :error="form.$v.value.filial?.$error"
-            v-maska="'#####'"
+            v-maska="'*****'"
           />
         </FGroup>
         <FGroup :label="$t('upload_file')" class="max-[1000px]:col-span-2">
